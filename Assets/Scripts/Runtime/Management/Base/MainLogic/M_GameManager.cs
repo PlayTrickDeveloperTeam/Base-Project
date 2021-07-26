@@ -13,8 +13,8 @@ namespace Main
         public GameStates CurrentGameState;
         public SE_SaveDataObject MainSaveData;
 
-        TextMeshProUGUI LevelShowcase;
-        TextMeshProUGUI LevelName;
+        TextMeshProUGUI temp_showcase_index;
+        TextMeshProUGUI temp_showcase_name;
 
         Button ClearSavesButton;
 
@@ -34,10 +34,10 @@ namespace Main
         {
             if (!PlayerPrefs.HasKey(Database_String.Save_Int_FirstTime)) MainSaveData.FirstTimeSaveSetup();
             else MainSaveData.DataReady();
-            LevelShowcase = GameObject.Find("ShowcaseIndex").GetComponent<TextMeshProUGUI>();
-            LevelShowcase.text = "Current Level Showcase Index is " + MainSaveData.GetDataI(SE_DataTypes.PreviewLevel).ToString();
-            LevelName = GameObject.Find("ShowcaseLevelName").GetComponent<TextMeshProUGUI>();
-            ClearSavesButton = GameObject.Find("BTN_ClearSaves").GetComponent<Button>();
+            temp_showcase_index = GameObject.Find("temp_showcase_index").GetComponent<TextMeshProUGUI>();
+            temp_showcase_index.text = "Current Level Showcase Index is : " + MainSaveData.GetDataI(SE_DataTypes.PreviewLevel).ToString();
+            temp_showcase_name = GameObject.Find("temp_showcase_name").GetComponent<TextMeshProUGUI>();
+            ClearSavesButton = GameObject.Find("btn_clearsaves").GetComponent<Button>();
             ClearSavesButton.onClick.AddListener(ClearSavesAndReload);
             M_levelController.instance.OnLevelChangedAction += ChangeText;
             return true;
@@ -53,16 +53,16 @@ namespace Main
             }
             MainSaveData.SaveGameData();
             M_levelController.instance.LoadInLevel(M_GameManager.instance.MainSaveData.GetDataI(SE_DataTypes.PlayerLevel));
-            LevelShowcase.text = "Current Level Showcase Index is " + 0;
-            LevelName.text = "Current Level Name is " + M_levelController.instance.CurrentLevel.name;
+            temp_showcase_index.text = "Current Level Showcase Index is : " + 0;
+            temp_showcase_name.text = "Current Level Name is : " + M_levelController.instance.CurrentLevel.name;
             M_levelController.instance.PreviewLevelIndex = 0;
             MainSaveData.LoadGameData();
         }
 
         void ChangeText(int t)
         {
-            LevelShowcase.text = "Current Level Showcase Index is " + t.ToString();
-            LevelName.text = "Current Level Name is " + M_levelController.instance.CurrentLevel.name;
+            temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
+            temp_showcase_name.text = "Current Level Name is " + M_levelController.instance.CurrentLevel.name;
         }
 
 #if UNITY_EDITOR

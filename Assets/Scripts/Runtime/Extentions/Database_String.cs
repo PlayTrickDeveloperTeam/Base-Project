@@ -39,8 +39,6 @@ namespace Main
         public const string BTN_IG_ClaimReward = "btn_ig_claimreward";
         public const string BTN_IG_End = "btn_ig_end";
 
-
-
         #endregion
 
         #region Level Manager

@@ -155,6 +155,7 @@ namespace Main
 
         private GameObject RandomSelectedLevel()
         {
+            if (MainLevels.Count <= 1) { return MainLevels[0]; }
             GameObject obj = MainLevels[UnityEngine.Random.Range(0, MainLevels.Count)];
             if (currentLevel == obj) return RandomSelectedLevel();
             return obj;

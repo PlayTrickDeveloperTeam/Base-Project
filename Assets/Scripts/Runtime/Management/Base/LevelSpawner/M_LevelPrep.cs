@@ -82,12 +82,13 @@ namespace Main
                 InterfaceObject.OnLevelCommand();
             }
         }
+        //Delete on new project
         private void Update()
         {
             if (M_GameManager.instance.CurrentGameState != GameStates.Playing) return;
             if (Input.GetMouseButtonDown(0))
             {
-                M_MenuManager_1.instance.ActivateEndGame(.5f, true);
+                M_MenuManager_1.instance.ActivateEndGame(5f, true);
             }
         }
     }

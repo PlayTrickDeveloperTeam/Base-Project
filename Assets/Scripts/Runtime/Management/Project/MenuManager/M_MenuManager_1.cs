@@ -32,6 +32,8 @@ namespace Main
             return true;
         }
 
+        #region Button Functions
+
         void BTN_FUNC_Start()
         {
             M_levelController.instance.CurrentLevelFunctions.OnLevelCommand();
@@ -54,6 +56,8 @@ namespace Main
             Panel_Start.SetActive(true);
             M_levelController.instance.LoadInNextLevel();
         }
+
+        #endregion
 
         private void OnDisable()
         {

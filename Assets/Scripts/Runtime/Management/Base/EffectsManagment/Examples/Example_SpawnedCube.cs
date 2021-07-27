@@ -11,7 +11,7 @@ namespace Main
         public override void OnFirstSpawn()
         {
             OnFirstSpawnEvent?.Invoke();
-            //base.OnFirstSpawn();
+            base.OnFirstSpawn();
         }
 
         public override void OnObjectSpawn()

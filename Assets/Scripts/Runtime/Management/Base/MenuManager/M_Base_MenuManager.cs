@@ -27,6 +27,7 @@ namespace Main
         [HideInInspector] public Button Btn_Ig_WatchAdd;
         [HideInInspector] public Button Btn_Ig_ClaimReward;
         [HideInInspector] public Button Btn_Ig_End;
+        
         List<GameObject> allPanels;
         List<GameObject> activatedPanels()
         {
@@ -38,6 +39,7 @@ namespace Main
             }
             return _temp;
         }
+        
         List<GameObject> deactivatedPanels()
         {
             List<GameObject> _temp = new List<GameObject>();
@@ -52,6 +54,7 @@ namespace Main
         public virtual bool Strapper_MenuManager()
         {
             allPanels = new List<GameObject>();
+            
             Panel_Loading = GetPanel(Database_String.Panel_Loading);
             Panel_Start = GetPanel(Database_String.Panel_Start);
             Panel_Settings = GetPanel(Database_String.Panel_Settings);
@@ -117,6 +120,7 @@ namespace Main
                 item.SetActive(false);
             }
         }
+        
         public void ActivateEndGame(float secondsToWait, bool success)
         {
             M_GameManager.instance.CurrentGameState = GameStates.End;

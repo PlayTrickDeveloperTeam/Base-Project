@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.herkdess.herkdess.tools.objectpooling": {
-      "version": "file:C:/Users/Dell/Desktop/Custom Packages/Tools/ObjectPooling/Herkdess_Tools_ObjectPoolingLib",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.textmeshpro": "3.0.6",
-        "com.unity.cinemachine": "2.6.4"
-      }
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -158,8 +149,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.6",
-      "depth": 1,
+      "version": "3.0.1",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0"

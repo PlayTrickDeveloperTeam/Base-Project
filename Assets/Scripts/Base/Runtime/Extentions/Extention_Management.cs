@@ -10,35 +10,35 @@ namespace Base
     {
         #region Save System Extentions
         //All save system extentions are subject to change
-        public static bool SaveGameData(this SE_SaveDataObject dataObject)
+        public static bool SaveGameData(this B_SE_SaveDataObject dataObject)
         {
             if (!Directory.Exists(dataObject.SaveLocation.AddSaveDirectory())) { Directory.CreateDirectory(dataObject.SaveLocation.AddSaveDirectory()); }
             File.WriteAllText(dataObject.AddSaveFileName(), JsonConvert.SerializeObject(dataObject.DataContainer.DataCluster, Formatting.Indented));
             return true;
         }
 
-        public static bool LoadGameData(this SE_SaveDataObject dataObject)
+        public static bool LoadGameData(this B_SE_SaveDataObject dataObject)
         {
             if (!File.Exists(dataObject.AddSaveFileName())) { return false; }
             using (StreamReader _file = File.OpenText(dataObject.AddSaveFileName()))
             {
                 JsonSerializer _serializer = new JsonSerializer();
-                dataObject.DataContainer.DataCluster = (Dictionary<string, dynamic>)_serializer.Deserialize(_file, typeof(Dictionary<string, dynamic>));
+                dataObject.DataContainer.DataCluster = (Dictionary<string, string>)_serializer.Deserialize(_file, typeof(Dictionary<string, string>));
                 _file.Close();
             }
             return true;
         }
 
-        public static bool SE_LogicCheck(this SE_SaveDataObject dataObject)
+        public static bool SE_LogicCheck(this B_SE_SaveDataObject dataObject)
         {
             if (File.Exists(dataObject.AddSaveFileName()))
             {
                 using (StreamReader _file = File.OpenText(dataObject.AddSaveFileName()))
                 {
                     JsonSerializer _serializer = new JsonSerializer();
-                    Dictionary<string, dynamic> _tempDic = new Dictionary<string, dynamic>();
-                    _tempDic = (Dictionary<string, dynamic>)_serializer.Deserialize(_file, typeof(Dictionary<string, dynamic>));
-                    dataObject.DataContainer.DataCluster = new Dictionary<string, dynamic>();
+                    Dictionary<string, string> _tempDic = new Dictionary<string, string>();
+                    _tempDic = (Dictionary<string, string>)_serializer.Deserialize(_file, typeof(Dictionary<string, string>));
+                    dataObject.DataContainer.DataCluster = new Dictionary<string, string>();
                     dataObject.DataContainer.DataCluster = _tempDic;
                     _file.Close();
                     return true;

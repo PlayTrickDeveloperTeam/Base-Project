@@ -4,9 +4,9 @@ using Herkdess.Tools.General;
 
 namespace Base
 {
-    public class VFM_EffectsManager : OPS_Pooler_Base, ISpawnedLevelObject
+    public class B_VFM_EffectsManager : B_OPS_Pooler_Base, B_LC_ISpawnedLevelObject
     {
-        public static VFM_EffectsManager instance;
+        public static B_VFM_EffectsManager instance;
 
         private void OnDisable()
         {

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Base
 {
-    public class Example_SpawnedCube : OPS_PooledObjectBase
+    public class Example_SpawnedCube : B_OPS_PooledObjectBase
     {
         public UnityEvent OnFirstSpawnEvent;
         public override void OnFirstSpawn()

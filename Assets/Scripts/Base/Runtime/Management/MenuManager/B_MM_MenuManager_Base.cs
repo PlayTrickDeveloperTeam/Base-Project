@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace Base
 {
-    public class M_Base_MenuManager : MonoBehaviour
+    public class B_MM_MenuManager_Base : MonoBehaviour
     {
         [HideInInspector] public GameObject Panel_Loading;
         [HideInInspector] public GameObject Panel_Start;
@@ -53,6 +53,14 @@ namespace Base
 
         public virtual bool Strapper_MenuManager()
         {
+
+
+
+            return true;
+        }
+
+        protected void StrapperInit()
+        {
             allPanels = new List<GameObject>();
 
             Panel_Loading = GetPanel(Database_String.Panel_Loading);
@@ -78,12 +86,14 @@ namespace Base
             Btn_Ig_WatchAdd = GetButton(Database_String.BTN_IG_WatchAdd);
             Btn_Ig_ClaimReward = GetButton(Database_String.BTN_IG_ClaimReward);
             Btn_Ig_End = GetButton(Database_String.BTN_IG_End);
+        }
 
+        protected void StrappingFinal()
+        {
             Panel_Settings.SetActive(false);
             Panel_Ending.SetActive(false);
             Panel_Ingame.SetActive(false);
             Panel_Start.SetActive(true);
-            return true;
         }
 
 
@@ -123,7 +133,7 @@ namespace Base
 
         public void ActivateEndGame(float secondsToWait, bool success)
         {
-            M_GameManager.instance.CurrentGameState = GameStates.End;
+            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
             DeactivateAllPanels();
             StartCoroutine(Ienum_EndGameActivation(secondsToWait, success));
         }
@@ -144,6 +154,12 @@ namespace Base
                     break;
             }
         }
+
+    }
+
+    [System.Serializable]
+    public class BMM_Panel
+    {
 
     }
 }

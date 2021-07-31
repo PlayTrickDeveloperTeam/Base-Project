@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Herkdess.Tools.General
+namespace Base
 {
-    public abstract class OPS_PooledObjectBase : MonoBehaviour, IPooledObject
+    public abstract class B_OPS_PooledObjectBase : MonoBehaviour, B_OPS_IPooledObject
     {
         public virtual void OnFirstSpawn()
         {

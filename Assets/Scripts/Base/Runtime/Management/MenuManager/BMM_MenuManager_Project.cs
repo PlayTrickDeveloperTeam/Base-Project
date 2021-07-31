@@ -8,9 +8,9 @@ using Sirenix.Serialization;
 
 namespace Base
 {
-    public class M_MenuManager_1 : M_Base_MenuManager
+    public class BMM_MenuManager_Project : B_MM_MenuManager_Base
     {
-        public static M_MenuManager_1 instance;
+        public static BMM_MenuManager_Project instance;
         private void Awake()
         {
             if (instance == null)
@@ -25,10 +25,13 @@ namespace Base
 
         public override bool Strapper_MenuManager()
         {
-            base.Strapper_MenuManager();//Closes all the menus
+            //Inits all the base panels, buttons etc
+            base.StrapperInit();
             AddFunction(Btn_M_Start, BTN_FUNC_Start);
             AddFunction(Btn_Ig_End, BTN_FUNC_Endgame);
             AddFunction(Btn_Ig_Restart, BTN_FUNC_Restart);
+            //Closes all but start panel
+            base.StrappingFinal();
             return true;
         }
 
@@ -36,15 +39,15 @@ namespace Base
 
         void BTN_FUNC_Start()
         {
-            M_levelController.instance.CurrentLevelFunctions.OnLevelCommand();
-            M_GameManager.instance.CurrentGameState = GameStates.Playing;
+            B_LC_LevelManager.instance.CurrentLevelFunctions.OnLevelCommand();
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             Panel_Start.SetActive(false);
             Panel_Ingame.SetActive(true);
         }
 
         void BTN_FUNC_Restart()
         {
-            M_levelController.instance.ReloadCurrentLevel();
+            B_LC_LevelManager.instance.ReloadCurrentLevel();
             DeactivateAllPanels();
             Panel_Start.SetActive(true);
         }
@@ -52,9 +55,9 @@ namespace Base
         void BTN_FUNC_Endgame()
         {
             DeactivateAllPanels();
-            M_GameManager.instance.CurrentGameState = GameStates.Start;
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
             Panel_Start.SetActive(true);
-            M_levelController.instance.LoadInNextLevel();
+            B_LC_LevelManager.instance.LoadInNextLevel();
         }
 
         #endregion

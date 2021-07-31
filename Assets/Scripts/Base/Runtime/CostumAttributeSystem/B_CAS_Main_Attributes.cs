@@ -7,15 +7,15 @@ using UnityEngine.Events;
 namespace Base
 {
     public enum Cas_AttributeType { Health, Stamina, Sanity, Hunger, Thirst }
-    public class CAS_Main_Attributes
+    public class B_CAS_Main_Attributes
     {
-        public Dictionary<Cas_AttributeType, Cas_Attribute> Attributes = new Dictionary<Cas_AttributeType, Cas_Attribute>()
+        public Dictionary<Cas_AttributeType, B_Cas_Attribute> Attributes = new Dictionary<Cas_AttributeType, B_Cas_Attribute>()
         {
-            {Cas_AttributeType.Health, new Cas_Attribute(false, 0, 100) },
-            {Cas_AttributeType.Stamina, new Cas_Attribute(false, 0, 100) },
-            {Cas_AttributeType.Sanity, new Cas_Attribute(false, 0, 100) },
-            {Cas_AttributeType.Hunger, new Cas_Attribute(false, 0, 100) },
-            {Cas_AttributeType.Thirst, new Cas_Attribute(false, 0, 100) }
+            {Cas_AttributeType.Health, new B_Cas_Attribute(false, 0, 100) },
+            {Cas_AttributeType.Stamina, new B_Cas_Attribute(false, 0, 100) },
+            {Cas_AttributeType.Sanity, new B_Cas_Attribute(false, 0, 100) },
+            {Cas_AttributeType.Hunger, new B_Cas_Attribute(false, 0, 100) },
+            {Cas_AttributeType.Thirst, new B_Cas_Attribute(false, 0, 100) }
         };
 
 
@@ -39,7 +39,7 @@ namespace Base
     }
 
     [System.Serializable]
-    public class Cas_Attribute
+    public class B_Cas_Attribute
     {
         public bool MinReached = false;
         public bool MaxReached = true;
@@ -53,7 +53,7 @@ namespace Base
         public Action OnMinReachedAction;
         public Action OnMaxReachedAction;
 
-        public Cas_Attribute(bool depleted, float minValue, float maxValue)
+        public B_Cas_Attribute(bool depleted, float minValue, float maxValue)
         {
             this.MinReached = depleted;
             this.MaxValue = maxValue;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Base
 {
-    public class M_LevelPrep : MonoBehaviour
+    public class B_LC_LevelPreparator : MonoBehaviour
     {
         private int levelCount;
 
@@ -31,7 +31,7 @@ namespace Base
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<ISpawnedLevelObject>();
+                B_LC_ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<B_LC_ISpawnedLevelObject>();
                 if (InterfaceObject == null) continue;
                 InterfaceObject.OnLevelAwake();
             }
@@ -42,7 +42,7 @@ namespace Base
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<ISpawnedLevelObject>();
+                B_LC_ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<B_LC_ISpawnedLevelObject>();
                 if (InterfaceObject == null) continue;
                 InterfaceObject.OnLevelOnEnable();
             }
@@ -53,7 +53,7 @@ namespace Base
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<ISpawnedLevelObject>();
+                B_LC_ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<B_LC_ISpawnedLevelObject>();
                 if (InterfaceObject == null) continue;
                 InterfaceObject.OnLevelStart();
             }
@@ -62,11 +62,11 @@ namespace Base
 
         public void OnLevelInitate()
         {
-            M_GameManager.instance.MainSaveData.SetData(SE_DataTypes.PlayerLevel, levelCount);
+            B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PlayerLevel, levelCount);
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<ISpawnedLevelObject>();
+                B_LC_ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<B_LC_ISpawnedLevelObject>();
                 if (InterfaceObject == null) continue;
                 InterfaceObject.OnLevelInitate();
             }
@@ -77,19 +77,11 @@ namespace Base
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
-                ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<ISpawnedLevelObject>();
+                B_LC_ISpawnedLevelObject InterfaceObject = transform.GetChild(i).GetComponent<B_LC_ISpawnedLevelObject>();
                 if (InterfaceObject == null) continue;
                 InterfaceObject.OnLevelCommand();
             }
         }
-        //Delete on new project
-        private void Update()
-        {
-            if (M_GameManager.instance.CurrentGameState != GameStates.Playing) return;
-            if (Input.GetMouseButtonDown(0))
-            {
-                M_MenuManager_1.instance.ActivateEndGame(.5f, true);
-            }
-        }
+
     }
 }

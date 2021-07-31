@@ -9,9 +9,9 @@ using UnityEngine.UI;
 namespace Base
 {
     [System.Serializable]
-    public class M_SoundManager : MonoBehaviour
+    public class B_SM_SoundManager : MonoBehaviour
     {
-        public static M_SoundManager instance;
+        public static B_SM_SoundManager instance;
         public SoundHolder[] Sounds;
         [HideInInspector] public List<AudioSource> Musics = new List<AudioSource>();
         [HideInInspector] public List<AudioSource> VFX = new List<AudioSource>();

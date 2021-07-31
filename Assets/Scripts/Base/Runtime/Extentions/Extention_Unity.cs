@@ -58,7 +58,7 @@ namespace Base
             return string.Concat(Application.persistentDataPath, saveLocation);
         }
 
-        public static string AddSaveFileName(this SE_SaveDataObject dataObject)
+        public static string AddSaveFileName(this B_SE_SaveDataObject dataObject)
         {
             return string.Concat(Application.persistentDataPath, dataObject.SaveLocation, "/", dataObject.SaveName, ".save");
         }

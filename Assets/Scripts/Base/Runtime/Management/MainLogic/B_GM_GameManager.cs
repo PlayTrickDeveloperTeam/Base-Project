@@ -7,11 +7,11 @@ using TMPro;
 namespace Base
 {
     public enum GameStates { Init, Start, Paused, Playing, End }
-    public class M_GameManager : MonoBehaviour
+    public class B_GM_GameManager : MonoBehaviour
     {
-        public static M_GameManager instance;
+        public static B_GM_GameManager instance;
         public GameStates CurrentGameState;
-        public SE_SaveDataObject MainSaveData;
+        public B_SE_SaveDataObject MainSaveData;
 
         TextMeshProUGUI temp_showcase_index;
         TextMeshProUGUI temp_showcase_name;
@@ -35,11 +35,11 @@ namespace Base
             if (!PlayerPrefs.HasKey(Database_String.Save_Int_FirstTime)) MainSaveData.FirstTimeSaveSetup();
             else MainSaveData.DataReady();
             temp_showcase_index = GameObject.Find("temp_showcase_index").GetComponent<TextMeshProUGUI>();
-            temp_showcase_index.text = "Current Level Showcase Index is : " + MainSaveData.GetDataI(SE_DataTypes.PreviewLevel).ToString();
+            temp_showcase_index.text = "Current Level Showcase Index is : " + MainSaveData.GetDataI(B_SE_DataTypes.PreviewLevel).ToString();
             temp_showcase_name = GameObject.Find("temp_showcase_name").GetComponent<TextMeshProUGUI>();
             ClearSavesButton = GameObject.Find("btn_clearsaves").GetComponent<Button>();
             ClearSavesButton.onClick.AddListener(ClearSavesAndReload);
-            M_levelController.instance.OnLevelChangedAction += ChangeText;
+            B_LC_LevelManager.instance.OnLevelChangedAction += ChangeText;
             return true;
         }
 
@@ -49,20 +49,20 @@ namespace Base
         {
             for (int i = 0; i < MainSaveData.DataContainer.DataCluster.Count; i++)
             {
-                MainSaveData.SetData((SE_DataTypes)i, 0);
+                MainSaveData.SetData((B_SE_DataTypes)i, 0);
             }
             MainSaveData.SaveGameData();
-            M_levelController.instance.LoadInLevel(M_GameManager.instance.MainSaveData.GetDataI(SE_DataTypes.PlayerLevel));
+            B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PlayerLevel));
             temp_showcase_index.text = "Current Level Showcase Index is : " + 0;
-            temp_showcase_name.text = "Current Level Name is : " + M_levelController.instance.CurrentLevel.name;
-            M_levelController.instance.PreviewLevelIndex = 0;
+            temp_showcase_name.text = "Current Level Name is : " + B_LC_LevelManager.instance.CurrentLevel.name;
+            B_LC_LevelManager.instance.PreviewLevelIndex = 0;
             MainSaveData.LoadGameData();
         }
 
         void ChangeText(int t)
         {
             temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
-            temp_showcase_name.text = "Current Level Name is " + M_levelController.instance.CurrentLevel.name;
+            temp_showcase_name.text = "Current Level Name is " + B_LC_LevelManager.instance.CurrentLevel.name;
         }
 
 #if UNITY_EDITOR
@@ -71,9 +71,9 @@ namespace Base
         public void LoadData()
         {
             MainSaveData.LoadGameData();
-            for (int i = 0; i < Enum.GetNames(typeof(SE_DataTypes)).Length; i++)
+            for (int i = 0; i < Enum.GetNames(typeof(B_SE_DataTypes)).Length; i++)
             {
-                Debug.Log(MainSaveData.GetData((SE_DataTypes)i));
+                Debug.Log(MainSaveData.GetData((B_SE_DataTypes)i));
             }
         }
         [ContextMenu("Save")]

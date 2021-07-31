@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Herkdess.Tools.General
+namespace Base
 {
-    public interface IPooledObject
+    public interface B_OPS_IPooledObject
     {
         public void OnFirstSpawn();
         public void OnObjectSpawn();

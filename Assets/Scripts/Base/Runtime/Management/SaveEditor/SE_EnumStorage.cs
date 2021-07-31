@@ -1,1 +1,0 @@
-public enum SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }

@@ -6,9 +6,9 @@ using System.Linq;
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 #endif
-namespace Herkdess.Tools.General
+namespace Base
 {
-    public abstract class OPS_Pooler_Base : MonoBehaviour
+    public abstract class B_OPS_Pooler_Base : MonoBehaviour
     {
         [Serializable]
         public class ObjectsToPool
@@ -89,7 +89,7 @@ namespace Herkdess.Tools.General
         void ObjectSpawnHelper(GameObject obj)
         {
             obj.SetActive(true);
-            IPooledObject pooledObj = obj.GetComponent<IPooledObject>();
+            B_OPS_IPooledObject pooledObj = obj.GetComponent<B_OPS_IPooledObject>();
             if (pooledObj != null)
             {
                 pooledObj.OnFirstSpawn();
@@ -105,7 +105,7 @@ namespace Herkdess.Tools.General
             objectToSpawn.transform.position = spawnPosition;
             PoolsDictionary[objectPoolName].Enqueue(objectToSpawn);
             objectToSpawn.SetActive(true);
-            IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<IPooledObject>();
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
             if (pulledObjectInterface != null)
             {
                 pulledObjectInterface.OnObjectSpawn();
@@ -122,7 +122,7 @@ namespace Herkdess.Tools.General
             objectToSpawn.transform.rotation = spawnRotation;
             PoolsDictionary[objectPoolName].Enqueue(objectToSpawn);
             objectToSpawn.SetActive(true);
-            IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<IPooledObject>();
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
             if (pulledObjectInterface != null)
             {
                 pulledObjectInterface.OnObjectSpawn();
@@ -140,7 +140,7 @@ namespace Herkdess.Tools.General
             objectToSpawn.transform.SetParent(spawnParent);
             PoolsDictionary[objectPoolName].Enqueue(objectToSpawn);
             objectToSpawn.SetActive(true);
-            IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<IPooledObject>();
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
             if (pulledObjectInterface != null)
             {
                 pulledObjectInterface.OnObjectSpawn();

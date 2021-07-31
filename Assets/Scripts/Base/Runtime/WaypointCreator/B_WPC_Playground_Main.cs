@@ -1,27 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
+#endif
+
 namespace Base
 {
-    public class Playground_Main : MonoBehaviour
+    public class B_WPC_Playground_Main : MonoBehaviour
     {
-        [SerializeField] WaypointCreator WaypointCreator;
+        [SerializeField] B_WPC_WaypointCreator WaypointCreator;
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             WaypointCreator.DrawDebugLine();
         }
+
+
 #endif
 
         public void AddWaypoint(Transform target)
         {
             WaypointCreator.AddNewWaypoint(target);
         }
-        public Waypoint GetWaypointTransform()
+        public B_WPC_Waypoint GetWaypointTransform()
         {
-            Waypoint _temp = WaypointCreator.GetAVaibleWaypoint();
-            if (_temp == null) { M_MenuManager_1.instance.ActivateEndGame(.5f, true); return null; }
+            B_WPC_Waypoint _temp = WaypointCreator.GetAVaibleWaypoint();
+            if (_temp == null) { BMM_MenuManager_Project.instance.ActivateEndGame(.5f, true); return null; }
             return WaypointCreator.GetAVaibleWaypoint();
         }
         private void Start()

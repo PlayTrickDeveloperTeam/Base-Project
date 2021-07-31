@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Base
 {
-    public interface ISpawnedLevelObject
+    public interface B_LC_ISpawnedLevelObject
     {
         public void OnLevelAwake();
         public void OnLevelOnEnable();

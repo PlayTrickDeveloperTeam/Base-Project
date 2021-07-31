@@ -9,18 +9,18 @@ using UnityEditor;
 namespace Base
 {
     [System.Serializable]
-    public class WaypointCreator
+    public class B_WPC_WaypointCreator
     {
         private GameObject Parent;
         [HideInInspector] public List<Transform> WaypointHolders = new List<Transform>();
-        public List<Waypoint> Waypoints = new List<Waypoint>();
+        public List<B_WPC_Waypoint> Waypoints = new List<B_WPC_Waypoint>();
         public void AddNewWaypoint(Transform target)
         {
-            Waypoint newWaypoint = new Waypoint(target);
+            B_WPC_Waypoint newWaypoint = new B_WPC_Waypoint(target);
             Waypoints.Add(newWaypoint);
         }
 
-        public Waypoint GetAVaibleWaypoint()
+        public B_WPC_Waypoint GetAVaibleWaypoint()
         {
             for (int i = 0; i < Waypoints.Count; i++)
             {
@@ -38,7 +38,7 @@ namespace Base
             GameObject NewWaypoint = CreateNewHolder();
             if (WaypointHolders.Count <= 0) NewWaypoint.transform.position = Vector3.zero;
             else { NewWaypoint.transform.position = WaypointHolders[WaypointHolders.Count - 1].position; }
-            Waypoint WaypointToAdd = new Waypoint(NewWaypoint.transform);
+            B_WPC_Waypoint WaypointToAdd = new B_WPC_Waypoint(NewWaypoint.transform);
             Selection.activeGameObject = NewWaypoint;
             Waypoints.Add(WaypointToAdd);
             WaypointHolders.Add(NewWaypoint.transform);
@@ -58,7 +58,7 @@ namespace Base
                 GameObject.DestroyImmediate(item);
             }
 
-            Waypoints = new List<Waypoint>();
+            Waypoints = new List<B_WPC_Waypoint>();
             WaypointHolders = new List<Transform>();
         }
 
@@ -85,12 +85,12 @@ namespace Base
 #endif
     }
     [System.Serializable]
-    public class Waypoint
+    public class B_WPC_Waypoint
     {
         public Transform W_Transform;
         public bool Reached = false;
 
-        public Waypoint(Transform transform)
+        public B_WPC_Waypoint(Transform transform)
         {
             this.W_Transform = transform;
             Reached = false;

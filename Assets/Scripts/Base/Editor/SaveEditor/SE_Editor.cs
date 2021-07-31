@@ -12,7 +12,7 @@ namespace Base
     public class SE_Editor
     {
         [OnValueChanged("ReadyData")]
-        public SE_SaveDataObject SaveToModify;
+        public B_SE_SaveDataObject SaveToModify;
         [ShowIf("IsNotNull", true)]
         [HideLabel]
         public List<SE_Provider> provider;
@@ -30,7 +30,7 @@ namespace Base
             provider = new List<SE_Provider>();
             for (int i = 0; i < SaveToModify.DataContainer.DataCluster.Count; i++)
             {
-                SaveToModify.SetData((SE_DataTypes)i, 0);
+                SaveToModify.SetData((B_SE_DataTypes)i, 0);
             }
             foreach (var item in SaveToModify.DataContainer.DataCluster)
             {
@@ -49,8 +49,8 @@ namespace Base
         void SaveDatacluster()
         {
             List<string> CurrentEnums = new List<string>();
-            string Path = AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("SE_EnumStorage")[0]);
-            string FileFormat = "public enum SE_DataTypes { ";
+            string Path = AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("B_SE_EnumStorage")[0]);
+            string FileFormat = "public enum B_SE_DataTypes { ";
 
             for (int i = 0; i < provider.Count; i++)
             {
@@ -71,7 +71,7 @@ namespace Base
 
             File.WriteAllText(Path, FileFormat);
 
-            SaveToModify.DataContainer.DataCluster = new Dictionary<string, dynamic>();
+            SaveToModify.DataContainer.DataCluster = new Dictionary<string, string>();
 
             for (int i = 0; i < provider.Count; i++)
             {
@@ -100,9 +100,9 @@ namespace Base
         public List<string> CurrentEnums()
         {
             List<string> _temp = new List<string>();
-            for (int i = 0; i < Enum.GetNames(typeof(SE_DataTypes)).Length; i++)
+            for (int i = 0; i < Enum.GetNames(typeof(B_SE_DataTypes)).Length; i++)
             {
-                _temp.Add(Enum.GetName(typeof(SE_DataTypes), i));
+                _temp.Add(Enum.GetName(typeof(B_SE_DataTypes), i));
             }
             return _temp;
         }

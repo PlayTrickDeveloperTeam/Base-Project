@@ -9,14 +9,14 @@ using Unity.Advertisement.IosSupport;
 
 namespace Base
 {
-    public class M_BootLoader : MonoBehaviour
+    public class B_BL_BootLoader : MonoBehaviour
     {
         public bool FacebookSdk = false;
         public bool HasTutorial = false;
         public GameObject GameAnaltyicsObject;
         private void Start()
         {
-            M_GameManager.instance.CurrentGameState = GameStates.Init;
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Init;
 
 #if UNITY_IOS
 
@@ -56,13 +56,13 @@ namespace Base
 #else
             //Debug.unityLogger.logEnabled = false;
 #endif
-            yield return new WaitUntil(() => M_GameManager.instance.GameManagerStrapping() == true);
-            if (!HasTutorial) M_GameManager.instance.MainSaveData.SetData(SE_DataTypes.TutorialPlayed, 1);
-            yield return new WaitUntil(() => M_levelController.instance.StrappingLevelController() == true);
-            yield return new WaitUntil(() => M_MenuManager_1.instance.Strapper_MenuManager() == true);
-            M_levelController.instance.LoadInLevel(M_GameManager.instance.MainSaveData.GetDataI(SE_DataTypes.PlayerLevel));
-            M_MenuManager_1.instance.Panel_Loading.SetActive(false);
-            M_GameManager.instance.CurrentGameState = GameStates.Start;
+            yield return new WaitUntil(() => B_GM_GameManager.instance.GameManagerStrapping() == true);
+            if (!HasTutorial) B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.TutorialPlayed, 1);
+            yield return new WaitUntil(() => B_LC_LevelManager.instance.StrappingLevelController() == true);
+            yield return new WaitUntil(() => BMM_MenuManager_Project.instance.Strapper_MenuManager() == true);
+            B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PlayerLevel));
+            BMM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
         }
 
         #region Odin Inspector

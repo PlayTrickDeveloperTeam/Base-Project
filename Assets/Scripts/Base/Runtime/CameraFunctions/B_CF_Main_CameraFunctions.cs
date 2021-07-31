@@ -6,7 +6,7 @@ using Unity.Mathematics;
 
 namespace Base
 {
-    public class CF_Main_CameraFunctions : MonoBehaviour
+    public class B_CF_Main_CameraFunctions : MonoBehaviour
     {
         public static Action<float, float> ShakeCameraAction;
         CinemachineVirtualCamera VirtualCamera;

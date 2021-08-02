@@ -2853,7 +2853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FacebookSdk: 0
-  HasTutorial: 0
+  HasTutorial: 1
   GameAnaltyicsObject: {fileID: 477187039}
 --- !u!1 &2091709921
 GameObject:

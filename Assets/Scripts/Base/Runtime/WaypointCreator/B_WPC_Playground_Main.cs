@@ -30,6 +30,7 @@ namespace Base
             if (_temp == null) { BMM_MenuManager_Project.instance.ActivateEndGame(.5f, true); return null; }
             return WaypointCreator.GetAVaibleWaypoint();
         }
+
         private void Start()
         {
             for (int i = 0; i < WaypointCreator.WaypointHolders.Count; i++)

@@ -53,9 +53,6 @@ namespace Base
 
         public virtual bool Strapper_MenuManager()
         {
-
-
-
             return true;
         }
 

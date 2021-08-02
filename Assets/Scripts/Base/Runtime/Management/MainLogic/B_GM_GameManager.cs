@@ -43,6 +43,12 @@ namespace Base
             return true;
         }
 
+        public bool IsGamePlaying()
+        {
+            if (CurrentGameState == GameStates.Playing) return true;
+            return false;
+        }
+
         #region Function Testing
 
         void ClearSavesAndReload()

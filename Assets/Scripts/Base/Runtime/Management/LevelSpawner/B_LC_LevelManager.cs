@@ -50,7 +50,7 @@ namespace Base
             TutorialLevels = new List<GameObject>();
             MainLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_MainLevels).ToList();
             TutorialLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_TutorialLevels).ToList();
-            MainLevels = MainLevels.OrderBy(t => t.name).ToList();
+            MainLevels = MainLevels.OrderBy(t => t.name).ToList(); //Özel bir sort sistemi getirilmesi lazým
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
             PreviewLevelIndex = B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PreviewLevel);
             return true;

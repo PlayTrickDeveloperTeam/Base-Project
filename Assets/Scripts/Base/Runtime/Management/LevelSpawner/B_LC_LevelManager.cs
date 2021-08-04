@@ -13,17 +13,17 @@ namespace Base
 
         public Action<int> OnLevelChangedAction;
 
-        public List<GameObject> MainLevels;
-        public List<GameObject> TutorialLevels;
+        [HideInInspector] public List<GameObject> MainLevels;
+        [HideInInspector] public List<GameObject> TutorialLevels;
 
-        public GameObject CurrentLevel;
+        [HideInInspector] public GameObject CurrentLevel;
         private GameObject currentLevel;
-        public B_LC_LevelPreparator CurrentLevelFunctions = null;
+        [HideInInspector] public B_LC_LevelPreparator CurrentLevelFunctions = null;
 
-        public int CurrentLevelIndex;
-        public int PreviewLevelIndex;
+        [HideInInspector] public int CurrentLevelIndex;
+        [HideInInspector] public int PreviewLevelIndex;
 
-        public Transform LevelHolder { get; private set; }
+        [HideInInspector] public Transform LevelHolder { get; private set; }
 
         private int tutorialPlayed
         {
@@ -50,7 +50,7 @@ namespace Base
             TutorialLevels = new List<GameObject>();
             MainLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_MainLevels).ToList();
             TutorialLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_TutorialLevels).ToList();
-            MainLevels = MainLevels.OrderBy(t => t.name).ToList(); //Özel bir sort sistemi getirilmesi lazým
+            MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
             PreviewLevelIndex = B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PreviewLevel);
             return true;

@@ -88,8 +88,7 @@ namespace Base
             if (!B_GM_GameManager.instance.IsGamePlaying()) return;
             if (Input.GetMouseButtonDown(0))
             {
-                B_CF_Main_CameraFunctions.ShakeCameraAction(18, 3);
-                BMM_MenuManager_Project.instance.ActivateEndGame(.5f, true);
+                BMM_MenuManager_Project.instance.ActivateEndGame(.5f, true, .5f);
             }
         }
 

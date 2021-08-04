@@ -43,20 +43,22 @@ namespace Base
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             Panel_Start.SetActive(false);
             Panel_Ingame.SetActive(true);
+            ActivatePanel(Database_String.Panel_Ingame, .5f);
+            DeactivatePanel(Database_String.Panel_Start, .5f);
         }
 
         void BTN_FUNC_Restart()
         {
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             DeactivateAllPanels();
-            Panel_Start.SetActive(true);
+            ActivatePanel(Database_String.Panel_Start, .5f);
         }
 
         void BTN_FUNC_Endgame()
         {
             DeactivateAllPanels();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
-            Panel_Start.SetActive(true);
+            ActivatePanel(Database_String.Panel_Start, .5f);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 

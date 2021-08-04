@@ -10,6 +10,8 @@ namespace Base
 {
     public class B_MM_MenuManager_Base : MonoBehaviour
     {
+        public Dictionary<string, BMM_Panel> PanelDictionary;
+
         [HideInInspector] public GameObject Panel_Loading;
         [HideInInspector] public GameObject Panel_Start;
         [HideInInspector] public GameObject Panel_Settings;
@@ -58,6 +60,8 @@ namespace Base
 
         protected void StrapperInit()
         {
+            PanelDictionary = new Dictionary<string, BMM_Panel>();
+
             allPanels = new List<GameObject>();
 
             Panel_Loading = GetPanel(Database_String.Panel_Loading);
@@ -87,10 +91,8 @@ namespace Base
 
         protected void StrappingFinal()
         {
-            Panel_Settings.SetActive(false);
-            Panel_Ending.SetActive(false);
-            Panel_Ingame.SetActive(false);
-            Panel_Start.SetActive(true);
+            DeactivateAllPanels();
+            ActivatePanel(Database_String.Panel_Start, .5f);
         }
 
 
@@ -103,7 +105,9 @@ namespace Base
         public GameObject GetPanel(string panelName)
         {
             if (GameObject.Find(panelName) == null) return null;
-            return GameObject.Find(panelName);
+            GameObject obj = GameObject.Find(panelName);
+            PanelDictionary.Add(panelName, new BMM_Panel(obj, false));
+            return obj;
         }
 
         public void AddFunction(Button btnToAdd, UnityAction Function)
@@ -116,7 +120,7 @@ namespace Base
         {
             foreach (var item in deactivatedPanels())
             {
-                item.SetActive(true);
+                ActivatePanel(item.name);
             }
         }
 
@@ -124,7 +128,7 @@ namespace Base
         {
             foreach (var item in activatedPanels())
             {
-                item.SetActive(false);
+                DeactivatePanel(item.name);
             }
         }
 
@@ -133,6 +137,13 @@ namespace Base
             B_GM_GameManager.instance.CurrentGameState = GameStates.End;
             DeactivateAllPanels();
             StartCoroutine(Ienum_EndGameActivation(secondsToWait, success));
+        }
+
+        public void ActivateEndGame(float secondsToWait, bool success, float time)
+        {
+            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
+            DeactivateAllPanels();
+            StartCoroutine(Ienum_EndGameActivation(secondsToWait, success, time));
         }
 
         IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success)
@@ -152,11 +163,85 @@ namespace Base
             }
         }
 
+        IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success, float time)
+        {
+            yield return new WaitForSeconds(secondsToWait);
+            Panel_Ending.SetActive(true);
+            switch (success)
+            {
+                case true:
+                    DeactivatePanel(Database_String.BG_Ending_Fail);
+                    ActivatePanel(Database_String.BG_Ending_Success, time);
+                    break;
+                case false:
+                    DeactivatePanel(Database_String.BG_Ending_Success);
+                    ActivatePanel(Database_String.BG_Ending_Fail, time);
+                    break;
+            }
+        }
+
+        public void ActivatePanel(string panelName)
+        {
+            PanelDictionary[panelName].Panel.SetActive(true);
+            PanelDictionary[panelName].IsActive = true;
+        }
+
+        public void ActivatePanel(string panelName, float time)
+        {
+            if (PanelDictionary[panelName].IsActive) DeactivatePanel(panelName);
+            float step = 1 / time;
+            PanelDictionary[panelName].Panel.SetActive(true);
+            PanelDictionary[panelName].IsActive = true;
+            StartCoroutine(Ienum_ActivatePanel(PanelDictionary[panelName].Panel, step));
+        }
+
+        public void DeactivatePanel(string panelName)
+        {
+            PanelDictionary[panelName].IsActive = false;
+            PanelDictionary[panelName].Panel.SetActive(false);
+        }
+
+        public void DeactivatePanel(string panelName, float time)
+        {
+            if (!PanelDictionary[panelName].IsActive) ActivatePanel(panelName);
+            float step = 1 / time;
+            PanelDictionary[panelName].IsActive = false;
+            StartCoroutine(Ienum_DeactivatePanel(PanelDictionary[panelName].Panel, step));
+        }
+
+        IEnumerator Ienum_ActivatePanel(GameObject panelObj, float step)
+        {
+            panelObj.transform.localScale = Vector3.zero;
+            while (panelObj.transform.localScale != Vector3.one)
+            {
+                panelObj.transform.localScale = Vector3.MoveTowards(panelObj.transform.localScale, Vector3.one, step * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
+        IEnumerator Ienum_DeactivatePanel(GameObject panelObj, float step)
+        {
+            panelObj.transform.localScale = Vector3.one;
+            while (panelObj.transform.localScale != Vector3.zero)
+            {
+                panelObj.transform.localScale = Vector3.MoveTowards(panelObj.transform.localScale, Vector3.zero, step * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+            panelObj.SetActive(false);
+        }
+
     }
 
     [System.Serializable]
     public class BMM_Panel
     {
+        public GameObject Panel;
+        public bool IsActive;
 
+        public BMM_Panel(GameObject panel, bool isactive)
+        {
+            this.Panel = panel;
+            this.IsActive = isactive;
+        }
     }
 }

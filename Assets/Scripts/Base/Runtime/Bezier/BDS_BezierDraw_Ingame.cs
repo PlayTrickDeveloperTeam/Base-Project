@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Herkdess.Tools.DB
+namespace Herkdess.Tools
 {
     [System.Serializable]
-    public class DB_BezierDraw_Editor
+    public class BDS_BezierDraw_Ingame
     {
-        #region Editor Func
 
         MonoBehaviour Parent;
         Transform Target;
-        [SerializeField] BD_BezierData[] Beziers;
+        [SerializeField] BDS_BezierData[] Beziers;
         [SerializeField] Material LineMaterial;
         [HideInInspector] public Vector3[] BezierPoints;
         [HideInInspector] public Transform[] BezierTransforms;
@@ -22,48 +21,8 @@ namespace Herkdess.Tools.DB
         float Distance;
         float DistanceBetweenPoints;
 
-        public void ResetDebugBezier()
-        {
-            if (!DebugBezierOn) return;
-            this.DebugBezierOn = false;
-            BezierPoints = new Vector3[0];
-            for (int i = 0; i < BezierTransforms.Length; i++)
-            {
-                GameObject.DestroyImmediate(BezierTransforms[i].gameObject);
-            }
-            BezierTransforms = new Transform[0];
-        }
-
-        public Vector3[] GetPositions()
-        {
-            if (BezierTransforms == null) return null;
-            Vector3[] pos = new Vector3[BezierTransforms.Length];
-            for (int i = 0; i < pos.Length; i++)
-            {
-                pos[i] = BezierTransforms[i].position;
-            }
-            return pos;
-        }
-
-#if UNITY_EDITOR
-
-        public bool DebugBezierOn = false;
-
-        public void DebugDrawBezier()
-        {
-            if (GetPositions().Length < 2) return;
-            Gizmos.color = Color.green;
-            for (int i = 0; i < GetPositions().Length; i++)
-            {
-                if (i == GetPositions().Length - 1) break;
-                Gizmos.DrawLine(GetPositions()[i], GetPositions()[i + 1]);
-            }
-        }
-
         public void DrawBezier(MonoBehaviour parent, Transform target, int bezierPoints, Transform holder)
         {
-            if (DebugBezierOn) return;
-            this.DebugBezierOn = true;
             this.Parent = parent;
             this.Target = target;
             this.PointAmount = bezierPoints;
@@ -74,7 +33,7 @@ namespace Herkdess.Tools.DB
             PrepareBezier();
         }
 
-        public void PrepareBezier()
+        void PrepareBezier()
         {
             Distance = Vector3.Distance(Parent.transform.position, Target.position);
             DistanceBetweenPoints = Distance / BezierPoints.Length;
@@ -96,9 +55,7 @@ namespace Herkdess.Tools.DB
             for (int x = 0; x < Beziers.Length; x++)
             {
                 int firstPoint = x * PointAmount;
-                int lastPoint = (x * PointAmount) + PointAmount - x;
-                Debug.Log(firstPoint);
-                Debug.Log(lastPoint);
+                int lastPoint = (x * PointAmount) + PointAmount;
                 Beziers[x].DrawBezier(BezierPoints[firstPoint], BezierPoints[lastPoint - 1], PointAmount);
             }
 
@@ -122,8 +79,18 @@ namespace Herkdess.Tools.DB
             }
         }
 
-#endif
-        #endregion
+        public Vector3[] GetPositions()
+        {
+            Vector3[] pos = new Vector3[BezierTransforms.Length];
+            for (int i = 0; i < pos.Length; i++)
+            {
+                pos[i] = BezierTransforms[i].position;
+            }
+            return pos;
+        }
+
     }
 }
+
+
 

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Herkdess.Tools.DB
+namespace Herkdess.Tools
 {
     [System.Serializable]
-    public class BD_BezierData
+    public class BDS_BezierData
     {
         Vector3 StartPoint;
         Vector3 EndPoint;

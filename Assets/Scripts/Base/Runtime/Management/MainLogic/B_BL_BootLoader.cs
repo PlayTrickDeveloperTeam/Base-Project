@@ -63,6 +63,7 @@ namespace Base
             B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PlayerLevel));
             BMM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+
         }
 
         #region Odin Inspector

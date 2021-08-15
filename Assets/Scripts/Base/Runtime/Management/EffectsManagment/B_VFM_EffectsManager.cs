@@ -4,7 +4,7 @@ using Herkdess.Tools.General;
 
 namespace Base
 {
-    public class B_VFM_EffectsManager : B_OPS_Pooler_Base, B_LC_ISpawnedLevelObject
+    public class B_VFM_EffectsManager : B_OPS_Pooler_Base
     {
         public static B_VFM_EffectsManager instance;
 
@@ -13,7 +13,7 @@ namespace Base
             instance = null;
         }
 
-        public void OnLevelAwake()
+        private void Awake()
         {
             if (instance == null)
             {
@@ -25,24 +25,10 @@ namespace Base
             }
         }
 
-        public void OnLevelOnEnable()
+        private void OnEnable()
         {
             base.InitiatePooller(this.transform);
         }
 
-        public void OnLevelStart()
-        {
-
-        }
-
-        public void OnLevelInitate()
-        {
-
-        }
-
-        public void OnLevelCommand()
-        {
-
-        }
     }
 }

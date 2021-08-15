@@ -39,7 +39,8 @@ namespace Base
 
         void BTN_FUNC_Start()
         {
-            B_LC_LevelManager.instance.CurrentLevelFunctions.OnLevelCommand();
+            //B_LC_LevelManager.instance.CurrentLevelFunctions.OnLevelCommand();
+            B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             Panel_Start.SetActive(false);
             Panel_Ingame.SetActive(true);
@@ -49,6 +50,7 @@ namespace Base
 
         void BTN_FUNC_Restart()
         {
+            B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             DeactivateAllPanels();
             ActivatePanel(Database_String.Panel_Start, .5f);
@@ -56,6 +58,7 @@ namespace Base
 
         void BTN_FUNC_Endgame()
         {
+            B_CES_CentralEventSystem.OnLevelEnded.InvokeEvent();
             DeactivateAllPanels();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
             ActivatePanel(Database_String.Panel_Start, .5f);

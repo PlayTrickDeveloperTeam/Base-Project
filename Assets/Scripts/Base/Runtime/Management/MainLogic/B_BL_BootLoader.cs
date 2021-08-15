@@ -56,6 +56,7 @@ namespace Base
 #else
             //Debug.unityLogger.logEnabled = false;
 #endif
+            B_CES_CentralEventSystem.CentralEventSystemStrapping();
             yield return new WaitUntil(() => B_GM_GameManager.instance.GameManagerStrapping() == true);
             if (!HasTutorial) B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.TutorialPlayed, 1);
             yield return new WaitUntil(() => B_LC_LevelManager.instance.StrappingLevelController() == true);

@@ -1,7 +1,7 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System;
 using System.Collections;
-
+using System.Collections.Generic;
 namespace Base
 {
     public class CoroutineQueue
@@ -61,5 +61,53 @@ namespace Base
                 coroutine = m_Owner.StartCoroutine(enumerator);
             }
         }
+
+        public void RunCoroutineWithDelay(Coroutine coroutine, IEnumerator enumator, float waitTime)
+        {
+            m_Owner.StartCoroutine(Ienum_DelayStartIenum(coroutine, enumator, waitTime));
+        }
+
+        IEnumerator Ienum_DelayStartIenum(Coroutine coroutine, IEnumerator enumerator, float waitTime)
+        {
+            yield return new WaitForSeconds(waitTime);
+            if (coroutine == null)
+            {
+                coroutine = m_Owner.StartCoroutine(enumerator);
+            }
+            else
+            {
+                m_Owner.StopCoroutine(coroutine);
+                coroutine = null;
+                coroutine = m_Owner.StartCoroutine(enumerator);
+            }
+        }
+
+        public void StartFunctionWithDelay(Action method, float waitTime)
+        {
+            m_Owner.StartCoroutine(Ienum_DelayStartFunction(method, waitTime));
+        }
+
+        IEnumerator Ienum_DelayStartFunction(Action method, float waitTime)
+        {
+            yield return new WaitForSeconds(waitTime);
+            method?.Invoke();
+        }
+
+        //public void StartFunctionOnBoolChange(Action method, bool waitBool)
+        //{
+        //    m_Owner.StartCoroutine(Ienum_DelayUntilTrue(method, waitBool));
+        //}
+
+        //IEnumerator Ienum_DelayUntilTrue(Action method, bool waitBool)
+        //{
+        //    bool x = true;
+        //    while (x)
+        //    {
+        //        //yield return new WaitUntil(() => waitBool);
+        //        method?.Invoke();
+        //        x = false;
+        //        yield return new WaitForFixedUpdate();
+        //    }
+        //}
     }
 }

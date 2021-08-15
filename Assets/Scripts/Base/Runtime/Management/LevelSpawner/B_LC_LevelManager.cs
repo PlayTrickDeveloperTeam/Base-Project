@@ -18,7 +18,7 @@ namespace Base
 
         [HideInInspector] public GameObject CurrentLevel;
         private GameObject currentLevel;
-        [HideInInspector] public B_LC_LevelPreparator CurrentLevelFunctions = null;
+
 
         [HideInInspector] public int CurrentLevelIndex;
         [HideInInspector] public int PreviewLevelIndex;
@@ -92,10 +92,10 @@ namespace Base
 
         private void InitateNewLevel(GameObject levelToInit)
         {
+            B_CES_CentralEventSystem.OnBeforeLevelLoaded.InvokeEvent();
             if (CurrentLevel != null) { Destroy(CurrentLevel); CurrentLevel = null; currentLevel = null; }
             CurrentLevel = GameObject.Instantiate(levelToInit, LevelHolder);
             currentLevel = levelToInit;
-            CurrentLevelFunctions = CurrentLevel.GetComponent<B_LC_LevelPreparator>();
             switch (tutorialPlayed)
             {
                 case 0:
@@ -111,8 +111,7 @@ namespace Base
                     OnLevelChangedAction?.Invoke(PreviewLevelIndex);
                     break;
             }
-            if (CurrentLevelFunctions == null) throw new Exception("Didn't load the correct level");
-            CurrentLevelFunctions.OnLevelReady();
+            B_CES_CentralEventSystem.OnAfterLevelLoaded.InvokeEvent();
             B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PlayerLevel, CurrentLevelIndex);
         }
 

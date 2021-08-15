@@ -19,12 +19,12 @@ namespace Base
             FillEmptyData();
             this.SaveGameData();
             PlayerPrefs.SetInt(Database_String.Save_Int_FirstTime, 1);
-            Debug.Log("FirstTimeSetup");
+            //Debug.Log("FirstTimeSetup");
         }
 
         public bool DataReady()
         {
-            Debug.Log("LoadingData");
+            //Debug.Log("LoadingData");
             DataContainer = new DataContainer();
             this.LoadGameData();
             return true;

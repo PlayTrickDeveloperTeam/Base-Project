@@ -3,21 +3,13 @@ using UnityEngine;
 
 namespace Base
 {
-    public class Example_Spawner : MonoBehaviour, B_LC_ISpawnedLevelObject
+    public class Example_Spawner : MonoBehaviour
     {
         Vector3 cubeSpawnPos = Vector3.zero;
 
-        public void OnLevelAwake()
+        private void Awake()
         {
-
-        }
-        public void OnLevelOnEnable()
-        {
-
-        }
-        public void OnLevelStart()
-        {
-
+            B_CES_CentralEventSystem.OnLevelActivation.AddFunction(OnLevelInitate, false);
         }
 
         public void OnLevelInitate()
@@ -30,9 +22,5 @@ namespace Base
             }
         }
 
-        public void OnLevelCommand()
-        {
-
-        }
     }
 }

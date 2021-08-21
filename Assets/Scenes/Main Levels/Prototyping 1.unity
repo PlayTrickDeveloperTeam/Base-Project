@@ -1237,7 +1237,6 @@ MonoBehaviour:
   MainLevels: []
   TutorialLevels: []
   CurrentLevel: {fileID: 0}
-  CurrentLevelFunctions: {fileID: 0}
   CurrentLevelIndex: 0
   PreviewLevelIndex: 0
 --- !u!1 &1125367412

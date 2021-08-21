@@ -15,6 +15,11 @@ namespace Base
         public static B_CES_Events OnLevelActivation;
         public static B_CES_Events OnLevelDisable;
 
+        public static B_CES_Events OnBeforeLevelDisableNegative;
+        public static B_CES_Events OnBeforeLevelDisablePositive;
+        public static B_CES_Events OnAfterLevelDisableNegative;
+        public static B_CES_Events OnAfterLevelDisablePositive;
+
 
         public static B_CES_Events BTN_OnStartPressed;
         public static B_CES_Events BTN_OnPausePressed;

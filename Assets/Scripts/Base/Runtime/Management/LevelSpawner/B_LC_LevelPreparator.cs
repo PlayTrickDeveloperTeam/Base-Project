@@ -16,14 +16,6 @@ namespace Base
             B_CES_CentralEventSystem.OnLevelActivation.AddFunction(OnLevelCommand, false);
 
         }
-        private void OnEnable()
-        {
-
-        }
-
-        private void Start()
-        {
-        }
 
         public void OnLevelInitate()
         {

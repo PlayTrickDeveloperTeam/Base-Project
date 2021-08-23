@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
-using Unity.Mathematics;
 
 namespace Base
 {
@@ -16,7 +15,7 @@ namespace Base
 
         CoroutineQueue CQ;
 
-        public float2 DefaultWalkAmp;
+        public Vector2 DefaultWalkAmp;
 
         private void Start()
         {

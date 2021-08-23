@@ -4,7 +4,6 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using System.IO;
-using System.Dynamic;
 using Base;
 
 namespace Base
@@ -75,7 +74,7 @@ namespace Base
 
             for (int i = 0; i < provider.Count; i++)
             {
-                dynamic value = new ExpandoObject();
+                string value = "";
 
                 if (provider[i].Value.IsAllLetters())
                 {
@@ -84,12 +83,15 @@ namespace Base
                 }
                 else if (provider[i].Value.Contains(".") || provider[i].Value.Contains("f"))
                 {
+                    Debug.Log("trying to parse");
                     string _temp = provider[i].Value.Replace("f", "");
-                    value = float.Parse(_temp);
+                    value = _temp;
+                    //value = float.Parse(_temp);
                 }
                 else
                 {
-                    value = int.Parse(provider[i].Value);
+                    //value = int.Parse(provider[i].Value);
+                    value = provider[i].Value;
                 }
                 SaveToModify.AddData(provider[i].Data, value);
             }
@@ -124,11 +126,13 @@ namespace Base
             }
             else
             {
+                SaveToModify.FillEmptyData();
                 foreach (var item in SaveToModify.DataContainer.DataCluster)
                 {
                     string _temp = item.Value.ToString();
                     provider.Add(new SE_Provider(item.Key, _temp));
                 }
+                SaveToModify.SaveGameData();
             }
         }
 

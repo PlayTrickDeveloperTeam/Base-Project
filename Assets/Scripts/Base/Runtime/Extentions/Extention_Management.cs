@@ -33,6 +33,7 @@ namespace Base
         {
             if (File.Exists(dataObject.AddSaveFileName()))
             {
+                //if (dataObject.DataContainer.DataCluster.Count <= 0) { dataObject.FillEmptyData(); return false; }
                 using (StreamReader _file = File.OpenText(dataObject.AddSaveFileName()))
                 {
                     JsonSerializer _serializer = new JsonSerializer();

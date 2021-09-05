@@ -29,7 +29,7 @@ namespace Base
         {
             get
             {
-                return B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.TutorialPlayed);
+                return B_GM_GameManager.instance.Save.TutorialPlayed;
             }
         }
         private void Awake()
@@ -52,7 +52,7 @@ namespace Base
             TutorialLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_TutorialLevels).ToList();
             MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
-            PreviewLevelIndex = B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PreviewLevel);
+            PreviewLevelIndex = B_GM_GameManager.instance.Save.PreviewLevel;
             return true;
         }
 
@@ -73,7 +73,7 @@ namespace Base
 
         public void LoadInNextLevel()
         {
-            switch (B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.GameFinished))
+            switch (B_GM_GameManager.instance.Save.GameFinished)
             {
                 case 0:
                     InitateNewLevel(LevelToLoad());
@@ -100,19 +100,19 @@ namespace Base
             {
                 case 0:
                     CurrentLevelIndex = Array.IndexOf(TutorialLevels.ToArray(), levelToInit);
-                    B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PlayerLevel, CurrentLevelIndex);
-                    B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PreviewLevel, CurrentLevelIndex);
+                    B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
+                    B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
                     OnLevelChangedAction?.Invoke(CurrentLevelIndex);
                     break;
                 case 1:
                     CurrentLevelIndex = Array.IndexOf(MainLevels.ToArray(), levelToInit);
-                    B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PlayerLevel, CurrentLevelIndex);
-                    B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PreviewLevel, PreviewLevelIndex += 1);
+                    B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
+                    B_GM_GameManager.instance.Save.PlayerLevel = PreviewLevelIndex + 1;
                     OnLevelChangedAction?.Invoke(PreviewLevelIndex);
                     break;
             }
             B_CES_CentralEventSystem.OnAfterLevelLoaded.InvokeEvent();
-            B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.PlayerLevel, CurrentLevelIndex);
+            B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
         }
 
 
@@ -125,14 +125,14 @@ namespace Base
                     if (CurrentLevelIndex + 1 >= TutorialLevels.Count)
                     {
                         CurrentLevelIndex = 0;
-                        B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.TutorialPlayed, 1);
+                        B_GM_GameManager.instance.Save.TutorialPlayed = 1;
                         return MainLevels[0];
                     }
                     return TutorialLevels[CurrentLevelIndex + 1];
                 case 1:
                     if (CurrentLevelIndex + 1 >= MainLevels.Count)
                     {
-                        B_GM_GameManager.instance.MainSaveData.SetData(B_SE_DataTypes.GameFinished, 1);
+                        B_GM_GameManager.instance.Save.GameFinished = 1;
                         return RandomSelectedLevel();
                     }
                     return MainLevels[CurrentLevelIndex + 1];

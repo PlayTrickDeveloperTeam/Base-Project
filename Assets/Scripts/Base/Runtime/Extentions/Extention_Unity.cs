@@ -58,15 +58,15 @@ namespace Base
 
         #region Save System
         //Simple extentions for strings mainly used for save system, W.I.P so all might change in the future
-        public static string AddSaveDirectory(this string saveLocation)
-        {
-            return string.Concat(Application.persistentDataPath, saveLocation);
-        }
+        //public static string AddSaveDirectory(this string saveLocation)
+        //{
+        //    return string.Concat(Application.persistentDataPath, saveLocation);
+        //}
 
-        public static string AddSaveFileName(this B_SE_SaveDataObject dataObject)
-        {
-            return string.Concat(Application.persistentDataPath, dataObject.SaveLocation, "/", dataObject.SaveName, ".save");
-        }
+        //public static string AddSaveFileName(this B_SE_SaveDataObject dataObject)
+        //{
+        //    return string.Concat(Application.persistentDataPath, dataObject.SaveLocation, "/", dataObject.SaveName, ".save");
+        //}
         //Needed for save editor, needs more care to be honest
 
         public static bool IsAllLetters(this string s)

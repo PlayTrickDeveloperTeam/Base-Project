@@ -51,7 +51,6 @@ namespace Herkdess.Tools
             if (!BezierDrawer.CanDraw) return;
             BezierDrawer.ResetDebugBezier();
             BezierDrawer.DrawBezier(this, Target, Aimer);
-            //BezierDrawer.DebugDrawBezier();
         }
 
 

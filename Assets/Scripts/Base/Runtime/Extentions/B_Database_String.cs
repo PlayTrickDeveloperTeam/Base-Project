@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Base
 {
-    public static class Database_String
+    public static class B_Database_String
     {
         #region PlayerPrefs
 

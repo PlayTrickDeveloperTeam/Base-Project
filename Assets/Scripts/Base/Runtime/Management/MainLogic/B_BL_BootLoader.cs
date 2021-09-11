@@ -40,13 +40,23 @@ namespace Base
             //Debug.unityLogger.logEnabled = false;
 #endif
             B_CES_CentralEventSystem.CentralEventSystemStrapping();
+
             yield return new WaitUntil(() => B_GM_GameManager.instance.GameManagerStrapping() == true);
+
             if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
+
+            B_CR_CoroutineRunner.instance.CoroutineRunnerStrapping();
+
             yield return new WaitUntil(() => B_LC_LevelManager.instance.StrappingLevelController() == true);
-            yield return new WaitUntil(() => BMM_MenuManager_Project.instance.Strapper_MenuManager() == true);
+
+            yield return new WaitUntil(() => B_MM_MenuManager_Project.instance.Strapper_MenuManager() == true);
+
             B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
-            BMM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
+
+            B_MM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
+
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+
 
         }
 

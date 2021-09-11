@@ -15,7 +15,7 @@ namespace Herkdess.Tools.General.Debugging
         {
             if (instance == null) instance = this; else Destroy(this.gameObject);
             DebugCounter = 0;
-            DebugText = GameObject.Find(Database_String.Text_Object_Debug).GetComponent<Text>();
+            DebugText = GameObject.Find(B_Database_String.Text_Object_Debug).GetComponent<Text>();
         }
 
         private void OnDestroy() => instance = null;

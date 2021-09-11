@@ -48,8 +48,8 @@ namespace Base
             LevelHolder = GameObject.Find("LevelHolder").GetComponent<Transform>();
             MainLevels = new List<GameObject>();
             TutorialLevels = new List<GameObject>();
-            MainLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_MainLevels).ToList();
-            TutorialLevels = Resources.LoadAll<GameObject>(Database_String.Path_Res_TutorialLevels).ToList();
+            MainLevels = Resources.LoadAll<GameObject>(B_Database_String.Path_Res_MainLevels).ToList();
+            TutorialLevels = Resources.LoadAll<GameObject>(B_Database_String.Path_Res_TutorialLevels).ToList();
             MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
             PreviewLevelIndex = B_GM_GameManager.instance.Save.PreviewLevel;

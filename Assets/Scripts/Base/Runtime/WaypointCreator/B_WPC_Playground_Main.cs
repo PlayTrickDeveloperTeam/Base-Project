@@ -27,7 +27,7 @@ namespace Base
         public B_WPC_Waypoint GetWaypointTransform()
         {
             B_WPC_Waypoint _temp = WaypointCreator.GetAVaibleWaypoint();
-            if (_temp == null) { BMM_MenuManager_Project.instance.ActivateEndGame(.5f, true); return null; }
+            if (_temp == null) { B_MM_MenuManager_Project.instance.ActivateEndGame(.5f, true); return null; }
             return WaypointCreator.GetAVaibleWaypoint();
         }
 

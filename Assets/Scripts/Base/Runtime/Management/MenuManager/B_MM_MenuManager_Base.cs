@@ -64,11 +64,11 @@ namespace Base
 
             allPanels = new List<GameObject>();
 
-            Panel_Loading = GetPanel(Database_String.Panel_Loading);
-            Panel_Start = GetPanel(Database_String.Panel_Start);
-            Panel_Settings = GetPanel(Database_String.Panel_Settings);
-            Panel_Ending = GetPanel(Database_String.Panel_Ending);
-            Panel_Ingame = GetPanel(Database_String.Panel_Ingame);
+            Panel_Loading = GetPanel(B_Database_String.Panel_Loading);
+            Panel_Start = GetPanel(B_Database_String.Panel_Start);
+            Panel_Settings = GetPanel(B_Database_String.Panel_Settings);
+            Panel_Ending = GetPanel(B_Database_String.Panel_Ending);
+            Panel_Ingame = GetPanel(B_Database_String.Panel_Ingame);
 
             allPanels.Add(Panel_Loading);
             allPanels.Add(Panel_Start);
@@ -76,23 +76,23 @@ namespace Base
             allPanels.Add(Panel_Ending);
             allPanels.Add(Panel_Ingame);
 
-            BG_Ending_Fail = GetPanel(Database_String.BG_Ending_Fail);
-            BG_Ending_Success = GetPanel(Database_String.BG_Ending_Success);
+            BG_Ending_Fail = GetPanel(B_Database_String.BG_Ending_Fail);
+            BG_Ending_Success = GetPanel(B_Database_String.BG_Ending_Success);
 
-            Btn_M_Start = GetButton(Database_String.BTN_M_Start);
-            Btn_M_Settings = GetButton(Database_String.BTN_M_Settings);
-            Btn_Ig_Restart = GetButton(Database_String.BTN_IG_Restart);
-            Btn_Ig_Menu = GetButton(Database_String.BTN_IG_Menu);
-            Btn_Ig_Pause = GetButton(Database_String.BTN_IG_Pause);
-            Btn_Ig_WatchAdd = GetButton(Database_String.BTN_IG_WatchAdd);
-            Btn_Ig_ClaimReward = GetButton(Database_String.BTN_IG_ClaimReward);
-            Btn_Ig_End = GetButton(Database_String.BTN_IG_End);
+            Btn_M_Start = GetButton(B_Database_String.BTN_M_Start);
+            Btn_M_Settings = GetButton(B_Database_String.BTN_M_Settings);
+            Btn_Ig_Restart = GetButton(B_Database_String.BTN_IG_Restart);
+            Btn_Ig_Menu = GetButton(B_Database_String.BTN_IG_Menu);
+            Btn_Ig_Pause = GetButton(B_Database_String.BTN_IG_Pause);
+            Btn_Ig_WatchAdd = GetButton(B_Database_String.BTN_IG_WatchAdd);
+            Btn_Ig_ClaimReward = GetButton(B_Database_String.BTN_IG_ClaimReward);
+            Btn_Ig_End = GetButton(B_Database_String.BTN_IG_End);
         }
 
         protected void StrappingFinal()
         {
             DeactivateAllPanels();
-            ActivatePanel(Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start, .5f);
         }
 
 
@@ -170,12 +170,12 @@ namespace Base
             switch (success)
             {
                 case true:
-                    DeactivatePanel(Database_String.BG_Ending_Fail);
-                    ActivatePanel(Database_String.BG_Ending_Success, time);
+                    DeactivatePanel(B_Database_String.BG_Ending_Fail);
+                    ActivatePanel(B_Database_String.BG_Ending_Success, time);
                     break;
                 case false:
-                    DeactivatePanel(Database_String.BG_Ending_Success);
-                    ActivatePanel(Database_String.BG_Ending_Fail, time);
+                    DeactivatePanel(B_Database_String.BG_Ending_Success);
+                    ActivatePanel(B_Database_String.BG_Ending_Fail, time);
                     break;
             }
         }

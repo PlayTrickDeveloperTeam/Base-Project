@@ -10,7 +10,7 @@ using UnityEngine.Advertisements;
 
 namespace Base
 {
-    public static class Extention_Unity
+    public static class B_Extention_Unity
     {
 
         #region Directory Extentions
@@ -36,10 +36,10 @@ namespace Base
             return value * multiplier;
         }
 
-        public static float Remap(this float value, float from1, float to1, float from2, float to2)
-        {
-            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-        }
+        //public static float Remap(this float value, float from1, float to1, float from2, float to2)
+        //{
+        //    return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        //}
 
         #endregion
 

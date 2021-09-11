@@ -7,7 +7,7 @@ using UnityEngine.Advertisements;
 
 namespace Base
 {
-    public static class Extention_Management
+    public static class B_Extention_Management
     {
         #region Vector3 Extentions
 

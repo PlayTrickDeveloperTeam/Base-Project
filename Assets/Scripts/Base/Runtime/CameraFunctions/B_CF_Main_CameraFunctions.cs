@@ -13,7 +13,7 @@ namespace Base
 
         Coroutine ShakeRoutine;
 
-        CoroutineQueue CQ;
+        B_CR_CoroutineQueue CQ;
 
         public Vector2 DefaultWalkAmp;
 
@@ -21,7 +21,7 @@ namespace Base
         {
             VirtualCamera = GetComponent<CinemachineVirtualCamera>();
             ChannelPerlin = VirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            CQ = new CoroutineQueue(this);
+            CQ = new B_CR_CoroutineQueue(this);
             CQ.StartLoop();
             ShakeCameraAction += ShakeCameraStart;
 

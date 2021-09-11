@@ -11,13 +11,9 @@ namespace Base
     {
         public static B_GM_GameManager instance;
         public GameStates CurrentGameState;
-        //public B_SE_SaveDataObject MainSaveData;
         public SaveData Save;
 
         TextMeshProUGUI temp_showcase_index;
-        TextMeshProUGUI temp_showcase_name;
-
-        Button ClearSavesButton;
 
         private void Awake()
         {
@@ -33,12 +29,10 @@ namespace Base
 
         public bool GameManagerStrapping()
         {
-            //if (!PlayerPrefs.HasKey(Database_String.Save_Int_FirstTime)) MainSaveData.FirstTimeSaveSetup();
-            //else MainSaveData.DataReady();
+            Save = new SaveData();
+            Save.PrepareSaveSystem();
             temp_showcase_index = GameObject.Find("temp_showcase_index").GetComponent<TextMeshProUGUI>();
             temp_showcase_index.text = "Current Level Showcase Index is : " + Save.PreviewLevel.ToString();
-            temp_showcase_name = GameObject.Find("temp_showcase_name").GetComponent<TextMeshProUGUI>();
-            ClearSavesButton = GameObject.Find("btn_clearsaves").GetComponent<Button>();
             B_LC_LevelManager.instance.OnLevelChangedAction += ChangeText;
             return true;
         }
@@ -51,48 +45,11 @@ namespace Base
 
         #region Function Testing
 
-        //void ClearSavesAndReload()
-        //{
-        //    for (int i = 0; i < MainSaveData.DataContainer.DataCluster.Count; i++)
-        //    {
-        //        MainSaveData.SetData((B_SE_DataTypes)i, 0);
-        //    }
-        //    MainSaveData.SaveGameData();
-        //    B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.MainSaveData.GetDataI(B_SE_DataTypes.PlayerLevel));
-        //    temp_showcase_index.text = "Current Level Showcase Index is : " + 0;
-        //    temp_showcase_name.text = "Current Level Name is : " + B_LC_LevelManager.instance.CurrentLevel.name;
-        //    B_LC_LevelManager.instance.PreviewLevelIndex = 0;
-        //    MainSaveData.LoadGameData();
-        //}
-
         void ChangeText(int t)
         {
             temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
-            temp_showcase_name.text = "Current Level Name is " + B_LC_LevelManager.instance.CurrentLevel.name;
         }
 
-#if UNITY_EDITOR
-
-        //[ContextMenu("Load")]
-        //public void LoadData()
-        //{
-        //    MainSaveData.LoadGameData();
-        //    for (int i = 0; i < Enum.GetNames(typeof(B_SE_DataTypes)).Length; i++)
-        //    {
-        //        Debug.Log(MainSaveData.GetData((B_SE_DataTypes)i));
-        //    }
-        //}
-        //[ContextMenu("Save")]
-        //public void SaveData()
-        //{
-        //    foreach (var item in MainSaveData.DataContainer.DataCluster)
-        //    {
-        //        Debug.Log(item.Value);
-        //    }
-        //    MainSaveData.SaveGameData();
-        //}
-
-#endif
         #endregion
 
 

@@ -4,12 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 namespace Base
 {
-    public class CoroutineQueue
+    public class B_CR_CoroutineQueue
     {
         MonoBehaviour m_Owner = null;
         Coroutine m_InternalCoroutine = null;
         Queue<IEnumerator> actions = new Queue<IEnumerator>();
-        public CoroutineQueue(MonoBehaviour aCoroutineOwner)
+        public B_CR_CoroutineQueue(MonoBehaviour aCoroutineOwner)
         {
             m_Owner = aCoroutineOwner;
         }
@@ -82,7 +82,7 @@ namespace Base
             }
         }
 
-        public void StartFunctionWithDelay(Action method, float waitTime)
+        public void RunFunctionWithDelay(Action method, float waitTime)
         {
             m_Owner.StartCoroutine(Ienum_DelayStartFunction(method, waitTime));
         }
@@ -92,22 +92,5 @@ namespace Base
             yield return new WaitForSeconds(waitTime);
             method?.Invoke();
         }
-
-        //public void StartFunctionOnBoolChange(Action method, bool waitBool)
-        //{
-        //    m_Owner.StartCoroutine(Ienum_DelayUntilTrue(method, waitBool));
-        //}
-
-        //IEnumerator Ienum_DelayUntilTrue(Action method, bool waitBool)
-        //{
-        //    bool x = true;
-        //    while (x)
-        //    {
-        //        //yield return new WaitUntil(() => waitBool);
-        //        method?.Invoke();
-        //        x = false;
-        //        yield return new WaitForFixedUpdate();
-        //    }
-        //}
     }
 }

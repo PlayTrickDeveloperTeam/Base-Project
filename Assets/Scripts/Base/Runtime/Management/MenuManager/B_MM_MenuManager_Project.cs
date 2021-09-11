@@ -8,9 +8,9 @@ using Sirenix.Serialization;
 
 namespace Base
 {
-    public class BMM_MenuManager_Project : B_MM_MenuManager_Base
+    public class B_MM_MenuManager_Project : B_MM_MenuManager_Base
     {
-        public static BMM_MenuManager_Project instance;
+        public static B_MM_MenuManager_Project instance;
         private void Awake()
         {
             if (instance == null)
@@ -44,8 +44,8 @@ namespace Base
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             Panel_Start.SetActive(false);
             Panel_Ingame.SetActive(true);
-            ActivatePanel(Database_String.Panel_Ingame, .5f);
-            DeactivatePanel(Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Ingame, .5f);
+            DeactivatePanel(B_Database_String.Panel_Start, .5f);
         }
 
         void BTN_FUNC_Restart()
@@ -53,7 +53,7 @@ namespace Base
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             DeactivateAllPanels();
-            ActivatePanel(Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start, .5f);
         }
 
         void BTN_FUNC_Endgame()
@@ -61,7 +61,7 @@ namespace Base
             B_CES_CentralEventSystem.OnLevelEnded.InvokeEvent();
             DeactivateAllPanels();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
-            ActivatePanel(Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start, .5f);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 

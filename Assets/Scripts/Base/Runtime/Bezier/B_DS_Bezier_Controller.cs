@@ -6,10 +6,10 @@ using Herkdess.Tools;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Herkdess.Tools
+namespace Herkdess.Tools.Bezier
 {
     [ExecuteAlways]
-    public class BDS_Bezier_Controller : MonoBehaviour
+    public class B_DS_Bezier_Controller : MonoBehaviour
     {
 
         public Transform Target;

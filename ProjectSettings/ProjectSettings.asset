@@ -148,7 +148,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: 
+    Android: playtrick.
     Standalone: com.PlayTrick.LibProjectV0.0.1
     iPhone: com.PlayTrick.LibProjectV0.0.1
   buildNumber:

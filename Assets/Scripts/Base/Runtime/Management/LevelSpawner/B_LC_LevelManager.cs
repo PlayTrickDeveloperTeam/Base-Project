@@ -53,6 +53,9 @@ namespace Base
             MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
             PreviewLevelIndex = B_GM_GameManager.instance.Save.PreviewLevel;
+
+            B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.AddFunction(SaveOnNextLevel, true);
+
             return true;
         }
 
@@ -101,13 +104,12 @@ namespace Base
                 case 0:
                     CurrentLevelIndex = Array.IndexOf(TutorialLevels.ToArray(), levelToInit);
                     B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
-                    B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
+                    B_GM_GameManager.instance.Save.PreviewLevel = CurrentLevelIndex;
                     OnLevelChangedAction?.Invoke(CurrentLevelIndex);
                     break;
                 case 1:
                     CurrentLevelIndex = Array.IndexOf(MainLevels.ToArray(), levelToInit);
                     B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
-                    B_GM_GameManager.instance.Save.PlayerLevel = PreviewLevelIndex + 1;
                     OnLevelChangedAction?.Invoke(PreviewLevelIndex);
                     break;
             }
@@ -159,6 +161,11 @@ namespace Base
             GameObject obj = MainLevels[UnityEngine.Random.Range(0, MainLevels.Count)];
             if (currentLevel == obj) return RandomSelectedLevel();
             return obj;
+        }
+
+        void SaveOnNextLevel()
+        {
+            B_GM_GameManager.instance.Save.PreviewLevel = PreviewLevelIndex + 1;
         }
 
         private void OnDestroy()

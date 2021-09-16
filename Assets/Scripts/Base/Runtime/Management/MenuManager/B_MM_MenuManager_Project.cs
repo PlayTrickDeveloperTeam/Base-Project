@@ -44,8 +44,8 @@ namespace Base
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             Panel_Start.SetActive(false);
             Panel_Ingame.SetActive(true);
-            ActivatePanel(B_Database_String.Panel_Ingame, .5f);
-            DeactivatePanel(B_Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Ingame);
+            DeactivatePanel(B_Database_String.Panel_Start);
         }
 
         void BTN_FUNC_Restart()
@@ -53,7 +53,7 @@ namespace Base
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             DeactivateAllPanels();
-            ActivatePanel(B_Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start);
         }
 
         void BTN_FUNC_Endgame()
@@ -61,7 +61,7 @@ namespace Base
             B_CES_CentralEventSystem.OnLevelEnded.InvokeEvent();
             DeactivateAllPanels();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
-            ActivatePanel(B_Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 

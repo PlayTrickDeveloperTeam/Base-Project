@@ -92,7 +92,7 @@ namespace Base
         protected void StrappingFinal()
         {
             DeactivateAllPanels();
-            ActivatePanel(B_Database_String.Panel_Start, .5f);
+            ActivatePanel(B_Database_String.Panel_Start);
         }
 
 
@@ -135,15 +135,9 @@ namespace Base
         public void ActivateEndGame(float secondsToWait, bool success)
         {
             B_GM_GameManager.instance.CurrentGameState = GameStates.End;
+            //B_CES_CentralEventSystem.
             DeactivateAllPanels();
             StartCoroutine(Ienum_EndGameActivation(secondsToWait, success));
-        }
-
-        public void ActivateEndGame(float secondsToWait, bool success, float time)
-        {
-            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
-            DeactivateAllPanels();
-            StartCoroutine(Ienum_EndGameActivation(secondsToWait, success, time));
         }
 
         IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success)
@@ -155,30 +149,16 @@ namespace Base
                 case true:
                     BG_Ending_Fail.SetActive(false);
                     BG_Ending_Success.SetActive(true);
+                    B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
                     break;
                 case false:
                     BG_Ending_Success.SetActive(false);
                     BG_Ending_Fail.SetActive(true);
+                    B_CES_CentralEventSystem.OnBeforeLevelDisableNegative.InvokeEvent();
                     break;
             }
         }
 
-        IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success, float time)
-        {
-            yield return new WaitForSeconds(secondsToWait);
-            Panel_Ending.SetActive(true);
-            switch (success)
-            {
-                case true:
-                    DeactivatePanel(B_Database_String.BG_Ending_Fail);
-                    ActivatePanel(B_Database_String.BG_Ending_Success, time);
-                    break;
-                case false:
-                    DeactivatePanel(B_Database_String.BG_Ending_Success);
-                    ActivatePanel(B_Database_String.BG_Ending_Fail, time);
-                    break;
-            }
-        }
 
         public void ActivatePanel(string panelName)
         {
@@ -186,48 +166,10 @@ namespace Base
             PanelDictionary[panelName].IsActive = true;
         }
 
-        public void ActivatePanel(string panelName, float time)
-        {
-            if (PanelDictionary[panelName].IsActive) DeactivatePanel(panelName);
-            float step = 1 / time;
-            PanelDictionary[panelName].Panel.SetActive(true);
-            PanelDictionary[panelName].IsActive = true;
-            StartCoroutine(Ienum_ActivatePanel(PanelDictionary[panelName].Panel, step));
-        }
-
         public void DeactivatePanel(string panelName)
         {
             PanelDictionary[panelName].IsActive = false;
             PanelDictionary[panelName].Panel.SetActive(false);
-        }
-
-        public void DeactivatePanel(string panelName, float time)
-        {
-            if (!PanelDictionary[panelName].IsActive) ActivatePanel(panelName);
-            float step = 1 / time;
-            PanelDictionary[panelName].IsActive = false;
-            StartCoroutine(Ienum_DeactivatePanel(PanelDictionary[panelName].Panel, step));
-        }
-
-        IEnumerator Ienum_ActivatePanel(GameObject panelObj, float step)
-        {
-            panelObj.transform.localScale = Vector3.zero;
-            while (panelObj.transform.localScale != Vector3.one)
-            {
-                panelObj.transform.localScale = Vector3.MoveTowards(panelObj.transform.localScale, Vector3.one, step * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-        }
-
-        IEnumerator Ienum_DeactivatePanel(GameObject panelObj, float step)
-        {
-            panelObj.transform.localScale = Vector3.one;
-            while (panelObj.transform.localScale != Vector3.zero)
-            {
-                panelObj.transform.localScale = Vector3.MoveTowards(panelObj.transform.localScale, Vector3.zero, step * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-            panelObj.SetActive(false);
         }
 
     }

@@ -17,7 +17,7 @@ namespace Base
         //public UnityEvent evet;
         private void Start()
         {
-            IPC = new B_IPC_InputController(this, .5f, 3f);
+            IPC = new B_IPC_InputController(this, .5f, 3f, false);
             IPC.OnTapAction += OnTap;
             IPC.OnHoldingDownAction += OnHoldCount;
             IPC.OnHoldAction += OnHold;

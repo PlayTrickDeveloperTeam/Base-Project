@@ -31,24 +31,31 @@ namespace Base
 
         [HideInInspector] public Vector3[] MousePositions;
 
+        bool Testing = false;
 
-        public B_IPC_InputController(MonoBehaviour parent, float activationDelay, float holdTimeLimit)
+
+        public B_IPC_InputController(MonoBehaviour parent, float activationDelay, float holdTimeLimit, bool testing)
         {
             Mouse0 = KeyCode.Mouse0;
             this.HoldTimeLimit = holdTimeLimit;
-            B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(ActivateInputController, false);
-            B_CR_CoroutineRunner.instance.CQ.RunFunctionWithDelay(ActivateInputController, activationDelay);
+            if (!testing)
+            {
+                B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(ActivateInputController, false);
+                B_CR_CoroutineRunner.instance.CQ.RunFunctionWithDelay(ActivateInputController, activationDelay);
+            }
             MousePositions = new Vector3[20];
+            this.Testing = testing;
         }
 
-        void ActivateInputController()
+        public void ActivateInputController()
         {
             CanPlay = true;
         }
 
         public void Run()
         {
-            if (!B_GM_GameManager.instance.IsGamePlaying()) return;
+            if (!Testing)
+                if (!B_GM_GameManager.instance.IsGamePlaying()) return;
             if (!CanPlay) return;
 
             if (Input.GetKeyDown(Mouse0))

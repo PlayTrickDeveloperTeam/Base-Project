@@ -4,6 +4,7 @@ using System.IO;
 using System;
 using System.Collections;
 using UnityEngine.Advertisements;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Base
 {
@@ -32,6 +33,17 @@ namespace Base
             return Vector3.zero;
         }
 
+        public static Transform GetWorldObject(this Vector3 vec3, Camera cam, LayerMask mask)
+        {
+            Ray ray = cam.ScreenPointToRay(vec3);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+            {
+                return hit.collider.transform;
+            }
+            return null;
+        }
+
 
         public static Vector3 GetHitPosition(this Vector3 mainObj, Vector3 objectToPush, float yMinus, float force)
         {
@@ -40,11 +52,40 @@ namespace Base
             return (objectToPush - _temp) * force;
         }
 
-        public static Vector3 GetHitPositionReverse(this Vector3 mainObj, Vector3 objectToPush, float yMinus, float force)
+        //public static Vector3 GetHitPositionReverse(this Vector3 mainObj, Vector3 objectToPush, float yMinus, float force)
+        //{
+        //    Vector3 _temp = mainObj;
+        //    _temp.y -= yMinus;
+        //    return (_temp - objectToPush) * force;
+        //}
+
+        //public static Vector3[] WorldPositionsOfCameraWithY(this Camera cam, float y)
+        //{
+        //    Vector3[] worldPositions = new Vector3[4];
+        //    Vector3[] cameraPositions = cam.GetCameraCorners(y);
+        //    //Vector3[] realWorldPosition = cam.ViewportToWorldPoint(cameraPositions[i]);
+        //    for (int i = 0; i < worldPositions.Length; i++)
+        //    {
+
+        //        worldPositions[i] = new Vector3(cam.ScreenToWorldPoint(cameraPositions[i]).x, y, cam.ScreenToWorldPoint(cameraPositions[i]).y);
+        //        //worldPositions[i].y = y;
+        //    }
+        //    return worldPositions;
+        //}
+
+        public static Vector3[] GetCameraCorners(this Camera cam, float y)
         {
-            Vector3 _temp = mainObj;
-            _temp.y -= yMinus;
-            return (_temp - objectToPush) * force;
+            Vector3[] cameraPositions = new Vector3[4];
+            //cameraPositions[0] = new Vector3(Screen.width, 0, y);
+            //cameraPositions[1] = new Vector3(Screen.width, 0, y);
+            //cameraPositions[2] = new Vector3(Screen.width, Screen.height, y);
+            //cameraPositions[3] = new Vector3(0, Screen.height, y);
+            cameraPositions[0] = new Vector3(0, 0);
+            cameraPositions[1] = new Vector3(1, 0);
+            cameraPositions[2] = new Vector3(0, 0);
+            cameraPositions[3] = new Vector3(1, 1);
+            return cameraPositions;
+
         }
 
         #endregion
@@ -153,5 +194,38 @@ namespace Base
         }
 
         #endregion
+
+        #region ScriptableObject Extentions
+
+        public static void SaveScriptableObject(this ScriptableObject obj, string SavePath)
+        {
+            string saveData = JsonUtility.ToJson(obj, true);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(string.Concat(Application.persistentDataPath, SavePath, ".save"));
+            bf.Serialize(file, saveData);
+            file.Close();
+        }
+
+        public static void LoadScriptableObject(this ScriptableObject obj, string SavePath, bool Return)
+        {
+            if (!File.Exists(string.Concat(Application.persistentDataPath, SavePath, ".save"))) return;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(string.Concat(Application.persistentDataPath, SavePath, ".save"), FileMode.Open);
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), obj);
+        }
+
+        public static ScriptableObject LoadScriptableObject(this ScriptableObject obj, string SavePath)
+        {
+            if (!File.Exists(string.Concat(Application.persistentDataPath, SavePath, ".save"))) return null;
+            ScriptableObject ScriptableObjectToReturn = new ScriptableObject();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(string.Concat(Application.persistentDataPath, SavePath, ".save"), FileMode.Open);
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), ScriptableObjectToReturn);
+            return ScriptableObjectToReturn;
+        }
+
+        #endregion
+
+
     }
 }

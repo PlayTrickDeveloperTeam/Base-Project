@@ -36,10 +36,15 @@ namespace Base
             return value * multiplier;
         }
 
-        //public static float Remap(this float value, float from1, float to1, float from2, float to2)
-        //{
-        //    return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-        //}
+        #endregion
+
+        #region Transform Extentions
+
+        public static void ResizeObject(this Transform objToEnlarge, float Size)
+        {
+            objToEnlarge.localScale = new Vector3(Size, Size, Size);
+        }
+
 
         #endregion
 

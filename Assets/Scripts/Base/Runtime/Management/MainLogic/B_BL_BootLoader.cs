@@ -60,6 +60,11 @@ namespace Base
 
         }
 
+        private void OnDisable()
+        {
+
+        }
+
         #region Odin Inspector
 
 

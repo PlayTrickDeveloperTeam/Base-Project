@@ -7,6 +7,7 @@ using TMPro;
 namespace Base
 {
     public enum GameStates { Init, Start, Paused, Playing, End }
+    public enum B_SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }
     public class B_GM_GameManager : MonoBehaviour
     {
         public static B_GM_GameManager instance;

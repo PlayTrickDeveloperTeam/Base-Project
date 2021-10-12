@@ -18,6 +18,10 @@ namespace Base
             CQ = new B_CR_CoroutineQueue(this);
             CQ.StartLoop();
         }
+        private void OnDisable()
+        {
+            instance = null;
+        }
 
 
     }

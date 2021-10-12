@@ -40,6 +40,11 @@ namespace Base
             OnLevelActivation = new B_CES_Events(EventsList);
             OnLevelDisable = new B_CES_Events(EventsList);
 
+            OnBeforeLevelDisableNegative = new B_CES_Events(EventsList);
+            OnBeforeLevelDisablePositive = new B_CES_Events(EventsList);
+            OnAfterLevelDisableNegative = new B_CES_Events(EventsList);
+            OnAfterLevelDisablePositive = new B_CES_Events(EventsList);
+
             BTN_OnStartPressed = new B_CES_Events(EventsList);
             BTN_OnPausePressed = new B_CES_Events(EventsList);
             BTN_OnEndPressed = new B_CES_Events(EventsList);

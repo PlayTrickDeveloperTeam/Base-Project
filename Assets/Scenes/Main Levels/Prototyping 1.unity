@@ -1193,6 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 999208920}
   - component: {fileID: 999208921}
+  - component: {fileID: 999208922}
   m_Layer: 0
   m_Name: panel_loading
   m_TagString: Untagged
@@ -1228,6 +1229,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999208919}
   m_CullTransparentMesh: 1
+--- !u!114 &999208922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999208919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &1035982993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035982994}
   - component: {fileID: 1035982996}
+  - component: {fileID: 1035982995}
   m_Layer: 0
   m_Name: panel_ingame
   m_TagString: Untagged
@@ -1266,6 +1283,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1035982995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035982993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!222 &1035982996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1541,6 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1185604171}
   - component: {fileID: 1185604173}
+  - component: {fileID: 1185604172}
   m_Layer: 0
   m_Name: panel_settings
   m_TagString: Untagged
@@ -1567,6 +1600,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1185604172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185604170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!222 &1185604173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2037,26 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!114 &1371471048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,9 +2134,7 @@ MonoBehaviour:
   VirCam1: {fileID: 168655950}
   VirCam2: {fileID: 1836883713}
   VirCam3: {fileID: 295700410}
-  DefaultWalkAmp:
-    x: 0
-    y: 0
+  DefaultWalkAmp: {x: 0, y: 0}
 --- !u!1 &1438451419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1488705749}
   - component: {fileID: 1488705751}
+  - component: {fileID: 1488705750}
   m_Layer: 0
   m_Name: panel_ending
   m_TagString: Untagged
@@ -2269,6 +2296,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1488705750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488705748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!222 &1488705751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2749,6 +2791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052316006}
   - component: {fileID: 2052316008}
+  - component: {fileID: 2052316007}
   m_Layer: 0
   m_Name: panel_start
   m_TagString: Untagged
@@ -2776,6 +2819,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2052316007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052316005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!222 &2052316008
 CanvasRenderer:
   m_ObjectHideFlags: 0

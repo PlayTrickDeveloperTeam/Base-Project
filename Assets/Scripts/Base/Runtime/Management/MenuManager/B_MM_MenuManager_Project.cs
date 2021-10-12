@@ -11,6 +11,7 @@ namespace Base
     public class B_MM_MenuManager_Project : B_MM_MenuManager_Base
     {
         public static B_MM_MenuManager_Project instance;
+
         private void Awake()
         {
             if (instance == null)

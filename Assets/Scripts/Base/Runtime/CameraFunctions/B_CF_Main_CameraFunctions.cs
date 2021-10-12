@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
-using Unity.Mathematics;
 namespace Base
 {
     public class B_CF_Main_CameraFunctions : MonoBehaviour
@@ -27,7 +26,7 @@ namespace Base
 
         //B_CR_CoroutineQueue CQ;
 
-        public float2 DefaultWalkAmp;
+        public Vector2 DefaultWalkAmp;
 
         Vector3 cam1Pos;
         Vector3 cam2Pos;
@@ -83,13 +82,12 @@ namespace Base
 
         public void ShakeCameraStart(float amp, float time)
         {
-            Debug.Log("Shaking Camera");
             B_CR_CoroutineRunner.instance.CQ.RunCoroutine(ShakeRoutine, Shaker(amp, time));
         }
 
         public void ShakeCameraStart2(float amp, float time)
         {
-            RageCam();
+            //RageCam();
             B_CR_CoroutineRunner.instance.CQ.RunCoroutine(ShakeRoutine2, Shaker2(amp, time));
         }
 

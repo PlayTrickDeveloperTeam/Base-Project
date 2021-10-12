@@ -15,6 +15,7 @@ namespace Base
         public static B_CES_Events OnLevelActivation;
         public static B_CES_Events OnLevelDisable;
 
+        public static B_CES_Events OnLevelEnd;
         public static B_CES_Events OnBeforeLevelDisableNegative;
         public static B_CES_Events OnBeforeLevelDisablePositive;
         public static B_CES_Events OnAfterLevelDisableNegative;
@@ -40,6 +41,7 @@ namespace Base
             OnLevelActivation = new B_CES_Events(EventsList);
             OnLevelDisable = new B_CES_Events(EventsList);
 
+            OnLevelEnd = new B_CES_Events(EventsList);
             OnBeforeLevelDisableNegative = new B_CES_Events(EventsList);
             OnBeforeLevelDisablePositive = new B_CES_Events(EventsList);
             OnAfterLevelDisableNegative = new B_CES_Events(EventsList);

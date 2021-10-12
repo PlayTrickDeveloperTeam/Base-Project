@@ -151,16 +151,6 @@ namespace Base
 
         #endregion
 
-        #region Enum Extentions
-
-        //public static int EnumCount(this IEnumerable num)
-        //{
-
-        //    return Enum.GetValues(num.GetType()).Length;
-        //}
-
-        #endregion
-
         #region Adds Manager Extentions
         //Not tested to its fullest, needs more tests and development
         public static void ShowRewardedAdd(this M_AddManager _addsManager)
@@ -191,37 +181,6 @@ namespace Base
         {
             rectTransform.offsetMax = vector2;
             rectTransform.offsetMin = vector2;
-        }
-
-        #endregion
-
-        #region ScriptableObject Extentions
-
-        public static void SaveScriptableObject(this ScriptableObject obj, string SavePath)
-        {
-            string saveData = JsonUtility.ToJson(obj, true);
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(string.Concat(Application.persistentDataPath, SavePath, ".save"));
-            bf.Serialize(file, saveData);
-            file.Close();
-        }
-
-        public static void LoadScriptableObject(this ScriptableObject obj, string SavePath, bool Return)
-        {
-            if (!File.Exists(string.Concat(Application.persistentDataPath, SavePath, ".save"))) return;
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(string.Concat(Application.persistentDataPath, SavePath, ".save"), FileMode.Open);
-            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), obj);
-        }
-
-        public static ScriptableObject LoadScriptableObject(this ScriptableObject obj, string SavePath)
-        {
-            if (!File.Exists(string.Concat(Application.persistentDataPath, SavePath, ".save"))) return null;
-            ScriptableObject ScriptableObjectToReturn = new ScriptableObject();
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(string.Concat(Application.persistentDataPath, SavePath, ".save"), FileMode.Open);
-            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), ScriptableObjectToReturn);
-            return ScriptableObjectToReturn;
         }
 
         #endregion

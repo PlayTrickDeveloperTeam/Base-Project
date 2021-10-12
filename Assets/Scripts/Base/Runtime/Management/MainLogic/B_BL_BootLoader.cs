@@ -15,12 +15,9 @@ namespace Base
             B_GM_GameManager.instance.CurrentGameState = GameStates.Init;
 
 #if UNITY_IOS
-
             if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
             {
                 ATTrackingStatusBinding.RequestAuthorizationTracking();
-
-
             }
             else
             {

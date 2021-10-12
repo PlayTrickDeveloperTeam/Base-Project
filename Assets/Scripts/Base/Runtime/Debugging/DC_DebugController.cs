@@ -15,7 +15,7 @@ namespace Herkdess.Tools.General.Debugging
         {
             if (instance == null) instance = this; else Destroy(this.gameObject);
             DebugCounter = 0;
-            DebugText = GameObject.Find(B_Database_String.Text_Object_Debug).GetComponent<Text>();
+            //DebugText = GameObject.Find(B_Database_String.Text_Object_Debug).GetComponent<Text>();
         }
 
         private void OnDestroy() => instance = null;
@@ -24,13 +24,14 @@ namespace Herkdess.Tools.General.Debugging
         public void DebugTracker(int Count)
         {
             DebugCounter++;
-            DebugText.text = "Phase " + Count.ToString() + " Has Finished";
+            Debug.Log("Phase " + DebugCounter + " Has Finished");
         }
 
         public void DebugTracker()
         {
             DebugCounter++;
-            DebugText.text = "Phase " + DebugCounter + " Has Finished";
+            Debug.Log("Phase " + DebugCounter + " Has Finished");
+            //DebugText.text = "Phase " + DebugCounter + " Has Finished";
         }
 
     }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 namespace Base
 {
@@ -135,7 +136,6 @@ namespace Base
         public void ActivateEndGame(float secondsToWait, bool success)
         {
             B_GM_GameManager.instance.CurrentGameState = GameStates.End;
-            //B_CES_CentralEventSystem.
             DeactivateAllPanels();
             StartCoroutine(Ienum_EndGameActivation(secondsToWait, success));
         }

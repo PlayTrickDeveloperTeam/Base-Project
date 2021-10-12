@@ -6,12 +6,9 @@ namespace Base
     public class B_LC_LevelPreparator : MonoBehaviour
     {
         private int levelCount;
-        B_CR_CoroutineQueue CQ;
 
         private void Awake()
         {
-            CQ = new B_CR_CoroutineQueue(this);
-            CQ.StartLoop();
             B_CES_CentralEventSystem.OnAfterLevelLoaded.AddFunction(OnLevelInitate, false);
             B_CES_CentralEventSystem.OnLevelActivation.AddFunction(OnLevelCommand, false);
         }

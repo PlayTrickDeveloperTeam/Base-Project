@@ -11,6 +11,7 @@ namespace Base
     public class B_MM_MenuManager_Project : B_MM_MenuManager_Base
     {
         public static B_MM_MenuManager_Project instance;
+        public Action<float> OnPickupTaken;
 
         private void Awake()
         {

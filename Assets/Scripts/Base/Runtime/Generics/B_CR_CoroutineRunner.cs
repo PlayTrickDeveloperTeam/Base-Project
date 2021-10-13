@@ -7,12 +7,6 @@ namespace Base
     {
         public static B_CR_CoroutineRunner instance;
         public B_CR_CoroutineQueue CQ;
-        private Coroutine abc;
-
-        private IEnumerator dsd()
-        {
-            yield return null;
-        }
 
         private void Awake()
         {

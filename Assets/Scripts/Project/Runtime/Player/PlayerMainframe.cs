@@ -14,7 +14,8 @@ namespace Base
 
         private void Start()
         {
-            PlayerSetup();
+            B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(PlayerSetup, false);
+            Lean.Touch.LeanTouch.OnFingerDown += ShakeTest;
         }
 
         #endregion Unity Functions
@@ -25,6 +26,12 @@ namespace Base
         {
             B_MM_MenuManager_Project.instance.OnPickupTaken += OnPickupTaken;
             ScoreFrame = GetComponent<PlayerScoreframe>();
+            B_CF_Main_CameraFunctions.instance.VirtualCameraSetAll(ActiveVirtualCameras.VirCam1, transform);
+        }
+
+        void ShakeTest(Lean.Touch.LeanFinger finger)
+        {
+            B_CF_Main_CameraFunctions.instance.VirtualCameraShake(ActiveVirtualCameras.VirCam1, 12, 3);
         }
 
         public void OnPickupTaken(float Value)

@@ -9,8 +9,14 @@ namespace Base
 {
     public class B_BL_BootLoader : MonoBehaviour
     {
+
+        #region Properties
+
         public bool HasTutorial = false;
 
+        #endregion
+
+        #region Unity Functions
         private void Start()
         {
             B_GM_GameManager.instance.CurrentGameState = GameStates.Init;
@@ -30,6 +36,10 @@ namespace Base
             StartCoroutine(InitiateBootLoading());
         }
 
+        #endregion
+
+        #region Spesific Functions
+
         private IEnumerator InitiateBootLoading()
         {
 #if UNITY_EDITOR
@@ -38,6 +48,8 @@ namespace Base
             //Debug.unityLogger.logEnabled = false;
 #endif
             B_CES_CentralEventSystem.CentralEventSystemStrapping();
+
+            B_CF_Main_CameraFunctions.instance.CameraFuncitonsStrapping();
 
             yield return new WaitUntil(() => B_GM_GameManager.instance.GameManagerStrapping() == true);
 
@@ -55,5 +67,13 @@ namespace Base
 
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
         }
+
+        #endregion
+
+        #region Generic Functions
+
+        #endregion
+
+
     }
 }

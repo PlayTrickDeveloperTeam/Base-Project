@@ -450,7 +450,7 @@
         </member>
         <member name="M:Sirenix.Utilities.LinqExtensions.FilterCast``1(System.Collections.IEnumerable)">
             <summary>
-            Returns and casts only the items of type <typeparamref name="T"/>.
+            Returns and casts only the items of type <typeparamref name="T" />.
             </summary>
             <param name="source">The collection.</param>
         </member>
@@ -1373,13 +1373,13 @@
         <member name="M:Sirenix.Utilities.TypeExtensions.GetEqualityComparerDelegate``1">
              <summary>
              Gets an equality comparer delegate used to compare the equality of values of a given type. In order, this will be:
-            
+
              1. The == operator, if one is defined on the type.
-             2. A delegate that uses <see cref="T:System.IEquatable`1"/>, if the type implements that interface.
-             3. .NET's own <see cref="P:System.Collections.Generic.EqualityComparer`1.Default"/>
+             2. A delegate that uses <see cref="T:System.IEquatable`1" />, if the type implements that interface.
+             3. .NET's own <see cref="P:System.Collections.Generic.EqualityComparer`1.Default" />
              </summary>
              <remarks>
-             <para>Note that in the special case of the type <see cref="T:UnityEngine.Quaternion"/>, a special equality comparer is returned that only checks whether all the Quaternion components are equal.</para>
+             <para>Note that in the special case of the type <see cref="T:UnityEngine.Quaternion" />, a special equality comparer is returned that only checks whether all the Quaternion components are equal.</para>
              <para>This is because, by default, Quaternion's equality operator is broken when operating on invalid quaternions; "default(Quaternion) == default(Quaternion)" evaluates to false, and this causes a multitude of problems.</para>
              <para>Special delegates are also returned for float and double, that consider float.NaN to be equal to float.NaN, and double.NaN to be equal to double.NaN.</para>
              </remarks>
@@ -1460,7 +1460,7 @@
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetAllMembers(System.Type,System.Reflection.BindingFlags)">
             <summary>
-            Gets all members from a given type, including members from all base types if the <see cref="F:System.Reflection.BindingFlags.DeclaredOnly"/> flag isn't set.
+            Gets all members from a given type, including members from all base types if the <see cref="F:System.Reflection.BindingFlags.DeclaredOnly" /> flag isn't set.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetAllMembers(System.Type,System.String,System.Reflection.BindingFlags)">
@@ -1470,7 +1470,7 @@
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetAllMembers``1(System.Type,System.Reflection.BindingFlags)">
             <summary>
-            Gets all members of a specific type from a type, including members from all base types, if the <see cref="F:System.Reflection.BindingFlags.DeclaredOnly"/> flag isn't set.
+            Gets all members of a specific type from a type, including members from all base types, if the <see cref="F:System.Reflection.BindingFlags.DeclaredOnly" /> flag isn't set.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetGenericBaseType(System.Type,System.Type)">
@@ -1586,24 +1586,24 @@
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.GetMemberValue(System.Reflection.MemberInfo,System.Object)">
             <summary>
-            Gets the value contained in a given <see cref="T:System.Reflection.MemberInfo"/>. Currently only <see cref="T:System.Reflection.FieldInfo"/> and <see cref="T:System.Reflection.PropertyInfo"/> is supported.
+            Gets the value contained in a given <see cref="T:System.Reflection.MemberInfo" />. Currently only <see cref="T:System.Reflection.FieldInfo" /> and <see cref="T:System.Reflection.PropertyInfo" /> is supported.
             </summary>
-            <param name="member">The <see cref="T:System.Reflection.MemberInfo"/> to get the value of.</param>
+            <param name="member">The <see cref="T:System.Reflection.MemberInfo" /> to get the value of.</param>
             <param name="obj">The instance to get the value from.</param>
-            <returns>The value contained in the given <see cref="T:System.Reflection.MemberInfo"/>.</returns>
-            <exception cref="T:System.ArgumentException">Can't get the value of the given <see cref="T:System.Reflection.MemberInfo"/> type.</exception>
+            <returns>The value contained in the given <see cref="T:System.Reflection.MemberInfo" />.</returns>
+            <exception cref="T:System.ArgumentException">Can't get the value of the given <see cref="T:System.Reflection.MemberInfo" /> type.</exception>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.SetMemberValue(System.Reflection.MemberInfo,System.Object,System.Object)">
             <summary>
-            Sets the value of a given MemberInfo. Currently only <see cref="T:System.Reflection.FieldInfo"/> and <see cref="T:System.Reflection.PropertyInfo"/> is supported.
+            Sets the value of a given MemberInfo. Currently only <see cref="T:System.Reflection.FieldInfo" /> and <see cref="T:System.Reflection.PropertyInfo" /> is supported.
             </summary>
-            <param name="member">The <see cref="T:System.Reflection.MemberInfo"/> to set the value of.</param>
+            <param name="member">The <see cref="T:System.Reflection.MemberInfo" /> to set the value of.</param>
             <param name="obj">The object to set the value on.</param>
             <param name="value">The value to set.</param>
             <exception cref="T:System.ArgumentException">
             Property has no setter
             or
-            Can't set the value of the given <see cref="T:System.Reflection.MemberInfo"/> type.
+            Can't set the value of the given <see cref="T:System.Reflection.MemberInfo" /> type.
             </exception>
         </member>
         <member name="M:Sirenix.Utilities.TypeExtensions.TryInferGenericParameters(System.Type,System.Type[]@,System.Type[])">
@@ -1624,7 +1624,7 @@
         <member name="M:Sirenix.Utilities.TypeExtensions.AreGenericConstraintsSatisfiedBy(System.Type,System.Type[])">
             <summary>
             <para>Checks whether an array of types satisfy the constraints of a given generic type definition.</para>
-            <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Type.MakeGenericType(System.Type[])"/> with the given generic type definition.</para>
+            <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Type.MakeGenericType(System.Type[])" /> with the given generic type definition.</para>
             </summary>
             <param name="genericType">The generic type definition to check.</param>
             <param name="parameters">The parameters to check validity for.</param>
@@ -1638,7 +1638,7 @@
         <member name="M:Sirenix.Utilities.TypeExtensions.AreGenericConstraintsSatisfiedBy(System.Reflection.MethodBase,System.Type[])">
             <summary>
             <para>Checks whether an array of types satisfy the constraints of a given generic method definition.</para>
-            <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Reflection.MethodInfo.MakeGenericMethod(System.Type[])"/> with the given generic method definition.</para>
+            <para>If this method returns true, the given parameters can be safely used with <see cref="M:System.Reflection.MethodInfo.MakeGenericMethod(System.Type[])" /> with the given generic method definition.</para>
             </summary>
             <param name="genericMethod">The generic method definition to check.</param>
             <param name="parameters">The parameters to check validity for.</param>
@@ -1762,10 +1762,10 @@
             <summary>
             Provides an easy way of claiming and freeing cached values of any non-abstract reference type with a public parameterless constructor.
             <para />
-            Cached types which implement the <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver"/> interface will receive notifications when they are claimed and freed.
+            Cached types which implement the <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver" /> interface will receive notifications when they are claimed and freed.
             <para />
-            Only one thread should be holding a given cache instance at a time if <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver"/> is implemented, since the invocation of 
-            <see cref="M:Sirenix.Utilities.ICacheNotificationReceiver.OnFreed"/> is not thread safe, IE, weird stuff might happen if multiple different threads are trying to free
+            Only one thread should be holding a given cache instance at a time if <see cref="T:Sirenix.Utilities.ICacheNotificationReceiver" /> is implemented, since the invocation of
+            <see cref="M:Sirenix.Utilities.ICacheNotificationReceiver.OnFreed" /> is not thread safe, IE, weird stuff might happen if multiple different threads are trying to free
             the same cache instance at the same time. This will practically never happen unless you're doing really strange stuff, but the case is documented here.
             </summary>
             <typeparam name="T">The type which is cached.</typeparam>
@@ -1794,9 +1794,9 @@
         </member>
         <member name="M:Sirenix.Utilities.Cache`1.Claim">
             <summary>
-            Claims a cached value of type <see cref="!:T"/>.
+            Claims a cached value of type <see cref="!:T" />.
             </summary>
-            <returns>A cached value of type <see cref="!:T"/>.</returns>
+            <returns>A cached value of type <see cref="!:T" />.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Cache`1.Release(Sirenix.Utilities.Cache{`0})">
             <summary>
@@ -1807,7 +1807,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Cache`1.op_Implicit(Sirenix.Utilities.Cache{`0})~`0">
             <summary>
-            Performs an implicit conversion from <see cref="T:Sirenix.Utilities.Cache`1"/> to <see cref="!:T"/>.
+            Performs an implicit conversion from <see cref="T:Sirenix.Utilities.Cache`1" /> to <see cref="!:T" />.
             </summary>
             <param name="cache">The cache to convert.</param>
             <returns>
@@ -1936,7 +1936,7 @@
         </member>
         <member name="T:Sirenix.Utilities.EmitUtilities">
             <summary>
-            Provides utilities for using the <see cref="N:System.Reflection.Emit"/> namespace.
+            Provides utilities for using the <see cref="N:System.Reflection.Emit" /> namespace.
             <para />
             This class is due for refactoring. Use at your own peril.
             </summary>
@@ -1954,7 +1954,7 @@
             Creates a delegate which gets the value of a field. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
             <typeparam name="FieldType">The type of the field to get a value from.</typeparam>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -1962,7 +1962,7 @@
             <summary>
             Creates a delegate which gets the value of a field. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -1971,7 +1971,7 @@
             Creates a delegate which sets the value of a field. If emitting is not supported on the current platform, the delegate will use reflection to set the value.
             </summary>
             <typeparam name="FieldType">The type of the field to set a value to.</typeparam>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a setter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a setter for.</param>
             <returns>A delegate which sets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -1979,7 +1979,7 @@
             <summary>
             Creates a delegate which sets the value of a field. If emitting is not supported on the current platform, the delegate will use reflection to set the value.
             </summary>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a setter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a setter for.</param>
             <returns>A delegate which sets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -1989,7 +1989,7 @@
             </summary>
             <typeparam name="InstanceType">The type of the instance to get a value from.</typeparam>
             <typeparam name="FieldType">The type of the field to get a value from.</typeparam>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -1998,8 +1998,8 @@
             Creates a delegate which gets the value of a field from a weakly typed instance of a given type. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
             <typeparam name="FieldType">The type of the field to get a value from.</typeparam>
-            <param name="instanceType">The <see cref="T:System.Type"/> of the instance to get a value from.</param>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="instanceType">The <see cref="T:System.Type" /> of the instance to get a value from.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -2007,8 +2007,8 @@
             <summary>
             Creates a delegate which gets the weakly typed value of a field from a weakly typed instance of a given type. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
-            <param name="instanceType">The <see cref="T:System.Type"/> of the instance to get a value from.</param>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="instanceType">The <see cref="T:System.Type" /> of the instance to get a value from.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -2018,7 +2018,7 @@
             </summary>
             <typeparam name="InstanceType">The type of the instance to set a value on.</typeparam>
             <typeparam name="FieldType">The type of the field to set a value to.</typeparam>
-            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a setter for.</param>
+            <param name="fieldInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a setter for.</param>
             <returns>A delegate which sets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -2051,8 +2051,8 @@
             <summary>
             Creates a delegate which gets the weakly typed value of a field from a weakly typed instance of a given type. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
-            <param name="instanceType">The <see cref="T:System.Type"/> of the instance to get a value from.</param>
-            <param name="propertyInfo">The <see cref="T:System.Reflection.FieldInfo"/> instance describing the field to create a getter for.</param>
+            <param name="instanceType">The <see cref="T:System.Type" /> of the instance to get a value from.</param>
+            <param name="propertyInfo">The <see cref="T:System.Reflection.FieldInfo" /> instance describing the field to create a getter for.</param>
             <returns>A delegate which gets the value of the given field.</returns>
             <exception cref="T:System.ArgumentNullException">The fieldInfo parameter is null.</exception>
         </member>
@@ -2073,7 +2073,7 @@
             Creates a delegate which sets the value of a property. If emitting is not supported on the current platform, the delegate will use reflection to set the value.
             </summary>
             <typeparam name="PropType">The type of the property to set a value to.</typeparam>
-            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo"/> instance describing the property to create a setter for.</param>
+            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo" /> instance describing the property to create a setter for.</param>
             <returns>A delegate which sets the value of the given property.</returns>
             <exception cref="T:System.ArgumentNullException">The propertyInfo parameter is null.</exception>
         </member>
@@ -2082,7 +2082,7 @@
             Creates a delegate which gets the value of a property. If emitting is not supported on the current platform, the delegate will use reflection to get the value.
             </summary>
             <typeparam name="PropType">The type of the property to get a value from.</typeparam>
-            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo"/> instance describing the property to create a getter for.</param>
+            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo" /> instance describing the property to create a getter for.</param>
             <returns>A delegate which gets the value of the given property.</returns>
             <exception cref="T:System.ArgumentNullException">The propertyInfo parameter is null.</exception>
         </member>
@@ -2092,7 +2092,7 @@
             </summary>
             <typeparam name="InstanceType">The type of the instance to set a value on.</typeparam>
             <typeparam name="PropType">The type of the property to set a value to.</typeparam>
-            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo"/> instance describing the property to create a setter for.</param>
+            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo" /> instance describing the property to create a setter for.</param>
             <returns>A delegate which sets the value of the given property.</returns>
             <exception cref="T:System.ArgumentNullException">The propertyInfo parameter is null.</exception>
         </member>
@@ -2102,7 +2102,7 @@
             </summary>
             <typeparam name="InstanceType">The type of the instance to get a value from.</typeparam>
             <typeparam name="PropType">The type of the property to get a value from.</typeparam>
-            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo"/> instance describing the property to create a getter for.</param>
+            <param name="propertyInfo">The <see cref="T:System.Reflection.PropertyInfo" /> instance describing the property to create a getter for.</param>
             <returns>A delegate which gets the value of the given property.</returns>
             <exception cref="T:System.ArgumentNullException">The propertyInfo parameter is null.</exception>
         </member>
@@ -2184,7 +2184,7 @@
         </member>
         <member name="T:Sirenix.Utilities.Flags">
             <summary>
-            This class encapsulates common <see cref="T:System.Reflection.BindingFlags"/> combinations.
+            This class encapsulates common <see cref="T:System.Reflection.BindingFlags" /> combinations.
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.Flags.AnyVisibility">
@@ -2273,7 +2273,7 @@
              Remember to locate the path within a resources folder if you want the config file to be loaded at runtime without the Unity editor being present.
              </para>
              <para>
-             The asset path is specified by defining a <see cref="T:Sirenix.Utilities.GlobalConfigAttribute"/>. If no attribute is defined it will be saved in the root assets folder.
+             The asset path is specified by defining a <see cref="T:Sirenix.Utilities.GlobalConfigAttribute" />. If no attribute is defined it will be saved in the root assets folder.
              </para>
              </summary>
              <example>
@@ -2283,7 +2283,7 @@
              {
                  public int MyGlobalVariable;
              }
-            
+
              void SomeMethod()
              {
                  int value = MyGlobalConfig.Instance.MyGlobalVariable;
@@ -2315,8 +2315,8 @@
             <summary>
             <para>This attribute is used by classes deriving from GlobalConfig and specifies the asset path for the generated config file.</para>
             </summary>
-            <seealso cref="!:EditorGlobalConfigAttribute"/>
-            <seealso cref="T:Sirenix.Utilities.GlobalConfig`1"/>
+            <seealso cref="!:EditorGlobalConfigAttribute" />
+            <seealso cref="T:Sirenix.Utilities.GlobalConfig`1" />
         </member>
         <member name="P:Sirenix.Utilities.GlobalConfigAttribute.FullPath">
             <summary>
@@ -2345,12 +2345,12 @@
         </member>
         <member name="M:Sirenix.Utilities.GlobalConfigAttribute.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.GlobalConfigAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.GlobalConfigAttribute" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.GlobalConfigAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.GlobalConfigAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.GlobalConfigAttribute" /> class.
             </summary>
             <param name="assetPath">The relative asset. Remember to locate the path within a resources folder if you want the config file to be loaded at runtime without the Unity Editor.</param>
         </member>
@@ -2368,7 +2368,7 @@
              <code>
              // Generates garbage:
              GUILayout.Label(label, GUILayout.Label(label, GUILayout.Width(20), GUILayout.ExpandHeight(), GUILayout.MaxWidth(300)));
-            
+
              // Does not generate garbage:
              GUILayout.Label(label, GUILayout.Label(label, GUILayoutOptions.Width(20).ExpandHeight().MaxWidth(300)));
              </code>
@@ -2383,7 +2383,7 @@
             <summary>
             A GUILayoutOptions instance with an implicit operator to be converted to a GUILayoutOption[] array.
             </summary>
-            <seealso cref="T:Sirenix.Utilities.GUILayoutOptions"/>
+            <seealso cref="T:Sirenix.Utilities.GUILayoutOptions" />
         </member>
         <member name="M:Sirenix.Utilities.GUILayoutOptions.GUILayoutOptionsInstance.op_Implicit(Sirenix.Utilities.GUILayoutOptions.GUILayoutOptionsInstance)~UnityEngine.GUILayoutOption[]">
             <summary>
@@ -2482,7 +2482,7 @@
         </member>
         <member name="T:Sirenix.Utilities.ICacheNotificationReceiver">
             <summary>
-            Provides notification callbacks for values that are cached using the <see cref="T:Sirenix.Utilities.Cache`1"/> class.
+            Provides notification callbacks for values that are cached using the <see cref="T:Sirenix.Utilities.Cache`1" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.ICacheNotificationReceiver.OnFreed">
@@ -3141,14 +3141,14 @@
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasFieldInfo.#ctor(System.Reflection.FieldInfo,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasFieldInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasFieldInfo" /> class.
             </summary>
             <param name="field">The field to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasFieldInfo.#ctor(System.Reflection.FieldInfo,System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasFieldInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasFieldInfo" /> class.
             </summary>
             <param name="field">The field to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
@@ -3272,14 +3272,14 @@
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasMethodInfo.#ctor(System.Reflection.MethodInfo,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasMethodInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasMethodInfo" /> class.
             </summary>
             <param name="method">The method to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasMethodInfo.#ctor(System.Reflection.MethodInfo,System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasMethodInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasMethodInfo" /> class.
             </summary>
             <param name="method">The method to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
@@ -3404,14 +3404,14 @@
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasPropertyInfo.#ctor(System.Reflection.PropertyInfo,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasPropertyInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasPropertyInfo" /> class.
             </summary>
             <param name="prop">The property to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
         </member>
         <member name="M:Sirenix.Utilities.MemberAliasPropertyInfo.#ctor(System.Reflection.PropertyInfo,System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasPropertyInfo"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberAliasPropertyInfo" /> class.
             </summary>
             <param name="prop">The property to alias.</param>
             <param name="namePrefix">The name prefix to use.</param>
@@ -3546,7 +3546,7 @@
             Gets the value of the property on the given instance.
             </summary>
             <param name="obj">The object to invoke the getter on.</param>
-            <param name="invokeAttr">The <see cref="T:System.Reflection.BindingFlags"/> to invoke with.</param>
+            <param name="invokeAttr">The <see cref="T:System.Reflection.BindingFlags" /> to invoke with.</param>
             <param name="binder">The binder to use.</param>
             <param name="index">The indices to use.</param>
             <param name="culture">The culture to use.</param>
@@ -3558,7 +3558,7 @@
             </summary>
             <param name="obj">The object to set the value on.</param>
             <param name="value">The value to set.</param>
-            <param name="invokeAttr">The <see cref="T:System.Reflection.BindingFlags"/> to invoke with.</param>
+            <param name="invokeAttr">The <see cref="T:System.Reflection.BindingFlags" /> to invoke with.</param>
             <param name="binder">The binder to use.</param>
             <param name="index">The indices to use.</param>
             <param name="culture">The culture to use.</param>
@@ -3614,11 +3614,11 @@
             <para>The scriptable object created will be located at the OdinEditorConfigs path unless other is specified.</para>
             <para>Classes implementing this attribute will be part of the Odin Preferences window.</para>
             </summary>
-            <seealso cref="T:Sirenix.Utilities.SirenixGlobalConfigAttribute"/>
+            <seealso cref="T:Sirenix.Utilities.SirenixGlobalConfigAttribute" />
         </member>
         <member name="M:Sirenix.Utilities.SirenixEditorConfigAttribute.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.SirenixEditorConfigAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.SirenixEditorConfigAttribute" /> class.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.SirenixGlobalConfigAttribute">
@@ -3627,11 +3627,11 @@
             <para>The scriptable object created will be located at the OdinResourcesConigs path unless other is specified.</para>
             <para>Classes implementing this attribute will be part of the Odin Preferences window.</para>
             </summary>
-            <seealso cref="T:Sirenix.Utilities.SirenixEditorConfigAttribute"/>
+            <seealso cref="T:Sirenix.Utilities.SirenixEditorConfigAttribute" />
         </member>
         <member name="M:Sirenix.Utilities.SirenixGlobalConfigAttribute.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.SirenixGlobalConfigAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.SirenixGlobalConfigAttribute" /> class.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.StringUtilities">

@@ -3,193 +3,202 @@ using UnityEngine.Events;
 
 namespace Lean.Common
 {
-	/// <summary>This component allows you to store the <b>Current</b> position. Once this differs from the <b>Previous</b> position by more than the <b>Threshold</b>, the <b>Previous</b> value will change to match <b>Current</b>, and the <b>OnPosition</b> events will fire with the current position.
-	/// This is useful for making more precise movements when using inaccurate touch inputs.</summary>
-	[HelpURL(LeanHelper.PlusHelpUrlPrefix + "LeanThresholdPosition")]
-	[AddComponentMenu(LeanHelper.ComponentPathPrefix + "Threshold Position")]
-	public class LeanThresholdPosition : MonoBehaviour
-	{
-		[System.Serializable] public class FloatEvent : UnityEvent<float> {}
-		[System.Serializable] public class Vector2Event : UnityEvent<Vector2> {}
-		[System.Serializable] public class Vector3Event : UnityEvent<Vector3> {}
+    /// <summary>This component allows you to store the <b>Current</b> position. Once this differs from the <b>Previous</b> position by more than the <b>Threshold</b>, the <b>Previous</b> value will change to match <b>Current</b>, and the <b>OnPosition</b> events will fire with the current position.
+    /// This is useful for making more precise movements when using inaccurate touch inputs.</summary>
+    [HelpURL(LeanHelper.PlusHelpUrlPrefix + "LeanThresholdPosition")]
+    [AddComponentMenu(LeanHelper.ComponentPathPrefix + "Threshold Position")]
+    public class LeanThresholdPosition : MonoBehaviour
+    {
+        [System.Serializable] public class FloatEvent : UnityEvent<float> { }
 
-		/// <summary>The current position.</summary>
-		public Vector3 Current;
+        [System.Serializable] public class Vector2Event : UnityEvent<Vector2> { }
 
-		/// <summary>The previously sent position.</summary>
-		public Vector3 Previous;
+        [System.Serializable] public class Vector3Event : UnityEvent<Vector3> { }
 
-		/// <summary>When any dimension of <b>Current</b> exceeds this, <b>OnPosition___</b> will be called, and <b>Current</b> will be rolled back.</summary>
-		public float Threshold = 1.0f;
+        /// <summary>The current position.</summary>
+        public Vector3 Current;
 
-		/// <summary>If you enable this then the position will step toward the <b>Current</b> value in increments based on the <b>Threshold</b> value. If you disable this then the position will immediately be set to the <b>Current</b> value.</summary>
-		public bool Step;
+        /// <summary>The previously sent position.</summary>
+        public Vector3 Previous;
 
-		public FloatEvent OnPositionX { get { if (onPositionX == null) onPositionX = new FloatEvent(); return onPositionX; } } [SerializeField] private FloatEvent onPositionX;
+        /// <summary>When any dimension of <b>Current</b> exceeds this, <b>OnPosition___</b> will be called, and <b>Current</b> will be rolled back.</summary>
+        public float Threshold = 1.0f;
 
-		public FloatEvent OnPositionY { get { if (onPositionY == null) onPositionY = new FloatEvent(); return onPositionY; } } [SerializeField] private FloatEvent onPositionY;
+        /// <summary>If you enable this then the position will step toward the <b>Current</b> value in increments based on the <b>Threshold</b> value. If you disable this then the position will immediately be set to the <b>Current</b> value.</summary>
+        public bool Step;
 
-		public FloatEvent OnPositionZ { get { if (onPositionZ == null) onPositionZ = new FloatEvent(); return onPositionZ; } } [SerializeField] private FloatEvent onPositionZ;
+        public FloatEvent OnPositionX { get { if (onPositionX == null) onPositionX = new FloatEvent(); return onPositionX; } }
+        [SerializeField] private FloatEvent onPositionX;
 
-		public Vector2Event OnPositionXY { get { if (onPositionXY == null) onPositionXY = new Vector2Event(); return onPositionXY; } } [SerializeField] private Vector2Event onPositionXY;
+        public FloatEvent OnPositionY { get { if (onPositionY == null) onPositionY = new FloatEvent(); return onPositionY; } }
+        [SerializeField] private FloatEvent onPositionY;
 
-		public Vector3Event OnPositionXYZ { get { if (onPositionXYZ == null) onPositionXYZ = new Vector3Event(); return onPositionXYZ; } } [SerializeField] private Vector3Event onPositionXYZ;
+        public FloatEvent OnPositionZ { get { if (onPositionZ == null) onPositionZ = new FloatEvent(); return onPositionZ; } }
+        [SerializeField] private FloatEvent onPositionZ;
 
-		/// <summary>This method allows you to increment <b>Current</b>.</summary>
-		public void AddXY(Vector2 delta)
-		{
-			Current.x += delta.x;
-			Current.y += delta.y;
-		}
+        public Vector2Event OnPositionXY { get { if (onPositionXY == null) onPositionXY = new Vector2Event(); return onPositionXY; } }
+        [SerializeField] private Vector2Event onPositionXY;
 
-		/// <summary>This method allows you to increment <b>Current</b>.</summary>
-		public void AddXYZ(Vector3 delta)
-		{
-			Current += delta;
-		}
+        public Vector3Event OnPositionXYZ { get { if (onPositionXYZ == null) onPositionXYZ = new Vector3Event(); return onPositionXYZ; } }
+        [SerializeField] private Vector3Event onPositionXYZ;
 
-		/// <summary>This method allows you to increment <b>Current.x</b>.</summary>
-		public void AddX(float delta)
-		{
-			Current.x += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current</b>.</summary>
+        public void AddXY(Vector2 delta)
+        {
+            Current.x += delta.x;
+            Current.y += delta.y;
+        }
 
-		/// <summary>This method allows you to increment <b>Current.y</b>.</summary>
-		public void AddY(float delta)
-		{
-			Current.y += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current</b>.</summary>
+        public void AddXYZ(Vector3 delta)
+        {
+            Current += delta;
+        }
 
-		/// <summary>This method allows you to increment <b>Current.z</b>.</summary>
-		public void AddZ(float delta)
-		{
-			Current.z += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current.x</b>.</summary>
+        public void AddX(float delta)
+        {
+            Current.x += delta;
+        }
 
-		/// <summary>This method allows you to set the <b>Current</b> position.</summary>
-		public void SetXY(Vector2 position)
-		{
-			Current.x = position.x;
-			Current.y = position.y;
-		}
+        /// <summary>This method allows you to increment <b>Current.y</b>.</summary>
+        public void AddY(float delta)
+        {
+            Current.y += delta;
+        }
 
-		/// <summary>This method allows you to set the <b>Current</b> position.</summary>
-		public void SetXYZ(Vector3 position)
-		{
-			Current = position;
-		}
+        /// <summary>This method allows you to increment <b>Current.z</b>.</summary>
+        public void AddZ(float delta)
+        {
+            Current.z += delta;
+        }
 
-		protected virtual void Update()
-		{
-			var delta = Current - Previous;
+        /// <summary>This method allows you to set the <b>Current</b> position.</summary>
+        public void SetXY(Vector2 position)
+        {
+            Current.x = position.x;
+            Current.y = position.y;
+        }
 
-			if (Threshold > 0.0f)
-			{
-				var stepX = (int)(delta.x / Threshold);
-				var stepY = (int)(delta.y / Threshold);
-				var stepZ = (int)(delta.z / Threshold);
+        /// <summary>This method allows you to set the <b>Current</b> position.</summary>
+        public void SetXYZ(Vector3 position)
+        {
+            Current = position;
+        }
 
-				if (stepX == 0 && stepY == 0 && stepZ == 0)
-				{
-					return;
-				}
+        protected virtual void Update()
+        {
+            var delta = Current - Previous;
 
-				if (Step == true)
-				{
-					Previous.x -= stepX * Threshold;
-					Previous.y -= stepY * Threshold;
-					Previous.z -= stepZ * Threshold;
-				}
-				else
-				{
-					Previous = Current;
-				}
-			}
-			else
-			{
-				if (delta.x == 0.0f && delta.y == 0.0f && delta.z == 0.0f)
-				{
-					return;
-				}
+            if (Threshold > 0.0f)
+            {
+                var stepX = (int)(delta.x / Threshold);
+                var stepY = (int)(delta.y / Threshold);
+                var stepZ = (int)(delta.z / Threshold);
 
-				Previous = Current;
-			}
+                if (stepX == 0 && stepY == 0 && stepZ == 0)
+                {
+                    return;
+                }
 
-			if (onPositionX != null)
-			{
-				onPositionX.Invoke(Previous.x);
-			}
+                if (Step == true)
+                {
+                    Previous.x -= stepX * Threshold;
+                    Previous.y -= stepY * Threshold;
+                    Previous.z -= stepZ * Threshold;
+                }
+                else
+                {
+                    Previous = Current;
+                }
+            }
+            else
+            {
+                if (delta.x == 0.0f && delta.y == 0.0f && delta.z == 0.0f)
+                {
+                    return;
+                }
 
-			if (onPositionXY != null)
-			{
-				onPositionXY.Invoke(Previous);
-			}
+                Previous = Current;
+            }
 
-			if (onPositionXYZ != null)
-			{
-				onPositionXYZ.Invoke(Previous);
-			}
-		}
-	}
+            if (onPositionX != null)
+            {
+                onPositionX.Invoke(Previous.x);
+            }
+
+            if (onPositionXY != null)
+            {
+                onPositionXY.Invoke(Previous);
+            }
+
+            if (onPositionXYZ != null)
+            {
+                onPositionXYZ.Invoke(Previous);
+            }
+        }
+    }
 }
 
 #if UNITY_EDITOR
+
 namespace Lean.Common.Inspector
 {
-	using UnityEditor;
+    using UnityEditor;
 
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(LeanThresholdPosition))]
-	public class LeanThresholdPosition_Inspector : LeanInspector<LeanThresholdPosition>
-	{
-		private bool showUnusedEvents;
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(LeanThresholdPosition))]
+    public class LeanThresholdPosition_Inspector : LeanInspector<LeanThresholdPosition>
+    {
+        private bool showUnusedEvents;
 
-		protected override void DrawInspector()
-		{
-			Draw("Current", "The current position.");
-			Draw("Previous", "The previously sent position.");
-			Draw("Threshold", "When any dimension of Value exceeds this, OnPosition___ will be called, and Value will be rolled back.");
-			Draw("Step", "If you enable this then the position will step toward the Current value in increments based on the Threshold value. If you disable this then the position will immediately be set to the Current value.");
+        protected override void DrawInspector()
+        {
+            Draw("Current", "The current position.");
+            Draw("Previous", "The previously sent position.");
+            Draw("Threshold", "When any dimension of Value exceeds this, OnPosition___ will be called, and Value will be rolled back.");
+            Draw("Step", "If you enable this then the position will step toward the Current value in increments based on the Threshold value. If you disable this then the position will immediately be set to the Current value.");
 
-			EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
 
-			var usedA = Any(t => t.OnPositionX.GetPersistentEventCount() > 0);
-			var usedB = Any(t => t.OnPositionY.GetPersistentEventCount() > 0);
-			var usedC = Any(t => t.OnPositionZ.GetPersistentEventCount() > 0);
-			var usedD = Any(t => t.OnPositionXY.GetPersistentEventCount() > 0);
-			var usedE = Any(t => t.OnPositionXYZ.GetPersistentEventCount() > 0);
+            var usedA = Any(t => t.OnPositionX.GetPersistentEventCount() > 0);
+            var usedB = Any(t => t.OnPositionY.GetPersistentEventCount() > 0);
+            var usedC = Any(t => t.OnPositionZ.GetPersistentEventCount() > 0);
+            var usedD = Any(t => t.OnPositionXY.GetPersistentEventCount() > 0);
+            var usedE = Any(t => t.OnPositionXYZ.GetPersistentEventCount() > 0);
 
-			EditorGUI.BeginDisabledGroup(usedA && usedB && usedC && usedD && usedE);
-				showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
-			EditorGUI.EndDisabledGroup();
+            EditorGUI.BeginDisabledGroup(usedA && usedB && usedC && usedD && usedE);
+            showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
+            EditorGUI.EndDisabledGroup();
 
-			EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
 
-			if (usedA == true || showUnusedEvents == true)
-			{
-				Draw("onPositionX");
-			}
+            if (usedA == true || showUnusedEvents == true)
+            {
+                Draw("onPositionX");
+            }
 
-			if (usedB == true || showUnusedEvents == true)
-			{
-				Draw("onPositionY");
-			}
+            if (usedB == true || showUnusedEvents == true)
+            {
+                Draw("onPositionY");
+            }
 
-			if (usedC == true || showUnusedEvents == true)
-			{
-				Draw("onPositionZ");
-			}
+            if (usedC == true || showUnusedEvents == true)
+            {
+                Draw("onPositionZ");
+            }
 
-			if (usedD == true || showUnusedEvents == true)
-			{
-				Draw("onPositionXY");
-			}
+            if (usedD == true || showUnusedEvents == true)
+            {
+                Draw("onPositionXY");
+            }
 
-			if (usedE == true || showUnusedEvents == true)
-			{
-				Draw("onPositionXYZ");
-			}
-		}
-	}
+            if (usedE == true || showUnusedEvents == true)
+            {
+                Draw("onPositionXYZ");
+            }
+        }
+    }
 }
+
 #endif

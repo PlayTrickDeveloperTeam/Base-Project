@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Base
 {
     public enum LevelType { Tutorial, Main }
+
     public class B_LC_LevelManager : MonoBehaviour
     {
         public static B_LC_LevelManager instance;
@@ -18,7 +18,6 @@ namespace Base
 
         [HideInInspector] public GameObject CurrentLevel;
         private GameObject currentLevel;
-
 
         [HideInInspector] public int CurrentLevelIndex;
         [HideInInspector] public int PreviewLevelIndex;
@@ -32,6 +31,7 @@ namespace Base
                 return B_GM_GameManager.instance.Save.TutorialPlayed;
             }
         }
+
         private void Awake()
         {
             if (instance == null)
@@ -43,6 +43,7 @@ namespace Base
                 Destroy(this.gameObject);
             }
         }
+
         public bool StrappingLevelController()
         {
             LevelHolder = GameObject.Find("LevelHolder").GetComponent<Transform>();
@@ -67,6 +68,7 @@ namespace Base
                     if (levelNumber >= TutorialLevels.Count) levelNumber = 0;
                     InitateNewLevel(TutorialLevels[levelNumber]);
                     break;
+
                 case 1:
                     if (levelNumber >= MainLevels.Count) levelNumber = 0;
                     InitateNewLevel(MainLevels[levelNumber]);
@@ -81,11 +83,11 @@ namespace Base
                 case 0:
                     InitateNewLevel(LevelToLoad());
                     break;
+
                 case 1:
                     InitateNewLevel(RandomSelectedLevel());
                     break;
             }
-
         }
 
         public void ReloadCurrentLevel()
@@ -107,6 +109,7 @@ namespace Base
                     B_GM_GameManager.instance.Save.PreviewLevel = CurrentLevelIndex;
                     OnLevelChangedAction?.Invoke(CurrentLevelIndex);
                     break;
+
                 case 1:
                     CurrentLevelIndex = Array.IndexOf(MainLevels.ToArray(), levelToInit);
                     B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
@@ -116,8 +119,6 @@ namespace Base
             B_CES_CentralEventSystem.OnAfterLevelLoaded.InvokeEvent();
             B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
         }
-
-
 
         private GameObject LevelToLoad()
         {
@@ -131,6 +132,7 @@ namespace Base
                         return MainLevels[0];
                     }
                     return TutorialLevels[CurrentLevelIndex + 1];
+
                 case 1:
                     if (CurrentLevelIndex + 1 >= MainLevels.Count)
                     {
@@ -163,7 +165,7 @@ namespace Base
             return obj;
         }
 
-        void SaveOnNextLevel()
+        private void SaveOnNextLevel()
         {
             B_GM_GameManager.instance.Save.PreviewLevel = PreviewLevelIndex + 1;
         }

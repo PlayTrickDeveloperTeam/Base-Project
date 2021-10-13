@@ -3,188 +3,197 @@ using UnityEngine.Events;
 
 namespace Lean.Common
 {
-	/// <summary>This component allows you to accumilate delta changes until they reach a threshold delta, and then output them.
-	/// This is useful for making more precise movements when using inaccurate touch inputs.</summary>
-	[HelpURL(LeanHelper.PlusHelpUrlPrefix + "LeanThresholdDelta")]
-	[AddComponentMenu(LeanHelper.ComponentPathPrefix + "Threshold Delta")]
-	public class LeanThresholdDelta : MonoBehaviour
-	{
-		[System.Serializable] public class FloatEvent : UnityEvent<float> {}
-		[System.Serializable] public class Vector2Event : UnityEvent<Vector2> {}
-		[System.Serializable] public class Vector3Event : UnityEvent<Vector3> {}
+    /// <summary>This component allows you to accumilate delta changes until they reach a threshold delta, and then output them.
+    /// This is useful for making more precise movements when using inaccurate touch inputs.</summary>
+    [HelpURL(LeanHelper.PlusHelpUrlPrefix + "LeanThresholdDelta")]
+    [AddComponentMenu(LeanHelper.ComponentPathPrefix + "Threshold Delta")]
+    public class LeanThresholdDelta : MonoBehaviour
+    {
+        [System.Serializable] public class FloatEvent : UnityEvent<float> { }
 
-		/// <summary>The current accumilated delta.</summary>
-		public Vector3 Current;
+        [System.Serializable] public class Vector2Event : UnityEvent<Vector2> { }
 
-		/// <summary>When any dimension of <b>Current</b> exceeds this, <b>OnDelta___</b> will be called, and <b>Current</b> will be rolled back.</summary>
-		public float Threshold = 1.0f;
+        [System.Serializable] public class Vector3Event : UnityEvent<Vector3> { }
 
-		/// <summary>If you enable this then the delta will step in increments based on the <b>Threshold</b> value. If you disable this then the position will immediately be set to the <b>Current</b> value.</summary>
-		public bool Step;
+        /// <summary>The current accumilated delta.</summary>
+        public Vector3 Current;
 
-		public FloatEvent OnDeltaX { get { if (onDeltaX == null) onDeltaX = new FloatEvent(); return onDeltaX; } } [SerializeField] private FloatEvent onDeltaX;
+        /// <summary>When any dimension of <b>Current</b> exceeds this, <b>OnDelta___</b> will be called, and <b>Current</b> will be rolled back.</summary>
+        public float Threshold = 1.0f;
 
-		public FloatEvent OnDeltaY { get { if (onDeltaY == null) onDeltaY = new FloatEvent(); return onDeltaY; } } [SerializeField] private FloatEvent onDeltaY;
+        /// <summary>If you enable this then the delta will step in increments based on the <b>Threshold</b> value. If you disable this then the position will immediately be set to the <b>Current</b> value.</summary>
+        public bool Step;
 
-		public FloatEvent OnDeltaZ { get { if (onDeltaZ == null) onDeltaZ = new FloatEvent(); return onDeltaZ; } } [SerializeField] private FloatEvent onDeltaZ;
+        public FloatEvent OnDeltaX { get { if (onDeltaX == null) onDeltaX = new FloatEvent(); return onDeltaX; } }
+        [SerializeField] private FloatEvent onDeltaX;
 
-		public Vector2Event OnDeltaXY { get { if (onDeltaXY == null) onDeltaXY = new Vector2Event(); return onDeltaXY; } } [SerializeField] private Vector2Event onDeltaXY;
+        public FloatEvent OnDeltaY { get { if (onDeltaY == null) onDeltaY = new FloatEvent(); return onDeltaY; } }
+        [SerializeField] private FloatEvent onDeltaY;
 
-		public Vector3Event OnDeltaXYZ { get { if (onDeltaXYZ == null) onDeltaXYZ = new Vector3Event(); return onDeltaXYZ; } } [SerializeField] private Vector3Event onDeltaXYZ;
+        public FloatEvent OnDeltaZ { get { if (onDeltaZ == null) onDeltaZ = new FloatEvent(); return onDeltaZ; } }
+        [SerializeField] private FloatEvent onDeltaZ;
 
-		/// <summary>This method allows you to increment <b>Current</b>.</summary>
-		public void AddXY(Vector2 delta)
-		{
-			Current.x += delta.x;
-			Current.y += delta.y;
-		}
+        public Vector2Event OnDeltaXY { get { if (onDeltaXY == null) onDeltaXY = new Vector2Event(); return onDeltaXY; } }
+        [SerializeField] private Vector2Event onDeltaXY;
 
-		/// <summary>This method allows you to increment <b>Current</b>.</summary>
-		public void AddXYZ(Vector3 delta)
-		{
-			Current += delta;
-		}
+        public Vector3Event OnDeltaXYZ { get { if (onDeltaXYZ == null) onDeltaXYZ = new Vector3Event(); return onDeltaXYZ; } }
+        [SerializeField] private Vector3Event onDeltaXYZ;
 
-		/// <summary>This method allows you to increment <b>Current.x</b>.</summary>
-		public void AddX(float delta)
-		{
-			Current.x += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current</b>.</summary>
+        public void AddXY(Vector2 delta)
+        {
+            Current.x += delta.x;
+            Current.y += delta.y;
+        }
 
-		/// <summary>This method allows you to increment <b>Current.y</b>.</summary>
-		public void AddY(float delta)
-		{
-			Current.y += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current</b>.</summary>
+        public void AddXYZ(Vector3 delta)
+        {
+            Current += delta;
+        }
 
-		/// <summary>This method allows you to increment <b>Current.z</b>.</summary>
-		public void AddZ(float delta)
-		{
-			Current.z += delta;
-		}
+        /// <summary>This method allows you to increment <b>Current.x</b>.</summary>
+        public void AddX(float delta)
+        {
+            Current.x += delta;
+        }
 
-		protected virtual void Update()
-		{
-			var delta = Current;
+        /// <summary>This method allows you to increment <b>Current.y</b>.</summary>
+        public void AddY(float delta)
+        {
+            Current.y += delta;
+        }
 
-			if (Threshold > 0.0f)
-			{
-				var stepX = (int)(delta.x / Threshold);
-				var stepY = (int)(delta.y / Threshold);
-				var stepZ = (int)(delta.z / Threshold);
+        /// <summary>This method allows you to increment <b>Current.z</b>.</summary>
+        public void AddZ(float delta)
+        {
+            Current.z += delta;
+        }
 
-				if (stepX == 0 && stepY == 0 && stepZ == 0)
-				{
-					return;
-				}
+        protected virtual void Update()
+        {
+            var delta = Current;
 
-				if (Step == true)
-				{
-					delta.x = stepX * Threshold;
-					delta.y = stepY * Threshold;
-					delta.z = stepZ * Threshold;
+            if (Threshold > 0.0f)
+            {
+                var stepX = (int)(delta.x / Threshold);
+                var stepY = (int)(delta.y / Threshold);
+                var stepZ = (int)(delta.z / Threshold);
 
-					Current -= delta;
-				}
-				else
-				{
-					Current = Vector3.zero;
-				}
-			}
-			else
-			{
-				if (delta.x == 0.0f && delta.y == 0.0f && delta.z == 0.0f)
-				{
-					return;
-				}
+                if (stepX == 0 && stepY == 0 && stepZ == 0)
+                {
+                    return;
+                }
 
-				Current = Vector3.zero;
-			}
+                if (Step == true)
+                {
+                    delta.x = stepX * Threshold;
+                    delta.y = stepY * Threshold;
+                    delta.z = stepZ * Threshold;
 
-			if (onDeltaX != null)
-			{
-				onDeltaX.Invoke(delta.x);
-			}
+                    Current -= delta;
+                }
+                else
+                {
+                    Current = Vector3.zero;
+                }
+            }
+            else
+            {
+                if (delta.x == 0.0f && delta.y == 0.0f && delta.z == 0.0f)
+                {
+                    return;
+                }
 
-			if (onDeltaY != null)
-			{
-				onDeltaY.Invoke(delta.y);
-			}
+                Current = Vector3.zero;
+            }
 
-			if (onDeltaZ != null)
-			{
-				onDeltaZ.Invoke(delta.z);
-			}
+            if (onDeltaX != null)
+            {
+                onDeltaX.Invoke(delta.x);
+            }
 
-			if (onDeltaXY != null)
-			{
-				onDeltaXY.Invoke(delta);
-			}
+            if (onDeltaY != null)
+            {
+                onDeltaY.Invoke(delta.y);
+            }
 
-			if (onDeltaXYZ != null)
-			{
-				onDeltaXYZ.Invoke(delta);
-			}
-		}
-	}
+            if (onDeltaZ != null)
+            {
+                onDeltaZ.Invoke(delta.z);
+            }
+
+            if (onDeltaXY != null)
+            {
+                onDeltaXY.Invoke(delta);
+            }
+
+            if (onDeltaXYZ != null)
+            {
+                onDeltaXYZ.Invoke(delta);
+            }
+        }
+    }
 }
 
 #if UNITY_EDITOR
+
 namespace Lean.Common.Inspector
 {
-	using UnityEditor;
+    using UnityEditor;
 
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(LeanThresholdDelta))]
-	public class LeanThresholdDelta_Inspector : Lean.Common.LeanInspector<LeanThresholdDelta>
-	{
-		private bool showUnusedEvents;
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(LeanThresholdDelta))]
+    public class LeanThresholdDelta_Inspector : Lean.Common.LeanInspector<LeanThresholdDelta>
+    {
+        private bool showUnusedEvents;
 
-		protected override void DrawInspector()
-		{
-			Draw("Current", "The current accumilated delta.");
-			Draw("Threshold", "When any dimension of Value exceeds this, OnDelta___ will be called, and Value will be rolled back.");
-			Draw("Step", "If you enable this then the delta will step in increments based on the Threshold value. If you disable this then the position will immediately be set to the Current value.");
+        protected override void DrawInspector()
+        {
+            Draw("Current", "The current accumilated delta.");
+            Draw("Threshold", "When any dimension of Value exceeds this, OnDelta___ will be called, and Value will be rolled back.");
+            Draw("Step", "If you enable this then the delta will step in increments based on the Threshold value. If you disable this then the position will immediately be set to the Current value.");
 
-			EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
 
-			var usedA = Any(t => t.OnDeltaX.GetPersistentEventCount() > 0);
-			var usedB = Any(t => t.OnDeltaY.GetPersistentEventCount() > 0);
-			var usedC = Any(t => t.OnDeltaZ.GetPersistentEventCount() > 0);
-			var usedD = Any(t => t.OnDeltaXY.GetPersistentEventCount() > 0);
-			var usedE = Any(t => t.OnDeltaXYZ.GetPersistentEventCount() > 0);
+            var usedA = Any(t => t.OnDeltaX.GetPersistentEventCount() > 0);
+            var usedB = Any(t => t.OnDeltaY.GetPersistentEventCount() > 0);
+            var usedC = Any(t => t.OnDeltaZ.GetPersistentEventCount() > 0);
+            var usedD = Any(t => t.OnDeltaXY.GetPersistentEventCount() > 0);
+            var usedE = Any(t => t.OnDeltaXYZ.GetPersistentEventCount() > 0);
 
-			EditorGUI.BeginDisabledGroup(usedA && usedB && usedC && usedD && usedE);
-				showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
-			EditorGUI.EndDisabledGroup();
+            EditorGUI.BeginDisabledGroup(usedA && usedB && usedC && usedD && usedE);
+            showUnusedEvents = EditorGUILayout.Foldout(showUnusedEvents, "Show Unused Events");
+            EditorGUI.EndDisabledGroup();
 
-			EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
 
-			if (usedA == true || showUnusedEvents == true)
-			{
-				Draw("onDeltaX");
-			}
+            if (usedA == true || showUnusedEvents == true)
+            {
+                Draw("onDeltaX");
+            }
 
-			if (usedB == true || showUnusedEvents == true)
-			{
-				Draw("onDeltaY");
-			}
+            if (usedB == true || showUnusedEvents == true)
+            {
+                Draw("onDeltaY");
+            }
 
-			if (usedC == true || showUnusedEvents == true)
-			{
-				Draw("onDeltaZ");
-			}
+            if (usedC == true || showUnusedEvents == true)
+            {
+                Draw("onDeltaZ");
+            }
 
-			if (usedD == true || showUnusedEvents == true)
-			{
-				Draw("onDeltaXY");
-			}
+            if (usedD == true || showUnusedEvents == true)
+            {
+                Draw("onDeltaXY");
+            }
 
-			if (usedE == true || showUnusedEvents == true)
-			{
-				Draw("onDeltaXYZ");
-			}
-		}
-	}
+            if (usedE == true || showUnusedEvents == true)
+            {
+                Draw("onDeltaXYZ");
+            }
+        }
+    }
 }
+
 #endif

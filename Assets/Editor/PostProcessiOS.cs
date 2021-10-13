@@ -15,9 +15,9 @@ public static class PostProcessiOS
             PlistDocument plist = new PlistDocument();
             plist.ReadFromFile(plistPath);
             PlistElementDict rootDict = plist.root;
-           
+
             rootDict.SetString("NSUserTrackingUsageDescription", "App would like to access IDFA for tracking purpose");
-            
+
             File.WriteAllText(plistPath, plist.WriteToString());
         }
     }

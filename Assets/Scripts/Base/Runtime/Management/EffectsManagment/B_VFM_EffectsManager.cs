@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Herkdess.Tools.General;
-
-namespace Base
+﻿namespace Base
 {
     public class B_VFM_EffectsManager : B_OPS_Pooler_Base
     {
@@ -29,6 +25,5 @@ namespace Base
         {
             base.InitiatePooller(this.transform);
         }
-
     }
 }

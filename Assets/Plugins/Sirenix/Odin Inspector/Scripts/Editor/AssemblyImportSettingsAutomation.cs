@@ -16,7 +16,9 @@ namespace Sirenix.OdinInspector.Editor
     using UnityEditor.Build;
 
 #if UNITY_2018_1_OR_NEWER
+
     using UnityEditor.Build.Reporting;
+
 #endif
 
     public class AssemblyImportSettingsAutomation :
@@ -26,7 +28,6 @@ namespace Sirenix.OdinInspector.Editor
         IPreprocessBuild
 #endif
     {
-
         public int callbackOrder { get { return -1500; } }
 
         private static void ConfigureImportSettings()

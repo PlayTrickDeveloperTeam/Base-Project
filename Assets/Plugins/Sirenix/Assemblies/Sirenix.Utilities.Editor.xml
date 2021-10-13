@@ -1099,16 +1099,16 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.EventExtensions">
             <summary>
-            Collection of extension methods for <see cref="T:UnityEngine.Event"/>.
+            Collection of extension methods for <see cref="T:UnityEngine.Event" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseDown(UnityEngine.Event,System.Int32,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user presses the specified mouse button.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="mouseButton">The mouse button the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on mouse down events with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseDown(UnityEngine.Event,UnityEngine.Rect,System.Int32,System.Boolean)">
@@ -1118,77 +1118,77 @@
             <param name="current">The event.</param>
             <param name="rect">The rect the user can click on.</param>
             <param name="mouseButton">The button the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on mouse down events with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseUp(UnityEngine.Event,System.Int32,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user releases the specified mouse button.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="mouseButton">The mouse button the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on mouse up events, with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseUp(UnityEngine.Event,UnityEngine.Rect,System.Int32,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user releases the specified mouse button over the specified rect.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="rect">The rect the user has to release the mouse button over.</param>
             <param name="mouseButton">The mouse button the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on mouse up events, with the specified button and over the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnLeftClick(UnityEngine.Event,UnityEngine.Rect,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user left clicks a rect.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="rect">The rect the user can click.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on left click events, on the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnContextClick(UnityEngine.Event,UnityEngine.Rect,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user right clicks a rect.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="rect">The rect the user can right click.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on context click events, on the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnKeyDown(UnityEngine.Event,UnityEngine.KeyCode,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user presses the specified key.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="key">The key the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on key down events with the specified key code. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnKeyUp(UnityEngine.Event,UnityEngine.KeyCode,System.Boolean)">
             <summary>
             Returns <c>true</c> when the user releases the specified key.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="key">The key the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on key up events with the specified key code. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseMoveDrag(UnityEngine.Event,System.Boolean)">
             <summary>
             Returns <c>true</c> whene the user moves or drags the mouse.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use" /> on the event.</param>
             <returns><c>true</c> on mouse move or mouse drag events. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.IsHovering(UnityEngine.Event,UnityEngine.Rect)">
             <summary>
             Returns <c>true</c> when the user hovers the mouse over the specified rect.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="rect">The rect the user can hover.</param>
             <returns><c>true</c> on any event where the mouse is hovering the specified rect. Otherwise <c>false</c>.</returns>
         </member>
@@ -1196,27 +1196,27 @@
             <summary>
             Returns <c>true</c> on repaint events.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <returns><c>true</c> on repaint events. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnLayout(UnityEngine.Event)">
             <summary>
             Returns <c>true</c> on layout events.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <returns><c>true</c> on layout events. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnEventType(UnityEngine.Event,UnityEngine.EventType)">
             <summary>
             Returns <c>true</c> on the specified event.
             </summary>
-            <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
+            <param name="current">The <see cref="T:UnityEngine.Event" />.</param>
             <param name="eventType">The required event type.</param>
             <returns><c>true</c> on the specified event. Otherwise <c>false</c>.</returns>
         </member>
         <member name="T:Sirenix.Utilities.Editor.GenericMenuExtensions">
             <summary>
-            Collection of extension methods for <see cref="T:UnityEditor.GenericMenu"/>.
+            Collection of extension methods for <see cref="T:UnityEditor.GenericMenu" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GenericMenuExtensions.RemoveMenuItems(UnityEditor.GenericMenu,System.String)">
@@ -1262,14 +1262,14 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIContext`1.op_Implicit(Sirenix.Utilities.Editor.GUIContext{`0})~`0">
             <summary>
-            Performs an implicit conversion from <see cref="T:Sirenix.Utilities.Editor.GUIContext`1"/> to <see cref="!:T"/>.
+            Performs an implicit conversion from <see cref="T:Sirenix.Utilities.Editor.GUIContext`1" /> to <see cref="!:T" />.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.Editor.ObjectFieldAlignment">
             <summary>
             How the square object field should be aligned.
             </summary>
-            <seealso cref="!:PreviewFieldAttribute"/>
+            <seealso cref="!:PreviewFieldAttribute" />
         </member>
         <member name="F:Sirenix.Utilities.Editor.ObjectFieldAlignment.Left">
             <summary>
@@ -1290,7 +1290,7 @@
             <summary>
             <para>This class is due to undergo refactoring. Use the new DragAndDropUtilities instead.</para>
             </summary>
-            <seealso cref="T:Sirenix.Utilities.Editor.DragAndDropUtilities"/>
+            <seealso cref="T:Sirenix.Utilities.Editor.DragAndDropUtilities" />
         </member>
         <member name="P:Sirenix.Utilities.Editor.DragAndDropManager.CurrentDraggingHandle">
             <summary>
@@ -1598,15 +1598,15 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIPagingHelper.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.GUIPagingHelper"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.GUIPagingHelper" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIPagingHelper.Update(System.Int32)">
             <summary>
-            Updates all values based on <paramref name="elementCount"/> and <see cref="!:NumberOfItemsPrPage"/>.
+            Updates all values based on <paramref name="elementCount" /> and <see cref="!:NumberOfItemsPrPage" />.
             </summary>
             <remarks>
-            Call update right before using <see cref="P:Sirenix.Utilities.Editor.GUIPagingHelper.StartIndex"/> and <see cref="P:Sirenix.Utilities.Editor.GUIPagingHelper.EndIndex"/> in your for loop.
+            Call update right before using <see cref="P:Sirenix.Utilities.Editor.GUIPagingHelper.StartIndex" /> and <see cref="P:Sirenix.Utilities.Editor.GUIPagingHelper.EndIndex" /> in your for loop.
             </remarks>
             <param name="elementCount">The total number of elements to apply paging for.</param>
         </member>
@@ -1677,7 +1677,7 @@
         <member name="P:Sirenix.Utilities.Editor.GUIPagingHelper.ElementCount">
             <summary>
             Gets the total number of elements.
-            Use <see cref="M:Sirenix.Utilities.Editor.GUIPagingHelper.Update(System.Int32)"/> to change the value.
+            Use <see cref="M:Sirenix.Utilities.Editor.GUIPagingHelper.Update(System.Int32)" /> to change the value.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIPagingHelper.DrawToolbarPagingButtons(UnityEngine.Rect@,System.Boolean,System.Boolean,System.Int32)">
@@ -1695,11 +1695,11 @@
              <para>Creating a matrix table for a two-dimentional array.</para>
              <code>
              private GUITable table;
-            
+
              private void Init()
              {
                  bool[,] boolArr = new bool[20,20];
-            
+
                  this.table = GUITable.Create(
                      twoDimArray: boolArr,
                      drawElement: (rect, x, y) => boolArr[x, y] = EditorGUI.Toggle(rect, boolArr[x, y]),
@@ -1709,7 +1709,7 @@
                      rowLabels: (rect, x) => GUI.Label(rect, x.ToString())       // rowLabels is optional and can be null.
                  );
              }
-            
+
              private void OnGUI()
              {
                  this.table.DrawTable();
@@ -1720,11 +1720,11 @@
              <para>Creating a table for a list.</para>
              <code>
              private GUITable table;
-            
+
              private void Init()
              {
                  Listt&lt;SomeClasst&gt; someList = new List&lt;SomeClass&gt;() { new SomeClass(), new SomeClass(), new SomeClass() };
-            
+
                  this.table = GUITable.Create(someList, "Optional Title",
                      new GUITableColumn()
                      {
@@ -1747,12 +1747,12 @@
                      }
                  );
              }
-            
+
              private void OnGUI()
              {
                  this.table.DrawTable();
              }
-            
+
              private class SomeClass
              {
                  public string A;
@@ -1764,7 +1764,7 @@
              </example>
              <example>
              <para>Styling a cell.</para>
-             <para>Each <see cref="T:Sirenix.Utilities.Editor.GUITableCell"/> has two events, OnGUI and OnGUIStyle. OnGUIStyle is called right before OnGUI, but only in repaint events.</para>
+             <para>Each <see cref="T:Sirenix.Utilities.Editor.GUITableCell" /> has two events, OnGUI and OnGUIStyle. OnGUIStyle is called right before OnGUI, but only in repaint events.</para>
              <code>
              guiTable[x,y].GUIStyle += rect => EditorGUI.DrawRect(rect, Color.red);
              </code>
@@ -1778,7 +1778,7 @@
              guiTable[x - 1,y] = null;
              guiTable[x,y].SpanX = true;
              guiTable[x + 1,y] = null;
-            
+
              // Span vertically:
              guiTable[x,y - 2] = null;
              guiTable[x,y - 1] = null;
@@ -1786,8 +1786,8 @@
              guiTable[x,y + 1] = null;
              </code>
              </example>
-             <seealso cref="T:Sirenix.Utilities.Editor.GUITable"/>
-             <seealso cref="T:Sirenix.Utilities.Editor.GUITableCell"/>
+             <seealso cref="T:Sirenix.Utilities.Editor.GUITable" />
+             <seealso cref="T:Sirenix.Utilities.Editor.GUITableCell" />
         </member>
         <member name="F:Sirenix.Utilities.Editor.GUITable.RowCount">
             <summary>
@@ -1811,12 +1811,12 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITable.Item(System.Int32,System.Int32)">
             <summary>
-            Gets or sets a <see cref="T:Sirenix.Utilities.Editor.GUITableCell"/> from the <see cref="T:Sirenix.Utilities.Editor.GUITable"/>.
+            Gets or sets a <see cref="T:Sirenix.Utilities.Editor.GUITableCell" /> from the <see cref="T:Sirenix.Utilities.Editor.GUITable" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUITable.#ctor(System.Int32,System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.GUITable"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.GUITable" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUITable.DrawTable">
@@ -1858,7 +1858,7 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.GUITableCell">
             <summary>
-            A cell of a <see cref="T:Sirenix.Utilities.Editor.GUITable"/>
+            A cell of a <see cref="T:Sirenix.Utilities.Editor.GUITable" />
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.Editor.GUITableCell.MinWidth">
@@ -1913,8 +1913,8 @@
             <summary>
             GUITableColumns used creating a table list using GUITable.Create().
             </summary>
-            <seealso cref="T:Sirenix.Utilities.Editor.GUITable"/>
-            <seealso cref="T:Sirenix.Utilities.Editor.GUITableCell"/>
+            <seealso cref="T:Sirenix.Utilities.Editor.GUITable" />
+            <seealso cref="T:Sirenix.Utilities.Editor.GUITableCell" />
         </member>
         <member name="F:Sirenix.Utilities.Editor.GUITableColumn.OnGUI">
             <summary>
@@ -1959,7 +1959,7 @@
              // Register your tabs before starting BeginGroup.
              var tab1 = tabGroup.RegisterTab("tab 1");
              var tab2 = tabGroup.RegisterTab("tab 2");
-            
+
              tabGroup.BeginGroup(drawToolbar: true);
              {
                  if (tab1.BeginPage())
@@ -1967,7 +1967,7 @@
                      // Draw GUI for the first tab page;
                  }
                  tab1.EndPage();
-            
+
                  if (tab2.BeginPage())
                  {
                      // Draw GUI for the second tab page;
@@ -1975,19 +1975,19 @@
                  tab2.EndPage();
              }
              tabGroup.EndGroup();
-            
+
              // Control the animation speed.
              tabGroup.AnimationSpeed = 0.2f;
-            
+
              // If true, the tab group will have the height equal to the biggest page. Otherwise the tab group will animate in height as well when changing page.
              tabGroup.FixedHeight = true;
-            
+
              // You can change page by calling:
              tabGroup.GoToNextPage();
              tabGroup.GoToPreviousPage();
              </code>
              </example>
-             <seealso cref="T:Sirenix.Utilities.Editor.SirenixEditorGUI"/>
+             <seealso cref="T:Sirenix.Utilities.Editor.SirenixEditorGUI" />
         </member>
         <member name="F:Sirenix.Utilities.Editor.GUITabGroup.t">
             <summary>
@@ -2087,12 +2087,12 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.BeginDrawToNothing">
             <summary>
-            Hides the following draw calls. Remember to call <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndDrawToNothing"/> when done.
+            Hides the following draw calls. Remember to call <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndDrawToNothing" /> when done.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.EndDrawToNothing">
             <summary>
-            Unhides the following draw calls after having called <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginDrawToNothing"/>.
+            Unhides the following draw calls after having called <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginDrawToNothing" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.IsDockedWindow(UnityEditor.EditorWindow)">
@@ -2153,7 +2153,7 @@
         <member name="P:Sirenix.Utilities.Editor.GUIHelper.BetterContextWidth">
             <summary>
             Odin will set this for you whenever an Odin property tree is drawn.
-            But if you're using BetterLabelWidth and BetterContextWidth without Odin, then 
+            But if you're using BetterLabelWidth and BetterContextWidth without Odin, then
             you need to set BetterContextWidth in the beginning of each GUIEvent.
             </summary>
         </member>
@@ -2222,12 +2222,12 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.BeginLayoutMeasuring">
             <summary>
-            Begins the layout measuring. Remember to end with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndLayoutMeasuring"/>.
+            Begins the layout measuring. Remember to end with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndLayoutMeasuring" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.EndLayoutMeasuring">
             <summary>
-            Ends the layout measuring started by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginLayoutMeasuring"/>
+            Ends the layout measuring started by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginLayoutMeasuring" />
             </summary>
             <returns>The measured rect.</returns>
         </member>
@@ -2252,18 +2252,18 @@
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushContextWidth(System.Single)">
             <summary>
             Pushes a context width to the context width stack.
-            Remember to pop the value again with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopContextWidth"/>.
+            Remember to pop the value again with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopContextWidth" />.
             </summary>
             <param name="width">The width to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopContextWidth">
             <summary>
-            Pops a value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushContextWidth(System.Single)"/>.
+            Pops a value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushContextWidth(System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushColor(UnityEngine.Color,System.Boolean)">
             <summary>
-            Pushes a color to the GUI color stack. Remember to pop the color with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopColor"/>.
+            Pushes a color to the GUI color stack. Remember to pop the color with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopColor" />.
             </summary>
             <param name="color">The color to push the GUI color..</param>
             <param name="blendAlpha">if set to <c>true</c> blend with alpha.</param>
@@ -2277,170 +2277,170 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopColor">
             <summary>
-            Pops the GUI color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushColor(UnityEngine.Color,System.Boolean)"/>.
+            Pops the GUI color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushColor(UnityEngine.Color,System.Boolean)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIEnabled(System.Boolean)">
             <summary>
-            Pushes a state to the GUI enabled stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIEnabled"/>.
+            Pushes a state to the GUI enabled stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIEnabled" />.
             </summary>
             <param name="enabled">If set to <c>true</c> GUI will be enabled. Otherwise GUI will be disabled.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIEnabled">
             <summary>
-            Pops the GUI enabled pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIEnabled(System.Boolean)"/>
+            Pops the GUI enabled pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIEnabled(System.Boolean)" />
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushIsDrawingDictionaryKey(System.Boolean)">
             <summary>
-            Pushes a state to the IsDrawingDictionaryKey stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIsDrawingDictionaryKey"/>.
+            Pushes a state to the IsDrawingDictionaryKey stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIsDrawingDictionaryKey" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopIsDrawingDictionaryKey">
             <summary>
-            Pops the state pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIsDrawingDictionaryKey(System.Boolean)"/>
+            Pops the state pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIsDrawingDictionaryKey(System.Boolean)" />
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushHierarchyMode(System.Boolean,System.Boolean)">
             <summary>
-            Pushes the hierarchy mode to the stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopHierarchyMode"/>.
+            Pushes the hierarchy mode to the stack. Remember to pop the state with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopHierarchyMode" />.
             </summary>
             <param name="hierarchyMode">The hierachy mode state to push.</param>
             <param name="preserveCurrentLabelWidth">Changing hierachy mode also changes how label-widths are calcualted. By default, we try to keep the current label width.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopHierarchyMode">
             <summary>
-            Pops the hierarchy mode pushed by <see cref="!:PushHierarchyMode(bool)"/>.
+            Pops the hierarchy mode pushed by <see cref="!:PushHierarchyMode(bool)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushIsBoldLabel(System.Boolean)">
             <summary>
-            Pushes bold label state to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIsBoldLabel"/>.
+            Pushes bold label state to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIsBoldLabel" />.
             </summary>
             <param name="isBold">Value indicating if labels should be bold or not.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopIsBoldLabel">
             <summary>
-            Pops the bold label state pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIsBoldLabel(System.Boolean)"/>.
+            Pops the bold label state pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIsBoldLabel(System.Boolean)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)">
             <summary>
-            Pushes the indent level to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel"/>.
+            Pushes the indent level to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel" />.
             </summary>
             <param name="indentLevel">The indent level to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopIndentLevel">
             <summary>
-            Pops the indent level pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)"/>.
+            Pops the indent level pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushIndentLevel(System.Int32)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushContentColor(UnityEngine.Color,System.Boolean)">
             <summary>
-            Pushes the content color to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopContentColor"/>.
+            Pushes the content color to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopContentColor" />.
             </summary>
             <param name="color">The content color to push..</param>
             <param name="blendAlpha">If set to <c>true</c> blend with alpha.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopContentColor">
             <summary>
-            Pops the content color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushContentColor(UnityEngine.Color,System.Boolean)"/>.
+            Pops the content color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushContentColor(UnityEngine.Color,System.Boolean)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelColor(UnityEngine.Color)">
             <summary>
-            Pushes the label color to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelColor"/>.
+            Pushes the label color to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelColor" />.
             </summary>
             <param name="color">The label color to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelColor">
             <summary>
-            Pops the label color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelColor(UnityEngine.Color)"/>.
+            Pops the label color pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelColor(UnityEngine.Color)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIPositionOffset(UnityEngine.Vector2)">
             <summary>
-            Pushes the GUI position offset to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIPositionOffset"/>.
+            Pushes the GUI position offset to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIPositionOffset" />.
             </summary>
             <param name="offset">The GUI offset.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopGUIPositionOffset">
             <summary>
-            Pops the GUI position offset pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIPositionOffset(UnityEngine.Vector2)"/>.
+            Pops the GUI position offset pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushGUIPositionOffset(UnityEngine.Vector2)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushMatrix(UnityEngine.Matrix4x4)">
             <summary>
-            Pushes a GUI matrix to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopMatrix"/>.
+            Pushes a GUI matrix to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopMatrix" />.
             </summary>
             <param name="matrix">The GUI matrix to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopMatrix">
             <summary>
-            Pops the GUI matrix pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushMatrix(UnityEngine.Matrix4x4)"/>.
+            Pops the GUI matrix pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushMatrix(UnityEngine.Matrix4x4)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.BeginIgnoreInput">
             <summary>
-            Ignores input on following GUI calls. Remember to end with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndIgnoreInput"/>.
+            Ignores input on following GUI calls. Remember to end with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.EndIgnoreInput" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.EndIgnoreInput">
             <summary>
-            Ends the ignore input started by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginIgnoreInput"/>.
+            Ends the ignore input started by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.BeginIgnoreInput" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushEventType(UnityEngine.EventType)">
             <summary>
-            Pushes the event type to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopEventType"/>.
+            Pushes the event type to the stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopEventType" />.
             </summary>
             <param name="eventType">The type of event to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopEventType">
             <summary>
-            Pops the event type pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopEventType"/>.
+            Pops the event type pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopEventType" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelWidth(System.Single)">
             <summary>
-            Pushes the width to the editor GUI label width to the stack. Remmeber to Pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelWidth"/>.
+            Pushes the width to the editor GUI label width to the stack. Remmeber to Pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelWidth" />.
             </summary>
             <param name="labelWidth">The editor GUI label width to push.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopLabelWidth">
             <summary>
-            Pops editor gui label widths pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelWidth(System.Single)"/>.
+            Pops editor gui label widths pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushLabelWidth(System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushResponsiveVectorComponentFields(System.Boolean)">
             <summary>
-            Pushes the value to the responsive vector component fields stack. Remeber to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopResponsiveVectorComponentFields"/>.
+            Pushes the value to the responsive vector component fields stack. Remeber to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopResponsiveVectorComponentFields" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopResponsiveVectorComponentFields">
             <summary>
-            Pops responsive vector component fields value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushResponsiveVectorComponentFields(System.Boolean)"/>.
+            Pops responsive vector component fields value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushResponsiveVectorComponentFields(System.Boolean)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushFadeGroupDuration(System.Single)">
             <summary>
-            Pushes the value to the fade group duration stack. Remeber to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopFadeGroupDuration"/>.
+            Pushes the value to the fade group duration stack. Remeber to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopFadeGroupDuration" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopFadeGroupDuration">
             <summary>
-            Pops fade group duration value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushFadeGroupDuration(System.Single)"/>.
+            Pops fade group duration value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushFadeGroupDuration(System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PushTabPageSlideAnimationDuration(System.Single)">
             <summary>
-            Pushes the value to the tab page slide animation duration stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopTabPageSlideAnimationDuration"/>.
+            Pushes the value to the tab page slide animation duration stack. Remember to pop with <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PopTabPageSlideAnimationDuration" />.
             </summary>
             <param name="duration"></param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.PopTabPageSlideAnimationDuration">
             <summary>
-            Pops tab page slide animation duration value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushTabPageSlideAnimationDuration(System.Single)"/>.
+            Pops tab page slide animation duration value pushed by <see cref="M:Sirenix.Utilities.Editor.GUIHelper.PushTabPageSlideAnimationDuration(System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIHelper.ClearRepaintRequest">
@@ -2662,8 +2662,8 @@
             <summary>
             Draw mode of quaternion fields.
             </summary>
-            <seealso cref="T:Sirenix.Utilities.Editor.SirenixEditorFields"/>
-            <seealso cref="!:Sirenix.OdinInspector.Editor.GeneralDrawerConfig"/>
+            <seealso cref="T:Sirenix.Utilities.Editor.SirenixEditorFields" />
+            <seealso cref="!:Sirenix.OdinInspector.Editor.GeneralDrawerConfig" />
         </member>
         <member name="F:Sirenix.Utilities.Editor.QuaternionDrawMode.Eulers">
             <summary>
@@ -5443,7 +5443,7 @@
             Draws a warning message box.
             </summary>
             <remarks>
-            Also triggers a warning during validation checks done by <see cref="!:OdinInspectorValidationChecker"/>
+            Also triggers a warning during validation checks done by <see cref="!:OdinInspectorValidationChecker" />
             </remarks>
             <param name="message">The message.</param>
             <param name="wide">If set to <c>true</c> the message box will be wide.</param>
@@ -5483,7 +5483,7 @@
             Draws an error message box.
             </summary>
             <remarks>
-            Also triggers an error during validation checks done by <see cref="!:OdinInspectorValidationChecker"/>
+            Also triggers an error during validation checks done by <see cref="!:OdinInspectorValidationChecker" />
             </remarks>
             <param name="message">The message.</param>
             <param name="wide">If set to <c>true</c> the message box will be wide.</param>
@@ -5808,7 +5808,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginHorizontalToolbar(System.Single,System.Int32)">
             <summary>
-            Begins a horizontal toolbar. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalToolbar"/>.
+            Begins a horizontal toolbar. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalToolbar" />.
             </summary>
             <param name="height">The height of the toolbar.</param>
             <param name="paddingTop">Padding for the top of the toolbar.</param>
@@ -5827,48 +5827,48 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalToolbar">
             <summary>
-            Ends a horizontal toolbar started by <see cref="!:BeginHorizontalToolbar(int, int)"/>.
+            Ends a horizontal toolbar started by <see cref="!:BeginHorizontalToolbar(int, int)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedHorizontal(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins a horizontal indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedHorizontal"/>.
+            Begins a horizontal indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedHorizontal" />.
             </summary>
             <param name="options">The GUI layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedHorizontal(UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins a horizontal indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedHorizontal"/>.
+            Begins a horizontal indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedHorizontal" />.
             </summary>
             <param name="style">The style of the indentation.</param>
             <param name="options">The GUI layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedHorizontal">
             <summary>
-            Ends a identation horizontal layout group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedHorizontal(UnityEngine.GUILayoutOption[])"/>.
+            Ends a identation horizontal layout group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedHorizontal(UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedVertical(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins a vertical indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedVertical"/>.
+            Begins a vertical indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedVertical" />.
             </summary>
             <param name="options">The GUI layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedVertical(UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins a vertical indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedVertical"/>.
+            Begins a vertical indentation. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedVertical" />.
             </summary>
             <param name="style">The style of the indentation.</param>
             <param name="options">The GUI layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndIndentedVertical">
             <summary>
-            Ends a identation vertical layout group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedVertical(UnityEngine.GUILayoutOption[])"/>.
+            Ends a identation vertical layout group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginIndentedVertical(UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.IndentSpace">
             <summary>
-            Indents by the current indent value, <see cref="P:Sirenix.Utilities.Editor.GUIHelper.CurrentIndentAmount"/>.
+            Indents by the current indent value, <see cref="P:Sirenix.Utilities.Editor.GUIHelper.CurrentIndentAmount" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.MenuButton(System.Int32,System.String,System.Boolean,UnityEngine.Texture)">
@@ -5883,7 +5883,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.Boolean)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="key">The key for the fade group.</param>
             <param name="isVisible">Current state of the fade group.</param>
@@ -5898,7 +5898,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.Object,System.Boolean)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="primaryKey">The primary key for the fade group.</param>
             <param name="secondaryKey">The secondly key for the fade group.</param>
@@ -5906,7 +5906,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.String,System.Boolean)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="key">The key for the fade group.</param>
             <param name="name">The name of the fade group.</param>
@@ -5914,7 +5914,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.Boolean,System.Single)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="key">The key for the fade group.</param>
             <param name="isVisible">Current state of the fade group.</param>
@@ -5931,7 +5931,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.Object,System.Boolean,System.Single)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="primaryKey">The primary key for the fade group.</param>
             <param name="secondaryKey">The secondly key for the fade group.</param>
@@ -5940,7 +5940,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Object,System.String,System.Boolean,System.Single)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="key">The key for the fade group.</param>
             <param name="name">The name of the fade group.</param>
@@ -5949,7 +5949,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginFadeGroup(System.Single)">
             <summary>
-            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup"/>.
+            Begins a fade group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndFadeGroup" />.
             </summary>
             <param name="t">The current fading value between 0 and 1.</param>
         </member>
@@ -5997,7 +5997,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginBox(System.String,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="label">The label of the box.</param>
             <param name="centerLabel">If set to <c>true</c> then center label.</param>
@@ -6005,7 +6005,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginBox(UnityEngine.GUIContent,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="label">The label of the box.</param>
             <param name="centerLabel">If set to <c>true</c> then center label.</param>
@@ -6014,7 +6014,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginBox(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="options">The GUI layout options.</param>
         </member>
@@ -6025,17 +6025,17 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginBoxHeader">
             <summary>
-            Begins drawing a box header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBoxHeader"/>.
+            Begins drawing a box header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBoxHeader" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndBoxHeader">
             <summary>
-            Ends drawing a box header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBoxHeader(System.Single)"/>,
+            Ends drawing a box header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBoxHeader(System.Single)" />,
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBox(System.String,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="label">Label for box header.</param>
             <param name="centerLabel">If <c>true</c> the label will be drawn in the center of the box header.</param>
@@ -6044,7 +6044,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBox(UnityEngine.GUIContent,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="label">Label for box header.</param>
             <param name="centerLabel">If <c>true</c> the label will be drawn in the center of the box header.</param>
@@ -6053,30 +6053,30 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBox(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox"/>.
+            Begins drawing a box with toolbar style header. Remember to end with <seealso cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox" />.
             </summary>
             <param name="options">GUILayout options.</param>
             <returns>The rect of the box.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBox">
             <summary>
-            Ends the drawing a box with a toolbar style header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBox(UnityEngine.GUILayoutOption[])"/>.
+            Ends the drawing a box with a toolbar style header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBox(UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBoxHeader(System.Single)">
             <summary>
-            Begins drawing a toolbar style box header. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBoxHeader"/>.
+            Begins drawing a toolbar style box header. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBoxHeader" />.
             </summary>
             <returns>The rect of the box.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToolbarBoxHeader">
             <summary>
-            Ends the drawing of a toolbar style box header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBoxHeader(System.Single)"/>.
+            Ends the drawing of a toolbar style box header started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToolbarBoxHeader(System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginLegendBox(System.String,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox"/>.
+            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox" />.
             </summary>
             <param name="label">The label for the legend style box.</param>
             <param name="centerLabel">If <c>true</c> the label will be drawn in the center of the box.</param>
@@ -6085,7 +6085,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginLegendBox(UnityEngine.GUIContent,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox"/>.
+            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox" />.
             </summary>
             <param name="label">The label for the legend style box.</param>
             <param name="centerLabel">If <c>true</c> the label will be drawn in the center of the box.</param>
@@ -6094,19 +6094,19 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginLegendBox(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox"/>.
+            Begins drawing a legend style box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox" />.
             </summary>
             <param name="options">GUILayout options.</param>
             <returns>The rect of the box.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndLegendBox">
             <summary>
-            Ends the drawing of a legend style box started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginLegendBox(UnityEngine.GUILayoutOption[])"/>
+            Ends the drawing of a legend style box started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginLegendBox(UnityEngine.GUILayoutOption[])" />
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginInlineBox(UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing an inline box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndInlineBox"/>.
+            Begins drawing an inline box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndInlineBox" />.
             </summary>
             <param name="options">The GUI layout options.</param>
             <returns>The rect of the box.</returns>
@@ -6145,7 +6145,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginMenuListItem(System.Boolean@,System.Boolean@,System.Boolean)">
             <summary>
-            Begins drawing a menu list item. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndMenuListItem"/>
+            Begins drawing a menu list item. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndMenuListItem" />
             </summary>
             <param name="isSelected">Value indicating whether the item is selected.</param>
             <param name="isMouseDown">Value indicating if the mouse is pressed on the item.</param>
@@ -6154,12 +6154,12 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndMenuListItem">
             <summary>
-            Ends drawing a menu list item started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginMenuListItem(System.Boolean@,System.Boolean@,System.Boolean)"/>
+            Ends drawing a menu list item started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginMenuListItem(System.Boolean@,System.Boolean@,System.Boolean)" />
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndVerticalMenuList">
             <summary>
-            Ends drawing a vertical menu list started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginVerticalMenuList(System.Object)"/>
+            Ends drawing a vertical menu list started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginVerticalMenuList(System.Object)" />
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginVerticalList(System.Boolean,System.Boolean,UnityEngine.GUILayoutOption[])">
@@ -6173,7 +6173,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndVerticalList">
             <summary>
-            Ends drawing a vertical list started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginVerticalList(System.Boolean,System.Boolean,UnityEngine.GUILayoutOption[])"/>.
+            Ends drawing a vertical list started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginVerticalList(System.Boolean,System.Boolean,UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginListItem(System.Boolean,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -6197,7 +6197,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndListItem">
             <summary>
-            Ends drawing a list item started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginListItem(System.Boolean,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])"/>.
+            Ends drawing a list item started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginListItem(System.Boolean,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.CreateAnimatedTabGroup(System.Object)">
@@ -6209,7 +6209,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToggleGroup(System.Object,System.Boolean@,System.Boolean@,System.String)">
             <summary>
-            Begins drawing a toggle group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToggleGroup"/>.
+            Begins drawing a toggle group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToggleGroup" />.
             </summary>
             <param name="key">The key of the group.</param>
             <param name="enabled">Value indicating if the group is enabled.</param>
@@ -6219,7 +6219,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToggleGroup(System.Object,System.Boolean@,System.Boolean@,System.String,System.Single)">
             <summary>
-            Begins drawing a toggle group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToggleGroup"/>.
+            Begins drawing a toggle group. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToggleGroup" />.
             </summary>
             <param name="key">The key of the group.</param>
             <param name="enabled">Value indicating if the group is enabled.</param>
@@ -6230,12 +6230,12 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndToggleGroup">
             <summary>
-            Ends drawing a toggle group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToggleGroup(System.Object,System.Boolean@,System.Boolean@,System.String,System.Single)"/>.
+            Ends drawing a toggle group started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginToggleGroup(System.Object,System.Boolean@,System.Boolean@,System.String,System.Single)" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginHorizontalAutoScrollBox(System.Object,UnityEngine.GUILayoutOption[])">
             <summary>
-            Begins drawing a horizontal auto scroll box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalAutoScrollBox"/>.
+            Begins drawing a horizontal auto scroll box. Remember to end with <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalAutoScrollBox" />.
             </summary>
             <param name="key">The for the field.</param>
             <param name="options">The GUILayout options.</param>
@@ -6243,7 +6243,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.EndHorizontalAutoScrollBox">
             <summary>
-            Ends drawing a horizontal auto scroll box started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginHorizontalAutoScrollBox(System.Object,UnityEngine.GUILayoutOption[])"/>.
+            Ends drawing a horizontal auto scroll box started by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.BeginHorizontalAutoScrollBox(System.Object,UnityEngine.GUILayoutOption[])" />.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.SlideRectInt(UnityEngine.Rect,System.Int32,System.Int32)">
@@ -6323,7 +6323,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorGUI.DynamicPrimitiveFieldCanDraw``1">
             <summary>
-            Checks whether a given type can be drawn as a dynamic field by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.DynamicPrimitiveField``1(UnityEngine.GUIContent,``0,UnityEngine.GUILayoutOption[])"/>
+            Checks whether a given type can be drawn as a dynamic field by <see cref="M:Sirenix.Utilities.Editor.SirenixEditorGUI.DynamicPrimitiveField``1(UnityEngine.GUIContent,``0,UnityEngine.GUILayoutOption[])" />
             </summary>
             <typeparam name="T">The type to check.</typeparam>
             <returns>True if the type can be drawn, otherwise false.</returns>
@@ -6877,9 +6877,9 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.GUITabPage">
             <summary>
-            A tab page created by <see cref="T:Sirenix.Utilities.Editor.GUITabGroup"/>.
+            A tab page created by <see cref="T:Sirenix.Utilities.Editor.GUITabGroup" />.
             </summary>
-            <seealso cref="T:Sirenix.Utilities.Editor.GUITabGroup"/>
+            <seealso cref="T:Sirenix.Utilities.Editor.GUITabGroup" />
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITabPage.Name">
             <summary>
@@ -6933,7 +6933,7 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.ContentRect">
             <summary>
-            Gets the rect containing all rows. 
+            Gets the rect containing all rows.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.RowIndexFrom">
@@ -6948,7 +6948,7 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.OuterRect">
             <summary>
-            Gets the outer rect. The height of this &lt;= <see cref="P:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.ContentRect"/>.height.
+            Gets the outer rect. The height of this &lt;= <see cref="P:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.ContentRect" />.height.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUITableRowLayoutGroup.GetRowRect(System.Int32)">
@@ -7260,7 +7260,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.EditorTimeHelper.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.EditorTimeHelper"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.Editor.EditorTimeHelper" /> class.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.EditorTimeHelper.DeltaTime">
@@ -7351,7 +7351,7 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.TextureUtilities.LoadImage(System.Int32,System.Int32,System.Byte[])">
             <summary>
-            Loads an image from bytes with the specified width and height. Use this instead of someTexture.LoadImage() if you're compiling to an assembly. Unity has moved the method in 2017, 
+            Loads an image from bytes with the specified width and height. Use this instead of someTexture.LoadImage() if you're compiling to an assembly. Unity has moved the method in 2017,
             and Unity's assembly updater is not able to fix it for you. This searches for a proper LoadImage method in multiple locations, and also handles type name conflicts.
             </summary>
         </member>
@@ -7371,7 +7371,7 @@
             <summary>
             AssemblyTypeFlags is a bitmask used to filter types and assemblies related to Unity.
             </summary>
-            <seealso cref="T:Sirenix.Utilities.AssemblyUtilities"/>
+            <seealso cref="T:Sirenix.Utilities.AssemblyUtilities" />
         </member>
         <member name="F:Sirenix.Utilities.AssemblyTypeFlags.None">
             <summary>
@@ -7442,7 +7442,7 @@
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.#cctor">
             <summary>
-            Initializes the <see cref="T:Sirenix.Utilities.AssemblyUtilities"/> class.
+            Initializes the <see cref="T:Sirenix.Utilities.AssemblyUtilities" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.Load(System.Reflection.Assembly[])">
@@ -7452,17 +7452,17 @@
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAllAssemblies">
             <summary>
-            Gets an <see cref="T:Sirenix.Utilities.ImmutableList"/> of all assemblies in the current <see cref="T:System.AppDomain"/>.
+            Gets an <see cref="T:Sirenix.Utilities.ImmutableList" /> of all assemblies in the current <see cref="T:System.AppDomain" />.
             </summary>
-            <returns>An <see cref="T:Sirenix.Utilities.ImmutableList"/> of all assemblies in the current <see cref="T:System.AppDomain"/>.</returns>
+            <returns>An <see cref="T:Sirenix.Utilities.ImmutableList" /> of all assemblies in the current <see cref="T:System.AppDomain" />.</returns>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAssemblyTypeFlag(System.Reflection.Assembly)">
             <summary>
-            Gets the <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> for a given assembly.
+            Gets the <see cref="T:Sirenix.Utilities.AssemblyTypeFlags" /> for a given assembly.
             </summary>
             <param name="assembly">The assembly.</param>
-            <returns>The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> for a given assembly.</returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is null.</exception>
+            <returns>The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags" /> for a given assembly.</returns>
+            <exception cref="T:System.NullReferenceException"><paramref name="assembly" /> is null.</exception>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetTypeByCachedFullName(System.String)">
             <summary>
@@ -7482,18 +7482,18 @@
             <param name="assembly">The assembly.</param>
             <param name="otherAssembly">The other assembly.</param>
             <returns>
-              <c>true</c> if <paramref name="assembly"/> has a reference in <paramref name="otherAssembly"/> or <paramref name="assembly"/> is the same as <paramref name="otherAssembly"/>.
+              <c>true</c> if <paramref name="assembly" /> has a reference in <paramref name="otherAssembly" /> or <paramref name="assembly" /> is the same as <paramref name="otherAssembly" />.
             </returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is null.</exception>
-            <exception cref="T:System.NullReferenceException"><paramref name="otherAssembly"/> is null.</exception>
+            <exception cref="T:System.NullReferenceException"><paramref name="assembly" /> is null.</exception>
+            <exception cref="T:System.NullReferenceException"><paramref name="otherAssembly" /> is null.</exception>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.IsDynamic(System.Reflection.Assembly)">
             <summary>
-            Determines whether the assembly module is a of type <see cref="T:System.Reflection.Emit.ModuleBuilder"/>.
+            Determines whether the assembly module is a of type <see cref="T:System.Reflection.Emit.ModuleBuilder" />.
             </summary>
             <param name="assembly">The assembly.</param>
             <returns>
-              <c>true</c> if the specified assembly of type <see cref="T:System.Reflection.Emit.ModuleBuilder"/>; otherwise, <c>false</c>.
+              <c>true</c> if the specified assembly of type <see cref="T:System.Reflection.Emit.ModuleBuilder" />; otherwise, <c>false</c>.
             </returns>
             <exception cref="T:System.ArgumentNullException">assembly</exception>
         </member>
@@ -7503,7 +7503,7 @@
             </summary>
             <param name="assembly">The assembly.</param>
             <returns>The full file path to a given assembly, or <c>Null</c> if no file path was found.</returns>
-            <exception cref="T:System.NullReferenceException"><paramref name="assembly"/> is Null.</exception>
+            <exception cref="T:System.NullReferenceException"><paramref name="assembly" /> is Null.</exception>
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetAssemblyFilePath(System.Reflection.Assembly)">
             <summary>
@@ -7514,20 +7514,20 @@
         </member>
         <member name="M:Sirenix.Utilities.AssemblyUtilities.GetTypes(Sirenix.Utilities.AssemblyTypeFlags)">
             <summary>
-            Get types from the current AppDomain with a specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filter.
+            Get types from the current AppDomain with a specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags" /> filter.
             </summary>
-            <param name="assemblyTypeFlags">The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filters.</param>
-            <returns>Types from the current AppDomain with the specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags"/> filters.</returns>
+            <param name="assemblyTypeFlags">The <see cref="T:Sirenix.Utilities.AssemblyTypeFlags" /> filters.</param>
+            <returns>Types from the current AppDomain with the specified <see cref="T:Sirenix.Utilities.AssemblyTypeFlags" /> filters.</returns>
         </member>
         <member name="M:Sirenix.Utilities.MemberFinderExtensions.FindMember(System.Type)">
             <summary>
             <para>Find members of the given type, while providing good error messages based on the following search filters provided.</para>
-            <para>See <see cref="T:Sirenix.Utilities.MemberFinder"/> for more information.</para>
+            <para>See <see cref="T:Sirenix.Utilities.MemberFinder" /> for more information.</para>
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.MemberFinder">
             <summary>
-            MemberFinder is obsolete, and has been replacted by <see cref="!:Sirenix.OdinInspector.Editor.ValueResolvers.ValueResolver" /> and <see cref="!:Sirenix.OdinInspector.Editor.ActionResolvers.ActionResolver" />. 
+            MemberFinder is obsolete, and has been replacted by <see cref="!:Sirenix.OdinInspector.Editor.ValueResolvers.ValueResolver" /> and <see cref="!:Sirenix.OdinInspector.Editor.ActionResolvers.ActionResolver" />.
             Use cases that do not fit those utlities should use manual reflection that is hand-optimized for the best performance in the given case.
             <para />
             MemberFinder was a utility class often used by Odin drawers to find fields, methods, and
@@ -7536,12 +7536,12 @@
         </member>
         <member name="M:Sirenix.Utilities.MemberFinder.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.MemberFinder.#ctor(System.Type)">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder"/> class.
+            Initializes a new instance of the <see cref="T:Sirenix.Utilities.MemberFinder" /> class.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.MemberFinder.Start``1">
@@ -7734,36 +7734,36 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.IResizableColumn.Resizable">
             <summary>
-            Gets a value indicating whether this <see cref="T:Sirenix.OdinInspector.Editor.IResizableColumn"/> is resizable.
+            Gets a value indicating whether this <see cref="T:Sirenix.OdinInspector.Editor.IResizableColumn" /> is resizable.
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.UnityEditorEventUtility">
             <summary>
-            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
+            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall" />,
             which can be done because the people at Unity didn't know what events were once upon a time.
             This method subscribes to a lot of different callbacks, in the hopes of catching at least one.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.DelayActionThreadSafe(System.Action)">
             <summary>
-            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
+            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall" />,
             which can be done because the people at Unity didn't know what events were once upon a time.
             This method subscribes to a lot of different callbacks, in the hopes of catching at least one.
             <para />
-            As opposed to <see cref="M:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.DelayAction(System.Action)"/>, this method is safe to call from any thread, and will
+            As opposed to <see cref="M:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.DelayAction(System.Action)" />, this method is safe to call from any thread, and will
             delay the actual subscription to a safe time.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.DelayAction(System.Action)">
             <summary>
-            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall"/>,
+            Sometimes, an idiot overrides a delay action subscription to <see cref="F:UnityEditor.EditorApplication.delayCall" />,
             which can be done because the people at Unity didn't know what events were once upon a time.
             This method subscribes to a lot of different callbacks, in the hopes of catching at least one.
             </summary>
         </member>
         <member name="E:Sirenix.OdinInspector.Editor.UnityEditorEventUtility.EditorApplication_delayCall">
             <summary>
-            In 2020.1, Unity changed EditorApplication.delayCall from a field to an event, meaning 
+            In 2020.1, Unity changed EditorApplication.delayCall from a field to an event, meaning
             we now have to use reflection to access it consistently across all versions of Unity.
             </summary>
         </member>

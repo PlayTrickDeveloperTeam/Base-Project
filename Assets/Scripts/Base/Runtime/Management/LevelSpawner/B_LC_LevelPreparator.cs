@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Base
 {
@@ -28,7 +27,5 @@ namespace Base
         {
             B_CES_CentralEventSystem.OnLevelDisable.InvokeEvent();
         }
-
-
     }
 }

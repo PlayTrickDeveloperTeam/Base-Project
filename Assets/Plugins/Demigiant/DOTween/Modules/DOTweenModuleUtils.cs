@@ -1,14 +1,15 @@
 ﻿// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2018/07/13
 
-using System;
-using System.Reflection;
-using UnityEngine;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Core.PathCore;
 using DG.Tweening.Plugins.Options;
+using System;
+using System.Reflection;
+using UnityEngine;
 
 #pragma warning disable 1591
+
 namespace DG.Tweening
 {
     /// <summary>
@@ -25,7 +26,7 @@ namespace DG.Tweening
     /// </summary>
 	public static class DOTweenModuleUtils
     {
-        static bool _initialized;
+        private static bool _initialized;
 
         #region Reflection
 
@@ -33,6 +34,7 @@ namespace DG.Tweening
         /// Called via Reflection by DOTweenComponent on Awake
         /// </summary>
 #if UNITY_2018_1_OR_NEWER
+
         [UnityEngine.Scripting.Preserve]
 #endif
         public static void Init()
@@ -53,29 +55,32 @@ namespace DG.Tweening
 
 #if UNITY_2018_1_OR_NEWER
 #pragma warning disable
+
         [UnityEngine.Scripting.Preserve]
-        // Just used to preserve methods when building, never called
-        static void Preserver()
+        private static void Preserver()
         {
             Assembly[] loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
             MethodInfo mi = typeof(MonoBehaviour).GetMethod("Stub");
         }
+
 #pragma warning restore
 #endif
 
-        #endregion
+        #endregion Reflection
 
 #if UNITY_EDITOR
         // Fires OnApplicationPause in DOTweenComponent even when Editor is paused (otherwise it's only fired at runtime)
 #if UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_5 || UNITY_2017_1
         static void PlaymodeStateChanged()
-        #else
-        static void PlaymodeStateChanged(UnityEditor.PlayModeStateChange state)
+#else
+
+        private static void PlaymodeStateChanged(UnityEditor.PlayModeStateChange state)
 #endif
         {
             if (DOTween.instance == null) return;
             DOTween.instance.OnApplicationPause(UnityEditor.EditorApplication.isPaused);
         }
+
 #endif
 
         // █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
@@ -107,10 +112,10 @@ namespace DG.Tweening
 
             #region Called via Reflection
 
-
             // Called via Reflection by DOTweenPathInspector
             // Returns FALSE if the DOTween's Physics Module is disabled, or if there's no rigidbody attached
 #if UNITY_2018_1_OR_NEWER
+
             [UnityEngine.Scripting.Preserve]
 #endif
             public static bool HasRigidbody(Component target)
@@ -124,17 +129,21 @@ namespace DG.Tweening
 
             // Called via Reflection by DOTweenPath
 #if UNITY_2018_1_OR_NEWER
+
             [UnityEngine.Scripting.Preserve]
 #endif
             public static TweenerCore<Vector3, Path, PathOptions> CreateDOTweenPathTween(
                 MonoBehaviour target, bool tweenRigidbody, bool isLocal, Path path, float duration, PathMode pathMode
-            ){
+            )
+            {
                 TweenerCore<Vector3, Path, PathOptions> t = null;
                 bool rBodyFoundAndTweened = false;
 #if true // PHYSICS_MARKER
-                if (tweenRigidbody) {
+                if (tweenRigidbody)
+                {
                     Rigidbody rBody = target.GetComponent<Rigidbody>();
-                    if (rBody != null) {
+                    if (rBody != null)
+                    {
                         rBodyFoundAndTweened = true;
                         t = isLocal
                             ? rBody.DOLocalPath(path, duration, pathMode)
@@ -143,9 +152,11 @@ namespace DG.Tweening
                 }
 #endif
 #if true // PHYSICS2D_MARKER
-                if (!rBodyFoundAndTweened && tweenRigidbody) {
+                if (!rBodyFoundAndTweened && tweenRigidbody)
+                {
                     Rigidbody2D rBody2D = target.GetComponent<Rigidbody2D>();
-                    if (rBody2D != null) {
+                    if (rBody2D != null)
+                    {
                         rBodyFoundAndTweened = true;
                         t = isLocal
                             ? rBody2D.DOLocalPath(path, duration, pathMode)
@@ -153,7 +164,8 @@ namespace DG.Tweening
                     }
                 }
 #endif
-                if (!rBodyFoundAndTweened) {
+                if (!rBodyFoundAndTweened)
+                {
                     t = isLocal
                         ? target.transform.DOLocalPath(path, duration, pathMode)
                         : target.transform.DOPath(path, duration, pathMode);
@@ -161,7 +173,7 @@ namespace DG.Tweening
                 return t;
             }
 
-            #endregion
+            #endregion Called via Reflection
         }
     }
 }

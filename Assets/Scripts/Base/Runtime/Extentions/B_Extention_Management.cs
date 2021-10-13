@@ -1,10 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System;
-using System.Collections;
 using UnityEngine.Advertisements;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Base
 {
@@ -44,7 +39,6 @@ namespace Base
             return null;
         }
 
-
         public static Vector3 GetHitPosition(this Vector3 mainObj, Vector3 objectToPush, float yMinus, float force)
         {
             Vector3 _temp = mainObj;
@@ -66,7 +60,6 @@ namespace Base
         //    //Vector3[] realWorldPosition = cam.ViewportToWorldPoint(cameraPositions[i]);
         //    for (int i = 0; i < worldPositions.Length; i++)
         //    {
-
         //        worldPositions[i] = new Vector3(cam.ScreenToWorldPoint(cameraPositions[i]).x, y, cam.ScreenToWorldPoint(cameraPositions[i]).y);
         //        //worldPositions[i].y = y;
         //    }
@@ -85,10 +78,9 @@ namespace Base
             cameraPositions[2] = new Vector3(0, 0);
             cameraPositions[3] = new Vector3(1, 1);
             return cameraPositions;
-
         }
 
-        #endregion
+        #endregion Vector3 Extentions
 
         #region Math Extentions
 
@@ -102,6 +94,7 @@ namespace Base
         {
             return value * multiplier;
         }
+
         public static float Remap(this float value, float from1, float to1, float from2, float to2)
         {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
@@ -149,9 +142,10 @@ namespace Base
             return angle;
         }
 
-        #endregion
+        #endregion Math Extentions
 
         #region Adds Manager Extentions
+
         //Not tested to its fullest, needs more tests and development
         public static void ShowRewardedAdd(this M_AddManager _addsManager)
         {
@@ -173,9 +167,10 @@ namespace Base
             }
         }
 
-        #endregion
+        #endregion Adds Manager Extentions
 
         #region Recttransform Extentions
+
         //Use this to move Pesky uý objects
         public static void MoveUIObject(this RectTransform rectTransform, Vector2 vector2)
         {
@@ -183,8 +178,6 @@ namespace Base
             rectTransform.offsetMin = vector2;
         }
 
-        #endregion
-
-
+        #endregion Recttransform Extentions
     }
 }

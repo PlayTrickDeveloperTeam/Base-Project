@@ -11,9 +11,7 @@ namespace Sirenix.OdinInspector.Editor.Drawers
     using Sirenix.OdinInspector;
     using Sirenix.OdinInspector.Editor;
     using Sirenix.OdinInspector.Editor.ValueResolvers;
-    using Sirenix.Utilities;
     using Sirenix.Utilities.Editor;
-    using System.Reflection;
     using UnityEditor;
     using UnityEngine;
 
@@ -70,4 +68,5 @@ namespace Sirenix.OdinInspector.Editor.Drawers
         }
     }
 }
+
 #endif // UNITY_EDITOR && UNITY_2017_2_OR_NEWER

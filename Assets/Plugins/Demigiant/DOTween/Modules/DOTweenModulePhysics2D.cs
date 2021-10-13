@@ -2,7 +2,7 @@
 // Created: 2018/07/13
 
 #if true && (UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_5 || UNITY_2017_1_OR_NEWER) // MODULE_MARKER
-using System;
+
 using DG.Tweening.Core;
 using DG.Tweening.Plugins;
 using DG.Tweening.Plugins.Core.PathCore;
@@ -10,9 +10,10 @@ using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 #pragma warning disable 1591
+
 namespace DG.Tweening
 {
-	public static class DOTweenModulePhysics2D
+    public static class DOTweenModulePhysics2D
     {
         #region Shortcuts
 
@@ -87,8 +88,10 @@ namespace DG.Tweening
                     .SetOptions(AxisConstraint.X, snapping).SetEase(Ease.Linear)
                 ).Join(yTween)
                 .SetTarget(target).SetEase(DOTween.defaultEaseType);
-            yTween.OnUpdate(() => {
-                if (!offsetYSet) {
+            yTween.OnUpdate(() =>
+            {
+                if (!offsetYSet)
+                {
                     offsetYSet = true;
                     offsetY = s.isRelative ? endValue.y : endValue.y - startPosY;
                 }
@@ -127,6 +130,7 @@ namespace DG.Tweening
             t.plugOptions.mode = pathMode;
             return t;
         }
+
         /// <summary>Tweens a Rigidbody2D's localPosition through the given path waypoints, using the chosen path algorithm.
         /// Also stores the Rigidbody2D as the tween's target so it can be used for filtered operations
         /// <para>NOTE: to tween a Rigidbody2D correctly it should be set to kinematic at least while being tweened.</para>
@@ -157,6 +161,7 @@ namespace DG.Tweening
             t.plugOptions.useLocalPosition = true;
             return t;
         }
+
         // Used by path editor when creating the actual tween, so it can pass a pre-compiled path
         internal static TweenerCore<Vector3, Path, PathOptions> DOPath(
             this Rigidbody2D target, Path path, float duration, PathMode pathMode = PathMode.Full3D
@@ -169,6 +174,7 @@ namespace DG.Tweening
             t.plugOptions.mode = pathMode;
             return t;
         }
+
         internal static TweenerCore<Vector3, Path, PathOptions> DOLocalPath(
             this Rigidbody2D target, Path path, float duration, PathMode pathMode = PathMode.Full3D
         )
@@ -183,11 +189,12 @@ namespace DG.Tweening
             return t;
         }
 
-        #endregion
+        #endregion Special
 
-        #endregion
+        #endregion Rigidbody2D Shortcuts
 
-        #endregion
-	}
+        #endregion Shortcuts
+    }
 }
+
 #endif

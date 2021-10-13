@@ -1,20 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+
 namespace Base
 {
     public enum GameStates { Init, Start, Paused, Playing, End }
+
     public enum B_SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }
+
     public class B_GM_GameManager : MonoBehaviour
     {
         public static B_GM_GameManager instance;
         public GameStates CurrentGameState;
         public SaveData Save;
 
-        TextMeshProUGUI temp_showcase_index;
+        private TextMeshProUGUI temp_showcase_index;
 
         private void Awake()
         {
@@ -40,19 +39,17 @@ namespace Base
 
         #region Function Testing
 
-        void ChangeText(int t)
+        private void ChangeText(int t)
         {
             temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
         }
 
-        #endregion
-
+        #endregion Function Testing
 
         private void OnDestroy()
         {
             instance = null;
         }
-
     }
 
     public class SaveData
@@ -62,21 +59,25 @@ namespace Base
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.GameFinished.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.GameFinished.ToString(), value); }
         }
+
         public int PlayerLevel
         {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.PlayerLevel.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.PlayerLevel.ToString(), value); }
         }
+
         public int TutorialPlayed
         {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.TutorialPlayed.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.TutorialPlayed.ToString(), value); }
         }
+
         public int PreviewLevel
         {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.PreviewLevel.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.PreviewLevel.ToString(), value); }
         }
+
         //public int PlayerCoin
         //{
         //    get { return PlayerPrefs.GetInt(B_SE_DataTypes.PlayerCoin.ToString()); }
@@ -92,7 +93,7 @@ namespace Base
             //CheckExist(B_SE_DataTypes.PlayerCoin.ToString());
         }
 
-        void CheckExist(string name)
+        private void CheckExist(string name)
         {
             if (PlayerPrefs.HasKey(name)) return;
             PlayerPrefs.SetInt(name, 0);

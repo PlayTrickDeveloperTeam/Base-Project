@@ -1,233 +1,234 @@
 ﻿#if UNITY_EDITOR
-using UnityEngine;
-using UnityEditor;
+
 using System.Linq;
-using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 namespace Lean.Common
 {
-	/// <summary>This class allows you to quickly make custom inspectors with common features.</summary>
-	public class LeanInspector<T> : Editor
-		where T : Object
-	{
-		protected T tgt;
+    /// <summary>This class allows you to quickly make custom inspectors with common features.</summary>
+    public class LeanInspector<T> : Editor
+        where T : Object
+    {
+        protected T tgt;
 
-		protected T[] tgts;
+        protected T[] tgts;
 
-		private static readonly string[] propertyToExclude = new string[] { "m_Script" };
+        private static readonly string[] propertyToExclude = new string[] { "m_Script" };
 
-		private static GUIContent customContent = new GUIContent();
-		
-		private static GUIStyle expandStyle;
+        private static GUIContent customContent = new GUIContent();
 
-		public static void BeginError(bool error)
-		{
-			var rect = EditorGUILayout.BeginVertical(GUIStyle.none);
+        private static GUIStyle expandStyle;
 
-			EditorGUI.DrawRect(rect, error == true ? Color.red : Color.clear);
-		}
+        public static void BeginError(bool error)
+        {
+            var rect = EditorGUILayout.BeginVertical(GUIStyle.none);
 
-		public static void EndError()
-		{
-			EditorGUILayout.EndVertical();
-		}
+            EditorGUI.DrawRect(rect, error == true ? Color.red : Color.clear);
+        }
 
-		public static Rect Reserve()
-		{
-			var rect = EditorGUILayout.BeginVertical();
-			EditorGUILayout.LabelField(GUIContent.none);
-			EditorGUILayout.EndVertical();
+        public static void EndError()
+        {
+            EditorGUILayout.EndVertical();
+        }
 
-			return rect;
-		}
+        public static Rect Reserve()
+        {
+            var rect = EditorGUILayout.BeginVertical();
+            EditorGUILayout.LabelField(GUIContent.none);
+            EditorGUILayout.EndVertical();
 
-		public override void OnInspectorGUI()
-		{
-			tgt  = (T)target;
-			tgts = targets.Select(t => (T)t).ToArray();
+            return rect;
+        }
 
-			EditorGUI.BeginChangeCheck();
-			{
-				serializedObject.Update();
+        public override void OnInspectorGUI()
+        {
+            tgt = (T)target;
+            tgts = targets.Select(t => (T)t).ToArray();
 
-				EditorGUILayout.Separator();
+            EditorGUI.BeginChangeCheck();
+            {
+                serializedObject.Update();
 
-				DrawInspector();
+                EditorGUILayout.Separator();
 
-				EditorGUILayout.Separator();
+                DrawInspector();
 
-				serializedObject.ApplyModifiedProperties();
-			}
-			if (EditorGUI.EndChangeCheck() == true)
-			{
-				GUI.changed = true; Repaint();
+                EditorGUILayout.Separator();
 
-				//Dirty();
-			}
-		}
+                serializedObject.ApplyModifiedProperties();
+            }
+            if (EditorGUI.EndChangeCheck() == true)
+            {
+                GUI.changed = true; Repaint();
 
-		public virtual void OnSceneGUI()
-		{
-			tgt = (T)target;
+                //Dirty();
+            }
+        }
 
-			DrawScene();
-		}
+        public virtual void OnSceneGUI()
+        {
+            tgt = (T)target;
 
-		protected void Each(System.Action<T> update, bool dirty = true)
-		{
-			if (dirty == true)
-			{
-				Undo.RecordObjects(tgts, "Inspector");
-			}
+            DrawScene();
+        }
 
-			foreach (var t in tgts)
-			{
-				update(t);
-			}
+        protected void Each(System.Action<T> update, bool dirty = true)
+        {
+            if (dirty == true)
+            {
+                Undo.RecordObjects(tgts, "Inspector");
+            }
 
-			if (dirty == true)
-			{
-				Dirty();
-			}
-		}
+            foreach (var t in tgts)
+            {
+                update(t);
+            }
 
-		protected bool Any(System.Func<T, bool> check)
-		{
-			foreach (var t in tgts)
-			{
-				if (check(t) == true)
-				{
-					return true;
-				}
-			}
+            if (dirty == true)
+            {
+                Dirty();
+            }
+        }
 
-			return false;
-		}
+        protected bool Any(System.Func<T, bool> check)
+        {
+            foreach (var t in tgts)
+            {
+                if (check(t) == true)
+                {
+                    return true;
+                }
+            }
 
-		protected bool All(System.Func<T, bool> check)
-		{
-			foreach (var t in tgts)
-			{
-				if (check(t) == false)
-				{
-					return false;
-				}
-			}
+            return false;
+        }
 
-			return true;
-		}
+        protected bool All(System.Func<T, bool> check)
+        {
+            foreach (var t in tgts)
+            {
+                if (check(t) == false)
+                {
+                    return false;
+                }
+            }
 
-		public static void DrawExpand(ref bool expand, Rect rect)
-		{
-			if (expandStyle == null)
-			{
-				expandStyle = new GUIStyle(EditorStyles.miniLabel); expandStyle.alignment = TextAnchor.MiddleRight;
-			}
+            return true;
+        }
 
-			if (EditorGUI.DropdownButton(new Rect(rect.position + Vector2.left * 15, new Vector2(15.0f, rect.height)), new GUIContent(expand ? "-" : "+"), FocusType.Keyboard, expandStyle) == true)
-			{
-				expand = !expand;
-			}
-		}
+        public static void DrawExpand(ref bool expand, Rect rect)
+        {
+            if (expandStyle == null)
+            {
+                expandStyle = new GUIStyle(EditorStyles.miniLabel); expandStyle.alignment = TextAnchor.MiddleRight;
+            }
 
-		protected bool DrawExpand(ref bool expand, string propertyPath, string overrideTooltip = null, string overrideText = null)
-		{
-			var rect     = Reserve();
-			var property = serializedObject.FindProperty(propertyPath);
+            if (EditorGUI.DropdownButton(new Rect(rect.position + Vector2.left * 15, new Vector2(15.0f, rect.height)), new GUIContent(expand ? "-" : "+"), FocusType.Keyboard, expandStyle) == true)
+            {
+                expand = !expand;
+            }
+        }
 
-			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
-			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
+        protected bool DrawExpand(ref bool expand, string propertyPath, string overrideTooltip = null, string overrideText = null)
+        {
+            var rect = Reserve();
+            var property = serializedObject.FindProperty(propertyPath);
 
-			DrawExpand(ref expand, rect);
+            customContent.text = string.IsNullOrEmpty(overrideText) == false ? overrideText : property.displayName;
+            customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
 
-			EditorGUI.BeginChangeCheck();
+            DrawExpand(ref expand, rect);
 
-			EditorGUI.PropertyField(rect, property, customContent, true);
+            EditorGUI.BeginChangeCheck();
 
-			var changed = EditorGUI.EndChangeCheck();
+            EditorGUI.PropertyField(rect, property, customContent, true);
 
-			return changed;
-		}
+            var changed = EditorGUI.EndChangeCheck();
 
-		protected bool DrawMinMax(string propertyPath, float min, float max, string overrideTooltip = null, string overrideText = null)
-		{
-			var property = serializedObject.FindProperty(propertyPath);
-			var value    = property.vector2Value;
+            return changed;
+        }
 
-			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
-			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
+        protected bool DrawMinMax(string propertyPath, float min, float max, string overrideTooltip = null, string overrideText = null)
+        {
+            var property = serializedObject.FindProperty(propertyPath);
+            var value = property.vector2Value;
 
-			EditorGUI.BeginChangeCheck();
+            customContent.text = string.IsNullOrEmpty(overrideText) == false ? overrideText : property.displayName;
+            customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
 
-			EditorGUILayout.MinMaxSlider(customContent, ref value.x, ref value.y, min, max);
+            EditorGUI.BeginChangeCheck();
 
-			if (EditorGUI.EndChangeCheck() == true)
-			{
-				property.vector2Value = value;
+            EditorGUILayout.MinMaxSlider(customContent, ref value.x, ref value.y, min, max);
 
-				return true;
-			}
+            if (EditorGUI.EndChangeCheck() == true)
+            {
+                property.vector2Value = value;
 
-			return false;
-		}
+                return true;
+            }
 
-		protected bool DrawEulerAngles(string propertyPath, string overrideTooltip = null, string overrideText = null)
-		{
-			var property = serializedObject.FindProperty(propertyPath);
-			var mixed    = EditorGUI.showMixedValue;
+            return false;
+        }
 
-			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
-			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
+        protected bool DrawEulerAngles(string propertyPath, string overrideTooltip = null, string overrideText = null)
+        {
+            var property = serializedObject.FindProperty(propertyPath);
+            var mixed = EditorGUI.showMixedValue;
 
-			EditorGUI.BeginChangeCheck();
+            customContent.text = string.IsNullOrEmpty(overrideText) == false ? overrideText : property.displayName;
+            customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
 
-			EditorGUI.showMixedValue = property.hasMultipleDifferentValues;
+            EditorGUI.BeginChangeCheck();
 
-			var oldEulerAngles = property.quaternionValue.eulerAngles;
-			var newEulerAngles = EditorGUILayout.Vector3Field(customContent, oldEulerAngles);
+            EditorGUI.showMixedValue = property.hasMultipleDifferentValues;
 
-			if (oldEulerAngles != newEulerAngles)
-			{
-				property.quaternionValue = Quaternion.Euler(newEulerAngles);
-			}
+            var oldEulerAngles = property.quaternionValue.eulerAngles;
+            var newEulerAngles = EditorGUILayout.Vector3Field(customContent, oldEulerAngles);
 
-			EditorGUI.showMixedValue = mixed;
+            if (oldEulerAngles != newEulerAngles)
+            {
+                property.quaternionValue = Quaternion.Euler(newEulerAngles);
+            }
 
-			return EditorGUI.EndChangeCheck();
-		}
+            EditorGUI.showMixedValue = mixed;
 
-		protected bool Draw(string propertyPath, string overrideTooltip = null, string overrideText = null)
-		{
-			var property = serializedObject.FindProperty(propertyPath);
+            return EditorGUI.EndChangeCheck();
+        }
 
-			customContent.text    = string.IsNullOrEmpty(overrideText   ) == false ? overrideText    : property.displayName;
-			customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
+        protected bool Draw(string propertyPath, string overrideTooltip = null, string overrideText = null)
+        {
+            var property = serializedObject.FindProperty(propertyPath);
 
-			EditorGUI.BeginChangeCheck();
+            customContent.text = string.IsNullOrEmpty(overrideText) == false ? overrideText : property.displayName;
+            customContent.tooltip = string.IsNullOrEmpty(overrideTooltip) == false ? overrideTooltip : property.tooltip;
 
-			EditorGUILayout.PropertyField(property, customContent, true);
+            EditorGUI.BeginChangeCheck();
 
-			return EditorGUI.EndChangeCheck();
-		}
+            EditorGUILayout.PropertyField(property, customContent, true);
 
-		protected virtual void DrawInspector()
-		{
-			DrawPropertiesExcluding(serializedObject, propertyToExclude);
-		}
+            return EditorGUI.EndChangeCheck();
+        }
 
-		protected virtual void DrawScene()
-		{
-		}
+        protected virtual void DrawInspector()
+        {
+            DrawPropertiesExcluding(serializedObject, propertyToExclude);
+        }
 
-		protected void Dirty()
-		{
-			for (var i = targets.Length - 1; i >= 0; i--)
-			{
-				EditorUtility.SetDirty(targets[i]);
-			}
+        protected virtual void DrawScene()
+        {
+        }
 
-			serializedObject.Update();
-		}
-	}
+        protected void Dirty()
+        {
+            for (var i = targets.Length - 1; i >= 0; i--)
+            {
+                EditorUtility.SetDirty(targets[i]);
+            }
+
+            serializedObject.Update();
+        }
+    }
 }
+
 #endif

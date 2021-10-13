@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-using System.IO;
 using System;
-using UnityEditor;
-using UnityEngine.Advertisements;
+using UnityEngine;
 
 namespace Base
 {
     public static class B_Extention_Unity
     {
-
         #region Transform Extentions
 
         public static void ResizeObject(this Transform objToEnlarge, float Size)
@@ -20,10 +12,10 @@ namespace Base
             objToEnlarge.localScale = new Vector3(Size, Size, Size);
         }
 
-
-        #endregion
+        #endregion Transform Extentions
 
         #region Singleton Extentions
+
         //Doesn't work, needs more testing and development
         //public static bool SetSingleton(this MonoBehaviour main, MonoBehaviour instance)
         //{
@@ -32,7 +24,7 @@ namespace Base
         //    return true;
         //}
 
-        #endregion
+        #endregion Singleton Extentions
 
         #region String Extentions
 
@@ -66,6 +58,6 @@ namespace Base
             return true;
         }
 
-        #endregion
+        #endregion String Extentions
     }
 }

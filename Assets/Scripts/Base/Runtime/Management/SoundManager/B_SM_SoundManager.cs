@@ -1,9 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using System;
-using System.Linq;
 using UnityEngine.UI;
 
 namespace Base
@@ -18,13 +16,14 @@ namespace Base
         public SoundSettings SoundSettings = new SoundSettings();
         [HideInInspector] public float MusicVolume;
         [HideInInspector] public float VFXVolume;
-        Coroutine PlayLoopRoutine;
+        private Coroutine PlayLoopRoutine;
 
         private void Awake()
         {
             if (instance == null) instance = this;
             else Destroy(this.gameObject);
         }
+
         public void PlaySound(string name)
         {
             SoundHolder sound = Array.Find(Sounds, sound => sound.Name == name);
@@ -58,7 +57,7 @@ namespace Base
             PlayLoopRoutine = StartCoroutine(SoundArrayLoop(sound));
         }
 
-        IEnumerator SoundArrayLoop(SoundHolder sound)
+        private IEnumerator SoundArrayLoop(SoundHolder sound)
         {
             for (int i = 0; i < sound.AudioSources.Count; i++)
             {
@@ -68,7 +67,6 @@ namespace Base
             PlayOnArray(sound.Name);
             yield return null;
         }
-
 
         public bool SoundManagerStrapping()
         {
@@ -100,7 +98,7 @@ namespace Base
             return true;
         }
 
-        void OnDisable() => instance = null;
+        private void OnDisable() => instance = null;
     }
 
     [System.Serializable]
@@ -109,19 +107,21 @@ namespace Base
         public AudioClip AudioClip;
         public AudioClip[] AudioClips;
         public string Name;
+
         [Range(0f, 1f)]
         public float Volume = .2f;
+
         [Range(.3f, 1f)]
         public float Pitch;
 
         [HideInInspector] public AudioSource AudioSource;
         [HideInInspector] public List<AudioSource> AudioSources = new List<AudioSource>();
-        bool IsArray()
+
+        private bool IsArray()
         {
             if (AudioClips.Length > 0) { AudioClip = null; return false; }
             return true;
         }
-
     }
 
     [System.Serializable]
@@ -132,30 +132,24 @@ namespace Base
         public Slider VFXSlider;
         public Toggle VFXToggle;
 
-
         public void TGLOnMusicToggle(bool MusicIsOn)
         {
-
         }
 
         public void TGLOnVFXToggle(bool VFXIsOn)
         {
-
         }
 
         public void SLDOnMusicSliderChange(float Volume)
         {
             if (!MusicToggle.isOn) return;
-
         }
 
         public void SLDOnVFXSliderChange(float Volume)
         {
             if (!VFXToggle.isOn) return;
-
         }
     }
-
 
     //public class DONTFORGET
     //{

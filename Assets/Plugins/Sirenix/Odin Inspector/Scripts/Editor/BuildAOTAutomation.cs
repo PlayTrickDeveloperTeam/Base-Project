@@ -12,7 +12,6 @@ namespace Sirenix.Serialization.Internal
     using UnityEditor;
     using UnityEditor.Build;
     using System.IO;
-    using System;
 
 #if UNITY_2018_1_OR_NEWER
 
@@ -21,6 +20,7 @@ namespace Sirenix.Serialization.Internal
 #endif
 
 #if UNITY_2018_1_OR_NEWER
+
     public class PreBuildAOTAutomation : IPreprocessBuildWithReport
 #else
     public class PreBuildAOTAutomation : IPreprocessBuild
@@ -48,6 +48,7 @@ namespace Sirenix.Serialization.Internal
     }
 
 #if UNITY_2018_1_OR_NEWER
+
     public class PostBuildAOTAutomation : IPostprocessBuildWithReport
 #else
     public class PostBuildAOTAutomation : IPostprocessBuild

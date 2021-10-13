@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Base
 {
     public class Example_Spawner : MonoBehaviour
     {
-        Vector3 cubeSpawnPos = Vector3.zero;
+        private Vector3 cubeSpawnPos = Vector3.zero;
 
         private void Awake()
         {
@@ -21,6 +20,5 @@ namespace Base
                 B_VFM_EffectsManager.instance.SpawnObjFromPool("ExampleTakTak", _spawnPos);
             }
         }
-
     }
 }

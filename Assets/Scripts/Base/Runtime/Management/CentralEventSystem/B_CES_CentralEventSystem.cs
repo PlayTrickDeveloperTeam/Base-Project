@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Base
 {
@@ -13,24 +11,21 @@ namespace Base
         public static B_CES_Events OnBeforeLevelLoaded;
         public static B_CES_Events OnAfterLevelLoaded;
         public static B_CES_Events OnLevelActivation;
-        public static B_CES_Events OnLevelDisable;
 
-        public static B_CES_Events OnLevelEnd;
+        public static B_CES_Events OnBeforeLevelEnd;
         public static B_CES_Events OnBeforeLevelDisableNegative;
         public static B_CES_Events OnBeforeLevelDisablePositive;
         public static B_CES_Events OnAfterLevelDisableNegative;
         public static B_CES_Events OnAfterLevelDisablePositive;
-
+        public static B_CES_Events OnAfterLevelEnd;
 
         public static B_CES_Events BTN_OnStartPressed;
         public static B_CES_Events BTN_OnPausePressed;
-        public static B_CES_Events BTN_OnEndPressed;
         public static B_CES_Events BTN_OnMenuPressed;
         public static B_CES_Events BTN_OnRestartPressed;
+        public static B_CES_Events BTN_OnEndGamePressed;
 
-        public static B_CES_Events OnLevelEnded;
-
-
+        public static B_CES_Events OnLevelDisable;
 
         public static void CentralEventSystemStrapping()
         {
@@ -39,27 +34,26 @@ namespace Base
             OnBeforeLevelLoaded = new B_CES_Events(EventsList);
             OnAfterLevelLoaded = new B_CES_Events(EventsList);
             OnLevelActivation = new B_CES_Events(EventsList);
-            OnLevelDisable = new B_CES_Events(EventsList);
 
-            OnLevelEnd = new B_CES_Events(EventsList);
+            BTN_OnStartPressed = new B_CES_Events(EventsList);
+            BTN_OnPausePressed = new B_CES_Events(EventsList);
+            BTN_OnMenuPressed = new B_CES_Events(EventsList);
+            BTN_OnRestartPressed = new B_CES_Events(EventsList);
+
+            OnBeforeLevelEnd = new B_CES_Events(EventsList);
             OnBeforeLevelDisableNegative = new B_CES_Events(EventsList);
             OnBeforeLevelDisablePositive = new B_CES_Events(EventsList);
             OnAfterLevelDisableNegative = new B_CES_Events(EventsList);
             OnAfterLevelDisablePositive = new B_CES_Events(EventsList);
+            OnAfterLevelEnd = new B_CES_Events(EventsList);
 
-            BTN_OnStartPressed = new B_CES_Events(EventsList);
-            BTN_OnPausePressed = new B_CES_Events(EventsList);
-            BTN_OnEndPressed = new B_CES_Events(EventsList);
-            BTN_OnMenuPressed = new B_CES_Events(EventsList);
-            BTN_OnRestartPressed = new B_CES_Events(EventsList);
-
-            OnLevelEnded = new B_CES_Events(EventsList);
+            OnLevelDisable = new B_CES_Events(EventsList);
+            BTN_OnEndGamePressed = new B_CES_Events(EventsList);
 
             BTN_OnStartPressed = new B_CES_Events(EventsList);
 
             OnLevelDisable.AddFunction(DeactiveEvents, true);
         }
-
 
         public static void DeactiveEvents()
         {
@@ -90,7 +84,6 @@ namespace Base
         {
             this.AnyAction += actionToAdd;
             this.SubscribedFunctions.Add(actionToAdd, isConstantEvent);
-
         }
 
         public void DeleteFunction(Action actionToRemove)
@@ -110,5 +103,4 @@ namespace Base
             this.SubscribedFunctions = this.SubscribedFunctions.Where(t => t.Value == true).ToDictionary(d => d.Key, d => d.Value);
         }
     }
-
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Herkdess.Tools.General;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Base
@@ -8,6 +6,7 @@ namespace Base
     public class Example_SpawnedCube : B_OPS_PooledObjectBase
     {
         public UnityEvent OnFirstSpawnEvent;
+
         public override void OnFirstSpawn()
         {
             OnFirstSpawnEvent?.Invoke();
@@ -25,11 +24,10 @@ namespace Base
             base.OnRespawn();
         }
 
-        void ChangeColor()
+        private void ChangeColor()
         {
             Material mat = transform.GetComponent<MeshRenderer>().material;
             mat.color = UnityEngine.Random.ColorHSV();
         }
-
     }
 }

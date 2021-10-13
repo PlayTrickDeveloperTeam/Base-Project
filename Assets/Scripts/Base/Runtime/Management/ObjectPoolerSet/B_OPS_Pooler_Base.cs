@@ -1,12 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Linq;
-using Herkdess.Tools.General.Debugging;
+
 #if UNITY_EDITOR
+
 using Sirenix.OdinInspector;
+
 #endif
+
 namespace Base
 {
     public abstract class B_OPS_Pooler_Base : MonoBehaviour
@@ -16,17 +17,22 @@ namespace Base
         {
             public string PoolName;
 #if UNITY_EDITOR
+
             [AssetsOnly]
 #endif
             public GameObject ObjectPrefab;
+
             public int PrewarmCount;
         }
 
         public List<ObjectsToPool> PoolsList;
         public Dictionary<string, Queue<GameObject>> PoolsDictionary;
+
         //Distance from spawn içerisine bir sayý girilmesi lazým
         private float distanceFromSpawn, spawnOffset;
+
         private Vector3 firstSpawnPoint = new Vector3(8000, 7000, 9000);
+
         public void InitiatePooller()
         {
             PoolsDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -87,7 +93,7 @@ namespace Base
             PoolsDictionary.Add(newPool.PoolName, objPool);
         }
 
-        void ObjectSpawnHelper(GameObject obj)
+        private void ObjectSpawnHelper(GameObject obj)
         {
             obj.SetActive(true);
             B_OPS_IPooledObject pooledObj = obj.GetComponent<B_OPS_IPooledObject>();
@@ -153,6 +159,5 @@ namespace Base
         {
             return PoolsList.Find(t => t.PoolName == poolName);
         }
-
     }
 }

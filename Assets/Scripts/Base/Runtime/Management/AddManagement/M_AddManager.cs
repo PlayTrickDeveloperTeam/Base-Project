@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
@@ -9,8 +7,8 @@ namespace Base
     {
 #if UNITY_IOS
         string gameId = "4131404";
-#else 
-        string gameId = "4131405";
+#else
+        private string gameId = "4131405";
 #endif
 
         public M_AddManager()
@@ -21,7 +19,6 @@ namespace Base
 
         public void OnUnityAdsDidError(string message)
         {
-
         }
 
         public bool AddsReady()
@@ -49,12 +46,10 @@ namespace Base
 
         public void OnUnityAdsDidStart(string placementId)
         {
-
         }
 
         public void OnUnityAdsReady(string placementId)
         {
-
         }
     }
 }

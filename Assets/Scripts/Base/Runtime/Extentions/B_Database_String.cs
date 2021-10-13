@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Base
 {
     public static class B_Database_String
@@ -10,13 +6,13 @@ namespace Base
 
         public const string Save_Int_FirstTime = "FirstTime";
 
-        #endregion
+        #endregion PlayerPrefs
 
         #region Debug Manager
 
         public const string Text_Object_Debug = "DebugTextObject";
 
-        #endregion
+        #endregion Debug Manager
 
         #region Menu Manager
 
@@ -29,7 +25,6 @@ namespace Base
         public const string BG_Ending_Fail = "bg_ending_fail";
         public const string BG_Ending_Success = "bg_ending_success";
 
-
         public const string BTN_M_Start = "btn_m_start";
         public const string BTN_M_Settings = "btn_m_settings";
         public const string BTN_IG_Restart = "btn_ig_restart";
@@ -39,17 +34,19 @@ namespace Base
         public const string BTN_IG_ClaimReward = "btn_ig_claimreward";
         public const string BTN_IG_End = "btn_ig_end";
 
-        #endregion
+        #endregion Menu Manager
 
         #region Level Manager
+
         //Resource management system needs a lot more reworks
-        //Add necesery strings 
+        //Add necesery strings
         public const string Path_Res_Levels = "Levels";
+
         public const string Path_Res_MainLevels = Path_Res_Levels + "/MainLevels/";
         public const string Path_Res_TutorialLevels = Path_Res_Levels + "/TutorialLevels/";
 
         public const string Path_Res_ScriptableObjects = "";
 
-        #endregion
+        #endregion Level Manager
     }
 }

@@ -1,9 +1,8 @@
 ﻿// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2015/03/27 19:02
-// 
+//
 // License Copyright (c) Daniele Giardini.
 // This work is subject to the terms at http://dotween.demigiant.com/license.php
-
 
 #if false // MODULE_MARKER
 using System;
@@ -30,7 +29,7 @@ namespace DG.Tweening
     /// </summary>
     public static class ShortcutExtensionsTMPText
     {
-        #region Colors
+#region Colors
 
         /// <summary>Tweens a TextMeshPro's color to the given value.
         /// Also stores the TextMeshPro as the tween's target so it can be used for filtered operations</summary>
@@ -95,9 +94,9 @@ namespace DG.Tweening
             return t;
         }
 
-        #endregion
+#endregion Colors
 
-        #region Other
+#region Other
 
         /// <summary>Tweens a TextMeshPro's scale to the given value (using correct uniform scale as TMP requires).
         /// Also stores the TextMeshPro as the tween's target so it can be used for filtered operations</summary>
@@ -171,10 +170,10 @@ namespace DG.Tweening
             return t;
         }
 
-        #endregion
+#endregion Other
     }
 
-    #region DOTweenTMPAnimator
+#region DOTweenTMPAnimator
 
     // █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
     // ███ CLASS ███████████████████████████████████████████████████████████████████████████████████████████████████████████
@@ -344,7 +343,7 @@ namespace DG.Tweening
             return true;
         }
 
-        #region Word Setters
+#region Word Setters
 
         /// <summary>
         /// Skews a span of characters uniformly (like normal skew works in graphic applications)
@@ -420,9 +419,9 @@ namespace DG.Tweening
             }
         }
 
-        #endregion
+#endregion Word Setters
 
-        #region Char Getters
+#region Char Getters
 
         /// <summary>
         /// Returns the current color of the given character, if it exists and is visible.
@@ -464,9 +463,9 @@ namespace DG.Tweening
             return _charTransforms[charIndex].scale;
         }
 
-        #endregion
+#endregion Char Getters
 
-        #region Char Setters
+#region Char Setters
 
         /// <summary>
         /// Immediately sets the color of the given character.
@@ -591,9 +590,9 @@ namespace DG.Tweening
             _charTransforms[charIndex] = c;
         }
 
-        #endregion
+#endregion Char Setters
 
-        #region Char Tweens
+#region Char Tweens
 
         /// <summary>Tweens a character's alpha to the given value and returns the <see cref="Tween"/>.
         /// Will return NULL if the <see cref="charIndex"/> is invalid or the character isn't visible.</summary>
@@ -763,7 +762,7 @@ namespace DG.Tweening
         /// <param name="duration">The duration of the tween</param>
         /// <param name="strength">The shake strength</param>
         /// <param name="vibrato">Indicates how much will the shake vibrate</param>
-        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware).
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
         public Tweener DOShakeCharOffset(int charIndex, float duration, float strength, int vibrato = 10, float randomness = 90, bool fadeOut = true)
@@ -775,7 +774,7 @@ namespace DG.Tweening
         /// <param name="duration">The duration of the tween</param>
         /// <param name="strength">The shake strength</param>
         /// <param name="vibrato">Indicates how much will the shake vibrate</param>
-        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware).
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
         public Tweener DOShakeCharOffset(int charIndex, float duration, Vector3 strength, int vibrato = 10, float randomness = 90, bool fadeOut = true)
@@ -797,7 +796,7 @@ namespace DG.Tweening
         /// <param name="duration">The duration of the tween</param>
         /// <param name="strength">The shake strength</param>
         /// <param name="vibrato">Indicates how much will the shake vibrate</param>
-        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware).
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
         public Tweener DOShakeCharRotation(int charIndex, float duration, Vector3 strength, int vibrato = 10, float randomness = 90, bool fadeOut = true)
@@ -819,7 +818,7 @@ namespace DG.Tweening
         /// <param name="duration">The duration of the tween</param>
         /// <param name="strength">The shake strength</param>
         /// <param name="vibrato">Indicates how much will the shake vibrate</param>
-        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware).
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
         public Tweener DOShakeCharScale(int charIndex, float duration, float strength, int vibrato = 10, float randomness = 90, bool fadeOut = true)
@@ -831,7 +830,7 @@ namespace DG.Tweening
         /// <param name="duration">The duration of the tween</param>
         /// <param name="strength">The shake strength</param>
         /// <param name="vibrato">Indicates how much will the shake vibrate</param>
-        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+        /// <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware).
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
         public Tweener DOShakeCharScale(int charIndex, float duration, Vector3 strength, int vibrato = 10, float randomness = 90, bool fadeOut = true)
@@ -848,7 +847,7 @@ namespace DG.Tweening
             }, duration, strength, vibrato, randomness, fadeOut);
         }
 
-        #endregion
+#endregion Char Tweens
 
         // ███ INTERNAL CLASSES ████████████████████████████████████████████████████████████████████████████████████████████████
 
@@ -1032,6 +1031,6 @@ namespace DG.Tweening
         }
     }
 
-    #endregion
+#endregion DOTweenTMPAnimator
 }
 #endif

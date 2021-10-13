@@ -1,27 +1,32 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+
 namespace Base
 {
     public class B_CR_CoroutineQueue
     {
-        MonoBehaviour m_Owner = null;
-        Coroutine m_InternalCoroutine = null;
-        Queue<IEnumerator> actions = new Queue<IEnumerator>();
+        private MonoBehaviour m_Owner = null;
+        private Coroutine m_InternalCoroutine = null;
+        private Queue<IEnumerator> actions = new Queue<IEnumerator>();
+
         public B_CR_CoroutineQueue(MonoBehaviour aCoroutineOwner)
         {
             m_Owner = aCoroutineOwner;
         }
+
         public void StartLoop()
         {
             m_InternalCoroutine = m_Owner.StartCoroutine(Process());
         }
+
         public void StopLoop()
         {
             m_Owner.StopCoroutine(m_InternalCoroutine);
             m_InternalCoroutine = null;
         }
+
         public void EnqueueAction(IEnumerator aAction)
         {
             actions.Enqueue(aAction);
@@ -67,7 +72,7 @@ namespace Base
             m_Owner.StartCoroutine(Ienum_DelayStartIenum(coroutine, enumator, waitTime));
         }
 
-        IEnumerator Ienum_DelayStartIenum(Coroutine coroutine, IEnumerator enumerator, float waitTime)
+        private IEnumerator Ienum_DelayStartIenum(Coroutine coroutine, IEnumerator enumerator, float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
             if (coroutine == null)
@@ -87,7 +92,7 @@ namespace Base
             m_Owner.StartCoroutine(Ienum_DelayStartFunction(method, waitTime));
         }
 
-        IEnumerator Ienum_DelayStartFunction(Action method, float waitTime)
+        private IEnumerator Ienum_DelayStartFunction(Action method, float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
             method?.Invoke();

@@ -8,9 +8,9 @@
 
 namespace Sirenix.OdinInspector.Editor.Drawers
 {
-    using Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
+    using Utilities.Editor;
 
     /// <summary>
     /// Vector2Int proprety drawer.
@@ -37,7 +37,6 @@ namespace Sirenix.OdinInspector.Editor.Drawers
                 this.ValueEntry.Property.Children[0].Draw(showLabels ? GUIHelper.TempContent("X") : null);
                 this.ValueEntry.Property.Children[1].Draw(showLabels ? GUIHelper.TempContent("Y") : null);
                 GUIHelper.PopLabelWidth();
-
             }
             SirenixEditorGUI.EndHorizontalPropertyLayout();
         }
@@ -100,7 +99,6 @@ namespace Sirenix.OdinInspector.Editor.Drawers
                 this.ValueEntry.Property.Children[1].Draw(showLabels ? GUIHelper.TempContent("Y") : null);
                 this.ValueEntry.Property.Children[2].Draw(showLabels ? GUIHelper.TempContent("Z") : null);
                 GUIHelper.PopLabelWidth();
-
             }
             SirenixEditorGUI.EndHorizontalPropertyLayout();
         }

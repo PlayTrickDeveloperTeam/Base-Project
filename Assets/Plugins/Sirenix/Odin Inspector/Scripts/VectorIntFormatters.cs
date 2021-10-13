@@ -8,6 +8,7 @@
 
 [assembly: Sirenix.Serialization.RegisterFormatter(typeof(Sirenix.Serialization.Vector2IntFormatter))]
 [assembly: Sirenix.Serialization.RegisterFormatter(typeof(Sirenix.Serialization.Vector3IntFormatter))]
+
 namespace Sirenix.Serialization
 {
     using UnityEngine;

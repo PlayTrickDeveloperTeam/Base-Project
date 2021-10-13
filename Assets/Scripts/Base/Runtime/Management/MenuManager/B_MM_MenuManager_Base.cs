@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
+using UnityEngine.UI;
 
 namespace Base
 {
@@ -31,8 +28,9 @@ namespace Base
         [HideInInspector] public Button Btn_Ig_ClaimReward;
         [HideInInspector] public Button Btn_Ig_End;
 
-        List<GameObject> allPanels;
-        List<GameObject> activatedPanels()
+        private List<GameObject> allPanels;
+
+        private List<GameObject> activatedPanels()
         {
             List<GameObject> _temp = new List<GameObject>();
             foreach (var item in allPanels)
@@ -43,7 +41,7 @@ namespace Base
             return _temp;
         }
 
-        List<GameObject> deactivatedPanels()
+        private List<GameObject> deactivatedPanels()
         {
             List<GameObject> _temp = new List<GameObject>();
             foreach (var item in allPanels)
@@ -96,7 +94,6 @@ namespace Base
             ActivatePanel(B_Database_String.Panel_Start);
         }
 
-
         public Button GetButton(string buttonName)
         {
             if (GameObject.Find(buttonName) == null) return null;
@@ -140,7 +137,7 @@ namespace Base
             StartCoroutine(Ienum_EndGameActivation(secondsToWait, success));
         }
 
-        IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success)
+        private IEnumerator Ienum_EndGameActivation(float secondsToWait, bool success)
         {
             yield return new WaitForSeconds(secondsToWait);
             Panel_Ending.SetActive(true);
@@ -151,6 +148,7 @@ namespace Base
                     BG_Ending_Success.SetActive(true);
                     B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
                     break;
+
                 case false:
                     BG_Ending_Success.SetActive(false);
                     BG_Ending_Fail.SetActive(true);
@@ -158,7 +156,6 @@ namespace Base
                     break;
             }
         }
-
 
         public void ActivatePanel(string panelName)
         {
@@ -171,7 +168,6 @@ namespace Base
             PanelDictionary[panelName].IsActive = false;
             PanelDictionary[panelName].Panel.SetActive(false);
         }
-
     }
 
     [System.Serializable]

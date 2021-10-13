@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Base
@@ -8,9 +6,9 @@ namespace Base
     {
         #region Properties
 
-        PlayerScoreframe ScoreFrame;
+        private PlayerScoreframe ScoreFrame;
 
-        #endregion
+        #endregion Properties
 
         #region Unity Functions
 
@@ -19,15 +17,14 @@ namespace Base
             PlayerSetup();
         }
 
-        #endregion
+        #endregion Unity Functions
 
         #region Spesific Functions
 
-        void PlayerSetup()
+        private void PlayerSetup()
         {
             B_MM_MenuManager_Project.instance.OnPickupTaken += OnPickupTaken;
             ScoreFrame = GetComponent<PlayerScoreframe>();
-
         }
 
         public void OnPickupTaken(float Value)
@@ -35,10 +32,6 @@ namespace Base
             ScoreFrame.OnPickupTaken(Value);
         }
 
-        #endregion
-
-        #region Generic Functions
-
-        #endregion
+        #endregion Spesific Functions
     }
 }

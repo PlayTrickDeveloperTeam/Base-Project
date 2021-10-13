@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Events;
-using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+﻿using System;
 
 namespace Base
 {
@@ -39,7 +33,7 @@ namespace Base
 
         #region Button Functions
 
-        void BTN_FUNC_Start()
+        private void BTN_FUNC_Start()
         {
             //B_LC_LevelManager.instance.CurrentLevelFunctions.OnLevelCommand();
             B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
@@ -50,7 +44,7 @@ namespace Base
             DeactivatePanel(B_Database_String.Panel_Start);
         }
 
-        void BTN_FUNC_Restart()
+        private void BTN_FUNC_Restart()
         {
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
@@ -58,22 +52,20 @@ namespace Base
             ActivatePanel(B_Database_String.Panel_Start);
         }
 
-        void BTN_FUNC_Endgame()
+        private void BTN_FUNC_Endgame()
         {
-            B_CES_CentralEventSystem.OnLevelEnded.InvokeEvent();
+            B_CES_CentralEventSystem.BTN_OnEndGamePressed.InvokeEvent();
             DeactivateAllPanels();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
             ActivatePanel(B_Database_String.Panel_Start);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 
-
-        #endregion
+        #endregion Button Functions
 
         private void OnDisable()
         {
             instance = null;
         }
     }
-
 }

@@ -56,13 +56,13 @@ namespace Sirenix.Utilities
     }
 
     //
-    // If you have a project where only some users have Odin, and you want to utilize the ODIN_INSPECTOR 
-    // define symbol. Then, in order to only define the symbol for those with Odin, you can delete this script, 
+    // If you have a project where only some users have Odin, and you want to utilize the ODIN_INSPECTOR
+    // define symbol. Then, in order to only define the symbol for those with Odin, you can delete this script,
     // which prevent ODIN_INSPECTOR from being added to the Unity's player settings.
-    // 
+    //
     // And instead automatically add the ODIN_INSPECTOR define to an mcs.rsp file if Odin exists using the script below.
     // You can then ignore the mcs.rsp file in source control.
-    // 
+    //
     // Remember to manually remove the ODIN_INSPECTOR define symbol in player settings after removing this script.
     //
     //    static class AddOdinInspectorDefineIfOdinExist

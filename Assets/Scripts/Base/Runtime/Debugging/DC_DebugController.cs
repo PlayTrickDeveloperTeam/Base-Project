@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
-using Base;
+
 namespace Herkdess.Tools.General.Debugging
 {
     public class DC_DebugController : MonoBehaviour
     {
         public static DC_DebugController instance;
-        Text DebugText;
-        int DebugCounter = 0;
+        private Text DebugText;
+        private int DebugCounter = 0;
+
         private void Awake()
         {
             if (instance == null) instance = this; else Destroy(this.gameObject);
@@ -19,7 +17,6 @@ namespace Herkdess.Tools.General.Debugging
         }
 
         private void OnDestroy() => instance = null;
-
 
         public void DebugTracker(int Count)
         {
@@ -33,6 +30,5 @@ namespace Herkdess.Tools.General.Debugging
             Debug.Log("Phase " + DebugCounter + " Has Finished");
             //DebugText.text = "Phase " + DebugCounter + " Has Finished";
         }
-
     }
 }

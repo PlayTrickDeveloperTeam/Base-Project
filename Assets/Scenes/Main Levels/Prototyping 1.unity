@@ -2340,7 +2340,7 @@ MonoBehaviour:
     VirtualCamera: {fileID: 168655950}
     DefaultAmp: {x: 0, y: 1}
     ResetOnLoad: 0
-    ResetOnlyLens: 1
+    ResetOnlyLens: 0
     VirtualCameraPerlinChannel: {fileID: 0}
   VirtualCamera2:
     VirtualCamera: {fileID: 1836883713}

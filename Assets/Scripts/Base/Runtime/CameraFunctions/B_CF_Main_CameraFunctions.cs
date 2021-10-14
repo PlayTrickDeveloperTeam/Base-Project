@@ -82,8 +82,11 @@ namespace Base
                 item.Value.VirtualCamera.Priority = 9;
 
             VirtualCameras[Camera].VirtualCamera.Priority = 15;
-            VirtualCameras[Camera].VirtualCamera.Follow = Target;
-            VirtualCameras[Camera].VirtualCamera.LookAt = Target;
+            if (Target)
+            {
+                VirtualCameras[Camera].VirtualCamera.Follow = Target;
+                VirtualCameras[Camera].VirtualCamera.LookAt = Target;
+            }
         }
 
         public void VirtualCameraShake(ActiveVirtualCameras Camera, float Amp, float TimeToShake)
@@ -93,8 +96,8 @@ namespace Base
 
         public void ChangeCameraFOW(ActiveVirtualCameras Camera, float To, float Speed)
         {
-            var cam = VirtualCameras[Camera].VirtualCamera;
-            B_CR_CoroutineRunner.instance.CQ.EnqueueAction(Ieum_ChangeCameraFOW(cam, To, Speed));
+            var Cam = VirtualCameras[Camera].VirtualCamera;
+            B_CR_CoroutineRunner.instance.CQ.EnqueueAction(Ieum_ChangeCameraFOW(Cam, To, Speed));
         }
 
         private void FlushData()
@@ -132,21 +135,6 @@ namespace Base
         }
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     [System.Serializable]
@@ -173,7 +161,7 @@ namespace Base
         private Quaternion OriginalRotation;
         private float OriginalFieldOfView;
 
-        private bool Locked;
+        private bool Locked = true;
 
         public void SetupVirtualCamera()
         {
@@ -192,6 +180,10 @@ namespace Base
                 VirtualCamera.transform.position = OriginalPosition;
                 VirtualCamera.transform.rotation = OriginalRotation;
                 VirtualCamera.m_Lens.FieldOfView = OriginalFieldOfView;
+                VirtualCamera.m_Lens = LensSettings;
+            }
+            else if (ResetOnlyLens)
+            {
                 VirtualCamera.m_Lens = LensSettings;
             }
         }

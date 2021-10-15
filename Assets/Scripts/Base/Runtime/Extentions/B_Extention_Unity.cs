@@ -58,6 +58,13 @@ namespace Base
             return true;
         }
 
+        public static float IsFloat(this string s)
+        {
+            if (s.IsAllDigits())
+                return float.Parse(s);
+            else return 0;
+        }
+
         #endregion String Extentions
     }
 }

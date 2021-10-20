@@ -2,7 +2,7 @@
 
 namespace Base
 {
-    public class PlayerScoreframe : MonoBehaviour
+    public class PlayerScoreframe : PlayerSubFrame
     {
         #region Properties
 
@@ -14,6 +14,7 @@ namespace Base
 
         private void Start()
         {
+            SetupSubFrame();
         }
 
         #endregion Unity Functions
@@ -22,12 +23,28 @@ namespace Base
 
         public void SetupScoreFrame()
         {
+            Parent.AddFramesToList(this);
         }
 
         public void OnPickupTaken(float value)
         {
+
+        }
+
+        public override void SetupSubFrame()
+        {
+            base.SetupSubFrame();
+            Parent.ScoreFrame = this;
         }
 
         #endregion Spesific Functions
+
+        #region Generic Functions
+
+        #endregion
+
+        #region IEnumerators
+
+        #endregion
     }
 }

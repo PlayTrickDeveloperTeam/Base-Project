@@ -1,12 +1,15 @@
+using DG.Tweening;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace Base
 {
+    [DefaultExecutionOrder(-10)]
     public class PlayerMainframe : MonoBehaviour
     {
         #region Properties
-
-        private PlayerScoreframe ScoreFrame;
 
         #endregion Properties
 
@@ -14,31 +17,55 @@ namespace Base
 
         private void Start()
         {
-            B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(PlayerSetup, false);
-            Lean.Touch.LeanTouch.OnFingerDown += ShakeTest;
+            PlayerSetup();
         }
 
         #endregion Unity Functions
 
-        #region Spesific Functions
+        #region Main Frame
+
+        #region Properties
+
+        private List<PlayerSubFrame> SubFrames;
+        [HideInInspector] public PlayerMovementFrame MovementFrame;
+        [HideInInspector] public PlayerScoreframe ScoreFrame;
+        [HideInInspector] public PlayerTriggerEvents TriggerEvents;
+        public bool SetupComplete;
+
+        #endregion Properties
 
         private void PlayerSetup()
         {
-            B_MM_MenuManager_Project.instance.OnPickupTaken += OnPickupTaken;
-            ScoreFrame = GetComponent<PlayerScoreframe>();
+            SubFrames = new List<PlayerSubFrame>();
+            B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(Go, false);
             B_CF_Main_CameraFunctions.instance.VirtualCameraSetAll(ActiveVirtualCameras.VirCam1, transform);
+            SetupComplete = true;
         }
 
-        void ShakeTest(Lean.Touch.LeanFinger finger)
+        private void Go()
         {
-            B_CF_Main_CameraFunctions.instance.VirtualCameraShake(ActiveVirtualCameras.VirCam1, 12, 3);
+            SubFrames.ForEach(t => t.Go());
         }
 
-        public void OnPickupTaken(float Value)
+        public void EndGameFunction()
         {
-            ScoreFrame.OnPickupTaken(Value);
+            SubFrames.ForEach(t => t.EndFunctions());
+            //B_MM_MenuManager_Project.instance.ActivateEndGame(3, false);
         }
+
+        public void AddFramesToList(PlayerSubFrame SubFrame)
+        {
+            SubFrames.Add(SubFrame);
+        }
+
+        #endregion Main Frame
+
+        #region Spesific Functions
 
         #endregion Spesific Functions
+
+        #region Generic Functions
+
+        #endregion Generic Functions
     }
 }

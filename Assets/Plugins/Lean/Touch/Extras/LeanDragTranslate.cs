@@ -119,7 +119,7 @@ namespace Lean.Touch
         private void TranslateUI(Vector2 screenDelta)
         {
             var camera = Camera;
-
+            if (!CanMove) return;
             if (camera == null)
             {
                 var canvas = transform.GetComponentInParent<Canvas>();
@@ -144,11 +144,14 @@ namespace Lean.Touch
                 transform.position = worldPoint;
             }
         }
-
+        public Vector2 MovementClamp;
+        public float MovementSpeed;
+        public bool CanMove;
         private void Translate(Vector2 screenDelta)
         {
             // Make sure the camera exists
             var camera = LeanHelper.GetCamera(Camera, gameObject);
+            if (!CanMove) return;
 
             if (camera != null)
             {
@@ -156,10 +159,11 @@ namespace Lean.Touch
                 var screenPoint = camera.WorldToScreenPoint(transform.position);
 
                 // Add the deltaPosition
-                screenPoint += (Vector3)screenDelta * Sensitivity;
+                screenPoint += (Vector3)screenDelta * (Sensitivity);
 
                 // Convert back to world space
-                transform.position = camera.ScreenToWorldPoint(screenPoint);
+                var pos = new Vector3(Mathf.Clamp(camera.ScreenToWorldPoint(screenPoint).x, MovementClamp.x, MovementClamp.y), transform.position.y, transform.position.z);
+                transform.position = pos;
             }
             else
             {

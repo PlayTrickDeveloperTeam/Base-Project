@@ -23,6 +23,7 @@ namespace Base
         [HideInInspector] public int PreviewLevelIndex;
 
         [HideInInspector] public Transform LevelHolder { get; private set; }
+        public static Transform ObjectSpawnParent;
 
         private int tutorialPlayed
         {
@@ -56,6 +57,9 @@ namespace Base
             PreviewLevelIndex = B_GM_GameManager.instance.Save.PreviewLevel;
 
             B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.AddFunction(SaveOnNextLevel, true);
+
+            ObjectSpawnParent = LevelHolder.GetChild(0);
+
 
             return true;
         }
@@ -173,6 +177,7 @@ namespace Base
         private void OnDestroy()
         {
             instance = null;
+            ObjectSpawnParent = null;
         }
     }
 }

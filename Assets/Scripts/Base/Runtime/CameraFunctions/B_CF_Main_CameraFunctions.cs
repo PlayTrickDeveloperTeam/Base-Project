@@ -16,16 +16,19 @@ namespace Base
 
         [FoldoutGroup("VirtualCameras")]
         public VirCam VirtualCamera1;
+
         [FoldoutGroup("VirtualCameras")]
         public VirCam VirtualCamera2;
+
         [FoldoutGroup("VirtualCameras")]
         public VirCam VirtualCamera3;
 
         private Dictionary<ActiveVirtualCameras, VirCam> VirtualCameras;
 
-        #endregion
+        #endregion Properties
 
         #region Unity Functions
+
         private void Awake()
         {
             if (instance == null) instance = this;
@@ -37,8 +40,7 @@ namespace Base
             instance = null;
         }
 
-
-        #endregion
+        #endregion Unity Functions
 
         #region Spesific Functions
 
@@ -53,7 +55,7 @@ namespace Base
             B_CES_CentralEventSystem.OnLevelDisable.AddFunction(FlushData, true);
         }
 
-        #endregion
+        #endregion Spesific Functions
 
         #region Generic Functions
 
@@ -105,9 +107,11 @@ namespace Base
             foreach (var item in VirtualCameras)
                 item.Value.FlushData();
         }
-        #endregion
+
+        #endregion Generic Functions
 
         #region IEnumerators
+
         private IEnumerator Ieum_ChangeCameraFOW(CinemachineVirtualCamera Camera, float To, float Speed)
         {
             while (Camera.m_Lens.FieldOfView != To)
@@ -133,8 +137,8 @@ namespace Base
             perlin.m_AmplitudeGain = VirtualCameras[Camera].DefaultAmp.x;
             perlin.m_FrequencyGain = VirtualCameras[Camera].DefaultAmp.y;
         }
-        #endregion
 
+        #endregion IEnumerators
     }
 
     [System.Serializable]

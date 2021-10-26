@@ -12,6 +12,7 @@ namespace Base
 {
     public abstract class B_OPS_Pooler_Base : MonoBehaviour
     {
+        public string PoolerName;
         [Serializable]
         public class ObjectsToPool
         {
@@ -24,7 +25,6 @@ namespace Base
 
             public int PrewarmCount;
         }
-
         public List<ObjectsToPool> PoolsList;
         public Dictionary<string, Queue<GameObject>> PoolsDictionary;
 
@@ -52,7 +52,18 @@ namespace Base
                 PoolsDictionary.Add(Pools.PoolName, objPool);
             }
         }
-
+#if UNITY_EDITOR
+        [Button("Save Enums")]
+        void OnObjectsPoolManipulated()
+        {
+            string[] Names = new string[PoolsList.Count];
+            for (int i = 0; i < PoolsList.Count; i++)
+            {
+                Names[i] = PoolsList[i].PoolName;
+            }
+            EnumCreator.CreateEnum(PoolerName, Names);
+        }
+#endif
         public void InitiatePooller(Transform parent)
         {
             PoolsDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -101,6 +112,7 @@ namespace Base
             {
                 pooledObj.OnFirstSpawn();
             }
+
             obj.SetActive(false);
         }
 
@@ -111,6 +123,23 @@ namespace Base
             GameObject objectToSpawn = PoolsDictionary[objectPoolName].Dequeue();
             objectToSpawn.transform.position = spawnPosition;
             PoolsDictionary[objectPoolName].Enqueue(objectToSpawn);
+            objectToSpawn.SetActive(true);
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
+            if (pulledObjectInterface != null)
+            {
+                pulledObjectInterface.OnObjectSpawn();
+            }
+            return objectToSpawn;
+        }
+
+        public GameObject SpawnObjFromPool(object obj, Vector3 spawnPosition)
+        {
+            //string PoolName = Enum.GetName(typeof(DemoPoolerTester), DemoPoolerTester.Lar);
+            if (!PoolsDictionary.ContainsKey(obj.ToString())) return null;
+
+            GameObject objectToSpawn = PoolsDictionary[obj.ToString()].Dequeue();
+            objectToSpawn.transform.position = spawnPosition;
+            PoolsDictionary[obj.ToString()].Enqueue(objectToSpawn);
             objectToSpawn.SetActive(true);
             B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
             if (pulledObjectInterface != null)
@@ -136,6 +165,23 @@ namespace Base
             }
             return objectToSpawn;
         }
+        public GameObject SpawnObjFromPool(object objectPoolName, Vector3 spawnPosition, Quaternion spawnRotation)
+        {
+            if (!PoolsDictionary.ContainsKey(objectPoolName.ToString())) return null;
+
+            GameObject objectToSpawn = PoolsDictionary[objectPoolName.ToString()].Dequeue();
+            objectToSpawn.transform.position = spawnPosition;
+            objectToSpawn.transform.rotation = spawnRotation;
+            PoolsDictionary[objectPoolName.ToString()].Enqueue(objectToSpawn);
+            objectToSpawn.SetActive(true);
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
+            if (pulledObjectInterface != null)
+            {
+                pulledObjectInterface.OnObjectSpawn();
+            }
+            return objectToSpawn;
+        }
+
 
         public GameObject SpawnObjFromPool(string objectPoolName, Vector3 spawnPosition, Vector3 spawnRotation, Transform spawnParent)
         {
@@ -155,9 +201,32 @@ namespace Base
             return objectToSpawn;
         }
 
+        public GameObject SpawnObjFromPool(object objectPoolName, Vector3 spawnPosition, Vector3 spawnRotation, Transform spawnParent)
+        {
+            if (!PoolsDictionary.ContainsKey(objectPoolName.ToString())) return null;
+
+            GameObject objectToSpawn = PoolsDictionary[objectPoolName.ToString()].Dequeue();
+            objectToSpawn.transform.position = spawnPosition;
+            objectToSpawn.transform.rotation = Quaternion.Euler(spawnRotation);
+            objectToSpawn.transform.SetParent(spawnParent);
+            PoolsDictionary[objectPoolName.ToString()].Enqueue(objectToSpawn);
+            objectToSpawn.SetActive(true);
+            B_OPS_IPooledObject pulledObjectInterface = objectToSpawn.GetComponent<B_OPS_IPooledObject>();
+            if (pulledObjectInterface != null)
+            {
+                pulledObjectInterface.OnObjectSpawn();
+            }
+            return objectToSpawn;
+        }
+
         public ObjectsToPool GetObjectPool(string poolName)
         {
             return PoolsList.Find(t => t.PoolName == poolName);
+        }
+
+        public ObjectsToPool GetObjectPool(object poolName)
+        {
+            return PoolsList.Find(t => t.PoolName == poolName.ToString());
         }
     }
 }

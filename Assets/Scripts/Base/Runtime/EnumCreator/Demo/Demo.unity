@@ -243,6 +243,9 @@ MonoBehaviour:
   - PoolName: Vagabon
     ObjectPrefab: {fileID: 1927972972101805399, guid: 87217021aedc8364496df3f4d1c3db5f, type: 3}
     PrewarmCount: 30
+  - PoolName: Dilaver
+    ObjectPrefab: {fileID: 6572684790105412896, guid: 58668e5d4b2d7c044ac056998d802589, type: 3}
+    PrewarmCount: 30
 --- !u!4 &860378608
 Transform:
   m_ObjectHideFlags: 0

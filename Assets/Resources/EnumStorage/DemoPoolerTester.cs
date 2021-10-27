@@ -1,1 +1,1 @@
-public enum DemoPoolerTester{ Lar, Vagabon}
+public enum DemoPoolerTester{ Lar, Vagabon, Dilaver}

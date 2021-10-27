@@ -10,7 +10,7 @@ namespace Base
 {
     public class PrototypingWindow : OdinMenuEditorWindow
     {
-        [MenuItem("Tools/Enum Editor/Enum Editor Window %F1")]
+        [MenuItem("Tools/Prototype Window/Prototype Window %F1")]
         private static void OpenWindow()
         {
             GetWindow<PrototypingWindow>().Show();

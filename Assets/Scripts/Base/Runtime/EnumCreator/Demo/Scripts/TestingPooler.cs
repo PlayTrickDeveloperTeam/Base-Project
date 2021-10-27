@@ -13,7 +13,7 @@ namespace Base
         {
             base.InitiatePooller();
             for (int i = 0; i < 10; i++)
-                SpawnObjFromPool(DemoPoolerTester.Lar, Vector3.zero);
+                SpawnObjFromPool(DemoPoolerTester.Dilaver, Vector3.zero);
         }
     }
 }

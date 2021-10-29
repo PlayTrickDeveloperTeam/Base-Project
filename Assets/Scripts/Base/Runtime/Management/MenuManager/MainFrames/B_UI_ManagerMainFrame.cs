@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
+using UnityEditor.SceneManagement;
 using UnityEditor;
 #endif
 using Random = UnityEngine.Random;
@@ -13,9 +14,27 @@ namespace Base.UI
 {
     public class B_UI_ManagerMainFrame : MonoBehaviour
     {
+        public static B_UI_ManagerMainFrame instance;
+        private async void Awake()
+        {
+            if (instance == null) instance = this; else Destroy(this.gameObject);
+            foreach (var item in Subframes)
+            {
+                await item.SetupFrame(this);
+            }
+        }
         [ShowIf("OnEditor")]
         [FoldoutGroup("Editor Functions")]
         [SerializeField] private List<B_UI_MenuSubFrame> Subframes;
+        //public Dictionary<string, B_UI_MenuSubFrame> MenuFrames;
+
+
+        public B_UI_MSF_GameOver GameOverMenu() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<B_UI_MSF_GameOver>();
+        public B_UI_MSF_Loading MenuLoading() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<B_UI_MSF_Loading>();
+        public B_UI_MSF_Main MenuMain() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<B_UI_MSF_Main>();
+        public B_UI_MSF_Paused MenuPaused() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<B_UI_MSF_Paused>();
+        public B_UI_MSF_PlayerOverlay MenuPlayerOverlay() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<B_UI_MSF_PlayerOverlay>();
+
 
         #region Editor
 #if UNITY_EDITOR
@@ -26,7 +45,8 @@ namespace Base.UI
         public async void SetupSubframes()
         {
             Subframes = new List<B_UI_MenuSubFrame>();
-            if (transform.childCount < 5)
+            //Needs a better logic system for deciding when to do what
+            if (transform.childCount != 5)
             {
                 AddChildren();
             }
@@ -43,6 +63,7 @@ namespace Base.UI
             }
             await SetNamesForSubframes();
             await CreateEnums();
+            EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
         }
         [ShowIf("OnEditor")]
         [VerticalGroup("Editor Functions/Upper", .5f)]
@@ -63,12 +84,11 @@ namespace Base.UI
         [ShowIf("OnEditor")]
         [VerticalGroup("Editor Functions/Upper", .5f)]
         [Button("Clear Subframes")]
-        public async void ClearSubframes()
+        public void ClearSubframes()
         {
-            foreach (Transform item in transform)
-            {
-                DestroyImmediate(item.gameObject);
-            }
+            for (int i = this.transform.childCount; i > 0; --i)
+                DestroyImmediate(this.transform.GetChild(0).gameObject);
+            Subframes = new List<B_UI_MenuSubFrame>();
         }
 
         [ShowIf("OnEditor")]
@@ -97,10 +117,12 @@ namespace Base.UI
                 {
                     string _tempName = Subframes[i].SubComponents[k].ComponentParticularName;
                     B_UI_ComponentsSubframe[] duplicates = Subframes[i].SubComponents.Where(t => t.ComponentParticularName == _tempName).ToArray();
+
                     if (duplicates.Count() <= 0) continue;
                     if (duplicates.Count() == 1)
                     {
                         names.Add(duplicates[0].ComponentParticularName);
+                        duplicates[0].EnumName = duplicates[0].ComponentParticularName;
                     }
                     else
                     {
@@ -108,12 +130,13 @@ namespace Base.UI
                         {
                             if (names.Contains(duplicates[j].ComponentParticularName + "_" + j.ToString())) continue;
                             names.Add(duplicates[j].ComponentParticularName + "_" + j.ToString());
+                            duplicates[j].EnumName = duplicates[j].ComponentParticularName + "_" + j.ToString();
                             if (j != 0) TotalDuplicateCount++;
                         }
                     }
                 }
             }
-            if (names.Count <= 0) { throw new Exception("No Components Found, Please Add Components"); }
+            if (names.Count <= 0) { Debug.LogWarning("No Components Found, Please Add Components"); return Task.CompletedTask; }
             else
             {
                 Debug.Log(names.Count + " Components Found! " + TotalDuplicateCount + " Duplicates Renamed!");
@@ -129,6 +152,7 @@ namespace Base.UI
         bool OnEditor()
         {
             return !EditorApplication.isPlaying;
+            //return true;
         }
 
         void AddChildren()
@@ -136,14 +160,16 @@ namespace Base.UI
             for (int i = 0; i < Enum.GetValues(typeof(Enum_MenuTypes)).Length; i++)
             {
                 GameObject obj = new GameObject();
-                //obj.AddComponent<RectTransform>();
+                obj.AddComponent<RectTransform>();
                 obj.transform.parent = transform;
+                obj.transform.localPosition = Vector3.zero;
                 obj.AddComponent(MenuType((Enum_MenuTypes)i).GetType());
                 obj.GetComponent<B_UI_MenuSubFrame>().MenuType = (Enum_MenuTypes)i;
+                obj.GetComponent(MenuType(Enum_MenuTypes.Menu_GameOver).GetType());
             }
         }
 
-        MonoBehaviour MenuType(Enum_MenuTypes types)
+        B_UI_MenuSubFrame MenuType(Enum_MenuTypes types)
         {
             switch (types)
             {

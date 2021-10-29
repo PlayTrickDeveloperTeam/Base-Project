@@ -1,1 +1,1 @@
-public enum Enum_UIComponentFrames { Kaz_0, Kaz_1, Kaz_2 }
+public enum Enum_UIComponentFrames { Hello_World_0, Hello_World_1, Example_Name_0, Example_Name_1, Example_Name_2 }

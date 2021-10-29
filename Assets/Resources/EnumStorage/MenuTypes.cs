@@ -1,0 +1,1 @@
+﻿public enum Enum_MenuTypes { Menu_Main, Menu_PlayerOverlay, Menu_Paused, Menu_GameOver, Menu_Loading }

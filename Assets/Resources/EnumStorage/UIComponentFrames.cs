@@ -1,0 +1,1 @@
+public enum Enum_UIComponentFrames { Kaz_0, Kaz_1, Kaz_2 }

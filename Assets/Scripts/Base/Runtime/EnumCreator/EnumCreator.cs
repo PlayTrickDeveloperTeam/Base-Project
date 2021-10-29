@@ -16,7 +16,7 @@ namespace Base
             string Item = ItemName + ".cs";
             string AllPath = BasePath + Item;
 
-            string FileInside = "public enum " + ItemName + "{";
+            string FileInside = "public enum Enum_" + ItemName + "{";
             if (ItemsToEnum.Length > 0)
                 foreach (var item in ItemsToEnum)
                 {
@@ -28,6 +28,7 @@ namespace Base
             else { FileInside += "}"; }
             File.WriteAllText(AllPath, FileInside);
             AssetDatabase.Refresh();
+
         }
     }
 }

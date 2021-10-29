@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Base
 {
@@ -6,29 +7,25 @@ namespace Base
     {
         public static B_MM_MenuManager_Project instance;
         public Action<float> OnPickupTaken;
+        //Needs Full overhaul
 
-        private void Awake()
+        public override Task ManagerStrapping()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
-        public override bool Strapper_MenuManager()
-        {
-            //Inits all the base panels, buttons etc
-            base.StrapperInit();
+            if (instance == null) instance = this; else Destroy(this.gameObject);
+            base.StrappingStart();
+            //Sets Up Everything
             AddFunction(Btn_M_Start, BTN_FUNC_Start);
             AddFunction(Btn_Ig_End, BTN_FUNC_Endgame);
             AddFunction(Btn_Ig_Restart, BTN_FUNC_Restart);
             //Closes all but start panel
             base.StrappingFinal();
-            return true;
+            return base.ManagerStrapping();
+        }
+
+        public override Task ManagerDataFlush()
+        {
+            instance = null;
+            return base.ManagerDataFlush();
         }
 
         #region Button Functions
@@ -62,10 +59,5 @@ namespace Base
         }
 
         #endregion Button Functions
-
-        private void OnDisable()
-        {
-            instance = null;
-        }
     }
 }

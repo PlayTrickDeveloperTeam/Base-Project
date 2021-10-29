@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Base
 {
-    public class B_MM_MenuManager_Base : MonoBehaviour
+    public class B_MM_MenuManager_Base : B_M_ManagerBase
     {
         public Dictionary<string, BMM_Panel> PanelDictionary;
 
@@ -57,7 +58,7 @@ namespace Base
             return true;
         }
 
-        protected void StrapperInit()
+        public void StrappingStart()
         {
             PanelDictionary = new Dictionary<string, BMM_Panel>();
 
@@ -91,6 +92,7 @@ namespace Base
         protected void StrappingFinal()
         {
             DeactivateAllPanels();
+            ActivatePanel(B_Database_String.Panel_Loading);
             ActivatePanel(B_Database_String.Panel_Start);
         }
 

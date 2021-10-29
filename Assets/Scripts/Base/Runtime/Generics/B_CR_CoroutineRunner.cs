@@ -1,28 +1,26 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Base
 {
-    public class B_CR_CoroutineRunner : MonoBehaviour
+    public class B_CR_CoroutineRunner : B_M_ManagerBase
     {
         public static B_CR_CoroutineRunner instance;
         public B_CR_CoroutineQueue CQ;
 
-        private void Awake()
+        public override Task ManagerStrapping()
         {
-            if (instance == null) instance = this;
-            else Destroy(this.gameObject);
-        }
-
-        public void CoroutineRunnerStrapping()
-        {
+            if (instance == null) instance = this; else Destroy(this.gameObject);
             CQ = new B_CR_CoroutineQueue(this);
             CQ.StartLoop();
+            return base.ManagerStrapping();
         }
 
-        private void OnDisable()
+        public override Task ManagerDataFlush()
         {
             instance = null;
+            return base.ManagerDataFlush();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -7,28 +8,24 @@ namespace Base
 
     public enum B_SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }
 
-    public class B_GM_GameManager : MonoBehaviour
+    public class B_GM_GameManager : B_M_ManagerBase
     {
         public static B_GM_GameManager instance;
+
         public GameStates CurrentGameState;
         public SaveData Save;
 
-        private TextMeshProUGUI temp_showcase_index;
-
-        private void Awake()
+        public override Task ManagerStrapping()
         {
-            if (instance == null) instance = this;
-            else Destroy(this.gameObject);
-        }
-
-        public bool GameManagerStrapping()
-        {
+            if (instance == null) instance = this; else Destroy(this.gameObject);
             Save = new SaveData();
             Save.PrepareSaveSystem();
-            temp_showcase_index = GameObject.Find("temp_showcase_index").GetComponent<TextMeshProUGUI>();
-            temp_showcase_index.text = "Current Level Showcase Index is : " + Save.PreviewLevel.ToString();
-            B_LC_LevelManager.instance.OnLevelChangedAction += ChangeText;
-            return true;
+            return base.ManagerStrapping();
+        }
+        public override Task ManagerDataFlush()
+        {
+            instance = null;
+            return base.ManagerDataFlush();
         }
 
         public bool IsGamePlaying()
@@ -39,17 +36,8 @@ namespace Base
 
         #region Function Testing
 
-        private void ChangeText(int t)
-        {
-            temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
-        }
 
         #endregion Function Testing
-
-        private void OnDestroy()
-        {
-            instance = null;
-        }
     }
 
     public class SaveData
@@ -99,4 +87,5 @@ namespace Base
             PlayerPrefs.SetInt(name, 0);
         }
     }
+
 }

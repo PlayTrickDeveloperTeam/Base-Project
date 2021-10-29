@@ -22,6 +22,7 @@ namespace Base.UI
             {
                 await item.SetupFrame(this);
             }
+            B_UI_SMF_MainFrame.SetupStaticFrame();
         }
         [ShowIf("OnEditor")]
         [FoldoutGroup("Editor Functions")]
@@ -103,16 +104,17 @@ namespace Base.UI
             return Task.CompletedTask;
         }
 
-        string EnumName = "UIComponentFrames";
         [ShowIf("OnEditor")]
         [HorizontalGroup("Editor Functions/Split", .5f)]
         [Button("Create SubModule Enums", ButtonSizes.Small)]
         Task CreateEnums()
         {
-            List<string> names = new List<string>();
             int TotalDuplicateCount = 0;
+            int TotalComponentCount = 0;
             for (int i = 0; i < Subframes.Count; i++)
             {
+                string enumGenericName = "Components" + Subframes[i].MenuType.ToString();
+                List<string> names = new List<string>();
                 for (int k = 0; k < Subframes[i].SubComponents.Count; k++)
                 {
                     string _tempName = Subframes[i].SubComponents[k].ComponentParticularName;
@@ -123,6 +125,7 @@ namespace Base.UI
                     {
                         names.Add(duplicates[0].ComponentParticularName);
                         duplicates[0].EnumName = duplicates[0].ComponentParticularName;
+                        TotalComponentCount++;
                     }
                     else
                     {
@@ -132,18 +135,19 @@ namespace Base.UI
                             names.Add(duplicates[j].ComponentParticularName + "_" + j.ToString());
                             duplicates[j].EnumName = duplicates[j].ComponentParticularName + "_" + j.ToString();
                             if (j != 0) TotalDuplicateCount++;
+                            TotalComponentCount++;
                         }
                     }
                 }
+                if (names.Count <= 0) { Debug.LogWarning("No Components Found, Please Add Components"); }
+                else
+                {
+                    EnumCreator.CreateEnum(enumGenericName, names.ToArray());
+                }
             }
-            if (names.Count <= 0) { Debug.LogWarning("No Components Found, Please Add Components"); return Task.CompletedTask; }
-            else
-            {
-                Debug.Log(names.Count + " Components Found! " + TotalDuplicateCount + " Duplicates Renamed!");
-                Debug.Log("Please Save The Unity Editor And Then Check If Enums Are Set");
-                EnumCreator.CreateEnum(EnumName, names.ToArray());
-                return Task.CompletedTask;
-            }
+            Debug.Log(TotalComponentCount + " Components Found! " + TotalDuplicateCount + " Duplicates Renamed!");
+            Debug.Log("Please Save The Unity Editor And Then Check If Enums Are Set");
+            return Task.CompletedTask;
         }
         #endregion
 

@@ -15,6 +15,11 @@ namespace Base.UI
             return base.SetupComponentSubframe(Manager);
         }
 
+        public TextMeshProUGUI GetGUIObject()
+        {
+            return TextComponent;
+        }
+
         public void ChangeText(object newText, string stringParameter = "")
         {
             TextComponent.text = newText.ToString();

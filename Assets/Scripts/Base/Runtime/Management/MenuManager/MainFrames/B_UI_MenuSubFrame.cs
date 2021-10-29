@@ -15,6 +15,7 @@ namespace Base.UI
         public Enum_MenuTypes MenuType;
         public List<B_UI_ComponentsSubframe> SubComponents;
         Dictionary<string, B_UI_CTMProGUISubframe> TMProDictionary;
+        Dictionary<string, B_UI_CSlider_Subframe> SliderDictionary;
 
         public virtual async Task SetupFrame(B_UI_ManagerMainFrame Mainframe)
         {
@@ -26,6 +27,7 @@ namespace Base.UI
 #else
                 SetupDictionaries();
 #endif
+            //return Task.CompletedTask;
         }
 
         public virtual Task FlushFrameData()
@@ -35,23 +37,45 @@ namespace Base.UI
             return Task.CompletedTask;
         }
 
-        public B_UI_CTMProGUISubframe GetText(Enum_UIComponentFrames frameEnum)
-        {
-            return TMProDictionary[frameEnum.ToString()];
-        }
+
 
         void SetupDictionaries()
         {
             TMProDictionary = new Dictionary<string, B_UI_CTMProGUISubframe>();
-            B_UI_ComponentsSubframe[] _temp = SubComponents.Where(t => t.GetComponent<B_UI_CTMProGUISubframe>()).ToArray();
-            for (int i = 0; i < _temp.Length; i++)
+            B_UI_ComponentsSubframe[] _tempTMPro = SubComponents.Where(t => t.GetComponent<B_UI_CTMProGUISubframe>()).ToArray();
+            for (int i = 0; i < _tempTMPro.Length; i++)
             {
-                if (_temp[i].GetComponent<B_UI_CTMProGUISubframe>())
+                if (_tempTMPro[i].GetComponent<B_UI_CTMProGUISubframe>())
                 {
-                    TMProDictionary.Add(_temp[i].GetComponent<B_UI_CTMProGUISubframe>().EnumName, _temp[i].GetComponent<B_UI_CTMProGUISubframe>());
+                    TMProDictionary.Add(_tempTMPro[i].GetComponent<B_UI_CTMProGUISubframe>().EnumName, _tempTMPro[i].GetComponent<B_UI_CTMProGUISubframe>());
+                }
+            }
+
+            SliderDictionary = new Dictionary<string, B_UI_CSlider_Subframe>();
+            B_UI_ComponentsSubframe[] _tempSlider = SubComponents.Where(t => t.GetComponent<B_UI_CSlider_Subframe>()).ToArray();
+            for (int i = 0; i < _tempSlider.Length; i++)
+            {
+                if (_tempSlider[i].GetComponent<B_UI_CSlider_Subframe>())
+                {
+                    SliderDictionary.Add(_tempSlider[i].GetComponent<B_UI_CSlider_Subframe>().EnumName, _tempSlider[i].GetComponent<B_UI_CSlider_Subframe>());
                 }
             }
         }
+
+        #region Components
+
+        public B_UI_CTMProGUISubframe GetText(object frameEnum)
+        {
+            return TMProDictionary[frameEnum.ToString()];
+        }
+
+        public B_UI_CSlider_Subframe GetSlider(object frameEnum)
+        {
+            Debug.Log(frameEnum.ToString());
+            return SliderDictionary[frameEnum.ToString()];
+        }
+
+        #endregion
 
 #if UNITY_EDITOR
         [Button("Set SubComponents")]

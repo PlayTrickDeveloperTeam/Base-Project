@@ -1,0 +1,1 @@
+public enum Enum_ComponentsMenu_Paused{ Example_Name_0, Example_Name_1, Example_Name_2}

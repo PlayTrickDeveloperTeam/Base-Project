@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Base.UI
 {
-    public class B_UI_Extentions : MonoBehaviour
+    public static class B_UI_Extentions
     {
 
     }

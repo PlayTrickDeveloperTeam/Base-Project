@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using Base.UI;
 
 namespace Base
 {
@@ -20,6 +21,12 @@ namespace Base
             if (instance == null) instance = this; else Destroy(this.gameObject);
             Save = new SaveData();
             Save.PrepareSaveSystem();
+
+            //Add Functions To UI
+            GUIManager.GetButton(Enum_Menu_MainComponent.BTN_Start).AddFunction(StartGame);
+            GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Sucess).AddFunction(EndLevel);
+            GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Fail).AddFunction(RestartLevel);
+
             return base.ManagerStrapping();
         }
         public override Task ManagerDataFlush()
@@ -33,6 +40,53 @@ namespace Base
             if (CurrentGameState == GameStates.Playing) return true;
             return false;
         }
+
+        #region Game Management Functions
+
+        async void StartGame()
+        {
+            B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_PlayerOverlay);
+            await Task.Delay(3000);
+            ActivateEndgame(true);
+        }
+
+        void RestartLevel()
+        {
+            B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
+            B_LC_LevelManager.instance.ReloadCurrentLevel();
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
+        }
+
+        void EndLevel()
+        {
+            B_CES_CentralEventSystem.BTN_OnEndGamePressed.InvokeEvent();
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
+            B_LC_LevelManager.instance.LoadInNextLevel();
+        }
+
+        void ActivateEndgame(bool Success, float Delay = 0)
+        {
+            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
+            switch (Success)
+            {
+                case true:
+                    B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
+                    //enable success uý
+                    break;
+                case false:
+                    B_CES_CentralEventSystem.OnBeforeLevelDisableNegative.InvokeEvent();
+                    //enable fail uý
+                    break;
+            }
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_GameOver);
+            GUIManager.GameOver.EnableOverUI(Success);
+        }
+
+        #endregion
+
 
         #region Function Testing
 

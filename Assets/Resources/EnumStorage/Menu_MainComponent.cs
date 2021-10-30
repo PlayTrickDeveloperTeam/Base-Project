@@ -1,0 +1,1 @@
+public enum Enum_Menu_MainComponent{ BTN_Start}

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using Base;
+using DG.Tweening;
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 using UnityEditor.SceneManagement;
@@ -12,30 +14,86 @@ using UnityEditor;
 using Random = UnityEngine.Random;
 namespace Base.UI
 {
-    public class B_UI_ManagerMainFrame : MonoBehaviour
+    public class B_UI_ManagerMainFrame : B_M_ManagerBase
     {
+        #region Properties
+
         public static B_UI_ManagerMainFrame instance;
-        private async void Awake()
+        [ShowIf("OnEditor")]
+        [FoldoutGroup("Editor Functions")]
+        [PropertyTooltip("DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT YOU ARE DOING")]
+        public bool Admin;
+        [EnableIf("AreYouSure")]
+        [ShowIf("OnEditor")]
+        [FoldoutGroup("Editor Functions")]
+        [SerializeField] private List<B_UI_MenuSubFrame> Subframes;
+
+        #endregion
+
+        public override Task ManagerStrapping()
         {
             if (instance == null) instance = this; else Destroy(this.gameObject);
             foreach (var item in Subframes)
             {
-                await item.SetupFrame(this);
+                item.SetupFrame(this);
             }
-            B_UI_SMF_MainFrame.SetupStaticFrame();
+            GUIManager.SetupStaticFrame();
+            Subframes.ForEach(t => t.GetComponent<RectTransform>().DOLocalMove(Vector3.zero, 0, true));
+            GUIManager.ActivateAllPanels();
+            //Just an example
+            //B_UI_SMF_MainFrame.DeactivateAllPanelsWithAnim().onComplete += () => B_UI_SMF_MainFrame.Loading.EnableUI(1);
+
+            return base.ManagerStrapping();
         }
-        [ShowIf("OnEditor")]
-        [FoldoutGroup("Editor Functions")]
-        [SerializeField] private List<B_UI_MenuSubFrame> Subframes;
-        //public Dictionary<string, B_UI_MenuSubFrame> MenuFrames;
+
+        public override Task ManagerDataFlush()
+        {
+            return base.ManagerDataFlush();
+        }
 
 
-        public B_UI_MSF_GameOver GameOverMenu() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<B_UI_MSF_GameOver>();
-        public B_UI_MSF_Loading MenuLoading() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<B_UI_MSF_Loading>();
-        public B_UI_MSF_Main MenuMain() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<B_UI_MSF_Main>();
-        public B_UI_MSF_Paused MenuPaused() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<B_UI_MSF_Paused>();
-        public B_UI_MSF_PlayerOverlay MenuPlayerOverlay() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<B_UI_MSF_PlayerOverlay>();
+        #region Helper Functions
 
+        #region Getters
+        /// <summary>
+        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
+        /// </summary>
+        /// <returns></returns>
+        public UI_Gameover GameOverMenu() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<UI_Gameover>();
+        /// <summary>
+        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
+        /// </summary>
+        /// <returns></returns>
+        public UI_Loading MenuLoading() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<UI_Loading>();
+        /// <summary>
+        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
+        /// </summary>
+        /// <returns></returns>
+        public UI_Main MenuMain() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<UI_Main>();
+        /// <summary>
+        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
+        /// </summary>
+        /// <returns></returns>
+        public UI_Paused MenuPaused() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<UI_Paused>();
+        /// <summary>
+        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
+        /// </summary>
+        /// <returns></returns>
+        public UI_PlayerOverlay MenuPlayerOverlay() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<UI_PlayerOverlay>();
+        void AddChilds(Transform item)
+        {
+            foreach (Transform child in item)
+            {
+                if (child.GetComponent<B_UI_MenuSubFrame>())
+                {
+                    Subframes.Add(child.GetComponent<B_UI_MenuSubFrame>());
+                }
+                if (child.childCount > 0) { AddChilds(child); }
+            }
+        }
+        #endregion
+
+        #endregion
 
         #region Editor
 #if UNITY_EDITOR
@@ -49,15 +107,20 @@ namespace Base.UI
             //Needs a better logic system for deciding when to do what
             if (transform.childCount != 5)
             {
-                AddChildren();
+                AddEmptyMenus();
             }
-            foreach (Transform item in transform)
-            {
-                if (item.GetComponent<B_UI_MenuSubFrame>())
-                {
-                    Subframes.Add(item.GetComponent<B_UI_MenuSubFrame>());
-                }
-            }
+            AddChilds(transform);
+            //foreach (Transform item in transform)
+            //{
+            //    if (item.GetComponent<B_UI_MenuSubFrame>())
+            //    {
+            //        Subframes.Add(item.GetComponent<B_UI_MenuSubFrame>());
+            //    }
+            //    if (item.childCount > 0)
+            //    {
+
+            //    }
+            //}
             foreach (var item in Subframes)
             {
                 await item.SetupFrame(this);
@@ -66,7 +129,7 @@ namespace Base.UI
             await CreateEnums();
             EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
         }
-        [ShowIf("OnEditor")]
+        [ShowIf("AreYouSure")]
         [VerticalGroup("Editor Functions/Upper", .5f)]
         [Button("Reset Subframes")]
         public async void ResetSubframes()
@@ -82,7 +145,7 @@ namespace Base.UI
             this.Subframes = new List<B_UI_MenuSubFrame>();
         }
 
-        [ShowIf("OnEditor")]
+        [ShowIf("AreYouSure")]
         [VerticalGroup("Editor Functions/Upper", .5f)]
         [Button("Clear Subframes")]
         public void ClearSubframes()
@@ -92,7 +155,7 @@ namespace Base.UI
             Subframes = new List<B_UI_MenuSubFrame>();
         }
 
-        [ShowIf("OnEditor")]
+        [ShowIf("AreYouSure")]
         [HorizontalGroup("Editor Functions/Split", -.5f)]
         [Button("Set Names On Subframes", ButtonSizes.Small)]
         Task SetNamesForSubframes()
@@ -104,7 +167,7 @@ namespace Base.UI
             return Task.CompletedTask;
         }
 
-        [ShowIf("OnEditor")]
+        [ShowIf("AreYouSure")]
         [HorizontalGroup("Editor Functions/Split", .5f)]
         [Button("Create SubModule Enums", ButtonSizes.Small)]
         Task CreateEnums()
@@ -113,7 +176,7 @@ namespace Base.UI
             int TotalComponentCount = 0;
             for (int i = 0; i < Subframes.Count; i++)
             {
-                string enumGenericName = "Components" + Subframes[i].MenuType.ToString();
+                string enumGenericName = Subframes[i].MenuType.ToString() + "Component";
                 List<string> names = new List<string>();
                 for (int k = 0; k < Subframes[i].SubComponents.Count; k++)
                 {
@@ -156,10 +219,13 @@ namespace Base.UI
         bool OnEditor()
         {
             return !EditorApplication.isPlaying;
-            //return true;
         }
-
-        void AddChildren()
+        bool AreYouSure()
+        {
+            if (!EditorApplication.isPlaying && Admin) return true;
+            return false;
+        }
+        void AddEmptyMenus()
         {
             for (int i = 0; i < Enum.GetValues(typeof(Enum_MenuTypes)).Length; i++)
             {
@@ -178,17 +244,17 @@ namespace Base.UI
             switch (types)
             {
                 case Enum_MenuTypes.Menu_Main:
-                    return new B_UI_MSF_Main();
+                    return new UI_Main();
                 case Enum_MenuTypes.Menu_PlayerOverlay:
-                    return new B_UI_MSF_PlayerOverlay();
+                    return new UI_PlayerOverlay();
                 case Enum_MenuTypes.Menu_Paused:
-                    return new B_UI_MSF_Paused();
+                    return new UI_Paused();
                 case Enum_MenuTypes.Menu_GameOver:
-                    return new B_UI_MSF_GameOver();
+                    return new UI_Gameover();
                 case Enum_MenuTypes.Menu_Loading:
-                    return new B_UI_MSF_Loading();
+                    return new UI_Loading();
                 default:
-                    return new B_UI_MSF_Default();
+                    return new UI_Default();
             }
         }
 

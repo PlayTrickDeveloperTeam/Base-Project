@@ -1,1 +1,0 @@
-public enum Enum_ComponentsMenu_Main{ Hello_World_0, Hello_World_1}

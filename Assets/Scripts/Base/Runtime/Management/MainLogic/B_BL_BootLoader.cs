@@ -69,9 +69,11 @@ namespace Base
                 await Managers[i].ManagerStrapping();
             }
             if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
-            await Task.Delay(5000);
-            B_MM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
+            B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
+
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
         }
 
         #endregion

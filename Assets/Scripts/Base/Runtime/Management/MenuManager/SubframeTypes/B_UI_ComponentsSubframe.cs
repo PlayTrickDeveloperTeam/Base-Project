@@ -8,12 +8,13 @@ namespace Base.UI
 {
     public abstract class B_UI_ComponentsSubframe : MonoBehaviour
     {
-        public string ComponentParticularName;
+        [HideInInspector] public string ComponentParticularName;
         [HideInInspector] public string EnumName;
         [SerializeField] B_UI_MenuSubFrame Parent;
         public virtual Task SetupComponentSubframe(B_UI_MenuSubFrame Manager)
         {
             this.Parent = Manager;
+            this.ComponentParticularName = this.gameObject.name;
 #if UNITY_EDITOR
             EditorFunctions();
 #endif

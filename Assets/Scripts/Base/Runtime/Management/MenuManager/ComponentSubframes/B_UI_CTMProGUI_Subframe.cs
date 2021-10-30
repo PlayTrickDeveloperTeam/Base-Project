@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Base.UI
 {
-    public class B_UI_CTMProGUISubframe : B_UI_ComponentsSubframe
+    public class B_UI_CTMProGUI_Subframe : B_UI_ComponentsSubframe
     {
+
+        #region Standart Functions
         TextMeshProUGUI TextComponent;
         public override Task SetupComponentSubframe(B_UI_MenuSubFrame Manager)
         {
@@ -24,5 +26,7 @@ namespace Base.UI
         {
             TextComponent.text = newText.ToString();
         }
+
+        #endregion
     }
 }

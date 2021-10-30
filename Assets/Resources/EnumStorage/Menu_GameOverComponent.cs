@@ -1,0 +1,1 @@
+public enum Enum_Menu_GameOverComponent{ Background, SuccessImage, BTN_Sucess, FailImage, BTN_Fail}

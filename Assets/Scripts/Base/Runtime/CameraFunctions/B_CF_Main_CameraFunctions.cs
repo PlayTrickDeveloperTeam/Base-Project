@@ -2,13 +2,14 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Base
 {
     public enum ActiveVirtualCameras { VirCam1, VirCam2, VirCam3 }
 
-    public class B_CF_Main_CameraFunctions : MonoBehaviour
+    public class B_CF_Main_CameraFunctions : B_M_ManagerBase
     {
         #region Properties
 
@@ -29,23 +30,13 @@ namespace Base
 
         #region Unity Functions
 
-        private void Awake()
-        {
-            if (instance == null) instance = this;
-            else Destroy(this.gameObject);
-        }
-
-        private void OnDisable()
-        {
-            instance = null;
-        }
-
         #endregion Unity Functions
 
         #region Spesific Functions
-
-        public void CameraFuncitonsStrapping()
+        public override Task ManagerStrapping()
         {
+            if (instance == null) instance = this; else Destroy(this.gameObject);
+
             VirtualCameras = new Dictionary<ActiveVirtualCameras, VirCam>();
             VirtualCameras.Add(ActiveVirtualCameras.VirCam1, VirtualCamera1);
             VirtualCameras.Add(ActiveVirtualCameras.VirCam2, VirtualCamera2);
@@ -53,6 +44,13 @@ namespace Base
             foreach (var item in VirtualCameras)
                 item.Value.SetupVirtualCamera();
             B_CES_CentralEventSystem.OnLevelDisable.AddFunction(FlushData, true);
+            return base.ManagerStrapping();
+        }
+
+        public override Task ManagerDataFlush()
+        {
+            instance = null;
+            return base.ManagerDataFlush();
         }
 
         #endregion Spesific Functions

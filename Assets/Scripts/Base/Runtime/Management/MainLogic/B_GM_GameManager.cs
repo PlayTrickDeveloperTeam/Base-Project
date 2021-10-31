@@ -1,5 +1,8 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using Base.UI;
+using System;
 
 namespace Base
 {
@@ -7,28 +10,41 @@ namespace Base
 
     public enum B_SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }
 
-    public class B_GM_GameManager : MonoBehaviour
+    public class B_GM_GameManager : B_M_ManagerBase
     {
         public static B_GM_GameManager instance;
-        public GameStates CurrentGameState;
-        public SaveData Save;
-
-        private TextMeshProUGUI temp_showcase_index;
-
-        private void Awake()
+        public static Action OnGameStateChange;
+        private GameStates _currentGameState;
+        public GameStates CurrentGameState
         {
-            if (instance == null) instance = this;
-            else Destroy(this.gameObject);
+            get { return _currentGameState; }
+            set
+            {
+                if (_currentGameState == value) return;
+                _currentGameState = value;
+                B_CES_CentralEventSystem.OnGameStateChange.InvokeEvent();
+            }
         }
 
-        public bool GameManagerStrapping()
+        public SaveData Save;
+
+        public override Task ManagerStrapping()
         {
+            if (instance == null) instance = this; else Destroy(this.gameObject);
             Save = new SaveData();
             Save.PrepareSaveSystem();
-            temp_showcase_index = GameObject.Find("temp_showcase_index").GetComponent<TextMeshProUGUI>();
-            temp_showcase_index.text = "Current Level Showcase Index is : " + Save.PreviewLevel.ToString();
-            B_LC_LevelManager.instance.OnLevelChangedAction += ChangeText;
-            return true;
+
+            //Add Functions To UI
+            GUIManager.GetButton(Enum_Menu_MainComponent.BTN_Start).AddFunction(StartGame);
+            GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Sucess).AddFunction(EndLevel);
+            GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Fail).AddFunction(RestartLevel);
+
+            return base.ManagerStrapping();
+        }
+        public override Task ManagerDataFlush()
+        {
+            instance = null;
+            return base.ManagerDataFlush();
         }
 
         public bool IsGamePlaying()
@@ -37,19 +53,55 @@ namespace Base
             return false;
         }
 
+        #region Game Management Functions
+
+        void StartGame()
+        {
+            B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_PlayerOverlay);
+        }
+
+        void RestartLevel()
+        {
+            B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
+            B_LC_LevelManager.instance.ReloadCurrentLevel();
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .3f);
+        }
+
+        void EndLevel()
+        {
+            B_CES_CentralEventSystem.BTN_OnEndGamePressed.InvokeEvent();
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
+            B_LC_LevelManager.instance.LoadInNextLevel();
+        }
+
+        public async void ActivateEndgame(bool Success, float Delay = 0)
+        {
+            if (CurrentGameState == GameStates.End || CurrentGameState == GameStates.Start) return;
+            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
+            switch (Success)
+            {
+                case true:
+                    B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
+                    break;
+                case false:
+                    B_CES_CentralEventSystem.OnBeforeLevelDisableNegative.InvokeEvent();
+                    break;
+            }
+            await Task.Delay((int)Delay * 1000);
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_GameOver);
+            GUIManager.GameOver.EnableOverUI(Success);
+        }
+
+        #endregion
+
+
         #region Function Testing
 
-        private void ChangeText(int t)
-        {
-            temp_showcase_index.text = "Current Level Showcase Index is " + t.ToString();
-        }
 
         #endregion Function Testing
-
-        private void OnDestroy()
-        {
-            instance = null;
-        }
     }
 
     public class SaveData
@@ -99,4 +151,5 @@ namespace Base
             PlayerPrefs.SetInt(name, 0);
         }
     }
+
 }

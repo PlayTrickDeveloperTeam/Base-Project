@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Base
 {
     public static class B_CES_CentralEventSystem
     {
         public static List<B_CES_Events> EventsList;
+
+        public static B_CES_Events OnGameStateChange;
+
+        public static B_CES_Events OnAfterAwake;
 
         public static B_CES_Events OnBeforeLevelLoaded;
         public static B_CES_Events OnAfterLevelLoaded;
@@ -27,9 +32,11 @@ namespace Base
 
         public static B_CES_Events OnLevelDisable;
 
-        public static void CentralEventSystemStrapping()
+        public static Task CentralEventSystemStrapping()
         {
             EventsList = new List<B_CES_Events>();
+
+            OnGameStateChange = new B_CES_Events(EventsList);
 
             OnBeforeLevelLoaded = new B_CES_Events(EventsList);
             OnAfterLevelLoaded = new B_CES_Events(EventsList);
@@ -53,6 +60,7 @@ namespace Base
             BTN_OnStartPressed = new B_CES_Events(EventsList);
 
             OnLevelDisable.AddFunction(DeactiveEvents, true);
+            return Task.CompletedTask;
         }
 
         public static void DeactiveEvents()

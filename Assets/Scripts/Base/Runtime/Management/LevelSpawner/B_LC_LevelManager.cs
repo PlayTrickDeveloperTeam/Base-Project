@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Base
 {
     public enum LevelType { Tutorial, Main }
 
-    public class B_LC_LevelManager : MonoBehaviour
+    public class B_LC_LevelManager : B_M_ManagerBase
     {
         public static B_LC_LevelManager instance;
 
@@ -33,35 +34,33 @@ namespace Base
             }
         }
 
-        private void Awake()
+        public override Task ManagerStrapping()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
+            if (instance == null) instance = this; else Destroy(this.gameObject);
 
-        public bool StrappingLevelController()
-        {
             LevelHolder = GameObject.Find("LevelHolder").GetComponent<Transform>();
+
             MainLevels = new List<GameObject>();
             TutorialLevels = new List<GameObject>();
+
             MainLevels = Resources.LoadAll<GameObject>(B_Database_String.Path_Res_MainLevels).ToList();
             TutorialLevels = Resources.LoadAll<GameObject>(B_Database_String.Path_Res_TutorialLevels).ToList();
+
             MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
+
             PreviewLevelIndex = B_GM_GameManager.instance.Save.PreviewLevel;
+
+
 
             B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.AddFunction(SaveOnNextLevel, true);
 
-            ObjectSpawnParent = LevelHolder.GetChild(0);
+            return base.ManagerStrapping();
+        }
 
-
-            return true;
+        public override Task ManagerDataFlush()
+        {
+            return base.ManagerDataFlush();
         }
 
         public void LoadInLevel(int levelNumber)
@@ -122,6 +121,7 @@ namespace Base
             }
             B_CES_CentralEventSystem.OnAfterLevelLoaded.InvokeEvent();
             B_GM_GameManager.instance.Save.PlayerLevel = CurrentLevelIndex;
+            ObjectSpawnParent = LevelHolder.GetChild(0);
         }
 
         private GameObject LevelToLoad()

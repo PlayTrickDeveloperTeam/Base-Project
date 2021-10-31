@@ -1,25 +1,32 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
+using System.Threading.Tasks;
+using Base.UI;
+#if UNITY_EDITOR
+using Sirenix.OdinInspector;
+#endif
 #if UNITY_IOS
 using Unity.Advertisement.IosSupport;
 #endif
 
 namespace Base
 {
+    [DefaultExecutionOrder(-100)]
     public class B_BL_BootLoader : MonoBehaviour
     {
 
         #region Properties
 
         public bool HasTutorial = false;
-
+        public List<B_M_ManagerBase> Managers;
         #endregion
 
         #region Unity Functions
-        private void Start()
+
+        private void Awake()
         {
-            B_GM_GameManager.instance.CurrentGameState = GameStates.Init;
 
 #if UNITY_IOS
             if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
@@ -33,47 +40,57 @@ namespace Base
 #else
 
 #endif
-            StartCoroutine(InitiateBootLoading());
+            InitiateBootLoading();
         }
+
+        private void OnDisable()
+        {
+            for (int i = 0; i < Managers.Count; i++)
+            {
+                Managers[i].ManagerDataFlush();
+            }
+        }
+
 
         #endregion
 
         #region Spesific Functions
 
-        private IEnumerator InitiateBootLoading()
+        private async void InitiateBootLoading()
         {
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
             //Debug.unityLogger.logEnabled = false;
 #endif
-            B_CES_CentralEventSystem.CentralEventSystemStrapping();
-
-            B_CF_Main_CameraFunctions.instance.CameraFuncitonsStrapping();
-
-            yield return new WaitUntil(() => B_GM_GameManager.instance.GameManagerStrapping() == true);
-
+            await B_CES_CentralEventSystem.CentralEventSystemStrapping();
+            for (int i = 0; i < Managers.Count; i++)
+            {
+                await Managers[i].ManagerStrapping();
+            }
             if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
-
-            B_CR_CoroutineRunner.instance.CoroutineRunnerStrapping();
-
-            yield return new WaitUntil(() => B_LC_LevelManager.instance.StrappingLevelController() == true);
-
-            yield return new WaitUntil(() => B_MM_MenuManager_Project.instance.Strapper_MenuManager() == true);
+            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
             B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
 
-            B_MM_MenuManager_Project.instance.Panel_Loading.SetActive(false);
-
-            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
         }
 
         #endregion
 
-        #region Generic Functions
-
+#if UNITY_EDITOR
+        #region Editor Functions
+        [Button]
+        public void SetupManagerEnums()
+        {
+            string[] names = new string[Managers.Count];
+            for (int i = 0; i < Managers.Count; i++)
+            {
+                names[i] = Managers[i].GetType().Name;
+            }
+            EnumCreator.CreateEnum("Managers", names);
+        }
         #endregion
-
-
+#endif
     }
 }

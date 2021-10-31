@@ -1,1 +1,1 @@
-public enum Enum_Menu_MainComponent{ BTN_Start}
+public enum Enum_Menu_MainComponent{ BTN_Start, GameStateShowcase}

@@ -6,7 +6,7 @@ using UnityEditor;
 #endif
 namespace Base.UI
 {
-    public abstract class B_UI_ComponentsSubframe : MonoBehaviour
+    public abstract class UI_TComponentsSubframe : MonoBehaviour
     {
         [HideInInspector] public string ComponentParticularName;
         [HideInInspector] public string EnumName;

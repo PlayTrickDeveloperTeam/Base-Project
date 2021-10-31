@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using Base.UI;
+using System;
 
 namespace Base
 {
@@ -12,8 +13,19 @@ namespace Base
     public class B_GM_GameManager : B_M_ManagerBase
     {
         public static B_GM_GameManager instance;
+        public static Action OnGameStateChange;
+        private GameStates _currentGameState;
+        public GameStates CurrentGameState
+        {
+            get { return _currentGameState; }
+            set
+            {
+                if (_currentGameState == value) return;
+                _currentGameState = value;
+                B_CES_CentralEventSystem.OnGameStateChange.InvokeEvent();
+            }
+        }
 
-        public GameStates CurrentGameState;
         public SaveData Save;
 
         public override Task ManagerStrapping()
@@ -43,20 +55,18 @@ namespace Base
 
         #region Game Management Functions
 
-        async void StartGame()
+        void StartGame()
         {
             B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_PlayerOverlay);
-            await Task.Delay(3000);
-            ActivateEndgame(true);
         }
 
         void RestartLevel()
         {
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
-            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .3f);
         }
 
         void EndLevel()
@@ -67,20 +77,20 @@ namespace Base
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 
-        void ActivateEndgame(bool Success, float Delay = 0)
+        public async void ActivateEndgame(bool Success, float Delay = 0)
         {
+            if (CurrentGameState == GameStates.End || CurrentGameState == GameStates.Start) return;
             B_GM_GameManager.instance.CurrentGameState = GameStates.End;
             switch (Success)
             {
                 case true:
                     B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
-                    //enable success uý
                     break;
                 case false:
                     B_CES_CentralEventSystem.OnBeforeLevelDisableNegative.InvokeEvent();
-                    //enable fail uý
                     break;
             }
+            await Task.Delay((int)Delay * 1000);
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_GameOver);
             GUIManager.GameOver.EnableOverUI(Success);
         }

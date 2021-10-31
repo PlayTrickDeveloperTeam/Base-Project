@@ -26,7 +26,7 @@ namespace Base.UI
         [EnableIf("AreYouSure")]
         [ShowIf("OnEditor")]
         [FoldoutGroup("Editor Functions")]
-        [SerializeField] private List<B_UI_MenuSubFrame> Subframes;
+        [SerializeField] public List<B_UI_MenuSubFrame> Subframes;
 
         #endregion
 
@@ -38,8 +38,8 @@ namespace Base.UI
                 item.SetupFrame(this);
             }
             GUIManager.SetupStaticFrame();
-            Subframes.ForEach(t => t.GetComponent<RectTransform>().DOLocalMove(Vector3.zero, 0, true));
-            GUIManager.ActivateAllPanels();
+            //Subframes.ForEach(t => t.GetComponent<RectTransform>().DOLocalMove(Vector3.zero, 0, true));
+            GUIManager.ActivateAllPanels(0);
             //Just an example
             //B_UI_SMF_MainFrame.DeactivateAllPanelsWithAnim().onComplete += () => B_UI_SMF_MainFrame.Loading.EnableUI(1);
 
@@ -55,31 +55,7 @@ namespace Base.UI
         #region Helper Functions
 
         #region Getters
-        /// <summary>
-        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
-        /// </summary>
-        /// <returns></returns>
-        public UI_Gameover GameOverMenu() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<UI_Gameover>();
-        /// <summary>
-        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
-        /// </summary>
-        /// <returns></returns>
-        public UI_Loading MenuLoading() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<UI_Loading>();
-        /// <summary>
-        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
-        /// </summary>
-        /// <returns></returns>
-        public UI_Main MenuMain() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<UI_Main>();
-        /// <summary>
-        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
-        /// </summary>
-        /// <returns></returns>
-        public UI_Paused MenuPaused() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<UI_Paused>();
-        /// <summary>
-        /// DO NOT USE THIS. IT'S A HELPER FUNCTION
-        /// </summary>
-        /// <returns></returns>
-        public UI_PlayerOverlay MenuPlayerOverlay() => Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<UI_PlayerOverlay>();
+
         void AddChilds(Transform item)
         {
             foreach (Transform child in item)
@@ -181,7 +157,7 @@ namespace Base.UI
                 for (int k = 0; k < Subframes[i].SubComponents.Count; k++)
                 {
                     string _tempName = Subframes[i].SubComponents[k].ComponentParticularName;
-                    B_UI_ComponentsSubframe[] duplicates = Subframes[i].SubComponents.Where(t => t.ComponentParticularName == _tempName).ToArray();
+                    UI_TComponentsSubframe[] duplicates = Subframes[i].SubComponents.Where(t => t.ComponentParticularName == _tempName).ToArray();
 
                     if (duplicates.Count() <= 0) continue;
                     if (duplicates.Count() == 1)

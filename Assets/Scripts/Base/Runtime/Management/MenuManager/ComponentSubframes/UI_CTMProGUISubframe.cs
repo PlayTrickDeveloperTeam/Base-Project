@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace Base.UI
 {
-    public class B_UI_CTMProGUI_Subframe : B_UI_ComponentsSubframe
+    public class UI_CTMProGUISubframe : UI_TComponentsSubframe
     {
-
         #region Standart Functions
-        TextMeshProUGUI TextComponent;
+        [HideInInspector] public TextMeshProUGUI TextComponent;
         public override Task SetupComponentSubframe(B_UI_MenuSubFrame Manager)
         {
             TextComponent = GetComponent<TextMeshProUGUI>();
             return base.SetupComponentSubframe(Manager);
-        }
-
-        public TextMeshProUGUI GetGUIObject()
-        {
-            return TextComponent;
         }
 
         public void ChangeText(object newText, string stringParameter = "")

@@ -1,20 +1,16 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Events;
-
 namespace Base.UI
 {
-    public class B_UI_CTMProGUIButton_Subframe : B_UI_ComponentsSubframe
+    public class UI_CImageSubframe : UI_TComponentsSubframe
     {
-        #region Standart Functions
+        [HideInInspector] public Image ThisImage;
 
-        Button Button;
         public override Task SetupComponentSubframe(B_UI_MenuSubFrame Manager)
         {
-            Button = GetComponent<Button>();
+            ThisImage = GetComponent<Image>();
             return base.SetupComponentSubframe(Manager);
         }
 
@@ -23,10 +19,12 @@ namespace Base.UI
             return base.FlushData();
         }
 
-        public void AddFunction(UnityAction function)
+        public void ChangeAlpha(float f)
         {
-            Button.onClick.AddListener(function);
+            Color col = ThisImage.color;
+            col.a = f;
+            ThisImage.color = col;
         }
-        #endregion
+
     }
 }

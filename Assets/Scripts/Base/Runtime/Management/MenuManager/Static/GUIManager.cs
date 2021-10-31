@@ -4,6 +4,7 @@ using UnityEngine;
 using Base;
 using DG.Tweening;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Base.UI
 {
@@ -17,22 +18,22 @@ namespace Base.UI
 
         public static void SetupStaticFrame()
         {
-            GameOver = B_UI_ManagerMainFrame.instance.GameOverMenu();
-            Loading = B_UI_ManagerMainFrame.instance.MenuLoading();
-            Main = B_UI_ManagerMainFrame.instance.MenuMain();
-            Paused = B_UI_ManagerMainFrame.instance.MenuPaused();
-            PlayerOverlay = B_UI_ManagerMainFrame.instance.MenuPlayerOverlay();
+            GameOver = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<UI_Gameover>();
+            Loading = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<UI_Loading>();
+            Main = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<UI_Main>();
+            Paused = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<UI_Paused>();
+            PlayerOverlay = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<UI_PlayerOverlay>();
         }
 
         #region PanelActions
 
-        public static void ActivateAllPanels()
+        public static void ActivateAllPanels(float time = 0)
         {
-            GameOver.EnableUI();
-            Loading.EnableUI();
-            Main.EnableUI();
-            Paused.EnableUI();
-            PlayerOverlay.EnableUI();
+            GameOver.EnableUI(time);
+            Loading.EnableUI(time);
+            Main.EnableUI(time);
+            Paused.EnableUI(time);
+            PlayerOverlay.EnableUI(time);
         }
 
         public static void DeactivateAllPanels()
@@ -50,25 +51,25 @@ namespace Base.UI
             PlayerOverlay.MoveUI(movePos);
         }
 
-        public static void ActivateOnePanel(Enum_MenuTypes menu)
+        public static void ActivateOnePanel(Enum_MenuTypes menu, float time = 0)
         {
             DeactivateAllPanels();
             switch (menu)
             {
                 case Enum_MenuTypes.Menu_Main:
-                    Main.EnableUI();
+                    Main.EnableUI(time);
                     break;
                 case Enum_MenuTypes.Menu_PlayerOverlay:
-                    PlayerOverlay.EnableUI();
+                    PlayerOverlay.EnableUI(time);
                     break;
                 case Enum_MenuTypes.Menu_Paused:
-                    Paused.EnableUI();
+                    Paused.EnableUI(time);
                     break;
                 case Enum_MenuTypes.Menu_GameOver:
-                    GameOver.EnableUI();
+                    GameOver.EnableUI(time);
                     break;
                 case Enum_MenuTypes.Menu_Loading:
-                    Loading.EnableUI();
+                    Loading.EnableUI(time);
                     break;
             }
         }
@@ -92,45 +93,43 @@ namespace Base.UI
 
         #region Text
 
-        public static B_UI_CTMProGUI_Subframe GetText(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetText(enumToPull.ToString());
-        public static B_UI_CTMProGUI_Subframe GetText(Enum_Menu_LoadingComponent enumToPull) => Loading.GetText(enumToPull.ToString());
-        public static B_UI_CTMProGUI_Subframe GetText(Enum_Menu_MainComponent enumToPull) => Main.GetText(enumToPull.ToString());
-        public static B_UI_CTMProGUI_Subframe GetText(Enum_Menu_PausedComponent enumToPull) => Paused.GetText(enumToPull.ToString());
-        public static B_UI_CTMProGUI_Subframe GetText(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetText(enumToPull.ToString());
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetText(enumToPull.ToString());
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_LoadingComponent enumToPull) => Loading.GetText(enumToPull.ToString());
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_MainComponent enumToPull) => Main.GetText(enumToPull.ToString());
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_PausedComponent enumToPull) => Paused.GetText(enumToPull.ToString());
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetText(enumToPull.ToString());
 
 
         #endregion
 
         #region Slider
 
-        public static B_UI_CSlider_Subframe GetSlider(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetSlider(enumToPull.ToString());
-        public static B_UI_CSlider_Subframe GetSlider(Enum_Menu_LoadingComponent enumToPull) => Loading.GetSlider(enumToPull.ToString());
-        public static B_UI_CSlider_Subframe GetSlider(Enum_Menu_MainComponent enumToPull) => Main.GetSlider(enumToPull.ToString());
-        public static B_UI_CSlider_Subframe GetSlider(Enum_Menu_PausedComponent enumToPull) => Paused.GetSlider(enumToPull.ToString());
-        public static B_UI_CSlider_Subframe GetSlider(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetSlider(enumToPull.ToString());
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetSlider(enumToPull.ToString());
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_LoadingComponent enumToPull) => Loading.GetSlider(enumToPull.ToString());
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_MainComponent enumToPull) => Main.GetSlider(enumToPull.ToString());
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_PausedComponent enumToPull) => Paused.GetSlider(enumToPull.ToString());
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetSlider(enumToPull.ToString());
 
 
         #endregion
 
         #region Button
 
-        public static B_UI_CTMProGUIButton_Subframe GetButton(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetButton(enumToPull.ToString());
-        public static B_UI_CTMProGUIButton_Subframe GetButton(Enum_Menu_LoadingComponent enumToPull) => Loading.GetButton(enumToPull.ToString());
-        public static B_UI_CTMProGUIButton_Subframe GetButton(Enum_Menu_MainComponent enumToPull) => Main.GetButton(enumToPull.ToString());
-        public static B_UI_CTMProGUIButton_Subframe GetButton(Enum_Menu_PausedComponent enumToPull) => Paused.GetButton(enumToPull.ToString());
-        public static B_UI_CTMProGUIButton_Subframe GetButton(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetButton(enumToPull.ToString());
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetButton(enumToPull.ToString());
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_LoadingComponent enumToPull) => Loading.GetButton(enumToPull.ToString());
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_MainComponent enumToPull) => Main.GetButton(enumToPull.ToString());
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PausedComponent enumToPull) => Paused.GetButton(enumToPull.ToString());
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetButton(enumToPull.ToString());
 
 
         #endregion
 
-        public static B_UI_CImage_Subframe GetImage(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetImage(enumToPull.ToString());
-        public static B_UI_CImage_Subframe GetImage(Enum_Menu_LoadingComponent enumToPull) => Loading.GetImage(enumToPull.ToString());
-        public static B_UI_CImage_Subframe GetImage(Enum_Menu_MainComponent enumToPull) => Main.GetImage(enumToPull.ToString());
-        public static B_UI_CImage_Subframe GetImage(Enum_Menu_PausedComponent enumToPull) => Paused.GetImage(enumToPull.ToString());
-        public static B_UI_CImage_Subframe GetImage(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetImage(enumToPull.ToString());
-
-
         #region Image
+        public static UI_CImageSubframe GetImage(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetImage(enumToPull.ToString());
+        public static UI_CImageSubframe GetImage(Enum_Menu_LoadingComponent enumToPull) => Loading.GetImage(enumToPull.ToString());
+        public static UI_CImageSubframe GetImage(Enum_Menu_MainComponent enumToPull) => Main.GetImage(enumToPull.ToString());
+        public static UI_CImageSubframe GetImage(Enum_Menu_PausedComponent enumToPull) => Paused.GetImage(enumToPull.ToString());
+        public static UI_CImageSubframe GetImage(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetImage(enumToPull.ToString());
 
         #endregion
         public static void FlushData()

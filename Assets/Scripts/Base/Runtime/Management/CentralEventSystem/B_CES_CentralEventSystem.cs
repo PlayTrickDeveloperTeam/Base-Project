@@ -9,6 +9,8 @@ namespace Base
     {
         public static List<B_CES_Events> EventsList;
 
+        public static B_CES_Events OnGameStateChange;
+
         public static B_CES_Events OnAfterAwake;
 
         public static B_CES_Events OnBeforeLevelLoaded;
@@ -33,6 +35,8 @@ namespace Base
         public static Task CentralEventSystemStrapping()
         {
             EventsList = new List<B_CES_Events>();
+
+            OnGameStateChange = new B_CES_Events(EventsList);
 
             OnBeforeLevelLoaded = new B_CES_Events(EventsList);
             OnAfterLevelLoaded = new B_CES_Events(EventsList);

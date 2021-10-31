@@ -73,7 +73,7 @@ namespace Base
 
             B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
 
-            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
         }
 
         #endregion

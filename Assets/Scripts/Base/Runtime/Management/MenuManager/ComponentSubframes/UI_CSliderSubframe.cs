@@ -7,12 +7,11 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 namespace Base.UI
 {
-    public class B_UI_CSlider_Subframe : B_UI_ComponentsSubframe
+    public class UI_CSliderSubframe : UI_TComponentsSubframe
     {
         #region Standart Functions
 
-        Slider HandleSlider;
-        Image ImageSlider;
+        [HideInInspector] public Slider HandleSlider;
 
         public override Task SetupComponentSubframe(B_UI_MenuSubFrame Manager)
         {

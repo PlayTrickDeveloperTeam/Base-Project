@@ -86,17 +86,7 @@ namespace Base.UI
                 AddEmptyMenus();
             }
             AddChilds(transform);
-            //foreach (Transform item in transform)
-            //{
-            //    if (item.GetComponent<B_UI_MenuSubFrame>())
-            //    {
-            //        Subframes.Add(item.GetComponent<B_UI_MenuSubFrame>());
-            //    }
-            //    if (item.childCount > 0)
-            //    {
 
-            //    }
-            //}
             foreach (var item in Subframes)
             {
                 await item.SetupFrame(this);

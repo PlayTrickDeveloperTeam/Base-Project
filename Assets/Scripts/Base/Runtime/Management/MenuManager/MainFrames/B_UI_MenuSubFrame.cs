@@ -104,21 +104,25 @@ namespace Base.UI
 
         public UI_CTMProGUISubframe GetText(object frameEnum)
         {
+            if (!TMProDictionary.ContainsKey(frameEnum.ToString())) { Debug.LogError("The " + frameEnum.ToString() + " Component Cound't be found"); }
             return TMProDictionary[frameEnum.ToString()];
         }
 
         public UI_CSliderSubframe GetSlider(object frameEnum)
         {
+            if (!SliderDictionary.ContainsKey(frameEnum.ToString())) { Debug.LogError("The " + frameEnum.ToString() + " Component Cound't be found"); }
             return SliderDictionary[frameEnum.ToString()];
         }
 
         public UI_CButtonTMProSubframe GetButton(object frameEnum)
         {
+            if (!ButtonDictionary.ContainsKey(frameEnum.ToString())) { Debug.LogError("The " + frameEnum.ToString() + " Component Cound't be found"); }
             return ButtonDictionary[frameEnum.ToString()];
         }
 
         public UI_CImageSubframe GetImage(object frameEnum)
         {
+            if (!ImageDictionary.ContainsKey(frameEnum.ToString())) { Debug.LogError("The " + frameEnum.ToString() + " Component Cound't be found"); }
             return ImageDictionary[frameEnum.ToString()];
         }
 

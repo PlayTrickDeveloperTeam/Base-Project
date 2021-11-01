@@ -47,10 +47,10 @@ namespace Base
             SubFrames.ForEach(t => t.Go());
         }
 
-        public void EndGameFunction()
+        public void EndGameFunction(bool success)
         {
+            B_GM_GameManager.instance.ActivateEndgame(success, 2);
             SubFrames.ForEach(t => t.EndFunctions());
-            //B_MM_MenuManager_Project.instance.ActivateEndGame(3, false);
         }
 
         public void AddFramesToList(PlayerSubFrame SubFrame)

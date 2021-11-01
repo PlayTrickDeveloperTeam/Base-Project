@@ -10,12 +10,8 @@ namespace Base
     {
         #region Properties
 
-        [HideInInspector] public LeanDragTranslate LeanTranslate;
-        public float ForwardSpeed;
-        [Range(.1f, 3f)]
-        public float SidewaySpeed;
-        public Vector2 MovementClamp;
-        Vector3 MoveVector;
+        public PlayerPathFollerSubframe PathFollerSubframe;
+        public Action<bool> EndReached;
 
         bool canMove;
         public override bool CanAct
@@ -52,31 +48,21 @@ namespace Base
         public override void SetupSubFrame()
         {
             base.SetupSubFrame();
+            PathFollerSubframe.Setup(transform, this);
             Parent.MovementFrame = this;
-            LeanTranslate = GetComponent<LeanDragTranslate>();
-            LeanTranslate.Sensitivity = SidewaySpeed;
-            LeanTranslate.MovementClamp = MovementClamp;
+            EndReached += Parent.EndGameFunction;
         }
 
         public override void Go()
         {
             base.Go();
-            UpdateAction += MoveBody;
+            UpdateAction += PathFollerSubframe.MoveBody;
             canMove = true;
-            LeanTranslate.CanMove = canMove;
         }
 
         public override void EndFunctions()
         {
-            LeanTranslate.CanMove = false;
             base.EndFunctions();
-        }
-
-        void MoveBody()
-        {
-            MoveVector = transform.position;
-            MoveVector = transform.forward.normalized * ForwardSpeed;
-            transform.Translate(MoveVector * Time.deltaTime);
         }
 
         #endregion

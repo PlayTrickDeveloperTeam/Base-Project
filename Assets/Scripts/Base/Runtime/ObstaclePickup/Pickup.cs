@@ -8,7 +8,7 @@ namespace Base
 
         public void OnPickup(float value)
         {
-            B_MM_MenuManager_Project.instance.OnPickupTaken?.Invoke(value);
+
         }
     }
 }

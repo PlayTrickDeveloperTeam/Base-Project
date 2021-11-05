@@ -27,12 +27,13 @@ namespace Base.UI
             return Task.CompletedTask;
         }
 
-
+#if UNITY_EDITOR
         void EditorFunctions()
         {
 
             if (PrefabUtility.GetPrefabType(this.gameObject) == PrefabType.PrefabInstance)
                 PrefabUtility.UnpackPrefabInstance(this.gameObject, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
         }
+#endif
     }
 }

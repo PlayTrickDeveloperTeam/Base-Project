@@ -6,8 +6,8 @@ using UnityEngine;
 using System.Threading.Tasks;
 using Base;
 using DG.Tweening;
-#if UNITY_EDITOR
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
 using UnityEditor;
 #endif

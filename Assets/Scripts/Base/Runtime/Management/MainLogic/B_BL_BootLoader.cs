@@ -68,12 +68,17 @@ namespace Base
             {
                 await Managers[i].ManagerStrapping();
             }
-            if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
+            if (!HasTutorial) SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.TutorialPlayed, 1);
+            else SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.TutorialPlayed, 0);
+            Debug.Log(SaveSystem.GetDataInt(Enum_Saves.Save_1, Enum_Save_1.TutorialPlayed));
+            //if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
-            B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
-
+            //B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
+            B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.Save_1, Enum_Save_1.PlayerLevel));
+            B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
+            SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.PlayerCoin, 300);
         }
 
         #endregion

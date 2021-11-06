@@ -18,8 +18,10 @@ namespace Base
         protected override OdinMenuTree BuildMenuTree()
         {
             var tree = new OdinMenuTree();
-            //tree.Add("Enum Creator", new EnumCreator());
+            tree.Add("Save System", new SaveSystemEditor(tree));
             return tree;
         }
+
+
     }
 }

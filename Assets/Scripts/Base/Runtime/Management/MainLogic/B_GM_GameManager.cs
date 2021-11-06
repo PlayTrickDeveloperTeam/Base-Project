@@ -26,13 +26,14 @@ namespace Base
             }
         }
 
-        public SaveData Save;
+        public SaveSystemEditor Save;
 
         public override Task ManagerStrapping()
         {
             if (instance == null) instance = this; else Destroy(this.gameObject);
-            Save = new SaveData();
-            Save.PrepareSaveSystem();
+            Save = new SaveSystemEditor();
+            //Save = new SaveData();
+            //Save.PrepareSaveSystem();
 
             //Add Functions To UI
             GUIManager.GetButton(Enum_Menu_MainComponent.BTN_Start).AddFunction(StartGame);
@@ -93,6 +94,17 @@ namespace Base
             await Task.Delay((int)Delay * 1000);
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_GameOver);
             GUIManager.GameOver.EnableOverUI(Success);
+            Save.SaveAllData();
+        }
+
+        private void OnApplicationPause(bool pause)
+        {
+            Save.SaveAllData();
+        }
+
+        private void OnApplicationQuit()
+        {
+            Save.SaveAllData();
         }
 
         #endregion

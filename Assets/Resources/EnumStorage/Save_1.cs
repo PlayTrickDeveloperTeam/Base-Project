@@ -1,0 +1,1 @@
+public enum Enum_Save_1{ TutorialPlayed, GameFinished, PlayerLevel, PreviewLevel, PlayerCoin}

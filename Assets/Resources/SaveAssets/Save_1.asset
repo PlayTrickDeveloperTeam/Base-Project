@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Save_1
   m_EditorClassIdentifier: 
   SaveName: Save_1
+  IsPermanent: 1
   SaveCluster:
   - Name: TutorialPlayed
-    Value: 0
+    Value: 1
   - Name: GameFinished
     Value: 0
   - Name: PlayerLevel
@@ -23,4 +24,4 @@ MonoBehaviour:
   - Name: PreviewLevel
     Value: 0
   - Name: PlayerCoin
-    Value: 300
+    Value: 0

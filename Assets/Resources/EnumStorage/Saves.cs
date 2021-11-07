@@ -1,1 +1,1 @@
-public enum Enum_Saves{ Save_1}
+public enum Enum_Saves{ Save_1, Save_2}

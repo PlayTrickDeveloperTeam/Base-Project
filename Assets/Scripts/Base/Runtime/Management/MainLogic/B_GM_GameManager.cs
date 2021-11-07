@@ -98,6 +98,7 @@ namespace Base {
         #endregion Function Testing
     }
 
+    //Will Keep it as an example
     public class SaveData {
         public int GameFinished {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.GameFinished.ToString()); }

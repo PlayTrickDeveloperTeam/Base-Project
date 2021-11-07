@@ -11,6 +11,10 @@ namespace Base {
             return B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).GetData(saveEnum);
         }
 
+        public static string GetDataString(object saveName, object saveEnum) {
+            return B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).GetData(saveEnum).ToString();
+        }
+
         public static int GetDataInt(object saveName, object saveEnum) {
             return int.Parse(string.Format("{0}", B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).GetData(saveEnum).ToString()));
         }

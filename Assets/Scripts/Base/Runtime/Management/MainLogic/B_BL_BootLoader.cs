@@ -61,16 +61,17 @@ namespace Base {
             for (int i = 0; i < Managers.Count; i++) {
                 await Managers[i].ManagerStrapping();
             }
-            if (!HasTutorial) SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.TutorialPlayed, 1);
-            else SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.TutorialPlayed, 0);
-            //if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
+            if (!HasTutorial) SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed, 1);
+            else SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed, 0);
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
-            //B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
-            B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.Save_1, Enum_Save_1.PlayerLevel));
+            B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PlayerLevel));
             B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
-            SaveSystem.SetData(Enum_Saves.Save_1, Enum_Save_1.PlayerCoin, 300);
+            Debug.Log(SaveSystem.GetDataObject(Enum_Saves.EditorData, Enum_EditorData.Data_b));
+            SaveSystem.SetData(Enum_Saves.EditorData, Enum_EditorData.Data_b, 3);
+            Debug.Log(SaveSystem.GetDataObject(Enum_Saves.EditorData, Enum_EditorData.Data_b));
+
         }
 
         #endregion

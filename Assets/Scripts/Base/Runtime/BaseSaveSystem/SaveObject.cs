@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 namespace Base {
-    [System.Serializable]
+    [Serializable]
     public class SaveObject : ScriptableObject {
         public string SaveName;
         public bool IsPermanent;
@@ -34,7 +34,9 @@ namespace Base {
                 if (SaveCluster[i].Name.Length <= 0) continue;
                 _temp[i] = SaveCluster[i].Name;
             }
+#if UNITY_EDITOR
             EnumCreator.CreateEnum(SaveName, _temp);
+#endif
         }
 
         [Button]
@@ -42,9 +44,10 @@ namespace Base {
             if (!Application.isPlaying) {
                 saveDic = new Dictionary<string, object>();
                 for (int i = 0; i < SaveCluster.Count; i++) {
-                    if (SaveCluster[i].Name.Length <= 3 || SaveCluster[i].Name == null || SaveCluster[i].Name == "Null") {
+                    if (SaveCluster[i].Name.MakeViable() == "") {
                         SaveCluster[i].Name = "EmptyData_" + i.ToString();
                     }
+                    else SaveCluster[i].Name = SaveCluster[i].Name.MakeViable();
                     saveDic.Add(SaveCluster[i].Name, SaveCluster[i].Value);
                 }
             }
@@ -63,6 +66,10 @@ namespace Base {
             for (int i = 0; i < SaveCluster.Count; i++) {
                 saveDic.Add(SaveCluster[i].Name, SaveCluster[i].Value);
             }
+        }
+        [Button]
+        public void DeleteThisData() {
+            this.DeleteObjectData();
         }
 
 
@@ -99,15 +106,23 @@ namespace Base {
             return Task.CompletedTask;
         }
 
+        public Task DeleteObjectData() {
+            string MainPath = Application.persistentDataPath + "/Saves/";
+            if (File.Exists(MainPath + this.SaveName + ".save")) {
+                File.Delete(MainPath + this.SaveName + ".save");
+            }
+            return Task.CompletedTask;
+        }
+
         #endregion
     }
     [System.Serializable]
     public class DataHolder {
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Left")]
-        public string Name;
+        public string Name = "";
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Right")]
-        public string Value;
+        public string Value = "";
     }
 }

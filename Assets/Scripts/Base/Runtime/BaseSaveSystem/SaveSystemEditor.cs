@@ -13,11 +13,12 @@ using Sirenix.Utilities.Editor;
 #endif
 namespace Base {
     public class SaveSystemEditor {
-        List<SaveObject> Objects;
+
+        List<SaveObject> SaveObjects;
         Dictionary<string, SaveObject> savesDic;
         public Task SaveSystemStrapping() {
-            Objects = new List<SaveObject>();
-            Objects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
+            SaveObjects = new List<SaveObject>();
+            SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
             return Task.CompletedTask;
         }
 
@@ -27,17 +28,17 @@ namespace Base {
         }
 
         public SaveSystemEditor() {
-            Objects = new List<SaveObject>();
-            Objects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
+            SaveObjects = new List<SaveObject>();
+            SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
             savesDic = new Dictionary<string, SaveObject>();
-            for (int i = 0; i < Objects.Count; i++) {
-                Objects[i].LoadThisData();
-                savesDic.Add(Objects[i].SaveName, Objects[i]);
+            for (int i = 0; i < SaveObjects.Count; i++) {
+                SaveObjects[i].LoadThisData();
+                savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
             }
         }
 
         public void SaveAllData() {
-            foreach (var item in Objects) {
+            foreach (var item in SaveObjects) {
                 item.SaveThisData();
             }
         }
@@ -45,25 +46,33 @@ namespace Base {
 
         #region Editor Functions
 #if UNITY_EDITOR
+        [InlineEditor(ObjectFieldMode = InlineEditorObjectFieldModes.Hidden)]
+        public SaveObject NewSaveObject;
         public SaveSystemEditor(OdinMenuTree tree) {
-            Objects = new List<SaveObject>();
-            Objects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
+            SaveObjects = new List<SaveObject>();
+            SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
             savesDic = new Dictionary<string, SaveObject>();
-            for (int i = 0; i < Objects.Count; i++) {
-                savesDic.Add(Objects[i].SaveName, Objects[i]);
+            for (int i = 0; i < SaveObjects.Count; i++) {
+                savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
             }
             tree.AddAllAssetsAtPath("Saves", "Assets/Resources/SaveAssets");
+            NewSaveObject = ScriptableObject.CreateInstance<SaveObject>();
         }
 
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Right")]
         [Button]
         public void CreateNewSave() {
-            SaveObject obj = ScriptableObject.CreateInstance<SaveObject>();
-            obj.name = "Save_" + (Objects.Count + 1);
-            obj.SaveName = obj.name;
-            AssetDatabase.CreateAsset(obj, "Assets/Resources/SaveAssets/" + obj.name + ".asset");
+            SaveObject obj = NewSaveObject;
+            if (obj.SaveName.MakeViable() == "") {
+                obj.SaveName = "Empty_Save_Name";
+            }
+            else obj.SaveName = obj.SaveName.MakeViable();
+            obj.name = obj.SaveName;
+            obj.SaveThisData();
+            AssetDatabase.CreateAsset(obj, "Assets/Resources/SaveAssets/" + obj.SaveName + ".asset");
             AssetDatabase.SaveAssets();
+            NewSaveObject = ScriptableObject.CreateInstance<SaveObject>();
         }
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Left")]
@@ -74,8 +83,11 @@ namespace Base {
 
                 var path = AssetDatabase.GUIDToAssetPath(item);
                 SaveObject var = AssetDatabase.LoadAssetAtPath(path, typeof(SaveObject)) as SaveObject;
-                if (!var.IsPermanent)
+                if (!var.IsPermanent) {
+                    var.DeleteThisData();
                     AssetDatabase.DeleteAsset(path);
+                }
+
             }
             AssetDatabase.SaveAssets();
         }
@@ -83,10 +95,10 @@ namespace Base {
         [VerticalGroup("Split/Left")]
         [Button]
         public void CreateEnums() {
-            string[] _temp = new string[Objects.Count];
-            for (int i = 0; i < Objects.Count; i++) {
-                _temp[i] = Objects[i].name;
-                Objects[i].CreateEnums();
+            string[] _temp = new string[SaveObjects.Count];
+            for (int i = 0; i < SaveObjects.Count; i++) {
+                _temp[i] = SaveObjects[i].SaveName;
+                SaveObjects[i].CreateEnums();
             }
             EnumCreator.CreateEnum("Saves", _temp);
         }

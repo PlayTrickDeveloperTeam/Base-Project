@@ -70,6 +70,7 @@ namespace Base {
             else obj.SaveName = obj.SaveName.MakeViable();
             obj.name = obj.SaveName;
             obj.SaveThisData();
+            obj.Created = true;
             AssetDatabase.CreateAsset(obj, "Assets/Resources/SaveAssets/" + obj.SaveName + ".asset");
             AssetDatabase.SaveAssets();
             NewSaveObject = ScriptableObject.CreateInstance<SaveObject>();

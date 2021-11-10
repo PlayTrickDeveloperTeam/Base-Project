@@ -11,8 +11,10 @@ using System.IO;
 namespace Base {
     [Serializable]
     public class SaveObject : ScriptableObject {
+        [DisableIf("Created")]
         public string SaveName;
         public bool IsPermanent;
+        [HideInInspector] public bool Created = false;
         public List<DataHolder> SaveCluster;
         Dictionary<string, object> saveDic;
 

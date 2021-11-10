@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60d24ac12871fa6438597dbe53a39413, type: 3}
-  m_Name: Save_1
+  m_Name: MainSave
   m_EditorClassIdentifier: 
   SaveName: MainSave
   IsPermanent: 1
+  Created: 1
   SaveCluster:
   - Name: TutorialPlayed
     Value: 1

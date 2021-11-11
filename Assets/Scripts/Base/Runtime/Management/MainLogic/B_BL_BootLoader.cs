@@ -68,10 +68,6 @@ namespace Base {
             B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PlayerLevel));
             B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
-            Debug.Log(SaveSystem.GetDataObject(Enum_Saves.EditorData, Enum_EditorData.Data_b));
-            SaveSystem.SetData(Enum_Saves.EditorData, Enum_EditorData.Data_b, 3);
-            Debug.Log(SaveSystem.GetDataObject(Enum_Saves.EditorData, Enum_EditorData.Data_b));
-
         }
 
         #endregion

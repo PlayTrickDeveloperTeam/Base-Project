@@ -22,7 +22,5 @@ namespace Base {
         public static void SetData(object saveName, object saveEnum, object DataToSave) {
             B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).SetData(saveEnum, DataToSave);
         }
-
-
     }
 }

@@ -11,6 +11,7 @@ using System.IO;
 namespace Base {
     [Serializable]
     public class SaveObject : ScriptableObject {
+
         [DisableIf("Created")]
         public string SaveName;
         public bool IsPermanent;
@@ -35,6 +36,7 @@ namespace Base {
             for (int i = 0; i < SaveCluster.Count; i++) {
                 if (SaveCluster[i].Name.Length <= 0) continue;
                 _temp[i] = SaveCluster[i].Name;
+                SaveCluster[i].Locked = true;
             }
 #if UNITY_EDITOR
             EnumCreator.CreateEnum(SaveName, _temp);
@@ -120,11 +122,14 @@ namespace Base {
     }
     [System.Serializable]
     public class DataHolder {
+        [DisableIf("Locked")]
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Left")]
         public string Name = "";
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Right")]
         public string Value = "";
+        [HideInInspector]
+        public bool Locked;
     }
 }

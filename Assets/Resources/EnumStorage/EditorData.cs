@@ -1,1 +1,0 @@
-public enum Enum_EditorData{ Data_a, Data_b, Data_c}

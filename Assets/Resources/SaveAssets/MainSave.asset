@@ -18,11 +18,16 @@ MonoBehaviour:
   SaveCluster:
   - Name: TutorialPlayed
     Value: 1
+    Locked: 1
   - Name: GameFinished
     Value: 0
+    Locked: 1
   - Name: PlayerLevel
     Value: 0
+    Locked: 1
   - Name: PreviewLevel
     Value: 0
+    Locked: 1
   - Name: PlayerCoin
     Value: 300
+    Locked: 1

@@ -26,7 +26,7 @@ namespace Base {
 
         private int tutorialPlayed {
             get {
-                return /*B_GM_GameManager.instance.Save.TutorialPlayed*/ SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed);
+                return SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed);
             }
         }
 

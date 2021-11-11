@@ -68,6 +68,11 @@ namespace Base {
             B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PlayerLevel));
             B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
+#if UNITY_EDITOR
+            GUIManager.GetText(Enum_Menu_MainComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.Starttxt));
+            GUIManager.GetText(Enum_Menu_GameOverComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.Endtxt));
+            GUIManager.GetText(Enum_Menu_PlayerOverlayComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.InGametxt));
+#endif
         }
 
         #endregion

@@ -16,8 +16,10 @@ namespace Base {
         public string SaveName;
         public bool IsPermanent;
         [HideInInspector] public bool Created = false;
+        //[InfoBox("Enter atleast one data to be able to create a new save")]
         public List<DataHolder> SaveCluster;
         Dictionary<string, object> saveDic;
+        [HideInInspector] public string SaveEnumLocations;
 
         public object GetData(object name) {
             if (saveDic.ContainsKey(name.ToString())) { return saveDic[name.ToString()]; }
@@ -30,19 +32,20 @@ namespace Base {
             }
         }
 
-        [Button]
+        //[ShowIf("Created")]
+        //[Button]
         public void CreateEnums() {
             string[] _temp = new string[SaveCluster.Count];
             for (int i = 0; i < SaveCluster.Count; i++) {
                 if (SaveCluster[i].Name.Length <= 0) continue;
                 _temp[i] = SaveCluster[i].Name;
-                SaveCluster[i].Locked = true;
             }
 #if UNITY_EDITOR
+            SaveEnumLocations = EnumCreator.BasePath + this.SaveName + ".cs";
             EnumCreator.CreateEnum(SaveName, _temp);
 #endif
         }
-
+        [ShowIf("Created")]
         [Button]
         public void SaveThisData() {
             if (!Application.isPlaying) {
@@ -60,9 +63,10 @@ namespace Base {
                     SaveCluster[i].Value = saveDic[SaveCluster[i].Name].ToString();
                 }
             }
+            CreateEnums();
             this.SaveObjectData();
         }
-
+        [ShowIf("Created")]
         [Button]
         public void LoadThisData() {
             this.LoadObjectData();
@@ -71,7 +75,9 @@ namespace Base {
                 saveDic.Add(SaveCluster[i].Name, SaveCluster[i].Value);
             }
         }
-        [Button]
+        //[InfoBox("Deletes the created save save data, not the asset")]
+        [ShowIf("Created")]
+        [Button("Delete Save Data")]
         public void DeleteThisData() {
             this.DeleteObjectData();
         }
@@ -90,7 +96,9 @@ namespace Base {
             file.Close();
             return Task.CompletedTask;
         }
-
+        // Save null check özelliği ekle
+        // Otamatik hale gelebilecek bi özellik
+        // Vector3 alabilecek bi hale gelsin
         public Task LoadObjectData() {
             SaveObject obj = this;
             BinaryFormatter formatter = new BinaryFormatter();
@@ -122,14 +130,11 @@ namespace Base {
     }
     [System.Serializable]
     public class DataHolder {
-        [DisableIf("Locked")]
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Left")]
         public string Name = "";
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Right")]
         public string Value = "";
-        [HideInInspector]
-        public bool Locked;
     }
 }

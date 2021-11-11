@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Base
-{
-    public static class B_CES_CentralEventSystem
-    {
+namespace Base {
+    public static class B_CES_CentralEventSystem {
         public static List<B_CES_Events> EventsList;
 
         public static B_CES_Events OnGameStateChange;
@@ -32,8 +30,7 @@ namespace Base
 
         public static B_CES_Events OnLevelDisable;
 
-        public static Task CentralEventSystemStrapping()
-        {
+        public static Task CentralEventSystemStrapping() {
             EventsList = new List<B_CES_Events>();
 
             OnGameStateChange = new B_CES_Events(EventsList);
@@ -63,48 +60,39 @@ namespace Base
             return Task.CompletedTask;
         }
 
-        public static void DeactiveEvents()
-        {
-            for (int i = 0; i < EventsList.Count; i++)
-            {
+        public static void DeactiveEvents() {
+            for (int i = 0; i < EventsList.Count; i++) {
                 EventsList[i].DeleteNonConstantFunctions();
             }
         }
     }
 
-    public class B_CES_Events
-    {
+    public class B_CES_Events {
         public Action AnyAction;
         public Dictionary<Action, bool> SubscribedFunctions;
 
-        public B_CES_Events(List<B_CES_Events> eventList)
-        {
+        public B_CES_Events(List<B_CES_Events> eventList) {
             this.SubscribedFunctions = new Dictionary<Action, bool>();
             eventList.Add(this);
         }
 
-        public void InvokeEvent()
-        {
+        public void InvokeEvent() {
             this.AnyAction?.Invoke();
         }
 
-        public void AddFunction(Action actionToAdd, bool isConstantEvent)
-        {
+        public void AddFunction(Action actionToAdd, bool isConstantEvent) {
             this.AnyAction += actionToAdd;
             this.SubscribedFunctions.Add(actionToAdd, isConstantEvent);
         }
 
-        public void DeleteFunction(Action actionToRemove)
-        {
+        public void DeleteFunction(Action actionToRemove) {
             if (!this.SubscribedFunctions.ContainsKey(actionToRemove)) return;
             this.AnyAction -= actionToRemove;
             this.SubscribedFunctions.Remove(actionToRemove);
         }
 
-        public void DeleteNonConstantFunctions()
-        {
-            foreach (var item in SubscribedFunctions)
-            {
+        public void DeleteNonConstantFunctions() {
+            foreach (var item in SubscribedFunctions) {
                 if (item.Value) return;
                 AnyAction -= item.Key;
             }

@@ -2296,7 +2296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8156765547313807595, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: 4157664638765817580, guid: 58a21daf0fffc114ca07cc21c47b87ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8156765547313807595, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: -2028173606318374765, guid: 58a21daf0fffc114ca07cc21c47b87ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2532,7 +2532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3338658058547748790, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: 6530909773171879166, guid: 58a21daf0fffc114ca07cc21c47b87ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8974034862246773190, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: -5107270302650026438, guid: 58a21daf0fffc114ca07cc21c47b87ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3319,7 +3319,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 857.3913, y: 1189}
+  m_SizeDelta: {x: 581.26526, y: 266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8965160879507210558
 MonoBehaviour:
@@ -3592,7 +3592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3963927920987813938, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: 8412662772347291654, guid: 58a21daf0fffc114ca07cc21c47b87ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3619,7 +3619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 859.39215, y: 1189}
+  m_SizeDelta: {x: 860.39264, y: 332}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8965160881364731536
 MonoBehaviour:

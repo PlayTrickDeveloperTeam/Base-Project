@@ -19,8 +19,9 @@ namespace Base
 
         #region Properties
 
-        public bool HasTutorial = false;
-        public List<B_M_ManagerBase> Managers;
+        [SerializeField] bool HasTutorial = false;
+        [SerializeField] List<B_M_ManagerBase> Managers;
+        [SerializeField] private B_VFM_EffectsManager VfmEffectsManager;
         #endregion
 
         #region Unity Functions
@@ -69,6 +70,8 @@ namespace Base
                 await Managers[i].ManagerStrapping();
             }
             if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
+            await VfmEffectsManager.VFXManagerStrapping();
+            await EffectsManager.EffectsManagerStrapping();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
             B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);

@@ -34,7 +34,7 @@
                 var get = GetComponent<ComboSystem>();
                 if (get != null)
                 {
-                    Destroy(this);
+                    DestroyImmediate(get);
                 }
             }
         }
@@ -83,6 +83,9 @@
         public Action<int> ComboAdd;
         public Action OverrideStopCombo;
         public static ComboSystem instance;
+
+        private Coroutine ComboCounterRoutine;
+        
         private void Awake()
         {
             if (instance == null)
@@ -93,19 +96,19 @@
         
         private void OnEnable()
         {
-            OverrideStopCombo += () => StopCoroutine("ComboCounter");
+            OverrideStopCombo += () => StopCoroutine(ComboCounterRoutine);
         }
 
         private void OnDisable()
         {
-            OverrideStopCombo -= () => StopCoroutine("ComboCounter");
+            OverrideStopCombo -= () => StopCoroutine(ComboCounterRoutine);
         }
 
         private void AddCombo(int value)
         {
             if (totalCombo == 0)
             {
-                StartCoroutine("ComboCounter");
+                ComboCounterRoutine = StartCoroutine(ComboCounter());
             }else if (comboTime > 0)
             {
                 comboTime += addingComboTime;

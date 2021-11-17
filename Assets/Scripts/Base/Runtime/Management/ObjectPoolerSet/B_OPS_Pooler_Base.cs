@@ -28,7 +28,7 @@ namespace Base
         public List<ObjectsToPool> PoolsList;
         public Dictionary<string, Queue<GameObject>> PoolsDictionary;
 
-        //Distance from spawn içerisine bir sayý girilmesi lazým
+        //Distance from spawn iÃ§erisine bir sayÄ± girilmesi lazÄ±m
         private float distanceFromSpawn, spawnOffset;
 
         private Vector3 firstSpawnPoint = new Vector3(8000, 7000, 9000);

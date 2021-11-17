@@ -1,16 +1,54 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Base
 {
-    public class B_VFM_EffectsManager : B_OPS_Pooler_Base
+    public class B_VFM_EffectsManager : MonoBehaviour
     {
         private List<GameObject> particles = new List<GameObject>();
         private List<Particle> spawnedParticles = new List<Particle>();
         public static B_VFM_EffectsManager instance;
 
+        [SerializeField] private Enum_Particles particlesEnum;
+        private float spawnDelay;
+        private bool loop;
+        private Transform parent;
+        private Vector3 newScale;
+        private Quaternion rot;
+        
+#if UNITY_EDITOR
+        [Button("Save Enums")]
+        void OnObjectsPoolManipulated()
+        {
+            List<string> particleNames = new List<string>();
+            
+            foreach (GameObject g in Resources.LoadAll("Particles", typeof(GameObject)))
+            {
+                particleNames.Add(g.name);
+            }
+            
+            string[] Names = new string[particleNames.Count];
+            for (int i = 0; i < particleNames.Count; i++)
+            {
+                Names[i] = particleNames[i];
+            }
+            EnumCreator.CreateEnum("Particles", Names);
+        }
+#endif
+
+        private void ResOptions()
+        {
+            spawnDelay = 0;
+            loop = false;
+            parent = null;
+            newScale = Vector3.one;
+            rot = Quaternion.identity;
+        }
+        
         private void OnDisable()
         {
             instance = null;
@@ -32,47 +70,45 @@ namespace Base
 
         private void Load()
         {
+            List<string> particleNames = new List<string>();
+            
             foreach (GameObject g in Resources.LoadAll("Particles", typeof(GameObject)))
             {
-                particles.Add(g);
+                particleNames.Add(g.name);
             }
+            
         }
         
-        private int spawnDelay;
+
         private B_VFM_EffectsManager SetDelay(int SetDelay)
         {
             spawnDelay = SetDelay;
             return this;
         }
 
-        private bool loop;
         private B_VFM_EffectsManager SetLoop(bool setValue)
         {
             loop = setValue;
             return this;
         }
 
-        private Transform parent;
         private B_VFM_EffectsManager SetParent(Transform setValue)
         {
             parent = setValue;
             return this;
         }
         
-        private Vector3 newScale;
         private B_VFM_EffectsManager SetScale(Vector3 setValue)
         {
             newScale = setValue;
             return this;
         }
 
-        private Quaternion rot;
         private B_VFM_EffectsManager SetRot(Quaternion setValue)
         {
             rot = setValue;
             return this;
         }
-
         
         public async void SpawnParticle(string particleName,Vector3 pos,[Optional] Quaternion rot)
         {
@@ -93,8 +129,7 @@ namespace Base
                 return;
             }
             
-
-            await Task.Delay(spawnDelay * 1000);
+            await Task.Delay((int)(spawnDelay * 1000));
             
             var spawned = Instantiate(selected);
             spawned.SetActive(false);
@@ -102,12 +137,9 @@ namespace Base
             spawnedParticles.Add(particleScript);
             
             particleScript.Initialize(parent,pos,rot,loop);
+            ResOptions();
         }
-
-        private void OnEnable()
-        {
-            base.InitiatePooller(this.transform);
-        }
+        
     }
 
     public class Particle : MonoBehaviour

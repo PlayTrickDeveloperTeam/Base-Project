@@ -12,7 +12,7 @@ namespace Base
 {
     public abstract class B_OPS_Pooler_Base : MonoBehaviour
     {
-        public string PoolerName;
+        // public string PoolerName;
         [Serializable]
         public class ObjectsToPool
         {
@@ -28,7 +28,7 @@ namespace Base
         public List<ObjectsToPool> PoolsList;
         public Dictionary<string, Queue<GameObject>> PoolsDictionary;
 
-        //Distance from spawn içerisine bir sayý girilmesi lazým
+        //Distance from spawn iÃ§erisine bir sayÄ± girilmesi lazÄ±m
         private float distanceFromSpawn, spawnOffset;
 
         private Vector3 firstSpawnPoint = new Vector3(8000, 7000, 9000);
@@ -52,18 +52,7 @@ namespace Base
                 PoolsDictionary.Add(Pools.PoolName, objPool);
             }
         }
-#if UNITY_EDITOR
-        [Button("Save Enums")]
-        void OnObjectsPoolManipulated()
-        {
-            string[] Names = new string[PoolsList.Count];
-            for (int i = 0; i < PoolsList.Count; i++)
-            {
-                Names[i] = PoolsList[i].PoolName;
-            }
-            EnumCreator.CreateEnum(PoolerName, Names);
-        }
-#endif
+        
         public void InitiatePooller(Transform parent)
         {
             PoolsDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -103,7 +92,18 @@ namespace Base
             }
             PoolsDictionary.Add(newPool.PoolName, objPool);
         }
-
+#if UNITY_EDITOR
+        
+        protected void AddPoolInEditor(GameObject objPrefab, string prefabName, int spawnCount) {
+            if (PoolsList == null) { PoolsList = new List<ObjectsToPool>(); }
+            ObjectsToPool newPool = new ObjectsToPool();
+            newPool.PoolName = objPrefab.name;
+            newPool.ObjectPrefab = objPrefab;
+            newPool.PrewarmCount = spawnCount;
+            PoolsList.Add(newPool);
+        }
+        
+#endif
         private void ObjectSpawnHelper(GameObject obj)
         {
             obj.SetActive(true);

@@ -470,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471297352}
   - component: {fileID: 471297353}
+  - component: {fileID: 471297354}
   m_Layer: 0
   m_Name: Mainframe
   m_TagString: Untagged
@@ -512,6 +513,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &471297354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471297351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e48bd4b224ea840b4ee24e6bc6ed5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &724013433
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +566,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a7807e8bbf2afa41ae2726ed76f19a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &724250953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724250954}
+  - component: {fileID: 724250955}
+  m_Layer: 0
+  m_Name: VFMTester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &724250954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724250953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724250955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724250953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8019cf3d6e479b34b895da32ef9f2813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &732196364
@@ -967,6 +1023,7 @@ Transform:
   - {fileID: 446168642}
   - {fileID: 939493293}
   - {fileID: 2108018876}
+  - {fileID: 2048625401}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1713,6 +1770,56 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2048625400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2048625401}
+  - component: {fileID: 2048625402}
+  m_Layer: 0
+  m_Name: Manager_VFM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2048625401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048625400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1332486516}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2048625402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048625400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66c33714da1e494da372ff0512101ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoolsList:
+  - PoolName: CubeExplosion
+    ObjectPrefab: {fileID: 1942843871896654007, guid: ea0a9ad6c9f08af4dab7444683340af0, type: 3}
+    PrewarmCount: 10
+  - PoolName: SphereExpo
+    ObjectPrefab: {fileID: 1942843871896654007, guid: f708ebb52b11bc14c9b9caf156ab143b, type: 3}
+    PrewarmCount: 10
 --- !u!1 &2076071834
 GameObject:
   m_ObjectHideFlags: 3
@@ -1824,6 +1931,7 @@ MonoBehaviour:
   - {fileID: 1371471049}
   - {fileID: 995054686}
   - {fileID: 1111304005}
+  VfmEffectsManager: {fileID: 2048625402}
 --- !u!1 &2108018875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,7 +3603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3956264876366273754, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: -8310933147096994870, guid: d9647108d17f14347bfefa514907c5b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -62,7 +62,7 @@ namespace Base {
             for (int i = 0; i < Managers.Count; i++) {
                 await Managers[i].ManagerStrapping();
             }
-            if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
+            if (!HasTutorial) SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed, 1);
             await VfmEffectsManager.VFXManagerStrapping();
             await EffectsManager.EffectsManagerStrapping();
 

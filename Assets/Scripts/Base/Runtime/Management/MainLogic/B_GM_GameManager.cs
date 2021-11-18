@@ -4,85 +4,70 @@ using UnityEngine;
 using Base.UI;
 using System;
 
-namespace Base
-{
+namespace Base {
     public enum GameStates { Init, Start, Paused, Playing, End }
 
     public enum B_SE_DataTypes { GameFinished, PlayerLevel, TutorialPlayed, PreviewLevel }
 
-    public class B_GM_GameManager : B_M_ManagerBase
-    {
+    public class B_GM_GameManager : B_M_ManagerBase {
         public static B_GM_GameManager instance;
         public static Action OnGameStateChange;
         private GameStates _currentGameState;
-        public GameStates CurrentGameState
-        {
+        public GameStates CurrentGameState {
             get { return _currentGameState; }
-            set
-            {
+            set {
                 if (_currentGameState == value) return;
                 _currentGameState = value;
                 B_CES_CentralEventSystem.OnGameStateChange.InvokeEvent();
             }
         }
 
-        public SaveData Save;
+        public SaveSystemEditor Save;
 
-        public override Task ManagerStrapping()
-        {
+        public override Task ManagerStrapping() {
             if (instance == null) instance = this; else Destroy(this.gameObject);
-            Save = new SaveData();
-            Save.PrepareSaveSystem();
-
-            //Add Functions To UI
+            Save = new SaveSystemEditor();
             GUIManager.GetButton(Enum_Menu_MainComponent.BTN_Start).AddFunction(StartGame);
             GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Sucess).AddFunction(EndLevel);
             GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Fail).AddFunction(RestartLevel);
 
             return base.ManagerStrapping();
         }
-        public override Task ManagerDataFlush()
-        {
+        public override Task ManagerDataFlush() {
             instance = null;
             return base.ManagerDataFlush();
         }
 
-        public bool IsGamePlaying()
-        {
+        public bool IsGamePlaying() {
             if (CurrentGameState == GameStates.Playing) return true;
             return false;
         }
 
         #region Game Management Functions
 
-        void StartGame()
-        {
+        void StartGame() {
             B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_PlayerOverlay);
         }
 
-        void RestartLevel()
-        {
+        void RestartLevel() {
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .3f);
         }
 
-        void EndLevel()
-        {
+        void EndLevel() {
             B_CES_CentralEventSystem.BTN_OnEndGamePressed.InvokeEvent();
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 
-        public async void ActivateEndgame(bool Success, float Delay = 0)
-        {
+        public async void ActivateEndgame(bool Success, float Delay = 0) {
             if (CurrentGameState == GameStates.End || CurrentGameState == GameStates.Start) return;
             B_GM_GameManager.instance.CurrentGameState = GameStates.End;
-            switch (Success)
-            {
+            switch (Success) {
                 case true:
                     B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
                     break;
@@ -93,6 +78,15 @@ namespace Base
             await Task.Delay((int)Delay * 1000);
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_GameOver);
             GUIManager.GameOver.EnableOverUI(Success);
+            Save.SaveAllData();
+        }
+
+        private void OnApplicationPause(bool pause) {
+            Save.SaveAllData();
+        }
+
+        private void OnApplicationQuit() {
+            Save.SaveAllData();
         }
 
         #endregion
@@ -104,28 +98,24 @@ namespace Base
         #endregion Function Testing
     }
 
-    public class SaveData
-    {
-        public int GameFinished
-        {
+    //Will Keep it as an example
+    public class SaveData {
+        public int GameFinished {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.GameFinished.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.GameFinished.ToString(), value); }
         }
 
-        public int PlayerLevel
-        {
+        public int PlayerLevel {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.PlayerLevel.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.PlayerLevel.ToString(), value); }
         }
 
-        public int TutorialPlayed
-        {
+        public int TutorialPlayed {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.TutorialPlayed.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.TutorialPlayed.ToString(), value); }
         }
 
-        public int PreviewLevel
-        {
+        public int PreviewLevel {
             get { return PlayerPrefs.GetInt(B_SE_DataTypes.PreviewLevel.ToString()); }
             set { PlayerPrefs.SetInt(B_SE_DataTypes.PreviewLevel.ToString(), value); }
         }
@@ -136,8 +126,7 @@ namespace Base
         //    set { PlayerPrefs.SetInt(B_SE_DataTypes.PlayerCoin.ToString(), value); }
         //}
 
-        public void PrepareSaveSystem()
-        {
+        public void PrepareSaveSystem() {
             CheckExist(B_SE_DataTypes.GameFinished.ToString());
             CheckExist(B_SE_DataTypes.PlayerLevel.ToString());
             CheckExist(B_SE_DataTypes.TutorialPlayed.ToString());
@@ -145,8 +134,7 @@ namespace Base
             //CheckExist(B_SE_DataTypes.PlayerCoin.ToString());
         }
 
-        private void CheckExist(string name)
-        {
+        private void CheckExist(string name) {
             if (PlayerPrefs.HasKey(name)) return;
             PlayerPrefs.SetInt(name, 0);
         }

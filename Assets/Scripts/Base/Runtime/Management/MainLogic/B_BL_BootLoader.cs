@@ -11,11 +11,9 @@ using Sirenix.OdinInspector;
 using Unity.Advertisement.IosSupport;
 #endif
 
-namespace Base
-{
+namespace Base {
     [DefaultExecutionOrder(-100)]
-    public class B_BL_BootLoader : MonoBehaviour
-    {
+    public class B_BL_BootLoader : MonoBehaviour {
 
         #region Properties
 
@@ -26,8 +24,7 @@ namespace Base
 
         #region Unity Functions
 
-        private void Awake()
-        {
+        private void Awake() {
 
 #if UNITY_IOS
             if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
@@ -44,10 +41,8 @@ namespace Base
             InitiateBootLoading();
         }
 
-        private void OnDisable()
-        {
-            for (int i = 0; i < Managers.Count; i++)
-            {
+        private void OnDisable() {
+            for (int i = 0; i < Managers.Count; i++) {
                 Managers[i].ManagerDataFlush();
             }
         }
@@ -57,25 +52,24 @@ namespace Base
 
         #region Spesific Functions
 
-        private async void InitiateBootLoading()
-        {
+        private async void InitiateBootLoading() {
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
             //Debug.unityLogger.logEnabled = false;
 #endif
             await B_CES_CentralEventSystem.CentralEventSystemStrapping();
-            for (int i = 0; i < Managers.Count; i++)
-            {
+            for (int i = 0; i < Managers.Count; i++) {
                 await Managers[i].ManagerStrapping();
             }
             if (!HasTutorial) B_GM_GameManager.instance.Save.TutorialPlayed = 1;
             await VfmEffectsManager.VFXManagerStrapping();
             await EffectsManager.EffectsManagerStrapping();
+
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
-            B_LC_LevelManager.instance.LoadInLevel(B_GM_GameManager.instance.Save.PlayerLevel);
-
+            B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PlayerLevel));
+            B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
         }
 
@@ -84,11 +78,9 @@ namespace Base
 #if UNITY_EDITOR
         #region Editor Functions
         [Button]
-        public void SetupManagerEnums()
-        {
+        public void SetupManagerEnums() {
             string[] names = new string[Managers.Count];
-            for (int i = 0; i < Managers.Count; i++)
-            {
+            for (int i = 0; i < Managers.Count; i++) {
                 names[i] = Managers[i].GetType().Name;
             }
             EnumCreator.CreateEnum("Managers", names);

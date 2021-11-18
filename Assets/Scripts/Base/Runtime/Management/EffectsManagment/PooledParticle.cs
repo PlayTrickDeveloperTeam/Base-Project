@@ -6,11 +6,6 @@ namespace Base {
         private ParticleSystem _particleSystem;
 
         private float _loopDelay;
-        private bool _loop;
-        private Transform _parent;
-        private Vector3 _newScale;
-        private Quaternion _rot;
-        
 
         private void SetupParticle() {
             _particleSystem = GetComponent<ParticleSystem>();
@@ -19,7 +14,6 @@ namespace Base {
             
             this._loopDelay = _particleSystem.main.duration;
         }
-        
 
         public PooledParticle PlayParticle() {
             _particleSystem.Play();
@@ -27,7 +21,7 @@ namespace Base {
         }
 
         public async Task<PooledParticle> SetLoop(int loopAmount) {
-            for (int i = 0; i < loopAmount - 1; i++) {
+            for (int i = 0; i < loopAmount; i++) {
                 _particleSystem.Stop();
                 _particleSystem.Play();
                 await Task.Delay((int)this._loopDelay * 1000);

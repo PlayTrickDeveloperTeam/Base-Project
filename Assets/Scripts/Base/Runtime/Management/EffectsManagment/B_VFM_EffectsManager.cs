@@ -50,8 +50,10 @@ namespace Base
         private void Load() {
             GameObject[] ObjectsInResources = Resources.LoadAll<GameObject>("Particles");
             List<string> particleNames = new List<string>();
+            
             PoolsList = new List<ObjectsToPool>();
             PoolsDictionary = new Dictionary<string, Queue<GameObject>>();
+            
             foreach (GameObject g in ObjectsInResources)
             {
                 particleNames.Add(g.name);

@@ -1817,6 +1817,9 @@ MonoBehaviour:
   - PoolName: CubeExplosion
     ObjectPrefab: {fileID: 1942843871896654007, guid: ea0a9ad6c9f08af4dab7444683340af0, type: 3}
     PrewarmCount: 10
+  - PoolName: SphereExpo
+    ObjectPrefab: {fileID: 1942843871896654007, guid: f708ebb52b11bc14c9b9caf156ab143b, type: 3}
+    PrewarmCount: 10
 --- !u!1 &2076071834
 GameObject:
   m_ObjectHideFlags: 3
@@ -3600,7 +3603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3956264876366273754, guid: 15a2b6991fa6cc546968d99f32cce19d, type: 3}
+  m_Sprite: {fileID: -8310933147096994870, guid: d9647108d17f14347bfefa514907c5b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -1,1 +1,1 @@
-public enum Enum_Saves{ MainSave}
+public enum Enum_Saves{ MainSave, WillBeDeleted}

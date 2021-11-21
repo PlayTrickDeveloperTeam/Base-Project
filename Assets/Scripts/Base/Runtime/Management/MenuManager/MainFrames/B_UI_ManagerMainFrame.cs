@@ -32,6 +32,7 @@ namespace Base.UI
 
         public override Task ManagerStrapping()
         {
+            //Fixed
             if (instance == null) instance = this; else Destroy(this.gameObject);
             foreach (var item in Subframes)
             {

@@ -90,15 +90,20 @@ namespace Base {
         public void ClearAllSaves() {
             string[] assetsPath = { "Assets/Resources/SaveAssets" };
             foreach (var item in AssetDatabase.FindAssets("", assetsPath)) {
+
                 var path = AssetDatabase.GUIDToAssetPath(item);
                 SaveObject _saveObject = AssetDatabase.LoadAssetAtPath(path, typeof(SaveObject)) as SaveObject;
 
+
+
                 if (!_saveObject.IsPermanent) {
                     SaveObjects.Remove(_saveObject);
+                    Debug.Log(_saveObject.SaveEnumLocations);
                     File.Delete(_saveObject.SaveEnumLocations);
                     AssetDatabase.DeleteAsset(path);
                     _saveObject.DeleteThisData();
                 }
+
             }
             CreateEnums();
             AssetDatabase.SaveAssets();

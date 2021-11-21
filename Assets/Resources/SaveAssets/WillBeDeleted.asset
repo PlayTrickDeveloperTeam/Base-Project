@@ -10,24 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60d24ac12871fa6438597dbe53a39413, type: 3}
-  m_Name: MainSave
+  m_Name: WillBeDeleted
   m_EditorClassIdentifier: 
-  SaveName: MainSave
-  IsPermanent: 1
+  SaveName: WillBeDeleted
+  IsPermanent: 0
   Created: 1
   SaveCluster:
-  - Name: TutorialPlayed
-    Value: 1
-    Locked: 1
-  - Name: GameFinished
-    Value: 0
-    Locked: 1
-  - Name: PlayerLevel
-    Value: 0
-    Locked: 1
-  - Name: PreviewLevel
-    Value: 0
-    Locked: 1
-  - Name: PlayerCoin
-    Value: 300
-    Locked: 1
+  - Name: InGametxt
+    Value: This Is Ingame
+  - Name: Starttxt
+    Value: This Is Start
+  - Name: Endtxt
+    Value: This is End
+  SaveEnumLocations: Assets/Resources/EnumStorage/WillBeDeleted.cs

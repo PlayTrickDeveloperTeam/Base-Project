@@ -17,8 +17,9 @@ namespace Base {
 
         #region Properties
 
-        public bool HasTutorial = false;
-        public List<B_M_ManagerBase> Managers;
+        [SerializeField] bool HasTutorial = false;
+        [SerializeField] List<B_M_ManagerBase> Managers;
+        [SerializeField] private B_VFM_EffectsManager VfmEffectsManager;
         #endregion
 
         #region Unity Functions
@@ -26,13 +27,9 @@ namespace Base {
         private void Awake() {
 
 #if UNITY_IOS
-            if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+            if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.RESTRICTED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.DENIED)
             {
                 ATTrackingStatusBinding.RequestAuthorizationTracking();
-            }
-            else
-            {
-                Application.Quit();
             }
 #else
 
@@ -62,12 +59,19 @@ namespace Base {
                 await Managers[i].ManagerStrapping();
             }
             if (!HasTutorial) SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed, 1);
-            else SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed, 0);
+            await VfmEffectsManager.VFXManagerStrapping();
+            await EffectsManager.EffectsManagerStrapping();
+
             B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
 
             B_LC_LevelManager.instance.LoadInLevel((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PlayerLevel));
             B_GM_GameManager.instance.Save.SaveAllData();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .2f);
+#if UNITY_EDITOR
+            GUIManager.GetText(Enum_Menu_MainComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.Starttxt));
+            GUIManager.GetText(Enum_Menu_GameOverComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.Endtxt));
+            GUIManager.GetText(Enum_Menu_PlayerOverlayComponent.GameStateShowcase).ChangeText(SaveSystem.GetDataString(Enum_Saves.WillBeDeleted, Enum_WillBeDeleted.InGametxt));
+#endif
         }
 
         #endregion

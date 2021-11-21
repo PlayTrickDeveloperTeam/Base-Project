@@ -103,7 +103,7 @@ namespace Base.UI
         #endregion
 
         #region Slider
-
+        
         public static UI_CSliderSubframe GetSlider(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetSlider(enumToPull.ToString());
         public static UI_CSliderSubframe GetSlider(Enum_Menu_LoadingComponent enumToPull) => Loading.GetSlider(enumToPull.ToString());
         public static UI_CSliderSubframe GetSlider(Enum_Menu_MainComponent enumToPull) => Main.GetSlider(enumToPull.ToString());

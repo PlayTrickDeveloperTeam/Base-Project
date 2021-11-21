@@ -4,9 +4,6 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using System.Linq;
-using Cinemachine.Utility;
-using Sirenix.Utilities;
 
 
 namespace Base

@@ -5,7 +5,8 @@ using Base;
 using UnityEngine;
 
 public class EditorInGame : MonoBehaviour
-{
+{ 
+    #if UNITY_EDITOR
     private GUIStyle myButtonStyle;
     private Rect turnButton;
     private GUIStyle mainTitleText,titleText;
@@ -26,7 +27,7 @@ public class EditorInGame : MonoBehaviour
 
     private bool open = true;
 
-#if UNITY_EDITOR
+
     void OnGUI()
     {
         if (open)
@@ -138,6 +139,7 @@ public class EditorInGame : MonoBehaviour
     //     }
     //     
     // }
+    #endif
 }
-#endif
+
 

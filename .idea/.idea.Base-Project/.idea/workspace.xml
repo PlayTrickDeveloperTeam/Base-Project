@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="" />
+    <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/B_VFM_EffectsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/B_VFM_EffectsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/VFMTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/VFMTester.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EditorInGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EditorInGame.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,8 +62,7 @@
       <workItem from="1637236217581" duration="246000" />
       <workItem from="1637349702931" duration="197000" />
       <workItem from="1637502109664" duration="116000" />
-      <workItem from="1637502639764" duration="343000" />
-
+      <workItem from="1637502639764" duration="1113000" />
     </task>
     <servers />
   </component>

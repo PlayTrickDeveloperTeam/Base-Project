@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Base {
     public static class B_CES_CentralEventSystem {
         public static List<B_CES_Events> EventsList;
@@ -61,9 +60,7 @@ namespace Base {
         }
 
         public static void DeactiveEvents() {
-            for (int i = 0; i < EventsList.Count; i++) {
-                EventsList[i].DeleteNonConstantFunctions();
-            }
+            for (var i = 0; i < EventsList.Count; i++) EventsList[i].DeleteNonConstantFunctions();
         }
     }
 
@@ -72,23 +69,23 @@ namespace Base {
         public Dictionary<Action, bool> SubscribedFunctions;
 
         public B_CES_Events(List<B_CES_Events> eventList) {
-            this.SubscribedFunctions = new Dictionary<Action, bool>();
+            SubscribedFunctions = new Dictionary<Action, bool>();
             eventList.Add(this);
         }
 
         public void InvokeEvent() {
-            this.AnyAction?.Invoke();
+            AnyAction?.Invoke();
         }
 
         public void AddFunction(Action actionToAdd, bool isConstantEvent) {
-            this.AnyAction += actionToAdd;
-            this.SubscribedFunctions.Add(actionToAdd, isConstantEvent);
+            AnyAction += actionToAdd;
+            SubscribedFunctions.Add(actionToAdd, isConstantEvent);
         }
 
         public void DeleteFunction(Action actionToRemove) {
-            if (!this.SubscribedFunctions.ContainsKey(actionToRemove)) return;
-            this.AnyAction -= actionToRemove;
-            this.SubscribedFunctions.Remove(actionToRemove);
+            if (!SubscribedFunctions.ContainsKey(actionToRemove)) return;
+            AnyAction -= actionToRemove;
+            SubscribedFunctions.Remove(actionToRemove);
         }
 
         public void DeleteNonConstantFunctions() {
@@ -96,7 +93,7 @@ namespace Base {
                 if (item.Value) return;
                 AnyAction -= item.Key;
             }
-            this.SubscribedFunctions = this.SubscribedFunctions.Where(t => t.Value == true).ToDictionary(d => d.Key, d => d.Value);
+            SubscribedFunctions = SubscribedFunctions.Where(t => t.Value).ToDictionary(d => d.Key, d => d.Value);
         }
     }
 }

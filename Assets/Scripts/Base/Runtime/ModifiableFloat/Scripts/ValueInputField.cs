@@ -1,20 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using Base;
+using TMPro;
+using UnityEngine;
+public class ValueInputField : MonoBehaviour {
+    private TextMeshProUGUI CurrentValueText;
+    private TMP_InputField InputField;
+    private Mfloat MFloatModfiyableValue;
+    private TextMeshProUGUI ValueNameText;
 
-public class ValueInputField : MonoBehaviour
-{
-    Mfloat MFloatModfiyableValue;
-    TMP_InputField InputField;
-    TextMeshProUGUI ValueNameText;
-    TextMeshProUGUI CurrentValueText;
-
-    public void SetupValueInputField(Mfloat Value)
-    {
-        this.MFloatModfiyableValue = Value;
+    public void SetupValueInputField(Mfloat Value) {
+        MFloatModfiyableValue = Value;
         InputField = GetComponentInChildren<TMP_InputField>();
         InputField.onEndEdit.AddListener(ChangeValue);
         InputField.onSelect.AddListener(StartEditing);
@@ -25,13 +19,11 @@ public class ValueInputField : MonoBehaviour
 
     }
 
-    void StartEditing(string value)
-    {
+    private void StartEditing(string value) {
         Time.timeScale = .1f;
     }
 
-    void ChangeValue(string Value)
-    {
+    private void ChangeValue(string Value) {
         MFloatModfiyableValue.ConnectedValue = Value.IsFloat();
         CurrentValueText.text = Value;
         Time.timeScale = 1;

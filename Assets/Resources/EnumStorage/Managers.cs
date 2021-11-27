@@ -1,1 +1,1 @@
-public enum Enum_Managers{ B_UI_ManagerMainFrame, B_GM_GameManager, B_CF_Main_CameraFunctions, B_CR_CoroutineRunner, B_LC_LevelManager}
+public enum Enum_Managers { B_UI_ManagerMainFrame, B_GM_GameManager, B_CF_Main_CameraFunctions, B_CR_CoroutineRunner, B_LC_LevelManager }

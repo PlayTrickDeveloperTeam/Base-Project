@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-namespace Base
-{
-    [System.Serializable]
-    public class B_SM_SoundManager : MonoBehaviour
-    {
+namespace Base {
+    [Serializable]
+    public class B_SM_SoundManager : MonoBehaviour {
         public static B_SM_SoundManager instance;
         public SoundHolder[] Sounds;
         [HideInInspector] public List<AudioSource> Musics = new List<AudioSource>();
@@ -18,18 +15,19 @@ namespace Base
         [HideInInspector] public float VFXVolume;
         private Coroutine PlayLoopRoutine;
 
-        private void Awake()
-        {
+        private void Awake() {
             if (instance == null) instance = this;
-            else Destroy(this.gameObject);
+            else Destroy(gameObject);
         }
 
-        public void PlaySound(string name)
-        {
-            SoundHolder sound = Array.Find(Sounds, sound => sound.Name == name);
+        private void OnDisable() {
+            instance = null;
+        }
+
+        public void PlaySound(string name) {
+            var sound = Array.Find(Sounds, sound => sound.Name == name);
             if (sound == null) return;
-            if (sound.AudioSource.isPlaying)
-            {
+            if (sound.AudioSource.isPlaying) {
                 sound.AudioSource.Stop();
                 sound.AudioSource.Play();
                 return;
@@ -37,19 +35,16 @@ namespace Base
             sound.AudioSource.Play();
         }
 
-        public void PlayOnLoop(string name)
-        {
-            SoundHolder sound = Array.Find(Sounds, sound => sound.Name == name);
+        public void PlayOnLoop(string name) {
+            var sound = Array.Find(Sounds, sound => sound.Name == name);
             if (sound == null) return;
             sound.AudioSource.loop = true;
             sound.AudioSource.Play();
         }
 
-        public void PlayOnArray(string name)
-        {
-            SoundHolder sound = Array.Find(Sounds, sound => sound.Name == name);
-            if (PlayLoopRoutine != null)
-            {
+        public void PlayOnArray(string name) {
+            var sound = Array.Find(Sounds, sound => sound.Name == name);
+            if (PlayLoopRoutine != null) {
                 StopCoroutine(PlayLoopRoutine);
                 PlayLoopRoutine = null;
                 PlayLoopRoutine = StartCoroutine(SoundArrayLoop(sound));
@@ -57,10 +52,8 @@ namespace Base
             PlayLoopRoutine = StartCoroutine(SoundArrayLoop(sound));
         }
 
-        private IEnumerator SoundArrayLoop(SoundHolder sound)
-        {
-            for (int i = 0; i < sound.AudioSources.Count; i++)
-            {
+        private IEnumerator SoundArrayLoop(SoundHolder sound) {
+            for (var i = 0; i < sound.AudioSources.Count; i++) {
                 sound.AudioSources[i].Play();
                 yield return new WaitUntil(() => sound.AudioSources[i].isPlaying == false);
             }
@@ -68,42 +61,35 @@ namespace Base
             yield return null;
         }
 
-        public bool SoundManagerStrapping()
-        {
-            foreach (SoundHolder Sound in this.Sounds)
-            {
-                if (Sound.AudioClip == null)
-                {
-                    foreach (AudioClip sound in Sound.AudioClips)
-                    {
-                        AudioSource source = this.gameObject.AddComponent<AudioSource>();
+        public bool SoundManagerStrapping() {
+            foreach (var Sound in Sounds) {
+                if (Sound.AudioClip == null) {
+                    foreach (var sound in Sound.AudioClips) {
+                        var source = gameObject.AddComponent<AudioSource>();
                         Sound.AudioSources.Add(source);
                         source.clip = sound;
                         source.volume = Sound.Volume;
                         source.pitch = Sound.Pitch;
                         source.playOnAwake = false;
-                        this.MusicVolume = Sound.Volume;
-                        this.Musics.Add(source);
+                        MusicVolume = Sound.Volume;
+                        Musics.Add(source);
                     }
                     continue;
                 }
-                Sound.AudioSource = this.gameObject.AddComponent<AudioSource>();
+                Sound.AudioSource = gameObject.AddComponent<AudioSource>();
                 Sound.AudioSource.clip = Sound.AudioClip;
                 Sound.AudioSource.volume = Sound.Volume;
                 Sound.AudioSource.pitch = Sound.Pitch;
                 Sound.AudioSource.playOnAwake = false;
-                this.VFXVolume = Sound.Volume;
-                this.VFX.Add(Sound.AudioSource);
+                VFXVolume = Sound.Volume;
+                VFX.Add(Sound.AudioSource);
             }
             return true;
         }
-
-        private void OnDisable() => instance = null;
     }
 
-    [System.Serializable]
-    public class SoundHolder
-    {
+    [Serializable]
+    public class SoundHolder {
         public AudioClip AudioClip;
         public AudioClip[] AudioClips;
         public string Name;
@@ -117,36 +103,31 @@ namespace Base
         [HideInInspector] public AudioSource AudioSource;
         [HideInInspector] public List<AudioSource> AudioSources = new List<AudioSource>();
 
-        private bool IsArray()
-        {
-            if (AudioClips.Length > 0) { AudioClip = null; return false; }
+        private bool IsArray() {
+            if (AudioClips.Length > 0) {
+                AudioClip = null;
+                return false;
+            }
             return true;
         }
     }
 
-    [System.Serializable]
-    public class SoundSettings
-    {
+    [Serializable]
+    public class SoundSettings {
         public Slider MusicSlider;
         public Toggle MusicToggle;
         public Slider VFXSlider;
         public Toggle VFXToggle;
 
-        public void TGLOnMusicToggle(bool MusicIsOn)
-        {
-        }
+        public void TGLOnMusicToggle(bool MusicIsOn) { }
 
-        public void TGLOnVFXToggle(bool VFXIsOn)
-        {
-        }
+        public void TGLOnVFXToggle(bool VFXIsOn) { }
 
-        public void SLDOnMusicSliderChange(float Volume)
-        {
+        public void SLDOnMusicSliderChange(float Volume) {
             if (!MusicToggle.isOn) return;
         }
 
-        public void SLDOnVFXSliderChange(float Volume)
-        {
+        public void SLDOnVFXSliderChange(float Volume) {
             if (!VFXToggle.isOn) return;
         }
     }

@@ -1,14 +1,9 @@
-using System;
 using UnityEngine;
-
-namespace Base
-{
-    public static class B_Extention_Unity
-    {
+namespace Base {
+    public static class B_Extention_Unity {
         #region Transform Extentions
 
-        public static void ResizeObject(this Transform objToEnlarge, float Size)
-        {
+        public static void ResizeObject(this Transform objToEnlarge, float Size) {
             objToEnlarge.localScale = new Vector3(Size, Size, Size);
         }
 
@@ -28,41 +23,31 @@ namespace Base
 
         #region String Extentions
 
-        public static bool IsAllLetters(this string s)
-        {
-            foreach (char c in s)
-            {
-                if (!Char.IsLetter(c))
+        public static bool IsAllLetters(this string s) {
+            foreach (var c in s)
+                if (!char.IsLetter(c))
                     return false;
-            }
             return true;
         }
 
-        public static bool IsAllDigits(this string s)
-        {
-            foreach (char c in s)
-            {
-                if (!Char.IsDigit(c))
+        public static bool IsAllDigits(this string s) {
+            foreach (var c in s)
+                if (!char.IsDigit(c))
                     return false;
-            }
             return true;
         }
 
-        public static bool IsAllLettersOrDigits(this string s)
-        {
-            foreach (char c in s)
-            {
-                if (!Char.IsLetterOrDigit(c))
+        public static bool IsAllLettersOrDigits(this string s) {
+            foreach (var c in s)
+                if (!char.IsLetterOrDigit(c))
                     return false;
-            }
             return true;
         }
 
-        public static float IsFloat(this string s)
-        {
+        public static float IsFloat(this string s) {
             if (s.IsAllDigits())
                 return float.Parse(s);
-            else return 0;
+            return 0;
         }
 
         #endregion String Extentions

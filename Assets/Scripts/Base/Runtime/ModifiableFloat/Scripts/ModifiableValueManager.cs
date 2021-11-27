@@ -1,47 +1,38 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace Base
-{
-    public class ModifiableValueManager : MonoBehaviour
-    {
+namespace Base {
+    public class ModifiableValueManager : MonoBehaviour {
         public static ModifiableValueManager instance;
         public ValueHolder ValueHolder;
-        List<Mfloat> ValueList;
         public GameObject UIPrefab;
         public GameObject UIAddMenu;
-        private void Awake()
-        {
+        private List<Mfloat> ValueList;
+        private void Awake() {
             if (instance == null) instance = this;
             else Destroy(gameObject);
             ValueList = new List<Mfloat>();
         }
 
-        private void Start()
-        {
+        private void Start() {
             ValueHolder.PrepareNumbers();
-            foreach (var item in ValueList)
-            {
-                RectTransform obj = Instantiate(UIPrefab, UIAddMenu.transform).GetComponent<RectTransform>();
+            foreach (var item in ValueList) {
+                var obj = Instantiate(UIPrefab, UIAddMenu.transform).GetComponent<RectTransform>();
                 obj.GetComponent<ValueInputField>().SetupValueInputField(item);
             }
         }
 
-        public void AddToList(Mfloat value)
-        {
-            ValueList.Add(value);
+        private void OnDisable() {
+            instance = null;
         }
 
-        private void OnDisable()
-        {
-            instance = null;
+        public void AddToList(Mfloat value) {
+            ValueList.Add(value);
         }
     }
 
-    [System.Serializable]
-    public class ValueHolder
-    {
+    [Serializable]
+    public class ValueHolder {
         //You must instantiate these values in the code, otherwise it wont work
         public Mfloat Health;
         public Mfloat Stamina;
@@ -51,8 +42,7 @@ namespace Base
         public Mfloat AttackPower;
         public Mfloat AttackSpeed;
 
-        public void PrepareNumbers()
-        {
+        public void PrepareNumbers() {
             Health.PrepareUI();
             Stamina.PrepareUI();
             RunSpeed.PrepareUI();

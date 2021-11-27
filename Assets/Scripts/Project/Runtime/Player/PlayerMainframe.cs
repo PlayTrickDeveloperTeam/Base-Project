@@ -1,26 +1,19 @@
-using DG.Tweening;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
-
-namespace Base
-{
+namespace Base {
     [DefaultExecutionOrder(-10)]
-    public class PlayerMainframe : MonoBehaviour
-    {
-        #region Properties
-
-        #endregion Properties
+    public class PlayerMainframe : MonoBehaviour {
 
         #region Unity Functions
 
-        private void Start()
-        {
+        private void Start() {
             PlayerSetup();
         }
 
         #endregion Unity Functions
+        #region Properties
+
+        #endregion Properties
 
         #region Main Frame
 
@@ -34,27 +27,23 @@ namespace Base
 
         #endregion Properties
 
-        private void PlayerSetup()
-        {
+        private void PlayerSetup() {
             SubFrames = new List<PlayerSubFrame>();
             B_CES_CentralEventSystem.BTN_OnStartPressed.AddFunction(Go, false);
             B_CF_Main_CameraFunctions.instance.VirtualCameraSetAll(ActiveVirtualCameras.VirCam1, transform);
             SetupComplete = true;
         }
 
-        private void Go()
-        {
+        private void Go() {
             SubFrames.ForEach(t => t.Go());
         }
 
-        public void EndGameFunction(bool success)
-        {
+        public void EndGameFunction(bool success) {
             B_GM_GameManager.instance.ActivateEndgame(success, 2);
             SubFrames.ForEach(t => t.EndFunctions());
         }
 
-        public void AddFramesToList(PlayerSubFrame SubFrame)
-        {
+        public void AddFramesToList(PlayerSubFrame SubFrame) {
             SubFrames.Add(SubFrame);
         }
 

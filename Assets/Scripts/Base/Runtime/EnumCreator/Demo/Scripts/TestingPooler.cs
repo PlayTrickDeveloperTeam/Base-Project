@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-namespace Base
-{
-    public class TestingPooler : B_OPS_Pooler_Base
-    {
-        private void Awake()
-        {
-        }
-        private void Start()
-        {
-            base.InitiatePooller();
-            for (int i = 0; i < 10; i++)
+namespace Base {
+    public class TestingPooler : B_OPS_Pooler_Base {
+        private void Awake() { }
+        private void Start() {
+            InitiatePooller();
+            for (var i = 0; i < 10; i++)
                 SpawnObjFromPool(DemoPoolerTester.Dilaver, Vector3.zero);
         }
     }

@@ -1,11 +1,6 @@
-using System.Collections;
-using UnityEngine;
-using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
-
 namespace Base {
     public class SaveSystemWindow : OdinMenuEditorWindow {
         [MenuItem("Tools/Save System/Save Editor %F2")]

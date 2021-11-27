@@ -1,1 +1,1 @@
-public enum Enum_Particles{ CubeExplosion, SphereExpo}
+public enum Enum_Particles { CubeExplosion, SphereExpo }

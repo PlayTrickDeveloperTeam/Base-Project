@@ -1,11 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
-using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
-using Sirenix.Utilities.Editor;
+﻿using Sirenix.OdinInspector.Editor;
 using UnityEditor;
-
 namespace Base {
     public class PrototypingWindow : OdinMenuEditorWindow {
         [MenuItem("Tools/Prototype Window/Prototype Window %F1")]
@@ -17,7 +11,5 @@ namespace Base {
             //tree.Add("Save System", new SaveSystemEditor(tree));
             return tree;
         }
-
-
     }
 }

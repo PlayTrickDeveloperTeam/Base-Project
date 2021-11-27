@@ -1,9 +1,7 @@
-using System.Threading.Tasks;
-using TMPro;
-using UnityEngine;
-using Base.UI;
 using System;
-
+using System.Threading.Tasks;
+using Base.UI;
+using UnityEngine;
 namespace Base {
     public enum GameStates { Init, Start, Paused, Playing, End }
 
@@ -13,8 +11,10 @@ namespace Base {
         public static B_GM_GameManager instance;
         public static Action OnGameStateChange;
         private GameStates _currentGameState;
+
+        public SaveSystemEditor Save;
         public GameStates CurrentGameState {
-            get { return _currentGameState; }
+            get => _currentGameState;
             set {
                 if (_currentGameState == value) return;
                 _currentGameState = value;
@@ -22,10 +22,9 @@ namespace Base {
             }
         }
 
-        public SaveSystemEditor Save;
-
         public override Task ManagerStrapping() {
-            if (instance == null) instance = this; else Destroy(this.gameObject);
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
             Save = new SaveSystemEditor();
             GUIManager.GetButton(Enum_Menu_MainComponent.BTN_Start).AddFunction(StartGame);
             GUIManager.GetButton(Enum_Menu_GameOverComponent.BTN_Sucess).AddFunction(EndLevel);
@@ -45,28 +44,28 @@ namespace Base {
 
         #region Game Management Functions
 
-        void StartGame() {
+        private void StartGame() {
             B_CES_CentralEventSystem.BTN_OnStartPressed.InvokeEvent();
-            B_GM_GameManager.instance.CurrentGameState = GameStates.Playing;
+            instance.CurrentGameState = GameStates.Playing;
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_PlayerOverlay);
         }
 
-        void RestartLevel() {
+        private void RestartLevel() {
             B_CES_CentralEventSystem.BTN_OnRestartPressed.InvokeEvent();
             B_LC_LevelManager.instance.ReloadCurrentLevel();
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main, .3f);
         }
 
-        void EndLevel() {
+        private void EndLevel() {
             B_CES_CentralEventSystem.BTN_OnEndGamePressed.InvokeEvent();
-            B_GM_GameManager.instance.CurrentGameState = GameStates.Start;
+            instance.CurrentGameState = GameStates.Start;
             GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
             B_LC_LevelManager.instance.LoadInNextLevel();
         }
 
         public async void ActivateEndgame(bool Success, float Delay = 0) {
             if (CurrentGameState == GameStates.End || CurrentGameState == GameStates.Start) return;
-            B_GM_GameManager.instance.CurrentGameState = GameStates.End;
+            instance.CurrentGameState = GameStates.End;
             switch (Success) {
                 case true:
                     B_CES_CentralEventSystem.OnBeforeLevelDisablePositive.InvokeEvent();
@@ -94,30 +93,29 @@ namespace Base {
 
         #region Function Testing
 
-
         #endregion Function Testing
     }
 
     //Will Keep it as an example
     public class SaveData {
         public int GameFinished {
-            get { return PlayerPrefs.GetInt(B_SE_DataTypes.GameFinished.ToString()); }
-            set { PlayerPrefs.SetInt(B_SE_DataTypes.GameFinished.ToString(), value); }
+            get => PlayerPrefs.GetInt(B_SE_DataTypes.GameFinished.ToString());
+            set => PlayerPrefs.SetInt(B_SE_DataTypes.GameFinished.ToString(), value);
         }
 
         public int PlayerLevel {
-            get { return PlayerPrefs.GetInt(B_SE_DataTypes.PlayerLevel.ToString()); }
-            set { PlayerPrefs.SetInt(B_SE_DataTypes.PlayerLevel.ToString(), value); }
+            get => PlayerPrefs.GetInt(B_SE_DataTypes.PlayerLevel.ToString());
+            set => PlayerPrefs.SetInt(B_SE_DataTypes.PlayerLevel.ToString(), value);
         }
 
         public int TutorialPlayed {
-            get { return PlayerPrefs.GetInt(B_SE_DataTypes.TutorialPlayed.ToString()); }
-            set { PlayerPrefs.SetInt(B_SE_DataTypes.TutorialPlayed.ToString(), value); }
+            get => PlayerPrefs.GetInt(B_SE_DataTypes.TutorialPlayed.ToString());
+            set => PlayerPrefs.SetInt(B_SE_DataTypes.TutorialPlayed.ToString(), value);
         }
 
         public int PreviewLevel {
-            get { return PlayerPrefs.GetInt(B_SE_DataTypes.PreviewLevel.ToString()); }
-            set { PlayerPrefs.SetInt(B_SE_DataTypes.PreviewLevel.ToString(), value); }
+            get => PlayerPrefs.GetInt(B_SE_DataTypes.PreviewLevel.ToString());
+            set => PlayerPrefs.SetInt(B_SE_DataTypes.PreviewLevel.ToString(), value);
         }
 
         //public int PlayerCoin

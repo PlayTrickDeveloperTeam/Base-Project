@@ -1,7 +1,5 @@
-namespace Base
-{
-    public interface B_OPS_IPooledObject
-    {
+namespace Base {
+    public interface B_OPS_IPooledObject {
         public void OnFirstSpawn();
 
         public void OnObjectSpawn();

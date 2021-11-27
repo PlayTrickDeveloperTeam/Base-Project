@@ -1,10 +1,10 @@
-﻿using Cinemachine;
-using Sirenix.OdinInspector;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cinemachine;
+using Sirenix.OdinInspector;
 using UnityEngine;
-
 namespace Base {
     public enum ActiveVirtualCameras { VirCam1, VirCam2, VirCam3 }
 
@@ -31,8 +31,10 @@ namespace Base {
         #endregion Unity Functions
 
         #region Spesific Functions
+
         public override Task ManagerStrapping() {
-            if (instance == null) instance = this; else Destroy(this.gameObject);
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
 
             VirtualCameras = new Dictionary<ActiveVirtualCameras, VirCam>();
             VirtualCameras.Add(ActiveVirtualCameras.VirCam1, VirtualCamera1);
@@ -106,8 +108,8 @@ namespace Base {
         }
 
         private IEnumerator Shaker(ActiveVirtualCameras Camera, float Amp, float TimeForShake) {
-            CinemachineBasicMultiChannelPerlin perlin = VirtualCameras[Camera].VirtualCameraPerlinChannel;
-            float TimeDiff = Amp / TimeForShake;
+            var perlin = VirtualCameras[Camera].VirtualCameraPerlinChannel;
+            var TimeDiff = Amp / TimeForShake;
             perlin.m_AmplitudeGain = Amp;
             perlin.m_FrequencyGain = 1;
             while (TimeForShake != 0) {
@@ -123,7 +125,7 @@ namespace Base {
         #endregion IEnumerators
     }
 
-    [System.Serializable]
+    [Serializable]
     public class VirCam {
         [DisableIf("@Locked")]
         public CinemachineVirtualCamera VirtualCamera;
@@ -133,20 +135,20 @@ namespace Base {
 
         [DisableIf("@Locked")]
         [HideIf("@ResetOnlyLens")]
-        public bool ResetOnLoad = false;
+        public bool ResetOnLoad;
 
         [DisableIf("@Locked")]
         [HideIf("@ResetOnLoad")]
-        public bool ResetOnlyLens = false;
+        public bool ResetOnlyLens;
+        [HideInInspector] public CinemachineBasicMultiChannelPerlin VirtualCameraPerlinChannel;
 
         [HideInInspector] public Coroutine coroutine;
-        [HideInInspector] public CinemachineBasicMultiChannelPerlin VirtualCameraPerlinChannel;
         private LensSettings LensSettings;
-        private Vector3 OriginalPosition;
-        private Quaternion OriginalRotation;
-        private float OriginalFieldOfView;
 
         private bool Locked = true;
+        private float OriginalFieldOfView;
+        private Vector3 OriginalPosition;
+        private Quaternion OriginalRotation;
 
         public void SetupVirtualCamera() {
             LensSettings = VirtualCamera.m_Lens;

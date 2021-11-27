@@ -1,7 +1,5 @@
-﻿namespace Base
-{
-    public interface B_LC_ISpawnedLevelObject
-    {
+﻿namespace Base {
+    public interface B_LC_ISpawnedLevelObject {
         public void OnLevelAwake();
 
         public void OnLevelOnEnable();

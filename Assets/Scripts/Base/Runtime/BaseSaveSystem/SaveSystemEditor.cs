@@ -1,22 +1,29 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
-using System.IO;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 #endif
 namespace Base {
     public class SaveSystemEditor {
 
-        List<SaveObject> SaveObjects;
-        Dictionary<string, SaveObject> savesDic;
+        private List<SaveObject> SaveObjects;
+        private readonly Dictionary<string, SaveObject> savesDic;
+
+        public SaveSystemEditor() {
+            SaveObjects = new List<SaveObject>();
+            SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
+            savesDic = new Dictionary<string, SaveObject>();
+            for (var i = 0; i < SaveObjects.Count; i++) {
+                SaveObjects[i].LoadThisData();
+                savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
+            }
+        }
         public Task SaveSystemStrapping() {
             SaveObjects = new List<SaveObject>();
             SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
@@ -24,28 +31,17 @@ namespace Base {
         }
 
         public SaveObject GetSaveObject(object obj) {
-            if (savesDic.ContainsKey(obj.ToString())) { return savesDic[obj.ToString()]; }
+            if (savesDic.ContainsKey(obj.ToString())) return savesDic[obj.ToString()];
             return null;
         }
 
-        public SaveSystemEditor() {
-            SaveObjects = new List<SaveObject>();
-            SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
-            savesDic = new Dictionary<string, SaveObject>();
-            for (int i = 0; i < SaveObjects.Count; i++) {
-                SaveObjects[i].LoadThisData();
-                savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
-            }
-        }
-
         public void SaveAllData() {
-            foreach (var item in SaveObjects) {
-                item.SaveThisData();
-            }
+            foreach (var item in SaveObjects) item.SaveThisData();
         }
 
 
         #region Editor Functions
+
 #if UNITY_EDITOR
         [BoxGroup("New Save Object", centerLabel: true, order: 0)]
         [InfoBox("$InfoBoxString", "IsntReadyForSave")]
@@ -56,9 +52,7 @@ namespace Base {
             SaveObjects = new List<SaveObject>();
             SaveObjects = Resources.LoadAll<SaveObject>("SaveAssets").ToList();
             savesDic = new Dictionary<string, SaveObject>();
-            for (int i = 0; i < SaveObjects.Count; i++) {
-                savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
-            }
+            for (var i = 0; i < SaveObjects.Count; i++) savesDic.Add(SaveObjects[i].SaveName, SaveObjects[i]);
 
             NewSaveObject = ScriptableObject.CreateInstance<SaveObject>();
         }
@@ -68,10 +62,8 @@ namespace Base {
         [GUIColor("getGreen")]
         [Button]
         public void CreateNewSave() {
-            SaveObject obj = NewSaveObject;
-            if (obj.SaveName.MakeViable() == "") {
-                obj.SaveName = "Empty_Save_Name";
-            }
+            var obj = NewSaveObject;
+            if (obj.SaveName.MakeViable() == "") obj.SaveName = "Empty_Save_Name";
             else obj.SaveName = obj.SaveName.MakeViable();
             obj.name = obj.SaveName;
             obj.SaveThisData();
@@ -92,7 +84,7 @@ namespace Base {
             foreach (var item in AssetDatabase.FindAssets("", assetsPath)) {
 
                 var path = AssetDatabase.GUIDToAssetPath(item);
-                SaveObject _saveObject = AssetDatabase.LoadAssetAtPath(path, typeof(SaveObject)) as SaveObject;
+                var _saveObject = AssetDatabase.LoadAssetAtPath(path, typeof(SaveObject)) as SaveObject;
 
 
 
@@ -113,26 +105,26 @@ namespace Base {
         [GUIColor("getGray")]
         [Button]
         public void CreateEnums() {
-            string[] _temp = new string[SaveObjects.Count];
-            for (int i = 0; i < SaveObjects.Count; i++) {
+            var _temp = new string[SaveObjects.Count];
+            for (var i = 0; i < SaveObjects.Count; i++) {
                 _temp[i] = SaveObjects[i].SaveName;
                 SaveObjects[i].CreateEnums();
             }
             EnumCreator.CreateEnum("Saves", _temp);
         }
 
-        bool IsReadyForSave() {
+        private bool IsReadyForSave() {
             if (NewSaveObject == null) return false;
             if (string.IsNullOrEmpty(NewSaveObject.SaveName)) return false;
             if (NewSaveObject.SaveName.Length <= 3) return false;
             if (NewSaveObject.SaveCluster.Count < 1) return false;
-            for (int i = 0; i < NewSaveObject.SaveCluster.Count; i++) {
-                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable) return false;
-            }
+            for (var i = 0; i < NewSaveObject.SaveCluster.Count; i++)
+                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable)
+                    return false;
             return true;
         }
 
-        bool IsntReadyForSave() {
+        private bool IsntReadyForSave() {
             return !IsReadyForSave();
         }
 
@@ -140,25 +132,35 @@ namespace Base {
             if (NewSaveObject == null) return null;
             if (string.IsNullOrEmpty(NewSaveObject.SaveName) || NewSaveObject.SaveName.Length <= 3) return "Enter A Name";
             if (NewSaveObject.SaveCluster.Count < 1) return "Enter Atleast One Data";
-            for (int i = 0; i < NewSaveObject.SaveCluster.Count; i++) {
-                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable) return "Enter Atleast One Data";
-            }
+            for (var i = 0; i < NewSaveObject.SaveCluster.Count; i++)
+                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable)
+                    return "Enter Atleast One Data";
             return null;
         }
 
         private Color GetButtonColor() {
-            Sirenix.Utilities.Editor.GUIHelper.RequestRepaint();
-            return Color.HSVToRGB(Mathf.Cos((float)UnityEditor.EditorApplication.timeSinceStartup + 1f) * 0.225f + 0.325f, 1, 1);
+            GUIHelper.RequestRepaint();
+            return Color.HSVToRGB(Mathf.Cos((float)EditorApplication.timeSinceStartup + 1f) * 0.225f + 0.325f, 1, 1);
         }
 
         #region Inspector Window Functions
 
-        private Color getGreen() => Color.green;
-        private Color getRed() => Color.red;
-        private Color getYellow() => Color.yellow;
-        private Color getGray() => Color.gray;
+        private Color getGreen() {
+            return Color.green;
+        }
+        private Color getRed() {
+            return Color.red;
+        }
+        private Color getYellow() {
+            return Color.yellow;
+        }
+        private Color getGray() {
+            return Color.gray;
+        }
+
         #endregion
 #endif
+
         #endregion
     }
 }

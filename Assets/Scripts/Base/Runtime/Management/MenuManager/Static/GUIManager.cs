@@ -1,34 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Base;
+﻿using System.Linq;
 using DG.Tweening;
-using System.Threading.Tasks;
-using System.Linq;
-
-namespace Base.UI
-{
-    public static class GUIManager
-    {
+using UnityEditor;
+using UnityEngine;
+namespace Base.UI {
+    public static class GUIManager {
         public static UI_Gameover GameOver;
         public static UI_Loading Loading;
         public static UI_Main Main;
         public static UI_Paused Paused;
         public static UI_PlayerOverlay PlayerOverlay;
 
-        public static void SetupStaticFrame()
-        {
+        public static void SetupStaticFrame() {
             GameOver = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_GameOver).ToArray()[0].GetComponent<UI_Gameover>();
             Loading = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Loading).ToArray()[0].GetComponent<UI_Loading>();
             Main = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Main).ToArray()[0].GetComponent<UI_Main>();
             Paused = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_Paused).ToArray()[0].GetComponent<UI_Paused>();
             PlayerOverlay = B_UI_ManagerMainFrame.instance.Subframes.Where(t => t.MenuType == Enum_MenuTypes.Menu_PlayerOverlay).ToArray()[0].GetComponent<UI_PlayerOverlay>();
         }
+        public static void FlushData() {
+            GameOver = null;
+            Loading = null;
+            Paused = null;
+            PlayerOverlay = null;
+        }
 
         #region PanelActions
 
-        public static void ActivateAllPanels(float time = 0)
-        {
+        public static void ActivateAllPanels(float time = 0) {
             GameOver.EnableUI(time);
             Loading.EnableUI(time);
             Main.EnableUI(time);
@@ -36,9 +34,8 @@ namespace Base.UI
             PlayerOverlay.EnableUI(time);
         }
 
-        public static void DeactivateAllPanels()
-        {
-            Vector3 movePos = Vector3.zero;
+        public static void DeactivateAllPanels() {
+            var movePos = Vector3.zero;
             movePos.x += 1500;
             GameOver.MoveUI(movePos);
             movePos.x += 1500;
@@ -51,11 +48,9 @@ namespace Base.UI
             PlayerOverlay.MoveUI(movePos);
         }
 
-        public static void ActivateOnePanel(Enum_MenuTypes menu, float time = 0)
-        {
+        public static void ActivateOnePanel(Enum_MenuTypes menu, float time = 0) {
             DeactivateAllPanels();
-            switch (menu)
-            {
+            switch (menu) {
                 case Enum_MenuTypes.Menu_Main:
                     Main.EnableUI(time);
                     break;
@@ -74,9 +69,8 @@ namespace Base.UI
             }
         }
 
-        public static Tween DeactivateAllPanelsWithAnim()
-        {
-            Vector3 movePos = Vector3.zero;
+        public static Tween DeactivateAllPanelsWithAnim() {
+            var movePos = Vector3.zero;
             movePos.x += 1500;
             GameOver.MoveUI(movePos, 2);
             movePos.x += 1500;
@@ -93,51 +87,230 @@ namespace Base.UI
 
         #region Text
 
-        public static UI_CTMProGUISubframe GetText(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetText(enumToPull.ToString());
-        public static UI_CTMProGUISubframe GetText(Enum_Menu_LoadingComponent enumToPull) => Loading.GetText(enumToPull.ToString());
-        public static UI_CTMProGUISubframe GetText(Enum_Menu_MainComponent enumToPull) => Main.GetText(enumToPull.ToString());
-        public static UI_CTMProGUISubframe GetText(Enum_Menu_PausedComponent enumToPull) => Paused.GetText(enumToPull.ToString());
-        public static UI_CTMProGUISubframe GetText(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetText(enumToPull.ToString());
-
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetText(enumToPull.ToString());
+        }
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetText(enumToPull.ToString());
+        }
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetText(enumToPull.ToString());
+        }
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetText(enumToPull.ToString());
+        }
+        public static UI_CTMProGUISubframe GetText(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetText(enumToPull.ToString());
+        }
 
         #endregion
 
         #region Slider
-        
-        public static UI_CSliderSubframe GetSlider(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetSlider(enumToPull.ToString());
-        public static UI_CSliderSubframe GetSlider(Enum_Menu_LoadingComponent enumToPull) => Loading.GetSlider(enumToPull.ToString());
-        public static UI_CSliderSubframe GetSlider(Enum_Menu_MainComponent enumToPull) => Main.GetSlider(enumToPull.ToString());
-        public static UI_CSliderSubframe GetSlider(Enum_Menu_PausedComponent enumToPull) => Paused.GetSlider(enumToPull.ToString());
-        public static UI_CSliderSubframe GetSlider(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetSlider(enumToPull.ToString());
 
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetSlider(enumToPull.ToString());
+        }
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetSlider(enumToPull.ToString());
+        }
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetSlider(enumToPull.ToString());
+        }
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetSlider(enumToPull.ToString());
+        }
+        public static UI_CSliderSubframe GetSlider(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetSlider(enumToPull.ToString());
+        }
 
         #endregion
 
         #region Button
 
-        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetButton(enumToPull.ToString());
-        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_LoadingComponent enumToPull) => Loading.GetButton(enumToPull.ToString());
-        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_MainComponent enumToPull) => Main.GetButton(enumToPull.ToString());
-        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PausedComponent enumToPull) => Paused.GetButton(enumToPull.ToString());
-        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetButton(enumToPull.ToString());
-
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetButton(enumToPull.ToString());
+        }
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetButton(enumToPull.ToString());
+        }
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetButton(enumToPull.ToString());
+        }
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetButton(enumToPull.ToString());
+        }
+        public static UI_CButtonTMProSubframe GetButton(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetButton(enumToPull.ToString());
+        }
 
         #endregion
 
         #region Image
-        public static UI_CImageSubframe GetImage(Enum_Menu_GameOverComponent enumToPull) => GameOver.GetImage(enumToPull.ToString());
-        public static UI_CImageSubframe GetImage(Enum_Menu_LoadingComponent enumToPull) => Loading.GetImage(enumToPull.ToString());
-        public static UI_CImageSubframe GetImage(Enum_Menu_MainComponent enumToPull) => Main.GetImage(enumToPull.ToString());
-        public static UI_CImageSubframe GetImage(Enum_Menu_PausedComponent enumToPull) => Paused.GetImage(enumToPull.ToString());
-        public static UI_CImageSubframe GetImage(Enum_Menu_PlayerOverlayComponent enumToPull) => PlayerOverlay.GetImage(enumToPull.ToString());
+
+        public static UI_CImageSubframe GetImage(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetImage(enumToPull.ToString());
+        }
+        public static UI_CImageSubframe GetImage(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetImage(enumToPull.ToString());
+        }
+        public static UI_CImageSubframe GetImage(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetImage(enumToPull.ToString());
+        }
+        public static UI_CImageSubframe GetImage(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetImage(enumToPull.ToString());
+        }
+        public static UI_CImageSubframe GetImage(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetImage(enumToPull.ToString());
+        }
 
         #endregion
-        public static void FlushData()
-        {
-            GameOver = null;
-            Loading = null;
-            Paused = null;
-            PlayerOverlay = null;
+
+        #region Panel
+
+        public static UI_CPanelSubframe GetPanel(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetPanel(enumToPull.ToString());
         }
+        public static UI_CPanelSubframe GetPanel(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetPanel(enumToPull.ToString());
+        }
+        public static UI_CPanelSubframe GetPanel(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetPanel(enumToPull.ToString());
+        }
+        public static UI_CPanelSubframe GetPanel(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetPanel(enumToPull.ToString());
+        }
+        public static UI_CPanelSubframe GetPanel(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetPanel(enumToPull.ToString());
+        }
+
+        #endregion
+
+        #region Toggle
+
+        public static UI_CToggleSubframe GetToggle(Enum_Menu_GameOverComponent enumToPull) {
+            return GameOver.GetToggle(enumToPull.ToString());
+        }
+        public static UI_CToggleSubframe GetToggle(Enum_Menu_LoadingComponent enumToPull) {
+            return Loading.GetToggle(enumToPull.ToString());
+        }
+        public static UI_CToggleSubframe GetToggle(Enum_Menu_MainComponent enumToPull) {
+            return Main.GetToggle(enumToPull.ToString());
+        }
+        public static UI_CToggleSubframe GetToggle(Enum_Menu_PausedComponent enumToPull) {
+            return Paused.GetToggle(enumToPull.ToString());
+        }
+        public static UI_CToggleSubframe GetToggle(Enum_Menu_PlayerOverlayComponent enumToPull) {
+            return PlayerOverlay.GetToggle(enumToPull.ToString());
+        }
+
+        #endregion
+
+        #region Editor Functions
+
+#if UNITY_EDITOR
+        [MenuItem("GameObject/Create Other/GUI System/Panel")]
+        public static void CreateGUIPanel() {
+            var obj = Resources.Load<GameObject>("GUIComponents/PanelSubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+
+        [MenuItem("GameObject/Create Other/GUI System/Slider")]
+        public static void CreateGUISlider() {
+            var obj = Resources.Load<GameObject>("GUIComponents/SliderSubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+
+        [MenuItem("GameObject/Create Other/GUI System/Image")]
+        public static void CreateGUIImage() {
+            var obj = Resources.Load<GameObject>("GUIComponents/ImageSubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+
+        [MenuItem("GameObject/Create Other/GUI System/TMProText")]
+        public static void CreateGUITMProText() {
+            var obj = Resources.Load<GameObject>("GUIComponents/TMProGUISubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+
+        [MenuItem("GameObject/Create Other/GUI System/TMProButton")]
+        public static void CreateGUITMProButton() {
+            var obj = Resources.Load<GameObject>("GUIComponents/ButtonGUISubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+
+        [MenuItem("GameObject/Create Other/GUI System/Toggle")]
+        public static void CreateGUIToggle() {
+            var obj = Resources.Load<GameObject>("GUIComponents/ToggleSubframe");
+            var SelectedObject = Selection.activeGameObject.transform;
+
+            var createdobj = Object.Instantiate(obj);
+            if (SelectedObject == null) {
+                createdobj.GetComponent<RectTransform>().position = Vector3.zero;
+            }
+            else {
+                createdobj.transform.SetParent(SelectedObject);
+                createdobj.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            }
+
+            Selection.activeGameObject = createdobj;
+        }
+        #endif
+
+        #endregion
     }
 }

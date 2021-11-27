@@ -1,1 +1,1 @@
-public enum Enum_Menu_PausedComponent{ Ali}
+public enum Enum_Menu_PausedComponent { Ali }

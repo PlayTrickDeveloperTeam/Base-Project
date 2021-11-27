@@ -3,35 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 namespace Base {
     public enum LevelType { Tutorial, Main }
 
     public class B_LC_LevelManager : B_M_ManagerBase {
         public static B_LC_LevelManager instance;
-
-        public Action<int> OnLevelChangedAction;
+        public static Transform ObjectSpawnParent;
 
         [HideInInspector] public List<GameObject> MainLevels;
         [HideInInspector] public List<GameObject> TutorialLevels;
 
         [HideInInspector] public GameObject CurrentLevel;
-        private GameObject currentLevel;
 
         [HideInInspector] public int CurrentLevelIndex;
         [HideInInspector] public int PreviewLevelIndex;
+        private GameObject currentLevel;
+
+        public Action<int> OnLevelChangedAction;
 
         [HideInInspector] public Transform LevelHolder { get; private set; }
-        public static Transform ObjectSpawnParent;
 
-        private int tutorialPlayed {
-            get {
-                return SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed);
-            }
+        private int tutorialPlayed => SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.TutorialPlayed);
+
+        private void OnDestroy() {
+            instance = null;
+            ObjectSpawnParent = null;
         }
 
         public override Task ManagerStrapping() {
-            if (instance == null) instance = this; else Destroy(this.gameObject);
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
 
             LevelHolder = GameObject.Find("LevelHolder").GetComponent<Transform>();
 
@@ -44,7 +46,7 @@ namespace Base {
             MainLevels = MainLevels.OrderBy(t => t.name).ToList();
             TutorialLevels = TutorialLevels.OrderBy(t => t.name).ToList();
 
-            PreviewLevelIndex = (int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PreviewLevel);
+            PreviewLevelIndex = SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.PreviewLevel);
 
 
 
@@ -72,7 +74,7 @@ namespace Base {
         }
 
         public void LoadInNextLevel() {
-            switch ((int)SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.GameFinished)) {
+            switch (SaveSystem.GetDataInt(Enum_Saves.MainSave, Enum_MainSave.GameFinished)) {
                 case 0:
                     InitateNewLevel(LevelToLoad());
                     break;
@@ -89,8 +91,12 @@ namespace Base {
 
         private void InitateNewLevel(GameObject levelToInit) {
             B_CES_CentralEventSystem.OnBeforeLevelLoaded.InvokeEvent();
-            if (CurrentLevel != null) { Destroy(CurrentLevel); CurrentLevel = null; currentLevel = null; }
-            CurrentLevel = GameObject.Instantiate(levelToInit, LevelHolder);
+            if (CurrentLevel != null) {
+                Destroy(CurrentLevel);
+                CurrentLevel = null;
+                currentLevel = null;
+            }
+            CurrentLevel = Instantiate(levelToInit, LevelHolder);
             currentLevel = levelToInit;
             switch (tutorialPlayed) {
                 case 0:
@@ -139,18 +145,14 @@ namespace Base {
         }
 
         private void CheckLevels() {
-            for (int i = 0; i < MainLevels.Count; i++) {
-                Debug.Log(MainLevels[i].name);
-            }
+            for (var i = 0; i < MainLevels.Count; i++) Debug.Log(MainLevels[i].name);
             Debug.Log("//----------//");
-            for (int i = 0; i < TutorialLevels.Count; i++) {
-                Debug.Log(TutorialLevels[i].name);
-            }
+            for (var i = 0; i < TutorialLevels.Count; i++) Debug.Log(TutorialLevels[i].name);
         }
 
         private GameObject RandomSelectedLevel() {
-            if (MainLevels.Count <= 1) { return MainLevels[0]; }
-            GameObject obj = MainLevels[UnityEngine.Random.Range(0, MainLevels.Count)];
+            if (MainLevels.Count <= 1) return MainLevels[0];
+            var obj = MainLevels[Random.Range(0, MainLevels.Count)];
             if (currentLevel == obj) return RandomSelectedLevel();
             return obj;
         }
@@ -158,11 +160,6 @@ namespace Base {
         private void SaveOnNextLevel() {
             SaveSystem.SetData(Enum_Saves.MainSave, Enum_MainSave.PreviewLevel, PreviewLevelIndex + 1);
             //B_GM_GameManager.instance.Save.PreviewLevel = PreviewLevelIndex + 1;
-        }
-
-        private void OnDestroy() {
-            instance = null;
-            ObjectSpawnParent = null;
         }
     }
 }

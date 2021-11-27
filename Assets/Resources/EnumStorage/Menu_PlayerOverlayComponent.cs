@@ -1,1 +1,1 @@
-public enum Enum_Menu_PlayerOverlayComponent{ GameStateShowcase}
+public enum Enum_Menu_PlayerOverlayComponent { GameStateShowcase }

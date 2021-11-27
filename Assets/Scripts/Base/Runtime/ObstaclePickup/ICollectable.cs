@@ -1,7 +1,5 @@
-namespace Base
-{
-    public interface ICollectable
-    {
+namespace Base {
+    public interface ICollectable {
         void OnPickup(float value);
     }
 }

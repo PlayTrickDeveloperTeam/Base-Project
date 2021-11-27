@@ -1,10 +1,5 @@
-using UnityEngine;
-using UnityEngine.Advertisements;
-
-namespace Base
-{
-    public class M_AddManager /*: IUnityAdsListener*/
-    {
+namespace Base {
+    public class M_AddManager /*: IUnityAdsListener*/ {
         //#if UNITY_IOS
         //        string gameId = "4131404";
         //#else

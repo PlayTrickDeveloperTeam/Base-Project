@@ -1,39 +1,42 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Advertisements;
-
 namespace Base {
     public static class B_Extention_Management {
+
+        #region Recttransform Extentions
+
+        //Use this to move Pesky uÄ± objects
+        public static void MoveUIObject(this RectTransform rectTransform, Vector2 vector2) {
+            rectTransform.offsetMax = vector2;
+            rectTransform.offsetMin = vector2;
+        }
+
+        #endregion Recttransform Extentions
         #region Vector3 Extentions
 
         public static Vector3 GetWorldPosition(Ray ray, LayerMask Mask) {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask)) {
-                return hit.point;
-            }
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask)) return hit.point;
             return Vector3.zero;
         }
 
         public static Vector3 GetWorldPosition(this Vector3 vector3, Camera cam, LayerMask Mask) {
-            Ray ray = cam.ScreenPointToRay(vector3);
+            var ray = cam.ScreenPointToRay(vector3);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask)) {
-                return hit.point;
-            }
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask)) return hit.point;
             return Vector3.zero;
         }
 
         public static Transform GetWorldObject(this Vector3 vec3, Camera cam, LayerMask mask) {
-            Ray ray = cam.ScreenPointToRay(vec3);
+            var ray = cam.ScreenPointToRay(vec3);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
-                return hit.collider.transform;
-            }
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) return hit.collider.transform;
             return null;
         }
 
         public static Vector3 GetHitPosition(this Vector3 mainObj, Vector3 objectToPush, float yMinus, float force) {
-            Vector3 _temp = mainObj;
+            var _temp = mainObj;
             _temp.y -= yMinus;
             return (objectToPush - _temp) * force;
         }
@@ -59,7 +62,7 @@ namespace Base {
         //}
 
         public static Vector3[] GetCameraCorners(this Camera cam, float y) {
-            Vector3[] cameraPositions = new Vector3[4];
+            var cameraPositions = new Vector3[4];
             //cameraPositions[0] = new Vector3(Screen.width, 0, y);
             //cameraPositions[1] = new Vector3(Screen.width, 0, y);
             //cameraPositions[2] = new Vector3(Screen.width, Screen.height, y);
@@ -76,7 +79,7 @@ namespace Base {
         #region Math Extentions
 
         public static float Round(float value, int digits) {
-            float mult = Mathf.Pow(10.0f, (float)digits);
+            var mult = Mathf.Pow(10.0f, digits);
             return Mathf.Round(value * mult) / mult;
         }
 
@@ -92,7 +95,7 @@ namespace Base {
             angle = Mathf.Repeat(angle, 360);
             min = Mathf.Repeat(min, 360);
             max = Mathf.Repeat(max, 360);
-            bool inverse = false;
+            var inverse = false;
             var tmin = min;
             var tangle = angle;
             if (min > 180) {
@@ -131,45 +134,24 @@ namespace Base {
 
         //Not tested to its fullest, needs more tests and development
         public static void ShowRewardedAdd(this M_AddManager _addsManager) {
-            if (Advertisement.IsReady("rewardedVideo")) {
-                Advertisement.Show("rewardedVideo");
-            }
-            else {
-                Debug.Log("Add not ready");
-            }
+            if (Advertisement.IsReady("rewardedVideo")) Advertisement.Show("rewardedVideo");
+            else Debug.Log("Add not ready");
         }
 
         public static void ShowNormalAdd(this M_AddManager _addsManager) {
-            if (Advertisement.IsReady("video")) {
-                Advertisement.Show("video");
-            }
+            if (Advertisement.IsReady("video")) Advertisement.Show("video");
         }
 
         #endregion Adds Manager Extentions
 
-        #region Recttransform Extentions
-
-        //Use this to move Pesky uý objects
-        public static void MoveUIObject(this RectTransform rectTransform, Vector2 vector2) {
-            rectTransform.offsetMax = vector2;
-            rectTransform.offsetMin = vector2;
-        }
-
-        #endregion Recttransform Extentions
-
         #region String Extentions
+
         public enum SaveNameViabilityStatus { Viable, Null, Incomplete, HasDigits }
         public static SaveNameViabilityStatus IsVaibleForSave(this string obj) {
 
-            if (obj.Length <= 3 && !(obj == null || obj == "Null" || string.IsNullOrEmpty(obj))) {
-                return SaveNameViabilityStatus.Incomplete;
-            }
-            if ((obj == null || obj == "Null" || string.IsNullOrEmpty(obj))) {
-                return SaveNameViabilityStatus.Null;
-            }
-            if (obj.Any(char.IsDigit)) {
-                return SaveNameViabilityStatus.HasDigits;
-            }
+            if (obj.Length <= 3 && !(obj == null || obj == "Null" || string.IsNullOrEmpty(obj))) return SaveNameViabilityStatus.Incomplete;
+            if (obj == null || obj == "Null" || string.IsNullOrEmpty(obj)) return SaveNameViabilityStatus.Null;
+            if (obj.Any(char.IsDigit)) return SaveNameViabilityStatus.HasDigits;
             return SaveNameViabilityStatus.Viable;
         }
 
@@ -186,10 +168,8 @@ namespace Base {
                 case SaveNameViabilityStatus.HasDigits:
                     Debug.Log(obj + " " + obj.IsVaibleForSave());
                     var newObj = obj.Where(t => !char.IsDigit(t)).ToArray();
-                    string newName = new string(newObj);
-                    if (newName.Where(t => char.IsLetter(t)).ToArray().Length <= 3) {
-                        newName = "";
-                    }
+                    var newName = new string(newObj);
+                    if (newName.Where(t => char.IsLetter(t)).ToArray().Length <= 3) newName = "";
                     return newName;
             }
             return null;

@@ -1,9 +1,5 @@
-﻿using UnityEngine;
-
-namespace Base
-{
-    public class PlayerScoreframe : PlayerSubFrame
-    {
+﻿namespace Base {
+    public class PlayerScoreframe : PlayerSubFrame {
         #region Properties
 
         public float PlayerScore;
@@ -12,8 +8,7 @@ namespace Base
 
         #region Unity Functions
 
-        private void Start()
-        {
+        private void Start() {
             SetupSubFrame();
         }
 
@@ -21,18 +16,13 @@ namespace Base
 
         #region Spesific Functions
 
-        public void SetupScoreFrame()
-        {
+        public void SetupScoreFrame() {
             Parent.AddFramesToList(this);
         }
 
-        public void OnPickupTaken(float value)
-        {
+        public void OnPickupTaken(float value) { }
 
-        }
-
-        public override void SetupSubFrame()
-        {
+        public override void SetupSubFrame() {
             base.SetupSubFrame();
             Parent.ScoreFrame = this;
         }

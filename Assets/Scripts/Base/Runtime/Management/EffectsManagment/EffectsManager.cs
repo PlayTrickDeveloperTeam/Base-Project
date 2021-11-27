@@ -11,9 +11,5 @@ namespace Base {
         public static PooledParticle SpawnAParticle(object enumToPull, Vector3 positionToSpawnIn, [Optional] Quaternion rotationToSpawnIn) {
             return B_VFM_EffectsManager.instance.SpawnAParticle(enumToPull, positionToSpawnIn);
         }
-        
-        
-        
-        
     }
 }

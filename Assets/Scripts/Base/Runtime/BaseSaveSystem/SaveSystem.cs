@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using System.IO;
-using System.Threading.Tasks;
-using System.Runtime.Serialization.Formatters.Binary;
-
-namespace Base {
+﻿namespace Base {
     public static class SaveSystem {
 
         public static object GetDataObject(object saveName, object saveEnum) {
@@ -18,7 +12,7 @@ namespace Base {
         }
 
         public static int GetDataInt(object saveName, object saveEnum) {
-            return int.Parse(string.Format("{0}", B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).GetData(saveEnum).ToString()));
+            return int.Parse(string.Format("{0}", B_GM_GameManager.instance.Save.GetSaveObject(saveName.ToString()).GetData(saveEnum)));
         }
 
         public static float GetDataFloat(object saveName, object saveEnum) {

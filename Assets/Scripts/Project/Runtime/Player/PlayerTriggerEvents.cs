@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
-
-namespace Base
-{
-    public class PlayerTriggerEvents : PlayerSubFrame
-    {
+namespace Base {
+    public class PlayerTriggerEvents : PlayerSubFrame {
         #region Properties
 
         public Action<object> OnPickup;
@@ -15,28 +11,22 @@ namespace Base
 
         #region Unity Functions
 
-        private void Start()
-        {
+        private void Start() {
             SetupSubFrame();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-
-        }
+        private void OnTriggerEnter(Collider other) { }
 
         #endregion
 
         #region Spesific Functions
 
-        public override void SetupSubFrame()
-        {
+        public override void SetupSubFrame() {
             base.SetupSubFrame();
             Parent.TriggerEvents = this;
         }
 
-        public override void Go()
-        {
+        public override void Go() {
             base.Go();
         }
 
@@ -49,6 +39,5 @@ namespace Base
         #region IEnumerators
 
         #endregion
-
     }
 }

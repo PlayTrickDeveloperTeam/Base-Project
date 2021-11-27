@@ -1,5 +1,6 @@
 namespace Base {
     public static class B_Database_String {
+        
         #region PlayerPrefs
 
         public const string Save_Int_FirstTime = "FirstTime";

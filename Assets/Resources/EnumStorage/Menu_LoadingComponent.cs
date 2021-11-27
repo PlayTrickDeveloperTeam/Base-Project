@@ -1,1 +1,1 @@
-public enum Enum_Menu_LoadingComponent { LoadingBackground, LoadingLogo }
+public enum Enum_Menu_LoadingComponent{ LoadingBackground, LoadingLogo}

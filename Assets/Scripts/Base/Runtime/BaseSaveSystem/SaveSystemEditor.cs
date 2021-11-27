@@ -119,7 +119,7 @@ namespace Base {
             if (NewSaveObject.SaveName.Length <= 3) return false;
             if (NewSaveObject.SaveCluster.Count < 1) return false;
             for (var i = 0; i < NewSaveObject.SaveCluster.Count; i++)
-                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable)
+                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != ExtentionFunctions.SaveNameViabilityStatus.Viable)
                     return false;
             return true;
         }
@@ -133,7 +133,7 @@ namespace Base {
             if (string.IsNullOrEmpty(NewSaveObject.SaveName) || NewSaveObject.SaveName.Length <= 3) return "Enter A Name";
             if (NewSaveObject.SaveCluster.Count < 1) return "Enter Atleast One Data";
             for (var i = 0; i < NewSaveObject.SaveCluster.Count; i++)
-                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != B_Extention_Management.SaveNameViabilityStatus.Viable)
+                if (NewSaveObject.SaveCluster[i].Name.IsVaibleForSave() != ExtentionFunctions.SaveNameViabilityStatus.Viable)
                     return "Enter Atleast One Data";
             return null;
         }

@@ -173,9 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86eaf8a119444638b1685454bdd52bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ComponentParticularName: 
-  EnumName: 
-  Parent: {fileID: 0}
+  ComponentParticularName: LoadingPanel
+  EnumName: LoadingPanel
+  Parent: {fileID: 1567908396}
   SafeArea: 0
 --- !u!1 &108357220
 GameObject:
@@ -210,7 +210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3600, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108357222
@@ -710,6 +710,7 @@ MonoBehaviour:
   MenuType: 3
   SubComponents:
   - {fileID: 8965160881106412935}
+  - {fileID: 1133026470}
   - {fileID: 8965160881126842524}
   - {fileID: 1207731746205720619}
   - {fileID: 8965160879507210558}
@@ -863,6 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1133026469}
   - component: {fileID: 1133026470}
+  - component: {fileID: 1133026471}
   m_Layer: 0
   m_Name: EndingPanel
   m_TagString: Untagged
@@ -903,10 +905,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86eaf8a119444638b1685454bdd52bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ComponentParticularName: 
-  EnumName: 
-  Parent: {fileID: 0}
+  ComponentParticularName: EndingPanel
+  EnumName: EndingPanel
+  Parent: {fileID: 805624966}
   SafeArea: 1
+--- !u!114 &1133026471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133026468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &1217142401
 GameObject:
   m_ObjectHideFlags: 3
@@ -1348,7 +1365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2400, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432377133
@@ -1413,6 +1430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563191150}
   - component: {fileID: 1563191151}
+  - component: {fileID: 1563191152}
   m_Layer: 0
   m_Name: ButtonPanel
   m_TagString: Untagged
@@ -1456,6 +1474,21 @@ MonoBehaviour:
   EnumName: ButtonPanel
   Parent: {fileID: 1897889150}
   SafeArea: 1
+--- !u!114 &1563191152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563191149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7cc9ae882524194a35ea8d4d06ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &1567908394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1229, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567908396
@@ -1508,6 +1541,7 @@ MonoBehaviour:
   SafeArea: 0
   MenuType: 4
   SubComponents:
+  - {fileID: 100368777}
   - {fileID: 8965160881364731536}
   - {fileID: 8965160880044137079}
 --- !u!1 &1643563045
@@ -1678,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1200, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897889150

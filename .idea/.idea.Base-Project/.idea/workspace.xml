@@ -2,144 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/ExtentionFunctions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_GameOverComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_GameOverComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_LoadingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_LoadingComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Levels/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Levels/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/BaseSaveSystem/SaveSystemEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/BaseSaveSystem/SaveSystemEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Database_String.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Database_String.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Extention_Management.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Extention_Management.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Extention_Unity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/B_Extention_Unity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Extentions/ExtentionFunctions.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/AddManagement.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/AddManagement/M_AddManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/AddManagement/M_AddManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/CentralEventSystem.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/CentralEventSystem/B_CES_CentralEventSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/CentralEventSystem/B_CES_CentralEventSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/B_VFM_EffectsManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/B_VFM_EffectsManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/EffectsManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/EffectsManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/Example_SpawnedCube.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/Example_SpawnedCube.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/Example_Spawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/Example_Spawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/PooledCubeExample.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/Examples/PooledCubeExample.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/PooledParticle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/PooledParticle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/VFMTester.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/EffectsManagment/VFMTester.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_ISpawnedLevelObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_ISpawnedLevelObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_LevelManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_LevelManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_LevelPreparator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/LevelSpawner/B_LC_LevelPreparator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MainLogic.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MainLogic/B_BL_BootLoader.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MainLogic/B_BL_BootLoader.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MainLogic/B_GM_GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MainLogic/B_GM_GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ManagerBase.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ManagerBase/B_M_ManagerBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ManagerBase/B_M_ManagerBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/ButtonGUISubframe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/ButtonGUISubframe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/ImageSubframe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/ImageSubframe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/SliderSubframe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/SliderSubframe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/TMProGUISubframe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentPrefabs/TMProGUISubframe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CButtonTMProSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CButtonTMProSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CImageSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CImageSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CPanelSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CPanelSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CSliderSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CSliderSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CTMProGUISubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CTMProGUISubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CToggleSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/ComponentSubframes/UI_CToggleSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Demo/Demo.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Demo/Demo.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Demo/Tester.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Demo/Tester.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Deprecated.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Extentions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Extentions/B_UI_Extentions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Extentions/B_UI_Extentions.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/B_UI_ManagerMainFrame.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/B_UI_ManagerMainFrame.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/B_UI_MenuSubFrame.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/B_UI_MenuSubFrame.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Gameover.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Gameover.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Loading.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Loading.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Paused.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainFrames/UI_Paused.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainPrefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainPrefab/MenuMainFrame.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MainPrefab/MenuMainFrame.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MenuSubframes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MenuSubframes/UI_Main.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MenuSubframes/UI_Main.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MenuSubframes/UI_PlayerOverlay.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/MenuSubframes/UI_PlayerOverlay.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Static.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Static/GUIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/Static/GUIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/SubframeTypes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/SubframeTypes/UI_Default.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/SubframeTypes/UI_Default.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/SubframeTypes/UI_TComponentsSubframe.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/MenuManager/SubframeTypes/UI_TComponentsSubframe.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_IPooledObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_IPooledObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_PooledObjectBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_PooledObjectBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_Pooler_Base.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/ObjectPoolerSet/B_OPS_Pooler_Base.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/SoundManager.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/SoundManager/B_SM_SoundManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/Management/SoundManager/B_SM_SoundManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Demo/RandomRotator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Demo/RandomRotator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Demo/ReferenceableFloat.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Demo/ReferenceableFloat.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Prefabs/UIPrefab.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Prefabs/UIPrefab.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/Mfloat.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/Mfloat.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/ModifiableValueManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/ModifiableValueManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/ValueInputField.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/ModifiableFloat/Scripts/ValueInputField.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EditorInGame.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EditorInGame.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -206,7 +72,8 @@
       <workItem from="1637933061405" duration="30000" />
       <workItem from="1638032277228" duration="2253000" />
       <workItem from="1638039468234" duration="725000" />
-      <workItem from="1638040272101" duration="2119000" />
+      <workItem from="1638040272101" duration="2842000" />
+      <workItem from="1638067474786" duration="370000" />
     </task>
     <servers />
   </component>
@@ -226,6 +93,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

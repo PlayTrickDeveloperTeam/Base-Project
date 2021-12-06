@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_GameOverComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_GameOverComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_LoadingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/EnumStorage/Menu_LoadingComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Levels/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Levels/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Levels/MainLevels/MainLevel 001.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Levels/MainLevels/MainLevel 001.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Project/Runtime/Player/PlayerMainframe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Project/Runtime/Player/PlayerMainframe.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,8 @@
       <workItem from="1638039468234" duration="725000" />
       <workItem from="1638040272101" duration="2842000" />
       <workItem from="1638067474786" duration="370000" />
+      <workItem from="1638170831225" duration="600000" />
+      <workItem from="1638197229000" duration="238000" />
     </task>
     <servers />
   </component>

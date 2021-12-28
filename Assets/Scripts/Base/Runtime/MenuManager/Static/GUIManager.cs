@@ -30,7 +30,8 @@ namespace Base.UI {
         }
         
         public static void AddSafeArea(this UI_CPanelSubframe subPanel) {
-            subPanel.gameObject.AddComponent<SafeArea>();
+            if(!subPanel.gameObject.GetComponent<SafeArea>())
+                subPanel.gameObject.AddComponent<SafeArea>();
         }
 
         #region PanelActions

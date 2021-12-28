@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Levels/MainLevels/MainLevel 001.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Levels/MainLevels/MainLevel 001.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Project/Runtime/Player/PlayerMainframe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Project/Runtime/Player/PlayerMainframe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MenuManager/Static/GUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MenuManager/Static/GUIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +14,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../MoonWalk/Assets/Scripts/Base/Runtime/Management/MainLogic/B_BL_BootLoader.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="215g9AinLwytn4YiFfoWOF86mRL" />
   <component name="ProjectViewState">
@@ -29,6 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -75,6 +77,7 @@
       <workItem from="1638067474786" duration="370000" />
       <workItem from="1638170831225" duration="600000" />
       <workItem from="1638197229000" duration="238000" />
+      <workItem from="1640722978558" duration="22000" />
     </task>
     <servers />
   </component>
@@ -94,7 +97,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

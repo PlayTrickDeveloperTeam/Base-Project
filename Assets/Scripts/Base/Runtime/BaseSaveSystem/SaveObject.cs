@@ -13,10 +13,9 @@ namespace Base {
         public string SaveName;
         public bool IsPermanent;
         [HideInInspector] public bool Created;
-        //[InfoBox("Enter atleast one data to be able to create a new save")]
         public List<DataHolder> SaveCluster;
         [HideInInspector] public string SaveEnumLocations;
-        private Dictionary<string, object> saveDic;
+        public Dictionary<string, object> saveDic;
 
         public object GetData(object name) {
             if (saveDic.ContainsKey(name.ToString())) return saveDic[name.ToString()];
@@ -26,9 +25,7 @@ namespace Base {
         public void SetData(object name, object value) {
             if (saveDic.ContainsKey(name.ToString())) saveDic[name.ToString()] = value.ToString();
         }
-
-        //[ShowIf("Created")]
-        //[Button]
+        
         public void CreateEnums() {
             var _temp = new string[SaveCluster.Count];
             for (var i = 0; i < SaveCluster.Count; i++) {
@@ -64,7 +61,7 @@ namespace Base {
             saveDic = new Dictionary<string, object>();
             for (var i = 0; i < SaveCluster.Count; i++) saveDic.Add(SaveCluster[i].Name, SaveCluster[i].Value);
         }
-        //[InfoBox("Deletes the created save save data, not the asset")]
+
         [ShowIf("Created")]
         [Button("Delete Save Data")]
         public void DeleteThisData() {

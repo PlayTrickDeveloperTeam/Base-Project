@@ -1,11 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Base.UI;
 using UnityEngine;
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 #endif
-#if UNITY_IOS
 using Unity.Advertisement.IosSupport;
+#if UNITY_IOS
 #endif
 
 namespace Base {
@@ -36,6 +38,17 @@ namespace Base {
             IngameEditor.enabled = RuntimeEditor;
         }
 
+        IEnumerator Fucker() {
+#if UNITY_IOS
+                if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.RESTRICTED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.DENIED) {
+                yield return new WaitForSeconds(1.2f);
+                ATTrackingStatusBinding.RequestAuthorizationTracking();
+            }
+#endif
+            yield return new WaitForSeconds(.1f);
+            InitiateBootLoading();
+        }
+
         #endregion
 
 #if UNITY_EDITOR
@@ -64,16 +77,8 @@ namespace Base {
         #region Unity Functions
 
         private void Awake() {
-
-#if UNITY_IOS
-            if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.RESTRICTED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.DENIED)
-            {
-                ATTrackingStatusBinding.RequestAuthorizationTracking();
-            }
-#else
-
-#endif
-            InitiateBootLoading();
+            StartCoroutine(Fucker());
+            
         }
 
         private void OnDisable() {

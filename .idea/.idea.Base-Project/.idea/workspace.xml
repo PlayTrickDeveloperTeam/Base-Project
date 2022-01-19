@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b36161c7-9591-440b-aee0-27e9a5da1326" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MenuManager/Static/GUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MenuManager/Static/GUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Base-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/BaseSaveSystem/SaveObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/BaseSaveSystem/SaveObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MainLogic/B_BL_BootLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Base/Runtime/MainLogic/B_BL_BootLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +83,10 @@
       <workItem from="1638170831225" duration="600000" />
       <workItem from="1638197229000" duration="238000" />
       <workItem from="1640722978558" duration="22000" />
+      <workItem from="1640938297555" duration="1250000" />
+      <workItem from="1641196124834" duration="2559000" />
+      <workItem from="1641208379610" duration="1000" />
+      <workItem from="1641208415090" duration="2506000" />
     </task>
     <servers />
   </component>

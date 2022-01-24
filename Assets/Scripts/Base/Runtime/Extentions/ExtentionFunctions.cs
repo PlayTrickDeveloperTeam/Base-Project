@@ -103,6 +103,18 @@ namespace Base {
             objToEnlarge.localScale = new Vector3(Size, Size, Size);
         }
 
+        public static void DestroyAllChildren(this Transform transform) {
+            if (transform.childCount <= 0) return;
+            for (int i = transform.childCount - 1; i >= 0; i--) {
+                #if UNITY_EDITOR
+                if (!Application.isPlaying)
+                    GameObject.DestroyImmediate(transform.GetChild(i).gameObject);
+                #endif
+                if (Application.isPlaying)
+                    GameObject.Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+        
         #endregion Transform Extentions
 
         #region String Extentions

@@ -80,9 +80,13 @@ namespace Base {
             Save.SaveAllData();
         }
 
-        private void OnApplicationPause(bool pause) {
+#if UNITY_IOS
+                private void OnApplicationPause(bool pause) {
+            
             Save.SaveAllData();
         }
+
+#endif
 
         private void OnApplicationQuit() {
             Save.SaveAllData();

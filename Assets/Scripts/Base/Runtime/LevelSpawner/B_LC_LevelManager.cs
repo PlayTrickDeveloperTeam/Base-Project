@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Base.UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 namespace Base {
@@ -86,6 +87,7 @@ namespace Base {
         }
 
         public void ReloadCurrentLevel() {
+            GUIManager.ActivateOnePanel(Enum_MenuTypes.Menu_Main);
             InitateNewLevel(currentLevel);
         }
 

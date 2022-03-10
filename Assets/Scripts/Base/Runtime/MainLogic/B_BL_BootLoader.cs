@@ -6,8 +6,8 @@ using UnityEngine;
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 #endif
-using Unity.Advertisement.IosSupport;
 #if UNITY_IOS
+using Unity.Advertisement.IosSupport;
 #endif
 
 namespace Base {
@@ -40,6 +40,7 @@ namespace Base {
 
         IEnumerator Fucker() {
 #if UNITY_IOS
+                yield return new WaitForSeconds(1f);
                 if (ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.RESTRICTED || ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == ATTrackingStatusBinding.AuthorizationTrackingStatus.DENIED) {
                 yield return new WaitForSeconds(1.2f);
                 ATTrackingStatusBinding.RequestAuthorizationTracking();
